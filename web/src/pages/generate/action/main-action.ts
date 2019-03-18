@@ -10,6 +10,20 @@ export default class MainAction extends ViewAction {
   init() {
     // this.query();
   }
+
+
+  add(type:"actor"|"action"|"subComp") {
+    this.store.dispatch("main:"+type+":add", type);
+  }
+
+  addActorEvent(actorIndex:number) {
+    this.store.dispatch("main:actor:event:add", actorIndex);
+  }
+
+
+  addActionMethod(actionIndex:number) {
+    this.store.dispatch("main:action:method:add", actionIndex);
+  }
   //
   // async rename(archiveId: string, headline: string, index: number) {
   //   await webapi.archive.rename(archiveId, headline);

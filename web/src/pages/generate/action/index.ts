@@ -1,5 +1,7 @@
 import MainAction from './main-action';
 
-export const viewAction = {
+const viewAction = {
   MainAction
 };
+
+export default viewAction;
