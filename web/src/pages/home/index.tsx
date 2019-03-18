@@ -6,6 +6,7 @@ import Detail from '../detail';
 import Login from '../login';
 import Ueditor from '../ueditor';
 import List from '../list';
+import Generate from '../generate';
 
 import Header from  './components/header';
 import requireAuthentication from './components/login-validate';
@@ -21,13 +22,9 @@ export default class HelloApp extends React.Component<any, any> {
   render() {
     return (
       <div className="page-wrapper">
-        <Header {...this.props} />
+        {/*<Header {...this.props} />*/}
         <div className="page-content">
-          <Route path="/" exact component={Login} />
-          <Route path="/detail" component={requireAuthentication(Detail)} />
-          <Route path="/list" component={requireAuthentication(List)} />
-          <Route path="/login" component={Login} />
-          <Route path="/ueditor" component={requireAuthentication(Ueditor)} />
+          <Route path="/" exact component={Generate} />
         </div>
       </div>
     );
