@@ -1,8 +1,7 @@
-import {  } from '@/types'
 import Actions from "./action.ts"
 
-export interface ITradeSendReducer {
+export interface I<%=Util.toUCamelize(pageInfo.key)%>Reducer {
     info : any
 }
 
-export type ITradeSendProps = { tradeSend: ITradeSendReducer } & ReturnType<typeof Actions>;
+export type I<%=Util.toUCamelize(pageInfo.key)%>Props = { <%=Util.toLCamelize(pageInfo.key)%>: I<%=Util.toUCamelize(pageInfo.key)%>Reducer } & ReturnType<typeof Actions>;

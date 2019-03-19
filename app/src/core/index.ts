@@ -8,53 +8,118 @@
  **/
 
 import * as ejs from 'ejs';
-import {join,resolve,parse} from 'path';
+import {join, resolve, parse} from 'path';
 import * as fse from 'fs-extra';
-let people = ['geddy', 'neil', 'alex'],
-  html = ejs.render('<%= people.join(", "); %>', {people: people});
+import {IAction, IActorEvent, IActorItem, IPageDefined} from './generate';
 
+const Util = {
+  /**
+   * 大驼峰
+   * @param {string} name
+   * @returns {any}
+   */
+  //首字母大写.   abc-dfdsf AbcDfdsf
+  toUCamelize(name: string) {
+   return name.split("-").map(item=>{
+      return item[0].toUpperCase()+item.substr(1)
+    }).join("");
+  },
 
-export async function generate(pageInfo) {
+  /**
+   * 小驼峰
+   * @param {string} name
+   * @returns {any}
+   */
+  //首字母小写, abc-dfdsf abcDfdsf
+  toLCamelize(name: string) {
+    let camelName =this.toUCamelize(name);
+    return camelName[0].toLowerCase()+camelName.substr(1);
+  },
+};
 
+export async function generate(pageInfo: IPageDefined) {
+
+  //所有的事件..
+  let events  = pageInfo.actors.reduce((accumulator:IActorEvent[],currentValue:IActorItem ) => {
+    console.log(`accumulator:${accumulator}, currentValue:${currentValue}`);
+    return accumulator.concat( currentValue.events)
+  },[]);
+
+  let base = {
+    pageInfo,
+    Util,
+    className: Util.toUCamelize(pageInfo.key),
+    instanceName: Util.toLCamelize(pageInfo.key),
+    events
+  };
   //首页生成
-  await handlePage('index.tsx.tpl',async (conent:string)=>{
+  await handlePage('index.tsx.tpl', async (tplConent: string) => {
+    let conent = ejs.render(tplConent, {
+      ...base ,
+    });
     return conent;
   });
 
-  await handlePage('index.less.tpl',async (conent:string)=>{
+  await handlePage('index.less.tpl', async (tplConent: string) => {
+    let conent = ejs.render(tplConent, {
+      ...base ,
+    });
     return conent;
   });
 
-  //reducer生成
-  await handlePage('reducer.ts.tpl',async (conent:string)=>{
-    return conent;
+  pageInfo.actors.forEach(async (actor:IActorItem, index:number) => {
+    //reducer生成
+    await handlePage('reducer.ts.tpl', async (tplConent: string) => {
+      let conent = ejs.render(tplConent, {
+        ...base ,actor,index
+      });
+      return conent;
+    },{saveFilePath: actor.name+".ts"});
   });
+
   //constant生成
-  await handlePage('constant.ts.tpl',async (conent:string)=>{
+  await handlePage('constant.ts.tpl', async (tplConent: string) => {
+
+    let conent = ejs.render(tplConent, {
+      ...base,events
+    });
     return conent;
   });
 
   //types生成
-  await handlePage('types.ts.tpl',async (conent:string)=>{
+  await handlePage('types.ts.tpl', async (tplConent: string) => {
+    let conent = ejs.render(tplConent, {
+      ...base ,
+    });
     return conent;
   });
 
   //action生成
-  await handlePage('action.ts.tpl',async (conent:string)=>{
-    return conent;
+  pageInfo.actions.forEach(async (action:IAction)=>{
+
+    await handlePage('action.ts.tpl', async (tplConent: string) => {
+      let conent = ejs.render(tplConent, {
+        ...base ,action
+      });
+      return conent;
+    },{saveFilePath:action.name+".ts"});
   });
 
   //子组件生成;
-  await handlePage('components/sub-components.tsx.tpl',async (conent:string)=>{
-    return conent;
-  },{saveFilePath:"components/order-header.tsx"});
+  await handlePage(
+    'components/sub-components.tsx.tpl',
+    async (conent: string) => {
+      return conent;
+    },
+    {saveFilePath: 'components/order-header.tsx'},
+  );
 }
 
-const tplBase = join(__dirname, "tpl"),outputBase=join(__dirname, "out");
+const tplBase = join(__dirname, 'tpl'),
+  outputBase = join(__dirname, 'out');
 
-
-interface IHandlePageParam{
-  saveFilePath:string;
+interface IHandlePageParam {
+  saveFilePath: string;
 }
 /**
  *
@@ -62,33 +127,20 @@ interface IHandlePageParam{
  * @param {(tplContent: string) => Promise<string>} dealCal
  * @returns {Promise<void>}
  */
-async function handlePage(filePath:string,dealCal:(tplContent:string)=>Promise<string>,param?:IHandlePageParam) {
-
-  let _param  = {saveFilePath:filePath.replace(".tpl",""),   ...param};
+async function handlePage(
+  filePath: string,
+  dealCal: (tplContent: string) => Promise<string>,
+  param?: IHandlePageParam,
+) {
+  let _param = {saveFilePath: filePath.replace('.tpl', ''), ...param};
   let _tplFilePath = join(tplBase, filePath);
 
   let _tplContent = await fse.readFile(_tplFilePath);
+  console.log('开始处理模板: ',_tplFilePath);
   let content = await dealCal(_tplContent.toString());
-  await fse.ensureDir(parse(_param.saveFilePath).dir);
-  await fse.writeFile(join(outputBase,_param.saveFilePath),content);
+  await fse.ensureDir(join(outputBase, parse(_param.saveFilePath).dir));
+  await fse.writeFile(join(outputBase, _param.saveFilePath), content);
 }
-
-
-
-
-//
-// fileTpls.forEach(async fileItem => {
-//
-//   let _path = join(__dirname, fileItem.dir, fileItem.name + '.tpl');
-//   let fileContent = await fse.readFile(_path);
-//
-//   html = ejs.render(fileContent.toString(), {people: people});
-//
-//   await fse.writeFile(join())
-//
-//   console.log(_path);
-// });
-
 
 let pageInfo = {
   key: 'order',
@@ -136,11 +188,11 @@ let pageInfo = {
   ],
   subComps: [
     {
-      name: 'Header',
+      name: 'order-header',
       methods: [],
     },
   ],
 };
-(async()=>{
+(async () => {
   await generate(pageInfo);
 })();

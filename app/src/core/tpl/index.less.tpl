@@ -1,2 +1,2 @@
-.tradeSend{
+.<%=instanceName%>{
 }

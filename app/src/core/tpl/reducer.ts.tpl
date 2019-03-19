@@ -1,42 +1,24 @@
-import { INIT, CLEAN, TYPE, COMPANY } from "./constant.ts";
+import {<% actor.events.forEach(event=>{ %>
+    <%=event.name.toUpperCase()%>,
+  <% }) %>
+} from "./constant.ts";
 import { Action } from "@/types";
-import { ITradeSendReducer } from "./types";
+import { I<%=Util.toUCamelize(pageInfo.key)%>Reducer } from "./types";
 import _ from "lodash";
 
-const INITIAL_STATE: ITradeSendReducer = {
+const INITIAL_STATE: I<%=className%>Reducer = {
     info: {} as any
 };
 
-export default function tradeSend(state = INITIAL_STATE, action: Action): ITradeSendReducer {
+export default function <%=Util.toLCamelize(pageInfo.key)%>(state = INITIAL_STATE, action: Action): I<%=Util.toUCamelize(pageInfo.key)%>Reducer {
     const { type, payload } = action;
     switch (type) {
-        //
-        case INIT:
-            return {
-                ...state,
-                info: payload
-            };
-
-        //
-        //
-        //
-        case CLEAN:
-            return INITIAL_STATE;
-
-        //
-        // 选择方式
-        //
-        case TYPE:
-            return {
-                ...state
-            };
-        //
-        // 选择公司
-        //
-        case COMPANY:
-            return {
-                ...state
-            };
+     <% actor.events.forEach(event=>{ %>
+        case <%=event.name.toUpperCase()%>:
+                   return {
+                       ...state
+                   };
+    <% }) %>
     }
     return state;
 }

@@ -1,7 +1,6 @@
 
-const BASE = "TradeSend_"
+const BASE = "<%=Util.toUCamelize(pageInfo.key)%>_"
 
-export const INIT = BASE + "INIT";
-export const CLEAN = BASE + "CLEAN";
-export const TYPE = BASE + "TYPE";
-export const COMPANY = BASE + "COMPANY";
+<% events.forEach(event=>{ %>
+export const <%=event.name.toUpperCase()%> = BASE + "<%=event.name.toUpperCase()%>";
+<% }) %>
