@@ -300,7 +300,7 @@ let pageInfo: IPageDefined = {
     {
       mark: '"pages/empty/index"',
       isBefore: true,
-      content:  ``,
+      content:  `"${pagePath}",`,
       check: (content): boolean => !content.include(pageFilePath),
     }
   ]);
