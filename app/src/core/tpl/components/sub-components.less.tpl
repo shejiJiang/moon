@@ -1,0 +1,2 @@
+.<%=Util.toLCamelize(subComp.name)%>{
+}

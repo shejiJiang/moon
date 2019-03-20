@@ -8,7 +8,7 @@ import Util from '@/util/';
 
 import "./<%=pageInfo.key%>.less.tpl";
 import { I<%=className%>Props } from "./types";
-import actions from "./action.ts";
+import actions from "./action";
 
  <% pageInfo.subComps.forEach(item=>{ %>
 import <%=Util.toUCamelize(item.name)%> from "./components/<%=item.name%>"; %>

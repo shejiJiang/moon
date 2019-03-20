@@ -10,7 +10,7 @@
 import * as ejs from 'ejs';
 import {join, resolve, parse} from 'path';
 import * as fse from 'fs-extra';
-import {IAction, IActorEvent, IActorItem, IPageDefined} from './generate';
+import {IAction, IActorEvent, IActorItem, IPageDefined, ISubComp} from './generate';
 
 const Util = {
   /**
@@ -44,6 +44,8 @@ export async function generate(pageInfo: IPageDefined) {
     console.log(`accumulator:${accumulator}, currentValue:${currentValue}`);
     return accumulator.concat( currentValue.events)
   },[]);
+
+  let handlePage = getHandlePage(join("/Users/dong/extraIn/RHourseO2O/src/pages/",pageInfo.key));
 
   let base = {
     pageInfo,
@@ -106,20 +108,64 @@ export async function generate(pageInfo: IPageDefined) {
   });
 
   //子组件生成;
-  await handlePage(
-    'components/sub-components.tsx.tpl',
-    async (conent: string) => {
-      return conent;
-    },
-    {saveFilePath: 'components/order-header.tsx'},
-  );
+
+  pageInfo.subComps.forEach(async (subComp:ISubComp,index:number)=>{
+    await handlePage(
+      'components/sub-components.tsx.tpl',
+      async (tplConent: string) => {
+
+        let conent = ejs.render(tplConent, {
+          ...base ,subComp
+        });
+        return conent;
+      },
+      {saveFilePath: 'components/'+subComp.name+'.tsx'},
+    );
+
+    await handlePage(
+      'components/sub-components.less.tpl',
+      async (tplConent: string) => {
+        let conent = ejs.render(tplConent, {
+          ...base ,subComp
+        });
+        return conent;
+      },
+      {saveFilePath: 'components/'+subComp.name+'.less'},
+    );
+
+
+
+  })
+
 }
 
-const tplBase = join(__dirname, 'tpl'),
-  outputBase = join(__dirname, 'out');
+const tplBase = join(__dirname, 'tpl');
 
 interface IHandlePageParam {
   saveFilePath: string;
+}
+
+/**
+ * 获取处理页面内容;;
+ * @param {string} outDir
+ * @returns {(filePath: string, dealCal: (tplContent: string) => Promise<string>, param?: IHandlePageParam) => Promise<void>}
+ */
+function getHandlePage(outDir:string){
+
+  return (async function handlePage(
+    filePath: string,
+    dealCal: (tplContent: string) => Promise<string>,
+    param?: IHandlePageParam,
+  ) {
+    let _param = {saveFilePath: filePath.replace('.tpl', ''), ...param};
+    let _tplFilePath = join(tplBase, filePath);
+
+    let _tplContent = await fse.readFile(_tplFilePath);
+    console.log('开始处理模板: ',_tplFilePath);
+    let content = await dealCal(_tplContent.toString());
+    await fse.ensureDir(join(outDir, parse(_param.saveFilePath).dir));
+    await fse.writeFile(join(outDir, _param.saveFilePath), content);
+  })
 }
 /**
  *
@@ -127,20 +173,7 @@ interface IHandlePageParam {
  * @param {(tplContent: string) => Promise<string>} dealCal
  * @returns {Promise<void>}
  */
-async function handlePage(
-  filePath: string,
-  dealCal: (tplContent: string) => Promise<string>,
-  param?: IHandlePageParam,
-) {
-  let _param = {saveFilePath: filePath.replace('.tpl', ''), ...param};
-  let _tplFilePath = join(tplBase, filePath);
 
-  let _tplContent = await fse.readFile(_tplFilePath);
-  console.log('开始处理模板: ',_tplFilePath);
-  let content = await dealCal(_tplContent.toString());
-  await fse.ensureDir(join(outputBase, parse(_param.saveFilePath).dir));
-  await fse.writeFile(join(outputBase, _param.saveFilePath), content);
-}
 
 let pageInfo = {
   key: 'order',
@@ -169,8 +202,12 @@ let pageInfo = {
   ],
   actions: [
     {
-      name: 'order',
+      name: 'action',
       methods: [
+        {
+          name: 'init',
+          param: '',
+        },
         {
           name: 'add',
           param: '',
@@ -188,7 +225,15 @@ let pageInfo = {
   ],
   subComps: [
     {
-      name: 'order-header',
+      name: 'header',
+      methods: [],
+    },
+    {
+      name: 'list',
+      methods: [],
+    },
+    {
+      name: 'foot',
       methods: [],
     },
   ],
