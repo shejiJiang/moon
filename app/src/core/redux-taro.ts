@@ -225,12 +225,14 @@ export async function buildPage(context: IContext) {
   let projectSrc = join(context.projectPath, 'src');
   let pageInfo = context.pageInfo;
 
-  if (pageInfo.pagePath.includes('/')) {
-    let subPath = pageInfo.pagePath.split('/');
-    pageInfo.pageKey = subPath[subPath.length - 1];
-  } else {
-    pageInfo.pageKey = pageInfo.pagePath;
-  }
+  pageInfo.pageKey = pageInfo.pagePath.replace('/',"-");
+  //
+  // if (pageInfo.pagePath.includes('/')) {
+  //   let subPath = pageInfo.pagePath.split('/');
+  //   pageInfo.pageKey = subPath[subPath.length - 1];
+  // } else {
+  //   pageInfo.pageKey = pageInfo.pagePath;
+  // }
 
   await generate(pageInfo);
   //在项目配置中添加store.reducer  及 页面显示的配置. ;

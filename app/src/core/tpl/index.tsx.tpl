@@ -6,7 +6,7 @@ import { AtIcon } from "taro-ui";
 import Api from '@api/'
 import Util from '@/util/';
 
-import "./<%=pageInfo.pageKey%>.less.tpl";
+import "./index.less";
 import { I<%=className%>Props } from "./types";
 import actions from "./action";
 

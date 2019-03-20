@@ -8,7 +8,7 @@ import _ from "lodash";
 
 const INITIAL_STATE: I<%=className%>Reducer = {
     <% actor.datas.forEach(dataItem=>{ %>
-             <%=dataItem.name%>:<%= Util.getDefaultByType(dataItem.type)%>
+             <%=dataItem.name%>:<%- JSON.stringify(dataItem.value) || Util.getDefaultByType(dataItem.type)%>,
     <% }) %>
 };
 

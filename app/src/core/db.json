@@ -1,4 +1,154 @@
 {
+  "oms/info":{
+    "pagePath": "oms/info",
+    "subComps": [
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "init",
+          "param": ""
+        }, {
+          "name": "clean",
+          "param": ""
+        }
+        ]
+      }
+    ],
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"info",
+            "value":null,
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "info",
+            "param": ""
+          }
+        ]
+      }
+    ]
+  },
+  "oms/logistics":{
+    "pagePath": "oms/logistics",
+    "subComps": [
+      {
+        "fileName": "status",
+        "methods": []
+      },
+      {
+        "fileName": "list",
+        "methods": []
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "init",
+          "param": ""
+        }, {
+          "name": "clean",
+          "param": ""
+        }
+        ]
+      }
+    ],
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"logistics",
+            "value":{},
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "init",
+            "param": ""
+          }
+        ]
+      }
+    ]
+  },
+  "oms/list":{
+    "pagePath": "oms/list",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"request",
+            "value":{
+              "key":"",
+              "type":"",
+              "ctype":"",
+              "len":10,
+              "start":0
+            },
+            "type":"any"
+          }, {
+            "name":"dataList",
+            "value":[],
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "page",
+            "param": ""
+          },
+          {
+            "name": "page_next",
+            "param": ""
+          },
+          {
+            "name": "change",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [ {
+          "name": "init",
+          "param": ""
+        }, {
+          "name": "clean",
+          "param": ""
+        },
+          {
+            "name": "page",
+            "param": ""
+          },
+          {
+            "name": "delete",
+            "param": ""
+          },
+          {
+            "name": "change",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "lists",
+        "methods": []
+      }
+    ]
+  },
   "order":{
     "pagePath": "order",
     "actors": [
@@ -71,7 +221,7 @@
   "actors": [
     {
       "fileName": "reducer",
-      "dataType":[],
+      "datas":[],
       "events": [
         {
           "name": "modify",

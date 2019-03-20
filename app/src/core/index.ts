@@ -14,10 +14,8 @@ import {join} from "path";
 (async()=>{
 
   let db  = await fse.readJSON(join(__dirname,'db.json'));
-  
-  
-  let pageInfo: IPageDefined = db['order'];
 
+  let pageInfo: IPageDefined = db['oms/logistics'];
   // pageInfo=db['shop-set/print'];
   //TODO buildPage前要较下内容是不是重复了.
   await buildPage({
