@@ -10,6 +10,7 @@ import * as ejs from 'ejs';
 import {join, resolve, parse} from 'path';
 import * as fse from 'fs-extra';
 import {
+  DataType,
   IAction,
   IActorEvent,
   IActorItem,
@@ -42,6 +43,27 @@ const Util = {
   toLCamelize(name: string) {
     let camelName = this.toUCamelize(name);
     return camelName[0].toLowerCase() + camelName.substr(1);
+  },
+
+  getDefaultByType(type: DataType) {
+    switch (type) {
+      case 'any':
+        return "{}";
+        break;
+      case 'string':
+        return "''";
+        break;
+      case 'object':
+        break;
+        return "{}"
+      case 'string[]':
+        break;
+      case 'number':
+        break;
+        return "0";
+      default:
+        return "any";
+    }
   },
 };
 
@@ -194,15 +216,14 @@ function getHandlePage(outDir: string) {
  */
 
 interface IContext {
-  projectPath:string;
-  pageInfo:IPageDefined
+  projectPath: string;
+  pageInfo: IPageDefined;
 }
 
-export async function buildPage(context:IContext) {
-
+export async function buildPage(context: IContext) {
   //在项目中生成相关文件
-  let projectSrc = join(context.projectPath,'src');
-  let pageInfo=context.pageInfo;
+  let projectSrc = join(context.projectPath, 'src');
+  let pageInfo = context.pageInfo;
 
   if (pageInfo.pagePath.includes('/')) {
     let subPath = pageInfo.pagePath.split('/');
@@ -217,34 +238,34 @@ export async function buildPage(context:IContext) {
 
   //redux 框架简化添加流程;;
 
-  let pagePath = join(
-    'pages',
-    pageInfo.pagePath
-  );
-  let pageFilePath = join('@/',pagePath,'reducer',);
+  let pagePath = join('pages', pageInfo.pagePath);
+  let pageFilePath = join('@/', pagePath, 'reducer');
 
-  await insertContent(join(projectSrc, 'reducers/index.ts'),[
+  await insertContent(join(projectSrc, 'reducers/index.ts'), [
     {
       mark: '//mark1//',
       isBefore: true,
-      content:  `import ${Util.toLCamelize(pageInfo.pageKey)} from "${pageFilePath}";`,
+      content: `import ${Util.toLCamelize(
+        pageInfo.pageKey,
+      )} from "${pageFilePath}";`,
       check: (content): boolean => !content.includes(pageFilePath),
     },
     {
       mark: '//mark2//',
       isBefore: false,
-      content: Util.toLCamelize(pageInfo.pageKey)+",",
-      check: (content,rawContent): boolean => !rawContent.includes(pageFilePath),
+      content: Util.toLCamelize(pageInfo.pageKey) + ',',
+      check: (content, rawContent): boolean =>
+        !rawContent.includes(pageFilePath),
     },
   ]);
 
-  await insertContent(join(projectSrc, 'app.tsx'),[
+  await insertContent(join(projectSrc, 'app.tsx'), [
     {
       mark: '"pages/empty/index"',
       isBefore: true,
-      content:  `"${pagePath}",`,
+      content: `"${pagePath}",`,
       check: (content): boolean => !content.includes(pagePath),
-    }
+    },
   ]);
 }
 
@@ -257,7 +278,7 @@ interface IInsertOption {
    * @param content
    * @returns {boolean}   验证是否需要做 true  继续,false 中断
    */
-  check: (content,rawContent) => boolean;
+  check: (content, rawContent) => boolean;
 }
 
 async function insertContent(filepath: string, inserts: IInsertOption[]) {
@@ -265,7 +286,7 @@ async function insertContent(filepath: string, inserts: IInsertOption[]) {
   let content = rawContent;
   for (let i = 0, ilen = inserts.length; i < ilen; i++) {
     let item: IInsertOption = inserts[i];
-    if(item.check(content,rawContent)) {
+    if (item.check(content, rawContent)) {
       let index = content.indexOf(item.mark);
 
       if (!item.isBefore) {

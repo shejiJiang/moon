@@ -30,7 +30,15 @@ export interface IPageDefined{
 //TODO 事件要自己选择了.
 export interface IActorItem {
   fileName: string;
+  dataType:IType[];
   events: IActorEvent[];
+}
+
+export type DataType ="any"|"string"|"object"|'string[]'|'number';
+
+export interface IType {
+  name:string;
+  type:DataType;
 }
 
 export interface IActorEvent {

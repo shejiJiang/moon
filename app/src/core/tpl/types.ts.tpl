@@ -1,7 +1,9 @@
 import Actions from "./action"
 
 export interface I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer {
-    info : any
+    <% pageInfo.actors[0].datas.forEach(dataItem=>{ %>
+                 <%=dataItem.name%>:<%= dataItem.type%>;
+    <% }) %>
 }
 export type I<%=Util.toUCamelize(pageInfo.pageKey)%>Props = { <%=Util.toLCamelize(pageInfo.pageKey)%>: I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer } & ReturnType<typeof Actions>;
 

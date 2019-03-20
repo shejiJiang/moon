@@ -1,0 +1,117 @@
+{
+  "order":{
+    "pagePath": "order",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "type":"any",
+          "name":"info"
+        }],
+        "events": [
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          },
+          {
+            "name": "update",
+            "param": ""
+          },
+          {
+            "name": "query",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "init",
+            "param": ""
+          },
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "update",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "header",
+        "methods": []
+      },
+      {
+        "fileName": "list",
+        "methods": []
+      },
+      {
+        "fileName": "foot",
+        "methods": []
+      }
+    ]
+  },
+"shop-set/print":{
+  "pagePath": "shop-set/print",
+  "actors": [
+    {
+      "fileName": "reducer",
+      "dataType":[],
+      "events": [
+        {
+          "name": "modify",
+          "param": ""
+        },
+        {
+          "name": "toggle",
+          "param": ""
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "fileName": "action",
+      "methods": [
+        {
+          "name": "init",
+          "param": ""
+        },
+        {
+          "name": "clean",
+          "param": ""
+        },
+        {
+          "name": "modify",
+          "param": ""
+        },
+        {
+          "name": "toggle",
+          "param": ""
+        },
+        {
+          "name": "save",
+          "param": ""
+        }
+      ]
+    }
+  ],
+  "subComps": [
+  ]
+}
+}

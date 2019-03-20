@@ -1,5 +1,7 @@
 import {IPageDefined} from "./generate";
 import {buildPage} from "./redux-taro";
+import * as fse from  'fs-extra';
+import {join} from "path";
 
 /**
  * @desc
@@ -9,79 +11,17 @@ import {buildPage} from "./redux-taro";
  * @company qianmi.com
  * @Date    2019/3/20
  **/
-
-
-
-
 (async()=>{
 
-  let pageInfo: IPageDefined = {
-    pagePath: 'order',
-    actors: [
-      {
-        fileName: 'reducer',
-        events: [
-          {
-            name: 'add',
-            param: '',
-          },
-          {
-            name: 'del',
-            param: '',
-          },
-          {
-            name: 'update',
-            param: '',
-          },
-          {
-            name: 'query',
-            param: '',
-          },
-        ],
-      },
-    ],
-    actions: [
-      {
-        fileName: 'action',
-        methods: [
-          {
-            name: 'init',
-            param: '',
-          },
-          {
-            name: 'add',
-            param: '',
-          },
-          {
-            name: 'update',
-            param: '',
-          },
-          {
-            name: 'del',
-            param: '',
-          },
-        ],
-      },
-    ],
-    subComps: [
-      {
-        fileName: 'header',
-        methods: [],
-      },
-      {
-        fileName: 'list',
-        methods: [],
-      },
-      {
-        fileName: 'foot',
-        methods: [],
-      },
-    ],
-  };
+  let db  = await fse.readJSON(join(__dirname,'db.json'));
+  
+  
+  let pageInfo: IPageDefined = db['order'];
 
+  // pageInfo=db['shop-set/print'];
+  //TODO buildPage前要较下内容是不是重复了.
   await buildPage({
     projectPath:"/Users/dong/extraIn/RHourseO2O/",
      pageInfo
   });
-
 })()
