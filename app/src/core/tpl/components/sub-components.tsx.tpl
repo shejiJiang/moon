@@ -2,7 +2,7 @@ import { ComponentClass } from "react";
 import Taro, { Component } from "@tarojs/taro";
 import { View } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
-import { I<%=Util.toUCamelize(subComp.name)%>Props, I<%=Util.toUCamelize(subComp.name)%>State } from "../types";
+import { I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State } from "../types";
 
 import actions from "../action";
 
@@ -13,7 +13,7 @@ import actions from "../action";
         } as any),
     actions
 )
-class <%=Util.toLCamelize(subComp.name)%> extends Component<I<%=Util.toUCamelize(subComp.name)%>Props, I<%=Util.toUCamelize(subComp.name)%>State> {
+class <%=Util.toLCamelize(subComp.fileName)%> extends Component<I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State> {
     static options = {
         addGlobalClass: true
     };
@@ -25,10 +25,10 @@ class <%=Util.toLCamelize(subComp.name)%> extends Component<I<%=Util.toUCamelize
     render() {
         const {} = this.props.<%=Util.toLCamelize(instanceName)%>;
         return (
-            <View className="<%=Util.toLCamelize(subComp.name)%>">
+            <View className="<%=Util.toLCamelize(subComp.fileName)%>">
             </View>
         );
     }
 }
 
-export default <%=Util.toLCamelize(subComp.name)%> as ComponentClass<any, any>;
+export default <%=Util.toLCamelize(subComp.fileName)%> as ComponentClass<any, any>;

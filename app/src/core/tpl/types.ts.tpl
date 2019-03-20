@@ -1,11 +1,11 @@
 import Actions from "./action"
 
-export interface I<%=Util.toUCamelize(pageInfo.key)%>Reducer {
+export interface I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer {
     info : any
 }
-export type I<%=Util.toUCamelize(pageInfo.key)%>Props = { <%=Util.toLCamelize(pageInfo.key)%>: I<%=Util.toUCamelize(pageInfo.key)%>Reducer } & ReturnType<typeof Actions>;
+export type I<%=Util.toUCamelize(pageInfo.pageKey)%>Props = { <%=Util.toLCamelize(pageInfo.pageKey)%>: I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer } & ReturnType<typeof Actions>;
 
  <% pageInfo.subComps.forEach(item=>{ %>
-export type I<%=Util.toUCamelize(item.name)%>Props = { } & I<%=Util.toUCamelize(pageInfo.key)%>Props;
-export type I<%=Util.toUCamelize(item.name)%>State = { };
+export type I<%=Util.toUCamelize(item.fileName)%>Props = { } & I<%=Util.toUCamelize(pageInfo.pageKey)%>Props;
+export type I<%=Util.toUCamelize(item.fileName)%>State = { };
  <% }) %>

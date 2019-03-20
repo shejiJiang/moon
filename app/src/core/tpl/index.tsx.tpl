@@ -6,12 +6,12 @@ import { AtIcon } from "taro-ui";
 import Api from '@api/'
 import Util from '@/util/';
 
-import "./<%=pageInfo.key%>.less.tpl";
+import "./<%=pageInfo.pageKey%>.less.tpl";
 import { I<%=className%>Props } from "./types";
 import actions from "./action";
 
- <% pageInfo.subComps.forEach(item=>{ %>
-import <%=Util.toUCamelize(item.name)%> from "./components/<%=item.name%>"; %>
+ <% pageInfo.subComps.forEach(subComp=>{ %>
+import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fileName%>"; %>
  <% }) %>
 
 @connect(

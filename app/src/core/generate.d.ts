@@ -19,7 +19,9 @@ export interface IPageDefined{
    *   a-b
    *   a/b/c/e-d
    */
-  key:string;
+  pagePath:string;
+  //通过filepath计算出来
+  pageKey?:string;
   actors:IActorItem[];
   actions:IAction[];
   subComps:ISubComp[];
@@ -27,7 +29,7 @@ export interface IPageDefined{
 
 //TODO 事件要自己选择了.
 export interface IActorItem {
-  name: string;
+  fileName: string;
   events: IActorEvent[];
 }
 
@@ -37,7 +39,7 @@ export interface IActorEvent {
 }
 
 export interface IAction {
-  name: string;
+  fileName: string;
   methods: IActionItem[];
 }
 
@@ -47,15 +49,7 @@ export interface IActionItem {
 }
 
 export interface ISubComp {
-  name: string;
+  fileName: string;
   methods: IActionItem[];
 }
 
-
-// 带扩展信息的. 页面定义;
-export interface IPageDefined{
-  key:string;
-  actors:IActorItem[];
-  actions:IAction[];
-  subComps:ISubComp[];
-}

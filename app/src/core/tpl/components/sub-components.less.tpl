@@ -1,2 +1,2 @@
-.<%=Util.toLCamelize(subComp.name)%>{
+.<%=Util.toLCamelize(subComp.fileName)%>{
 }
