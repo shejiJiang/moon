@@ -3,7 +3,7 @@ import Taro, { Component } from "@tarojs/taro";
 import { View } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import { I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State } from "../types";
-
+import './<%=subComp.fileName%>.less';
 import actions from "../action";
 
 @connect(
