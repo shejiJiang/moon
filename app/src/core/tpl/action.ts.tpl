@@ -12,7 +12,7 @@ import {<% events.forEach(event=>{ %>
 export default (dispatch) => {
     const actions = {
     <% action.methods.forEach(method=>{ %>
-        async <%=method.name%>(id) {
+        async <%=method.name%>() {
                     //dispatch({ type: INIT, payload: trade });
          },
       <% }) %>
