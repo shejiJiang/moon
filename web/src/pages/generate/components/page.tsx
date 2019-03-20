@@ -6,8 +6,8 @@ import { Relax,TViewAction } from 'plume2';
 import { Button ,Tabs,Input} from 'antd';
 
 import "./page.less"
-import {IAction, IActorEvent, IActorItem, ISubComp} from "../actor/main-actor";
 import viewAction from "../action";
+import {IAction, IActorEvent, IActorItem, ISubComp} from "../../../../../app/src/core/generate";
 
 interface IProps {
   relaxProps?: {
@@ -47,7 +47,7 @@ export default class Page extends React.Component<IProps, any> {
       });
 
       return (<div>
-        {item.name}
+        <Input addonBefore="actorName:" id={"13213"} defaultValue={item.name} />
         <Button type="primary" data-index={index} onClick={this._addActorEvent}>添加actor方法</Button>
         <div>
           {events}
@@ -63,14 +63,13 @@ export default class Page extends React.Component<IProps, any> {
       });
 
       return (<div>
-        {item.name}
+        <Input addonBefore="actionName:" id={"13213"} defaultValue={item.name} />
         <Button type="primary" data-index={index} onClick={this._addActionMethod}>添加action方法</Button>
         <div>
           {methods}
         </div>
       </div>)
     });
-
 
     let subComps = pageDefine.get('subComps').toJS().map((item:ISubComp)=>{
       let methods =item.methods.map((action:IActorEvent)=>{
@@ -79,7 +78,7 @@ export default class Page extends React.Component<IProps, any> {
         </div>)
       });
       return (<div>
-        {item.name}
+        <Input addonBefore="子组件name:" id={"13213"} defaultValue={item.name} />
         <Button type="primary" onClick={this._addActor}>添加子组件方法</Button>
         <div>
           {methods}
@@ -108,7 +107,6 @@ export default class Page extends React.Component<IProps, any> {
     );
   }
 
-
   _addActor=()=>{
     this.props.relaxProps.viewAction.MainAction.add("actor");
   }
@@ -129,7 +127,6 @@ export default class Page extends React.Component<IProps, any> {
   _addComp=()=>{
     this.props.relaxProps.viewAction.MainAction.add("subComp");
   }
-
 
   _changeTab =(key:string)=>{
     this.setState({tabIndex:key});

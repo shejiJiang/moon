@@ -3,6 +3,20 @@ import * as path from "path";
 
 let mainWindow: Electron.BrowserWindow;
 
+
+// // In main process.
+// const {ipcMain} = require('electron')
+// ipcMain.on('asynchronous-message', (event, arg) => {
+//   console.log(arg)  // prints "ping"
+//   event.sender.send('asynchronous-reply', 'pong')
+// })
+//
+// ipcMain.on('synchronous-message', (event, arg) => {
+//   console.log(arg)  // prints "ping"
+//   event.returnValue = 'pong'
+// })
+
+
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -11,18 +25,27 @@ function createWindow() {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, "../index.html"));
-  // mainWindow.loadURL()
-
+  // mainWindow.loadFile(path.join(__dirname, "../index.html"));
+  // mainWindow.loadURL("http://localhost:3000");
+  mainWindow.loadURL("http://www.baidu.com");
+  // setTimeout(()=>{
+  //   mainWindow.reload();
+  // },15000);
+  // mainWindow.on('ready-to-show')
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  setTimeout(() => {
+    mainWindow.loadURL("http://localhost:3000");
+    mainWindow.webContents.openDevTools();
 
+  }, 3000)
+  // mainWindow.webContents.executeJavaScript('')
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+
   });
 }
 

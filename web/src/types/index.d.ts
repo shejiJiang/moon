@@ -57,3 +57,7 @@ declare const SockJS:any;
 declare const Raven:IRaven;
 
 declare const Stomp:any;
+
+declare const window:{
+ require:(path:string)=>any;
+}

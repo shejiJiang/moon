@@ -8,6 +8,17 @@
  **/
 
 export interface IPageDefined{
+  /**
+   * 页面路径
+   *
+   * eg:
+   *   order
+   *   trade/info
+   *   trade/list
+   *   trade/sub
+   *   a-b
+   *   a/b/c/e-d
+   */
   key:string;
   actors:IActorItem[];
   actions:IAction[];

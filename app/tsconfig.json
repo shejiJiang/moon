@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "sourceMap": true,
     "outDir": "dist",
+    "lib": ["es2015","es2017"],
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*"]
@@ -11,5 +12,6 @@
   },
   "include": [
     "src/**/*"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

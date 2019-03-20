@@ -239,5 +239,16 @@ let pageInfo = {
   ],
 };
 (async () => {
+  //在项目中生成相关文件
   await generate(pageInfo);
+  //在项目配置中添加store.reducer  及 页面显示的配置. ;
+  //先判断是否有, 如果有的话, 不再重新生成了.
+
+
+  // Util.toLCamelize(pageInfo.key)
+  //
+  // pageInfo.key
+  // "@/pages/my-name/reducer
+
+
 })();
