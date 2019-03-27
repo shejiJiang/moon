@@ -1,4 +1,60 @@
 {
+  "shop-set/shop-position":{
+    "pagePath": "shop-set/shop-position",
+    "subComps": [
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "init",
+          "param": ""
+        }, {
+          "name": "clean",
+          "param": ""
+        },{
+          "name": "changeAddress",
+          "param": ""
+        },{
+          "name": "changeGps",
+          "param": ""
+        },{
+          "name": "save",
+          "param": ""
+        },{
+          "name": "modify",
+          "param": ""
+        }
+        ]
+      }
+    ],
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"areas",
+            "value":null,
+            "type":"any"
+          }, {
+            "name":"info",
+            "value":null,
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "init",
+            "param": ""
+          },
+          {
+            "name": "change",
+            "param": ""
+          }
+        ]
+      }
+    ]
+  },
   "oms/info":{
     "pagePath": "oms/info",
     "subComps": [
@@ -29,6 +85,45 @@
         "events": [
           {
             "name": "info",
+            "param": ""
+          }
+        ]
+      }
+    ]
+  },
+  "oms/comment":{
+    "pagePath": "oms/comment",
+    "subComps": [
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "init",
+          "param": ""
+        }, {
+          "name": "clean",
+          "param": ""
+        }, {
+          "name": "updateComment",
+          "param": ""
+        }
+        ]
+      }
+    ],
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"info",
+            "value":{},
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "init",
             "param": ""
           }
         ]

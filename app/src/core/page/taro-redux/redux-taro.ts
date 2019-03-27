@@ -7,16 +7,10 @@
  * @Date    2019/3/19
  **/
 import * as ejs from 'ejs';
-import {join, resolve, parse} from 'path';
+import {join} from 'path';
 import * as fse from 'fs-extra';
-import {
-  DataType,
-  IAction,
-  IActorEvent,
-  IActorItem,
-  IPageDefined,
-  ISubComp,
-} from './generate';
+import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, ISubComp,} from './generate';
+import {getHandleFile} from "../../util";
 
 const Util = {
   /**
@@ -71,15 +65,15 @@ export async function generate(pageInfo: IPageDefined) {
   //所有的事件..
   let events = pageInfo.actors.reduce(
     (accumulator: IActorEvent[], currentValue: IActorItem) => {
-      console.log(`accumulator:${accumulator}, currentValue:${currentValue}`);
+      // console.log(`accumulator:${accumulator}, currentValue:${currentValue}`);
       return accumulator.concat(currentValue.events);
     },
     [],
   );
 
-  let handlePage = getHandlePage(
-    join('/Users/dong/extraIn/RHourseO2O/src/pages/', pageInfo.pagePath),
-  );
+  let handlePage = getHandleFile({outDir:"join('/Users/dong/extraIn/RHourseO2O/src/pages/', pageInfo.pagePath)"
+      ,tplBase:join(__dirname,"tpl")
+    });
 
   let base = {
     pageInfo,
@@ -182,32 +176,6 @@ export async function generate(pageInfo: IPageDefined) {
 
 const tplBase = join(__dirname, 'tpl');
 
-interface IHandlePageParam {
-  saveFilePath: string;
-}
-
-/**
- * 获取处理页面内容;;
- * @param {string} outDir
- * @returns {(filePath: string, dealCal: (tplContent: string) => Promise<string>, param?: IHandlePageParam) => Promise<void>}
- */
-function getHandlePage(outDir: string) {
-  return async function handlePage(
-    filePath: string,
-    dealCal: (tplContent: string) => Promise<string>,
-    param?: IHandlePageParam,
-  ) {
-    let _param = {saveFilePath: filePath.replace('.tpl', ''), ...param};
-    let _tplFilePath = join(tplBase, filePath);
-
-    let _tplContent = await fse.readFile(_tplFilePath);
-    console.log('开始处理模板: ', _tplFilePath);
-    let content = await dealCal(_tplContent.toString());
-    await fse.ensureDir(join(outDir, parse(_param.saveFilePath).dir));
-    await fse.writeFile(join(outDir, _param.saveFilePath), content);
-  };
-}
-
 /**
  *
  * @param {string} filePath
@@ -226,13 +194,6 @@ export async function buildPage(context: IContext) {
   let pageInfo = context.pageInfo;
 
   pageInfo.pageKey = pageInfo.pagePath.replace('/',"-");
-  //
-  // if (pageInfo.pagePath.includes('/')) {
-  //   let subPath = pageInfo.pagePath.split('/');
-  //   pageInfo.pageKey = subPath[subPath.length - 1];
-  // } else {
-  //   pageInfo.pageKey = pageInfo.pagePath;
-  // }
 
   await generate(pageInfo);
   //在项目配置中添加store.reducer  及 页面显示的配置. ;
@@ -265,7 +226,7 @@ export async function buildPage(context: IContext) {
     {
       mark: '"pages/empty/index"',
       isBefore: true,
-      content: `"${pagePath}",`,
+      content: `"${pagePath}/index",`,
       check: (content): boolean => !content.includes(pagePath),
     },
   ]);

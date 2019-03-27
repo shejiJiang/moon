@@ -27,17 +27,17 @@ function createWindow() {
   // and load the index.html of the app.
   // mainWindow.loadFile(path.join(__dirname, "../index.html"));
   // mainWindow.loadURL("http://localhost:3000");
-  mainWindow.loadURL("http://www.baidu.com");
+  mainWindow.loadURL("http://qm.1000.com/#/");
   // setTimeout(()=>{
   //   mainWindow.reload();
   // },15000);
   // mainWindow.on('ready-to-show')
   // Open the DevTools.
-  setTimeout(() => {
-    mainWindow.loadURL("http://localhost:3000");
-    mainWindow.webContents.openDevTools();
-
-  }, 3000)
+  // setTimeout(() => {
+  //   mainWindow.loadURL("http://qm.1000.com/#/");
+  //   mainWindow.webContents.openDevTools();
+  //
+  // }, 3000)
   // mainWindow.webContents.executeJavaScript('')
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {

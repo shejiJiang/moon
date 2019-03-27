@@ -6,7 +6,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "startTmp":"electron ./dist/main.js",
+    "startTmp": "electron ./dist/main.js",
     "start": "npm run build && electron ./dist/main.js"
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "ejs": "^2.6.1",
-    "fs-extra": "^7.0.1"
+    "fs-extra": "^7.0.1",
+    "jsonschema": "^1.2.4"
   }
 }
