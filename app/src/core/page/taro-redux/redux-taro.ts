@@ -10,34 +10,10 @@ import * as ejs from 'ejs';
 import {join} from 'path';
 import * as fse from 'fs-extra';
 import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, ISubComp,} from './generate';
-import {getHandleFile} from "../../util";
-
+import {insertContent, getHandleFile} from "../../util/compile-util";
+import * as stringUitl from  '../../util/string-util';
 const Util = {
-  /**
-   * 大驼峰
-   * @param {string} name
-   * @returns {any}
-   */
-  //首字母大写.   abc-dfdsf AbcDfdsf
-  toUCamelize(name: string) {
-    return name
-      .split('-')
-      .map(item => {
-        return item[0].toUpperCase() + item.substr(1);
-      })
-      .join('');
-  },
-
-  /**
-   * 小驼峰
-   * @param {string} name
-   * @returns {any}
-   */
-  //首字母小写, abc-dfdsf abcDfdsf
-  toLCamelize(name: string) {
-    let camelName = this.toUCamelize(name);
-    return camelName[0].toLowerCase() + camelName.substr(1);
-  },
+  ... stringUitl,
 
   getDefaultByType(type: DataType) {
     switch (type) {
@@ -60,6 +36,7 @@ const Util = {
     }
   },
 };
+
 
 export async function generate(pageInfo: IPageDefined) {
   //所有的事件..
@@ -232,41 +209,3 @@ export async function buildPage(context: IContext) {
   ]);
 }
 
-interface IInsertOption {
-  mark: string;
-  isBefore: boolean;
-  content: string;
-  /**
-   *
-   * @param content
-   * @returns {boolean}   验证是否需要做 true  继续,false 中断
-   */
-  check: (content, rawContent) => boolean;
-}
-
-async function insertContent(filepath: string, inserts: IInsertOption[]) {
-  let rawContent = await readFile(filepath);
-  let content = rawContent;
-  for (let i = 0, ilen = inserts.length; i < ilen; i++) {
-    let item: IInsertOption = inserts[i];
-    if (item.check(content, rawContent)) {
-      let index = content.indexOf(item.mark);
-
-      if (!item.isBefore) {
-        index = index + item.mark.length;
-      }
-
-      content = `${content.substring(0, index)}
-    ${item.content} 
-    ${content.substring(index)}
-    `;
-    }
-  }
-
-  await fse.writeFile(filepath, content);
-}
-
-async function readFile(filePath: string): Promise<string> {
-  let _tplContent = await fse.readFile(filePath);
-  return _tplContent.toString();
-}
