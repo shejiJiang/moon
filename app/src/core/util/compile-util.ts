@@ -8,6 +8,7 @@
  **/
 import {join, parse} from 'path';
 import * as fse from 'fs-extra';
+import * as prettier from 'prettier';
 
 interface IHandlePageParam {
   saveFilePath: string;
@@ -51,7 +52,10 @@ export function getHandleFile({outDir, tplBase}: IHandleFile) {
     console.log('开始处理模板: ', _tplFilePath);
     let content = await dealCal(_tplContent.toString());
     await fse.ensureDir(join(outDir, parse(_param.saveFilePath).dir));
-    await fse.writeFile(join(outDir, _param.saveFilePath), content);
+    await fse.writeFile(
+      join(outDir, _param.saveFilePath),
+      prettier.format(content, {semi: false, parser: 'typescript'}),
+    );
   };
 }
 

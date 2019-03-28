@@ -1,23 +1,6 @@
 import sdk from "@api/sdk";
 import {IResult} from "@/types";
 
-
-export interface IAreaItem {
-  id: number;
-  mname: string;
-  code?: any;
-  lever: number;
-  fid: number;
-  create_time: Date;
-  mod_time: Date;
-  flag: number;
-  type: number;
-  company?: any;
-}
-
-
-<%=tsDefinded%>
-
 <% webapiGroup.apis.forEach(apiItem=>{ %>
 
 /**
@@ -30,12 +13,12 @@ async function <%=apiItem.name%>(
     <% apiItem.requestParam.forEach(paramItem=>{ %>
         <%=paramItem.name%>:<%=Util.genInterfaceName(apiItem.name,paramItem.name,"req")%>,
     <% }) %>
-):Promise<<%=Util.genInterfaceName(apiItem.name,"res")%>> {
-  let result = (await sdk.get("<%=apiItem.url%>", {
+):Promise<<%= apiItem.responseSchema?Util.genInterfaceName(apiItem.name,"res"):"any"%>> {
+  let result = await sdk.<%=apiItem.method||"post"%><%-apiItem.responseSchema? "<"+Util.genInterfaceName(apiItem.name,"res")+">":""%>("<%=apiItem.url%>", {
       <% apiItem.requestParam.forEach(paramItem=>{ %>
         <%=paramItem.name%>,
       <% }) %>
-  })) as  IResult<IAreaItem[]> ;
+  });
   return  result.data;
 }
 <% }) %>
@@ -46,3 +29,7 @@ export default {
     <%=apiItem.name%>,
 <% }) %>
 };
+
+
+
+<%=tsDefinded%>

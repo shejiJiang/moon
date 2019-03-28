@@ -1,0 +1,985 @@
+[
+  {
+    "name": "财务",
+    "desc": null,
+    "add_time": 1552613566,
+    "up_time": 1552642031,
+    "index": 0,
+    "list": [
+      {
+        "_id": 331,
+        "method": "GET",
+        "catid": 49,
+        "title": "流水列表",
+        "path": "/finance/flowList",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552899375,
+        "up_time": 1552902711,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"flowCode\":{\"type\":\"string\",\"description\":\"流水单号\"},\"type\":{\"type\":\"string\",\"description\":\"类型\"},\"money\":{\"type\":\"string\",\"description\":\"金额\"},\"orderNumber\":{\"type\":\"string\",\"description\":\"业务订单号\"},\"payType\":{\"type\":\"string\",\"description\":\"付款方式\"},\"relFlowCode\":{\"type\":\"string\",\"description\":\"关联流水号\"},\"createDate\":{\"type\":\"string\",\"description\":\"创建时间\"}},\"required\":[\"flowCode\",\"type\",\"money\",\"orderNumber\",\"payType\",\"relFlowCode\",\"createDate\"]}}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c8f6a372c11a2126f378489",
+            "desc": "客户姓名 手机号",
+            "example": "",
+            "name": "all",
+            "required": "0"
+          },
+          {
+            "_id": "5c8f6a372c11a2126f378488",
+            "desc": "客户类型",
+            "example": " ",
+            "name": "type",
+            "required": "1"
+          },
+          {
+            "_id": "5c8f6a372c11a2126f378487",
+            "desc": "起始时间",
+            "example": "[\"2019-03-21T16:00:00.000Z\",\"2019-04-15T16:00:00.000Z\"]",
+            "name": "date",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/finance/flowList",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 367,
+        "method": "GET",
+        "catid": 49,
+        "title": "增加流水",
+        "path": "/finance/addFlow",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1553477407,
+        "up_time": 1553477407,
+        "__v": 0,
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": false,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [],
+        "query_path": {
+          "path": "/finance/addFlow",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 330,
+        "method": "POST",
+        "catid": 49,
+        "title": "审核提现",
+        "path": "/finance/reviewAction",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552898881,
+        "up_time": 1552978546,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "",
+        "req_body_type": "form",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": false,
+        "req_body_form": [
+          {
+            "_id": "5c909272a998d11268e65dc3",
+            "desc": "是否通过",
+            "example": "",
+            "type": "text",
+            "name": "pass",
+            "required": "1"
+          },
+          {
+            "_id": "5c909272a998d11268e65dc2",
+            "desc": "备注",
+            "example": "",
+            "type": "text",
+            "name": "notice",
+            "required": "1"
+          }
+        ],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c909272a998d11268e65dc1",
+            "value": "application/x-www-form-urlencoded",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/finance/reviewAction",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 311,
+        "method": "GET",
+        "catid": 49,
+        "title": "支出列表",
+        "path": "/finance/expendList",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552630652,
+        "up_time": 1553678763,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"account_name\":{\"type\":\"string\",\"description\":\"账户名称\"},\"type\":{\"type\":\"string\",\"description\":\"支出类型\"},\"sales_order_code\":{\"type\":\"string\",\"description\":\"业务订单号\"},\"account_type\":{\"type\":\"string\",\"description\":\"账户类型\"},\"create_date\":{\"type\":\"string\",\"description\":\"创建时间\"},\"flow_code\":{\"type\":\"string\",\"description\":\"流水号\"},\"money\":{\"type\":\"string\",\"description\":\"余额\"},\"pay_type\":{\"type\":\"string\",\"description\":\"支出方式\"},\"rel_flow_code\":{\"type\":\"string\",\"description\":\"关联流水号\"}},\"required\":[\"account_name\",\"account_type\",\"create_date\",\"flow_code\",\"money\",\"pay_type\",\"rel_flow_code\",\"sales_order_code\",\"type\"]}}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c9b41aba998d11268e6609f",
+            "desc": "账户Id",
+            "example": "",
+            "name": "account_id",
+            "required": "0"
+          },
+          {
+            "_id": "5c9b41aba998d11268e6609e",
+            "desc": "起始条数",
+            "example": "",
+            "name": "from",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b41aba998d11268e6609d",
+            "desc": "长度",
+            "example": "",
+            "name": "len",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b41aba998d11268e6609c",
+            "desc": "搜索条件",
+            "example": "{\"type\":1,\"paytype\":\"3\"}",
+            "name": "likes",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/finance/expendList",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 307,
+        "method": "GET",
+        "catid": 49,
+        "title": "收入列表",
+        "path": "/finance/incomeList",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552630208,
+        "up_time": 1553678407,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"account_name\":{\"type\":\"string\",\"description\":\"账户名称\"},\"account_type\":{\"type\":\"string\",\"description\":\"账户类型\"},\"create_date\":{\"type\":\"string\",\"description\":\"创建时间\"},\"flow_code\":{\"type\":\"string\",\"description\":\"流水号\"},\"money\":{\"type\":\"string\",\"description\":\"交易金额\"},\"pay_type\":{\"type\":\"string\",\"description\":\"收入方式\"},\"rel_flow_code\":{\"type\":\"string\",\"description\":\"关联流水号\"},\"sales_order_code\":{\"type\":\"string\",\"description\":\"业务订单号\"},\"type\":{\"type\":\"string\",\"description\":\"收入类型\"}},\"required\":[\"account_name\",\"account_type\",\"create_date\",\"flow_code\",\"money\",\"pay_type\",\"rel_flow_code\",\"sales_order_code\",\"type\"]}}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c9b4047a998d11268e6609b",
+            "desc": "账户ID",
+            "example": "",
+            "name": "account_id",
+            "required": "0"
+          },
+          {
+            "_id": "5c9b4047a998d11268e6609a",
+            "desc": "开始条数",
+            "example": "",
+            "name": "from",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b4047a998d11268e66099",
+            "desc": "长度",
+            "example": "",
+            "name": "len",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b4047a998d11268e66098",
+            "desc": "账户ID",
+            "example": "",
+            "name": "account_id",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b4047a998d11268e66097",
+            "desc": "搜索条件",
+            "example": "{\"type\":1,\"paytype\":\"1\"}",
+            "name": "likes",
+            "required": "0"
+          }
+        ],
+        "query_path": {
+          "path": "/finance/incomeList",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 335,
+        "method": "POST",
+        "catid": 49,
+        "title": "更新账户",
+        "path": "/finance/updateAccount",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552961395,
+        "up_time": 1552964718,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{}}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "form",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [
+          {
+            "_id": "5c905c6ea998d11268e65dbf",
+            "desc": "账户名称",
+            "example": "",
+            "type": "text",
+            "name": "accountName",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65dbe",
+            "desc": "客户类型",
+            "example": "",
+            "type": "text",
+            "name": "type",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65dbd",
+            "desc": "手机号",
+            "example": "",
+            "type": "text",
+            "name": "phoneNumber",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65dbc",
+            "desc": "状态",
+            "example": "",
+            "type": "text",
+            "name": "status",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65dbb",
+            "desc": "姓名",
+            "example": "",
+            "type": "text",
+            "name": "realName",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65dba",
+            "desc": "身份证号",
+            "example": "",
+            "type": "text",
+            "name": "IDNumber",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65db9",
+            "desc": "身份证正面",
+            "example": "",
+            "type": "text",
+            "name": "IDA",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65db8",
+            "desc": "开户行",
+            "example": "",
+            "type": "text",
+            "name": "openingBank",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65db7",
+            "desc": "银行卡号码",
+            "example": "",
+            "type": "text",
+            "name": "bankNumber",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65db6",
+            "desc": "银行手机号",
+            "example": "",
+            "type": "text",
+            "name": "bankPhoneNumber",
+            "required": "1"
+          },
+          {
+            "_id": "5c905c6ea998d11268e65db5",
+            "desc": "IC卡卡号",
+            "example": "",
+            "type": "text",
+            "name": "ICNumber",
+            "required": "1"
+          }
+        ],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c905c6ea998d11268e65db4",
+            "value": "application/x-www-form-urlencoded",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/finance/updateAccount",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 323,
+        "method": "POST",
+        "catid": 49,
+        "title": "更新账户资金",
+        "path": "/finance/updateAccountFund",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552879890,
+        "up_time": 1553679705,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{}}",
+        "req_body_type": "form",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [
+          {
+            "_id": "5c9b45592c11a2126f3786d4",
+            "desc": "验证码code",
+            "example": "",
+            "type": "text",
+            "name": "HXverificationCode",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b45592c11a2126f3786d3",
+            "desc": "账户ID",
+            "example": "",
+            "type": "text",
+            "name": "account_id",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b45592c11a2126f3786d2",
+            "desc": "交易金额",
+            "example": "",
+            "type": "text",
+            "name": "money",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b45592c11a2126f3786d1",
+            "desc": "备注",
+            "example": "",
+            "type": "text",
+            "name": "notice",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b45592c11a2126f3786d0",
+            "desc": "支付方式",
+            "example": "",
+            "type": "text",
+            "name": "pay_type",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b45592c11a2126f3786cf",
+            "desc": "充值OR扣款",
+            "example": "true",
+            "type": "text",
+            "name": "recharge",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b45592c11a2126f3786ce",
+            "desc": "",
+            "example": "\"\"",
+            "type": "text",
+            "name": "rel_flow_code",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b45592c11a2126f3786cd",
+            "desc": "",
+            "example": "\"6QW7\"",
+            "type": "text",
+            "name": "verificationCode",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b45592c11a2126f3786cc",
+            "desc": "",
+            "example": "\"[]\"",
+            "type": "text",
+            "name": "voucher",
+            "required": "1"
+          }
+        ],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9b45592c11a2126f3786cb",
+            "value": "application/x-www-form-urlencoded",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/finance/updateAccountFund",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 328,
+        "method": "GET",
+        "catid": 49,
+        "title": "审核列表",
+        "path": "/finance/reviewList",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552888845,
+        "up_time": 1553679416,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"account_id\":{\"type\":\"string\",\"description\":\"账户ID\"},\"account_name\":{\"type\":\"string\",\"description\":\"账户名称\"},\"account_type\":{\"type\":\"string\",\"description\":\"账户类型\"},\"audit_time\":{\"type\":\"string\",\"description\":\"审核时间\"},\"auditor\":{\"type\":\"string\",\"description\":\"审核人\"},\"bank_number\":{\"type\":\"string\",\"description\":\"银行卡号\"},\"cash_account\":{\"type\":\"string\",\"description\":\"提现账号\"},\"cash_amount\":{\"type\":\"string\",\"description\":\"提现金额\"},\"id\":{\"type\":\"string\"},\"notice\":{\"type\":\"string\",\"description\":\"备注\"},\"number\":{\"type\":\"string\",\"description\":\"单号\"},\"real_name\":{\"type\":\"string\"},\"status\":{\"type\":\"string\"}},\"required\":[\"account_id\",\"account_name\",\"account_type\",\"audit_time\",\"auditor\",\"bank_number\",\"cash_account\",\"cash_amount\",\"id\",\"notice\",\"number\",\"real_name\",\"status\"]}}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c9b44382c11a2126f3786c8",
+            "desc": "起始条数",
+            "example": "",
+            "name": "from",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b44382c11a2126f3786c7",
+            "desc": "长度",
+            "example": "",
+            "name": "len",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b44382c11a2126f3786c6",
+            "desc": "搜索条件",
+            "example": "{\"like\":\"\",\"status\":1}",
+            "name": "likes",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/finance/reviewList",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 322,
+        "method": "GET",
+        "catid": 49,
+        "title": "获得验证码",
+        "path": "/finance/sendVerCode",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552878041,
+        "up_time": 1553679516,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"description\":\"0\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"string\",\"description\":\"加密字段\"}},\"required\":[\"code\"]}},\"required\":[\"code\",\"obj\"]}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c9b449c2c11a2126f3786ca",
+            "desc": "手机号",
+            "example": "",
+            "name": "mobile_number",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b449c2c11a2126f3786c9",
+            "desc": "账户ID",
+            "example": "1",
+            "name": "account_id",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/finance/sendVerCode",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 374,
+        "method": "POST",
+        "catid": 49,
+        "title": "设置支付密码",
+        "path": "/finance/SetAccountPayPWD",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 14,
+        "add_time": 1553567642,
+        "up_time": 1553568098,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"accountId\":{\"type\":\"string\",\"description\":\"账户ID\",\"mock\":{\"mock\":\"1\"}},\"payPWD\":{\"type\":\"string\",\"description\":\"密码字符串\",\"mock\":{\"mock\":\"abcdefg\"}}},\"required\":[\"accountId\",\"payPWD\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\n   \"type\": \"object\",\n   \"title\": \"empty object\",\n   \"properties\": {}\n}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": false,
+        "req_body_form": [
+          {
+            "_id": "5c9991622c11a2126f378684",
+            "desc": "账户ID",
+            "example": "1",
+            "type": "text",
+            "name": "accountId",
+            "required": "1"
+          },
+          {
+            "_id": "5c9991622c11a2126f378683",
+            "desc": "支付密码",
+            "example": "abcdefg",
+            "type": "text",
+            "name": "payPWD",
+            "required": "1"
+          }
+        ],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9991622c11a2126f378682",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/finance/SetAccountPayPWD",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 305,
+        "method": "POST",
+        "catid": 49,
+        "title": "设置账户状态",
+        "path": "/finance/setAccountStatus",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552620499,
+        "up_time": 1552621598,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"data\":{\"type\":\"object\",\"properties\":{}}},\"required\":[\"code\",\"data\"]}",
+        "req_body_type": "form",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [
+          {
+            "_id": "5c8b201e2c11a2126f378452",
+            "desc": "账户ID",
+            "example": "0",
+            "type": "text",
+            "name": "accountID",
+            "required": "1"
+          },
+          {
+            "_id": "5c8b201e2c11a2126f378451",
+            "desc": "状态",
+            "example": "false",
+            "type": "text",
+            "name": "status",
+            "required": "1"
+          }
+        ],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c8b201e2c11a2126f378450",
+            "value": "application/x-www-form-urlencoded",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/finance/setAccountStatus",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 304,
+        "method": "GET",
+        "catid": 49,
+        "title": "账户列表",
+        "path": "/finance/accountList",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552613735,
+        "up_time": 1553676959,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"IC_number\":{\"type\":\"string\",\"description\":\"银行卡号\"},\"ID_A\":{\"type\":\"string\",\"description\":\"身份证正面\"},\"ID_number\":{\"type\":\"string\",\"description\":\"身份证号\"},\"account_name\":{\"type\":\"number\",\"description\":\"账户名称\"},\"bank_mobile_number\":{\"type\":\"number\",\"description\":\"银行预留手机号\"},\"bank_number\":{\"type\":\"boolean\",\"description\":\"银行卡号\"},\"create_date\":{\"type\":\"string\",\"description\":\"创建时间\"},\"mobile_number\":{\"type\":\"string\",\"description\":\"手机号\"},\"money\":{\"type\":\"string\",\"description\":\"余额\"},\"opening_bank\":{\"type\":\"string\",\"description\":\"开户行\"},\"real_name\":{\"type\":\"string\",\"description\":\"真实姓名\"},\"user_id\":{\"type\":\"string\",\"description\":\"用户ID\"},\"type\":{\"type\":\"string\",\"description\":\"账户类型\"},\"status\":{\"type\":\"string\",\"description\":\"账户状态\"},\"set_pwd\":{\"type\":\"string\",\"description\":\"是否设置密码\"}},\"required\":[\"IC_number\",\"ID_A\",\"ID_number\",\"account_name\",\"bank_mobile_number\",\"bank_number\",\"create_date\",\"mobile_number\",\"money\",\"opening_bank\",\"real_name\",\"set_pwd\",\"status\",\"type\",\"user_id\"]},\"description\":\"账户列表\"},\"$data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"IC_number\":{\"type\":\"string\"},\"mobile_number\":{\"type\":\"string\"},\"ID_A\":{\"type\":\"string\"},\"ID_number\":{\"type\":\"string\"},\"account_id\":{\"type\":\"string\"},\"account_name\":{\"type\":\"string\"},\"bank_mobile_number\":{\"type\":\"string\"},\"bank_number\":{\"type\":\"string\"},\"create_date\":{\"type\":\"string\"},\"money\":{\"type\":\"string\"},\"opening_bank\":{\"type\":\"string\"},\"real_name\":{\"type\":\"string\"},\"set_pwd\":{\"type\":\"string\"},\"status\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"},\"user_id\":{\"type\":\"string\"}},\"required\":[\"IC_number\",\"ID_A\",\"ID_number\",\"account_id\",\"account_name\",\"bank_mobile_number\",\"bank_number\",\"create_date\",\"mobile_number\",\"money\",\"opening_bank\",\"real_name\",\"set_pwd\",\"status\",\"type\",\"user_id\"]},\"description\":\"详情\"}},\"required\":[\"data\",\"$data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c9b3a9fa998d11268e6608c",
+            "desc": "账户类型",
+            "example": "",
+            "name": "type",
+            "required": "0"
+          },
+          {
+            "_id": "5c9b3a9fa998d11268e6608b",
+            "desc": "模糊搜索( 客户名称/手机号/实名 )",
+            "example": "",
+            "name": "like",
+            "required": "0"
+          },
+          {
+            "_id": "5c9b3a9fa998d11268e6608a",
+            "desc": "登录用户ID",
+            "example": "11",
+            "name": "user_id",
+            "required": "0"
+          },
+          {
+            "_id": "5c9b3a9fa998d11268e66089",
+            "desc": "起始条数",
+            "example": "",
+            "name": "from",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b3a9fa998d11268e66088",
+            "desc": "每页数量",
+            "example": "",
+            "name": "len",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b3a9fa998d11268e66087",
+            "desc": "账户ID",
+            "example": "",
+            "name": "id",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/finance/accountList",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 396,
+        "method": "POST",
+        "catid": 49,
+        "title": "钱包冲值_微信",
+        "path": "/finance/saveMoneyByWX",
+        "project_id": 12,
+        "res_body_type": "json",
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"accountId\":{\"type\":\"string\",\"description\":\"账户ID\",\"mock\":{\"mock\":\"1\"}},\"money\":{\"type\":\"number\",\"description\":\"冲值金额\"}},\"required\":[\"accountId\",\"money\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\n   \"type\": \"object\",\n   \"title\": \"empty object\",\n   \"properties\": {}\n}",
+        "req_body_type": "json",
+        "uid": 14,
+        "add_time": 1553651038,
+        "up_time": 1553651388,
+        "__v": 0,
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": false,
+        "req_body_form": [
+          {
+            "_id": "5c9ad6bca998d11268e66070",
+            "desc": "账户ID",
+            "example": "1",
+            "type": "text",
+            "name": "accountId",
+            "required": "1"
+          },
+          {
+            "_id": "5c9ad6bca998d11268e6606f",
+            "desc": "支付密码",
+            "example": "abcdefg",
+            "type": "text",
+            "name": "payPWD",
+            "required": "1"
+          }
+        ],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9ad6bca998d11268e6606e",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/finance/saveMoneyByWX",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 400,
+        "method": "POST",
+        "catid": 49,
+        "title": "钱包冲值_支付宝",
+        "path": "/finance/saveMoneyByalipay",
+        "project_id": 12,
+        "res_body_type": "json",
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"accountId\":{\"type\":\"string\",\"description\":\"账户ID\",\"mock\":{\"mock\":\"1\"}},\"money\":{\"type\":\"number\",\"description\":\"冲值金额\"}},\"required\":[\"accountId\",\"money\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\n   \"type\": \"object\",\n   \"title\": \"empty object\",\n   \"properties\": {}\n}",
+        "req_body_type": "json",
+        "uid": 14,
+        "add_time": 1553651187,
+        "up_time": 1553651424,
+        "__v": 0,
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": false,
+        "req_body_form": [
+          {
+            "_id": "5c9ad6e02c11a2126f37869e",
+            "desc": "账户ID",
+            "example": "1",
+            "type": "text",
+            "name": "accountId",
+            "required": "1"
+          },
+          {
+            "_id": "5c9ad6e02c11a2126f37869d",
+            "desc": "支付密码",
+            "example": "abcdefg",
+            "type": "text",
+            "name": "payPWD",
+            "required": "1"
+          }
+        ],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9ad6e02c11a2126f37869c",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/finance/saveMoneyByalipay",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 405,
+        "method": "POST",
+        "catid": 49,
+        "title": "验证手机",
+        "path": "/finance/comparVerCode",
+        "project_id": 12,
+        "res_body_type": "json",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"bresult\":{\"type\":\"boolean\",\"description\":\"是否验证成功\"}},\"required\":[\"bresult\"]}",
+        "uid": 14,
+        "add_time": 1553651534,
+        "up_time": 1553673942,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{}}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9b2ed62c11a2126f3786a8",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [
+          {
+            "_id": "5c9b2ed62c11a2126f3786a7",
+            "desc": "手机号",
+            "example": "13677777777",
+            "name": "sMobileNum",
+            "required": "1"
+          },
+          {
+            "_id": "5c9b2ed62c11a2126f3786a6",
+            "desc": "验证码",
+            "example": "786503",
+            "name": "verificationCode",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/finance/comparVerCode",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      }
+    ]
+  }
+]

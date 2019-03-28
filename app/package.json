@@ -24,6 +24,7 @@
     "@types/electron": "^1.6.10",
     "@types/fs-extra": "^5.0.5",
     "electron": "^2.0.2",
+    "prettier": "1.16.4",
     "tslint": "^5.10.0",
     "typescript": "3.3.3333"
   },
