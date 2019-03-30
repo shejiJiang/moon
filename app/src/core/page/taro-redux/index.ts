@@ -14,12 +14,30 @@ import {join} from "path";
 (async()=>{
 
   let db  = await fse.readJSON(join(__dirname,'db.json'));
+  //TODO action 关联dispatch
+  //TODO 命名冲突 的问题 ..  actor名字, props名字会冲突;
 
-  let pageInfo: IPageDefined = db['shop-set/shop-position'];
-  // pageInfo=db['shop-set/print'];
-  //TODO buildPage前要较下内容是不是重复了.
-  await buildPage({
-    projectPath:"/Users/dong/extraIn/RHourseO2O/",
-     pageInfo
-  });
+  //TODO 参数关联一个ts定义的集合..
+
+  let toGenPage=[
+    // 'login','register'
+    'balance/wallet-balance-list',
+    'balance/wallet-withdraw',
+    'balance/personal-check',
+    'balance/pay-password',
+    'balance/bankcard-add',
+    'balance/bankcard-info',
+  ];
+
+  for(let _key in db){
+    if(toGenPage.includes(_key)){
+      let pageInfo: IPageDefined = db[_key];
+      //TODO buildPage前要较下内容是不是重复了.
+      await buildPage({
+        projectPath:"/Users/dong/extraIn/RHourseO2O/",
+        pageInfo
+      });
+    }
+  }
+
 })()

@@ -52,9 +52,17 @@ export function getHandleFile({outDir, tplBase}: IHandleFile) {
     console.log('开始处理模板: ', _tplFilePath);
     let content = await dealCal(_tplContent.toString());
     await fse.ensureDir(join(outDir, parse(_param.saveFilePath).dir));
+
+    try{//TODO 最好的方法是, 判断后缀决定是否格式化;
+      content = prettier.format(content, {semi: false, parser: 'typescript'});
+    }catch(err){
+    }
+
+    let outputFilePath  = join(outDir, _param.saveFilePath);
+    console.log('output filePath: ',outputFilePath);
     await fse.writeFile(
-      join(outDir, _param.saveFilePath),
-      prettier.format(content, {semi: false, parser: 'typescript'}),
+      outputFilePath,
+      content,
     );
   };
 }

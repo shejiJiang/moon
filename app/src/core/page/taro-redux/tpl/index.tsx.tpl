@@ -23,7 +23,7 @@ import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fil
 )
 class <%=className%> extends Component<I<%=className%>Props, any> {
     config: Config = {
-        navigationBarTitleText: "<%=className%>"
+        navigationBarTitleText: "<%=pageInfo.title%>"
     };
 
     componentDidMount() {
@@ -35,7 +35,9 @@ class <%=className%> extends Component<I<%=className%>Props, any> {
     }
 
     render() {
-        return (<View className="<%=instanceName%>"></View>
+        return (<View className="<%=instanceName%>">
+            <View/>
+        </View>
     );
     }
 }

@@ -19,6 +19,7 @@ export interface IPageDefined{
    *   a-b
    *   a/b/c/e-d
    */
+  title:string;
   pagePath:string;
   //通过filepath计算出来
   pageKey?:string;
@@ -38,8 +39,8 @@ export type DataType ="any"|"string"|"object"|'string[]'|'number';
 
 export interface IType {
   name:string;
-  value:any;
-  type:DataType;
+  value:any;//从初始值里直接生成ts的定义
+  type:DataType;//这个可以自动生成来做了.
 }
 
 export interface IActorEvent {

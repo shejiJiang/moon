@@ -20,25 +20,37 @@ import {
 //TODO 复杂类型的参数的考虑.
 (async () => {
   let yapis = await fse.readJSON(join(__dirname, 'api.json'));
-  let webapiGroup: IWebApiGroup = await transfer(yapis[0], {
-    name: 'finance',
-    getMethodName: methodItem => methodItem.path.replace('/finance/', ''),
-  });
 
-  await buildWebApi({
-    webapiGroup,
-    projectPath: join(__dirname, 'out'),
-    resSchemaModify: (schema:IJSObjectProps) => {
-      //api外了一层. 所有内容均把data提取出来即可..
-      //@ts-ignore;
-      if(schema && schema.properties && schema.type==='object' && schema.properties.obj && schema.properties.obj.type==='object'){
-        //@ts-ignore;
-        return schema.properties.obj.properties.data;
-      }else{
-        return schema;
-      }
-    },
-  });
+  for (let i = 0, ilen = yapis.length; i < ilen; i++) {
+    let item = yapis[i];
+    if (item.name === '财务') {
+      let webapiGroup: IWebApiGroup = await transfer(item, {
+        name: 'finance',
+        getMethodName: methodItem => methodItem.path.replace('/finance/', ''),
+      });
+
+      await buildWebApi({
+        webapiGroup,
+        projectPath: '/Users/dong/extraIn/RHourseO2O/src/api', //join(__dirname, 'out'),
+        resSchemaModify: (schema: IJSObjectProps) => {
+          //api外了一层. 所有内容均把data提取出来即可..
+          //@ts-ignore;
+          if (
+            schema &&
+            schema.properties &&
+            schema.type === 'object' &&
+            schema.properties.obj &&
+            schema.properties.obj.type === 'object'
+          ) {
+            //@ts-ignore;
+            return schema.properties.obj.properties.data;
+          } else {
+            return schema;
+          }
+        },
+      });
+    }
+  }
 })();
 
 function transfer(

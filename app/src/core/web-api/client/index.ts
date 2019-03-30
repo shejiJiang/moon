@@ -12,6 +12,7 @@ import {join} from 'path';
 import {insertContent, getHandleFile} from '../../util/compile-util';
 import * as stringUtil from '../../util/string-util';
 import {compile, compileFromFile} from 'json-schema-to-typescript';
+import {genTsFromSchema} from "../../util/json-util";
 
 const Util = {
   ...stringUtil,
@@ -201,7 +202,7 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
         _resSchema = await resSchemaModify(apiItem.responseSchema);
       }
 
-      let result = await compile(
+      let result = await genTsFromSchema(
         _resSchema as any,
         Util.genInterfaceName(apiItem.name, 'res'),
       );

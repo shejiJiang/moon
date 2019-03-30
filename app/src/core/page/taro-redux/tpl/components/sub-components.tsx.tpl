@@ -26,6 +26,7 @@ class <%=Util.toLCamelize(subComp.fileName)%> extends Component<I<%=Util.toUCame
         const {} = this.props.<%=Util.toLCamelize(instanceName)%>;
         return (
             <View className="<%=Util.toLCamelize(subComp.fileName)%>">
+                <View/>
             </View>
         );
     }

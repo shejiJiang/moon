@@ -1,6 +1,6 @@
 import {<% actor.events.forEach(event=>{ %>
     <%=event.name.toUpperCase()%>,
-  <% }) %>
+  <% }) %> CLEAN,INIT
 } from "./constant";
 import { Action } from "@/types";
 import { I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer } from "./types";
@@ -15,6 +15,17 @@ const INITIAL_STATE: I<%=className%>Reducer = {
 export default function <%=Util.toLCamelize(pageInfo.pageKey)%>(state = INITIAL_STATE, action: Action): I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer {
     const { type, payload } = action;
     switch (type) {
+
+        case INIT:
+            return {
+                ...state,
+                ... payload
+            };
+
+        case CLEAN:
+            return INITIAL_STATE;
+
+
      <% actor.events.forEach(event=>{ %>
         case <%=event.name.toUpperCase()%>:
                    return {

@@ -9,9 +9,10 @@
 import * as ejs from 'ejs';
 import {join} from 'path';
 import * as fse from 'fs-extra';
-import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, ISubComp,} from './generate';
+import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, ISubComp, IType,} from './generate';
 import {insertContent, getHandleFile} from "../../util/compile-util";
 import * as stringUitl from  '../../util/string-util';
+import {genTsFromJSON} from "../../util/json-util";
 const Util = {
   ... stringUitl,
 
@@ -35,10 +36,19 @@ const Util = {
         return "any";
     }
   },
+
+  getReducerTsName(pageKey:string) {
+    return `I${Util.toUCamelize(pageKey)}Reducer`;
+  },
+
+  getPropsTsName(actorName:string,propsName:string):string{
+    return  stringUitl.toUCamelize(`I-${actorName}-${propsName}`)
+  }
 };
 
 
-export async function generate(pageInfo: IPageDefined) {
+export async function generate(context: IContext) {
+  let {pageInfo,projectPath} = context;
   //所有的事件..
   let events = pageInfo.actors.reduce(
     (accumulator: IActorEvent[], currentValue: IActorItem) => {
@@ -48,7 +58,7 @@ export async function generate(pageInfo: IPageDefined) {
     [],
   );
 
-  let handlePage = getHandleFile({outDir:"join('/Users/dong/extraIn/RHourseO2O/src/pages/', pageInfo.pagePath)"
+  let handlePage = getHandleFile({outDir:join(projectPath,'/src/pages/', pageInfo.pagePath)
       ,tplBase:join(__dirname,"tpl")
     });
 
@@ -99,10 +109,26 @@ export async function generate(pageInfo: IPageDefined) {
     return conent;
   });
 
+
+
   //types生成
   await handlePage('types.ts.tpl', async (tplConent: string) => {
+
+    let valueTsDefinds  =[];
+
+    for (let i = 0, ilen = pageInfo.actors.length; i < ilen; i++) {
+      let actor = pageInfo.actors[i];
+
+      for (let j = 0, jlen = actor.datas.length; j < jlen; j++) {
+        let dataItem = actor.datas[j];
+        let jsonDefied  =  await genTsFromJSON(Util.getPropsTsName(actor.fileName,dataItem.name),dataItem.value);
+        valueTsDefinds.push(jsonDefied)
+      }
+    }
+
     let conent = ejs.render(tplConent, {
       ...base,
+      valueTsDefinds: valueTsDefinds.join(""),
     });
     return conent;
   });
@@ -151,8 +177,6 @@ export async function generate(pageInfo: IPageDefined) {
   });
 }
 
-const tplBase = join(__dirname, 'tpl');
-
 /**
  *
  * @param {string} filePath
@@ -170,9 +194,10 @@ export async function buildPage(context: IContext) {
   let projectSrc = join(context.projectPath, 'src');
   let pageInfo = context.pageInfo;
 
+
   pageInfo.pageKey = pageInfo.pagePath.replace('/',"-");
 
-  await generate(pageInfo);
+  await generate(context);
   //在项目配置中添加store.reducer  及 页面显示的配置. ;
   //先判断是否有, 如果有的话, 不再重新生成了.
 
