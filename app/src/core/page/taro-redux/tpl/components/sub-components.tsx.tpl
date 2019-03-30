@@ -13,7 +13,7 @@ import actions from "../action";
         } as any),
     actions
 )
-class <%=Util.toLCamelize(subComp.fileName)%> extends Component<I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State> {
+class <%=Util.toUCamelize(subComp.fileName)%> extends Component<I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State> {
     static options = {
         addGlobalClass: true
     };
@@ -32,4 +32,4 @@ class <%=Util.toLCamelize(subComp.fileName)%> extends Component<I<%=Util.toUCame
     }
 }
 
-export default <%=Util.toLCamelize(subComp.fileName)%> as ComponentClass<any, any>;
+export default <%=Util.toUCamelize(subComp.fileName)%> as ComponentClass<any, any>;

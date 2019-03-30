@@ -39,7 +39,7 @@
       {
         "fileName": "header",
         "methods": []
-      },
+      }
     ]
     },
 ```

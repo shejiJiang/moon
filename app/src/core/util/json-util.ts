@@ -33,6 +33,7 @@ export async function genTsFromJSON(name:string,value:any) {
  * @returns {Promise<string>}
  */
 export async function genTsFromSchema(name:string,jsonSchema:any):Promise<string>{
+ console.log(`genTsFromSchema ${name} ${jsonSchema}`);
   let result = await compile(
     jsonSchema,
     name,

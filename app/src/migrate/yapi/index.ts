@@ -40,7 +40,7 @@ import {
             schema.properties &&
             schema.type === 'object' &&
             schema.properties.obj &&
-            schema.properties.obj.type === 'object'
+            schema.properties.obj['type'] === 'object'
           ) {
             //@ts-ignore;
             return schema.properties.obj.properties.data;
@@ -74,7 +74,16 @@ function transfer(
       jsonSchema,
     };
 
-    let params: ReqParam[] = methodItem.req_query || methodItem.req_body_form;
+    let params: ReqParam[] = [];
+    //空字符串处理.
+
+    if(methodItem.req_query && methodItem.req_query.length>0){
+      params=methodItem.req_query;
+    }else if(methodItem.req_body_form && methodItem.req_body_form.length>0){
+      params=methodItem.req_body_form;
+    }
+
+    //
 
     for (let i = 0, ilen = params.length; i < ilen; i++) {
       let item: ReqParam = params[i];

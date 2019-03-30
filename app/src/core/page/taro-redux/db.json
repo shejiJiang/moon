@@ -1,4 +1,183 @@
 {
+
+  "balance/scan-pay":{
+    "pagePath": "balance/scan-pay",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"toAccount",
+          "value":{
+            "id":"1231",
+            "name":"张小三的水果店铺",
+            "tag":"商家账户"
+          }
+        },{
+          "name":"account",
+          "value":{
+            "id":"1231",
+            "name":"张小三",
+            "tag":"个人账户"
+          }
+        },{
+          "name":"count",
+          "value":""
+        },{
+          "name":"pwd",
+          "value":""
+        },{
+          "name":"isShowPwd",
+          "value":false
+        },{
+          "name":"isShowSucess",
+          "value":false
+        }],
+        "events": [
+          {
+            "name": "input",
+            "param": ""
+          },
+          {
+            "name": "inputPwd",
+            "param": ""
+          },
+          {
+            "name": "toggleShowPwd",
+            "param": ""
+          },
+          {
+            "name": "toggleShowSucess",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "input",
+            "param": ""
+          },
+          {
+            "name": "submit",
+            "param": ""
+          },
+          {
+            "name": "pay",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "dialog",
+        "methods": []
+      },
+      {
+        "fileName": "input",
+        "methods": []
+      },
+      {
+        "fileName": "sucess",
+        "methods": []
+      }
+    ]
+  },
+  "balance/wallet-qrcode":{
+    "pagePath": "balance/wallet-qrcode",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"shopName",
+          "value":"张三三的水果铺子"
+        },{
+          "name":"userName",
+          "value":"张三"
+        },{
+          "name":"qrUrl",
+          "value":"www.baidu.com"
+        }],
+        "events": [
+          {
+            "name": "changeAmount",
+            "param": ""
+          },
+          {
+            "name": "changeChanel",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+        ]
+      }
+    ],
+    "subComps": [
+    ]
+  },
+
+  "balance/wallet-charge":{
+    "pagePath": "balance/wallet-charge",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"amount",
+          "value":100
+        },{
+          "name":"isCustom",
+          "value":false
+        },{
+          "name":"chargeChanel",
+          "value":"wechat"
+        }],
+        "events": [
+          {
+            "name": "changeAmount",
+            "param": ""
+          },
+          {
+            "name": "changeChanel",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "chooseAmount",
+            "param": ""
+          },
+          {
+            "name": "modifyAmount",
+            "param": ""
+          },
+          {
+            "name": "modifyChanel",
+            "param": ""
+          },
+          {
+            "name": "charge",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+    ]
+  },
+
   "balance/bankcard-info":{
     "pagePath": "balance/bankcard-info",
     "title":"银行卡详情",

@@ -203,8 +203,9 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
       }
 
       let result = await genTsFromSchema(
-        _resSchema as any,
         Util.genInterfaceName(apiItem.name, 'res'),
+        _resSchema as any,
+
       );
       results.push(result);
     }

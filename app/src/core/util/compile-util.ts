@@ -54,7 +54,7 @@ export function getHandleFile({outDir, tplBase}: IHandleFile) {
     await fse.ensureDir(join(outDir, parse(_param.saveFilePath).dir));
 
     try{//TODO 最好的方法是, 判断后缀决定是否格式化;
-      content = prettier.format(content, {semi: false, parser: 'typescript'});
+      content = prettier.format(content, {semi: true, bracketSpacing:false,singleQuote:true,trailingComma:"all",parser: 'typescript'});
     }catch(err){
     }
 

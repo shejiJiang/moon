@@ -226,7 +226,7 @@ export async function buildPage(context: IContext) {
 
   await insertContent(join(projectSrc, 'app.tsx'), [
     {
-      mark: '"pages/empty/index"',
+      mark: `'pages/empty/index'`,
       isBefore: true,
       content: `"${pagePath}/index",`,
       check: (content): boolean => !content.includes(pagePath),

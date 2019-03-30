@@ -17,16 +17,19 @@ import {join} from "path";
   //TODO action 关联dispatch
   //TODO 命名冲突 的问题 ..  actor名字, props名字会冲突;
 
+  //TODO input 关键字处理..
   //TODO 参数关联一个ts定义的集合..
 
   let toGenPage=[
     // 'login','register'
-    'balance/wallet-balance-list',
-    'balance/wallet-withdraw',
-    'balance/personal-check',
-    'balance/pay-password',
-    'balance/bankcard-add',
-    'balance/bankcard-info',
+    // 'balance/wallet-charge',
+    'balance/scan-pay',
+    // 'balance/wallet-qrcode',
+    // 'balance/wallet-withdraw',
+    // 'balance/personal-check',
+    // 'balance/pay-password',
+    // 'balance/bankcard-add',
+    // 'balance/bankcard-info',
   ];
 
   for(let _key in db){

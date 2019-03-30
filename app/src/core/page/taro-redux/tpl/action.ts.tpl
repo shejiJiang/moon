@@ -12,10 +12,10 @@ import {<% events.forEach(event=>{ %>
 
 
 export default (dispatch) => {
-    const actions = {
-     get data():<%=Util.getReducerTsName(pageInfo.pageKey)%> {
+  function getData():<%=Util.getReducerTsName(pageInfo.pageKey)%> {
           return Store.getState().<%=instanceName%>;
-      },
+  }
+    const actions = {
 
         /**
          * 初始化数据
