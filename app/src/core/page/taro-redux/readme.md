@@ -8,6 +8,7 @@
 空页面定义
 ```json
 "balance/login":{
+     "title":"XX",
     "pagePath": "balance/login",
     "actors": [
       {

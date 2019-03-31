@@ -7,6 +7,7 @@ import { I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer } from "./types";
 import _ from "lodash";
 
 const INITIAL_STATE: I<%=className%>Reducer = {
+    isReady:false,
     <% actor.datas.forEach(dataItem=>{ %>
              <%=dataItem.name%>:<%- JSON.stringify(dataItem.value) || Util.getDefaultByType(dataItem.type)%>,
     <% }) %>
@@ -19,6 +20,7 @@ export default function <%=Util.toLCamelize(pageInfo.pageKey)%>(state = INITIAL_
         case INIT:
             return {
                 ...state,
+                isReady:true,
                 ... payload
             };
 

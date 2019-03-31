@@ -1,6 +1,7 @@
 import Actions from "./action"
 
 export interface <%=Util.getReducerTsName(pageInfo.pageKey)%> {
+    isReady:boolean;
     <% pageInfo.actors[0].datas.forEach(dataItem=>{ %>
                  <%=dataItem.name%>:<%= Util.getPropsTsName(pageInfo.actors[0].fileName,dataItem.name)%>;
     <% }) %>

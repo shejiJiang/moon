@@ -195,7 +195,7 @@ export async function buildPage(context: IContext) {
   let pageInfo = context.pageInfo;
 
 
-  pageInfo.pageKey = pageInfo.pagePath.replace('/',"-");
+  pageInfo.pageKey = pageInfo.pagePath.replace('/',"-").replace('.',"-");
 
   await generate(context);
   //在项目配置中添加store.reducer  及 页面显示的配置. ;

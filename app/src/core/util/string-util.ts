@@ -7,9 +7,16 @@
  * @Date    2019/3/27
  **/
 
+
+/**
+ * form.input => FormInput
+ * form-input => FormInput
+ * @param {string} name
+ * @returns {any}
+ */
 export function toUCamelize(name: string) {
   return name
-    .split('-')
+    .split(/[-\.]/)
     .map(item => {
       return item[0].toUpperCase() + item.substr(1);
     })

@@ -23,7 +23,9 @@ import {join} from "path";
   let toGenPage=[
     // 'login','register'
     // 'balance/wallet-charge',
-    'balance/scan-pay',
+    // 'balance/scan-pay',
+    'balance/withdraw-success',
+    // 'balance/withdraw',
     // 'balance/wallet-qrcode',
     // 'balance/wallet-withdraw',
     // 'balance/personal-check',

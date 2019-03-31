@@ -1,6 +1,132 @@
 {
 
+  "balance/withdraw-success":{
+    "title":"提现结果",
+    "pagePath": "balance/withdraw-success",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"info",
+          "value":{
+            "status":true,
+            "count":1000,
+            "cardName":"浙江农商银行储蓄卡",
+            "cardNo":"XXXXX1100"
+          }
+        }],
+        "events": [
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+        ]
+      }
+    ],
+    "subComps": [
+    ]
+  },
+  "balance/withdraw":{
+    "title":"余额提现",
+    "pagePath": "balance/withdraw",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"info",
+          "value":{
+            "totalCount":1000
+          }
+        },{
+          "name":"withdrawCount",
+          "value":0
+        },{
+          "name":"bandIndex",
+          "value":0
+        },{
+          "name":"banks",
+          "value":[
+            {
+              "name":"浙江农商银行储蓄卡",
+              "cardNo":"12312312100"
+            }
+          ]
+        },{
+          "name":"pwd",
+          "value":""
+        },{
+          "name":"isShowPwdInput",
+          "value":false
+        },{
+          "name":"isShowBanksChoose",
+          "value":false
+        }],
+        "events": [
+          {
+            "name": "input",
+            "param": ""
+          },  {
+            "name": "inputPwd",
+            "param": ""
+          },
+          {
+            "name": "toggleShowPwd",
+            "param": ""
+          },
+          {
+            "name": "toggleShowBanksChoose",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "showChooseBanks",
+            "param": ""
+          },
+          {
+            "name": "chooseBanks",
+            "param": ""
+          },
+          {
+            "name": "input",
+            "param": ""
+          },
+          {
+            "name": "inputPwd",
+            "param": ""
+          },
+          {
+            "name": "drawAll",
+            "param": ""
+          },
+          {
+            "name": "submit",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "dialog",
+        "methods": []
+      },
+      {
+        "fileName": "form.input",
+        "methods": []
+      }
+    ]
+  },
   "balance/scan-pay":{
+    "title":"扫码付",
     "pagePath": "balance/scan-pay",
     "actors": [
       {
