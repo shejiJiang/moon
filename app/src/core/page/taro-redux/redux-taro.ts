@@ -41,8 +41,9 @@ const Util = {
     return `I${Util.toUCamelize(pageKey)}Reducer`;
   },
 
-  getPropsTsName(actorName:string,propsName:string):string{
-    return  stringUitl.toUCamelize(`I-${actorName}-${propsName}`)
+  getPropsTsName(actorName:string,propsName:string,data:IType):string{
+    let name  = `I-${actorName}-${propsName}`;
+    return  stringUitl.toUCamelize(name);
   }
 };
 
@@ -121,8 +122,11 @@ export async function generate(context: IContext) {
 
       for (let j = 0, jlen = actor.datas.length; j < jlen; j++) {
         let dataItem = actor.datas[j];
-        let jsonDefied  =  await genTsFromJSON(Util.getPropsTsName(actor.fileName,dataItem.name),dataItem.value);
-        valueTsDefinds.push(jsonDefied)
+        //TODO 也可以外部指定 schema
+        let jsonDefied  =  await genTsFromJSON(Util.getPropsTsName(actor.fileName,dataItem.name,dataItem),dataItem.value);
+        dataItem.schema=jsonDefied.schema;
+        dataItem.typeName=jsonDefied.typeName;
+        valueTsDefinds.push(jsonDefied.tsContent)
       }
     }
 

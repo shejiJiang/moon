@@ -24,8 +24,9 @@ import {join} from "path";
     // 'login','register'
     // 'balance/wallet-charge',
     // 'balance/scan-pay',
+    'balance/wallet-balance-list',
     // 'balance/withdraw-success',
-    'balance/bankcards',
+    // 'balance/bankcards',
     // 'balance/withdraw',
     // 'balance/wallet-qrcode',
     // 'balance/wallet-withdraw',
@@ -39,7 +40,8 @@ import {join} from "path";
   let prettiesConfig={};
   try{
      prettiesConfig = await fse.readJSON(join(projectPath,"pretties.json"));
-  }catch(err){
+  }catch(err) {
+
   }
 
 

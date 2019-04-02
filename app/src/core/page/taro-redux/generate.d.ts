@@ -6,6 +6,7 @@
  * @company qianmi.com
  * @Date    2019/3/19
  **/
+import {SchemaProps} from "../../web-api/client";
 
 export interface IPageDefined{
   /**
@@ -40,7 +41,8 @@ export type DataType ="any"|"string"|"object"|'string[]'|'number';
 export interface IType {
   name:string;
   value:any;//从初始值里直接生成ts的定义
-  type:DataType;//这个可以自动生成来做了.
+  typeName:string;//生成ts类型的名称;  在生成ts时定义出来
+  schema:SchemaProps;//ts类型schema  这个可以用户指定或自动生成来做了.
 }
 
 export interface IActorEvent {

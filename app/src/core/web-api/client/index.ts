@@ -160,7 +160,7 @@ export async function buildWebApi(context: IWebApiContext) {
     tplBase: join(__dirname, 'tpl'),
   });
   //生成 方法入参入出参的ts定义;
-  if(context.beforeCompile){
+  if(context.beforeCompile) {
     for (let i = 0, ilen = webapiGroup.apis.length; i < ilen; i++) {
       let apiItem = webapiGroup.apis[i];
       webapiGroup.apis[i]= await context.beforeCompile(apiItem);
@@ -195,6 +195,13 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
 
     for (let i = 0, ilen = apiItem.requestParam.length; i < ilen; i++) {
       let param: IParamShape = apiItem.requestParam[i];
+      //如果是数组,在这里添加一个..只取里面的值进行生成 . .
+      // let _doHandleJsonSchema = param.jsonSchema;
+      // //@ts-ignore
+      // if(_doHandleJsonSchema.type && _doHandleJsonSchema.type==='array') {
+      //   //@ts-ignore
+      //   _doHandleJsonSchema = param.jsonSchema.items as IJSArrayProps;
+      // }
 
       let result = await compile(
         param.jsonSchema as any,
@@ -278,7 +285,6 @@ export type SchemaProps =
   | IJSArrayProps
   | JSStringProps
   | IJSNumberProps
-  | IJSIntegerProps
   | IJSIntegerProps
   | IJsonSchemaRef;
 

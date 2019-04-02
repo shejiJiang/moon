@@ -33,7 +33,7 @@ import {
         webapiGroup,
         projectPath: '/Users/dong/extraIn/RHourseO2O/src/api', //join(__dirname, 'out'),
         beforeCompile:(apiItem: IWebApiDefinded)=>{
-          apiItem.url="http://112.74.45.102:3002"+apiItem.url;
+          apiItem.url="https://pay.npej.net"+apiItem.url;
           return apiItem;
         },
         resSchemaModify: (schema: IJSObjectProps) => {

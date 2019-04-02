@@ -3,7 +3,7 @@ import Actions from "./action"
 export interface <%=Util.getReducerTsName(pageInfo.pageKey)%> {
     isReady:boolean;
     <% pageInfo.actors[0].datas.forEach(dataItem=>{ %>
-                 <%=dataItem.name%>:<%= Util.getPropsTsName(pageInfo.actors[0].fileName,dataItem.name)%>;
+                 <%=dataItem.name%>:<%=dataItem.typeName%>;
     <% }) %>
 }
 export type I<%=Util.toUCamelize(pageInfo.pageKey)%>Props = { <%=Util.toLCamelize(pageInfo.pageKey)%>: I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer } & ReturnType<typeof Actions>;
