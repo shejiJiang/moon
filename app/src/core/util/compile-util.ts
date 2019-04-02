@@ -17,6 +17,7 @@ interface IHandlePageParam {
 export interface IHandleFile {
   outDir: string;
   tplBase: string;
+  prettiesConfig?: object;
 }
 
 interface IInsertOption {
@@ -34,12 +35,26 @@ interface IInsertOption {
 /**
  * 获取处理页面内容;;
  * 处理文件 的公共逻辑; 从模板中取出内容,渲染出来, 然后保存;
+ * @param {string} outDir projectPath 项目根目录
  * @param {string} outDir 输出文件目录
  * @param {string} tplDir 模板文件目录
  *
  * @returns {(filePath: string, dealCal: (tplContent: string) => Promise<string>, param?: IHandlePageParam) => Promise<void>}
  */
-export function getHandleFile({outDir, tplBase}: IHandleFile) {
+export function getHandleFile({
+  outDir,
+  tplBase,
+  prettiesConfig = {},
+}: IHandleFile) {
+  prettiesConfig = {
+    semi: true,
+    bracketSpacing: false,
+    singleQuote: true,
+    trailingComma: 'all',
+    parser: 'typescript',
+    ...prettiesConfig,
+  };
+
   return async function handlePage(
     tplPath: string,
     dealCal: (tplContent: string) => Promise<string>,
@@ -53,17 +68,14 @@ export function getHandleFile({outDir, tplBase}: IHandleFile) {
     let content = await dealCal(_tplContent.toString());
     await fse.ensureDir(join(outDir, parse(_param.saveFilePath).dir));
 
-    try{//TODO 最好的方法是, 判断后缀决定是否格式化;
-      content = prettier.format(content, {semi: true, bracketSpacing:false,singleQuote:true,trailingComma:"all",parser: 'typescript'});
-    }catch(err){
-    }
+    try {
+      //TODO 最好的方法是, 判断后缀决定是否格式化;
+      content = prettier.format(content, prettiesConfig);
+    } catch (err) {}
 
-    let outputFilePath  = join(outDir, _param.saveFilePath);
-    console.log('output filePath: ',outputFilePath);
-    await fse.writeFile(
-      outputFilePath,
-      content,
-    );
+    let outputFilePath = join(outDir, _param.saveFilePath);
+    console.log('output filePath: ', outputFilePath);
+    await fse.writeFile(outputFilePath, content);
   };
 }
 

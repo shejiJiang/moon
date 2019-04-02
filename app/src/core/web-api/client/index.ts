@@ -39,10 +39,13 @@ export interface IWebApiDefinded {
 }
 
 //TODO 参数生成要确定下来..
-
 export interface IWebApiGroup {
   name: string;
   apis: IWebApiDefinded[];
+  //公共的props, 供其他人调用;
+  definitions?:{
+    [defName:string]:SchemaProps;
+  }
 }
 
 // (async()=>{

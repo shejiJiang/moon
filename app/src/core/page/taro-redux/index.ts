@@ -35,12 +35,21 @@ import {join} from "path";
     // 'balance/bankcard-info',
   ];
 
+  let projectPath ="/Users/dong/extraIn/RHourseO2O/";
+  let prettiesConfig={};
+  try{
+     prettiesConfig = await fse.readJSON(join(projectPath,"pretties.json"));
+  }catch(err){
+  }
+
+
   for(let _key in db) {
     if(toGenPage.includes(_key)) {
       let pageInfo: IPageDefined = db[_key];
       //TODO buildPage前要较下内容是不是重复了.
       await buildPage({
-        projectPath:"/Users/dong/extraIn/RHourseO2O/",
+        prettiesConfig,
+        projectPath,
         pageInfo
       });
     }

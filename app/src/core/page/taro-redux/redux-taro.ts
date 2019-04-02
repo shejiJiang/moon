@@ -48,7 +48,7 @@ const Util = {
 
 
 export async function generate(context: IContext) {
-  let {pageInfo,projectPath} = context;
+  let {pageInfo,projectPath,prettiesConfig} = context;
   //所有的事件..
   let events = pageInfo.actors.reduce(
     (accumulator: IActorEvent[], currentValue: IActorItem) => {
@@ -58,7 +58,7 @@ export async function generate(context: IContext) {
     [],
   );
 
-  let handlePage = getHandleFile({outDir:join(projectPath,'/src/pages/', pageInfo.pagePath)
+  let handlePage = getHandleFile({prettiesConfig,outDir:join(projectPath,'/src/pages/', pageInfo.pagePath)
       ,tplBase:join(__dirname,"tpl")
     });
 
@@ -187,6 +187,7 @@ export async function generate(context: IContext) {
 interface IContext {
   projectPath: string;
   pageInfo: IPageDefined;
+  prettiesConfig?: object;
 }
 
 export async function buildPage(context: IContext) {
