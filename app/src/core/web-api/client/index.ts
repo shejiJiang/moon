@@ -178,7 +178,6 @@ export async function buildWebApi(context: IWebApiContext) {
         tsDefinded,
       });
 
-      console.log('api.ts.ejs  render==>',conent);
       return conent;
     },
     {saveFilePath: webapiGroup.name + '.ts'},
@@ -195,13 +194,6 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
 
     for (let i = 0, ilen = apiItem.requestParam.length; i < ilen; i++) {
       let param: IParamShape = apiItem.requestParam[i];
-      //如果是数组,在这里添加一个..只取里面的值进行生成 . .
-      // let _doHandleJsonSchema = param.jsonSchema;
-      // //@ts-ignore
-      // if(_doHandleJsonSchema.type && _doHandleJsonSchema.type==='array') {
-      //   //@ts-ignore
-      //   _doHandleJsonSchema = param.jsonSchema.items as IJSArrayProps;
-      // }
 
       let result = await compile(
         param.jsonSchema as any,
@@ -211,7 +203,7 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
     }
 
     if (apiItem.responseSchema && apiItem.responseSchema) {
-      //@ts-ignore;
+      //@ts-ignore;//TODO 这里可以不删除的  充分利用
       delete apiItem.responseSchema.title;
 
       let _resSchema = apiItem.responseSchema;
@@ -219,12 +211,14 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
         _resSchema = await resSchemaModify(apiItem.responseSchema);
       }
 
-      let result = await genTsFromSchema(
+    if(_resSchema) {
+      let {tsContent} = await genTsFromSchema(
         Util.genInterfaceName(apiItem.name, 'res'),
         _resSchema as any,
-
       );
-      results.push(result);
+      results.push(tsContent);
+    }
+
     }
   }
   return results.join('\n');

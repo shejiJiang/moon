@@ -29,6 +29,8 @@ import {
         getMethodName: methodItem => methodItem.path.replace('/finance/', ''),
       });
 
+      // fse.writeJson(join(__dirname,"web-api.json"),item);
+
       await buildWebApi({
         webapiGroup,
         projectPath: '/Users/dong/extraIn/RHourseO2O/src/api', //join(__dirname, 'out'),
@@ -47,7 +49,16 @@ import {
             schema.properties.obj['type'] === 'object'
           ) {
             //@ts-ignore;
-            return schema.properties.obj.properties.data;
+            if(schema.properties.obj.properties.data){
+              //@ts-ignore;
+              return schema.properties.obj.properties.data;
+              //@ts-ignore;
+            }else if(schema.properties.obj.properties.code){
+              //@ts-ignore;
+              return schema.properties.obj.properties.code;
+            } else {
+              return null;
+            }
           } else {
             return schema;
           }
@@ -83,11 +94,12 @@ function transfer(
 
     if(methodItem.req_query && methodItem.req_query.length>0){
       params=methodItem.req_query;
+    }else if(methodItem.req_body_other){
+    //TODO 是否对比下参数的多少. 决定 取那个呢  ?  /finance/saveMoneyByWX 两个值都有的情况 怎么出现  ?
+      params=JSON.parse(methodItem.req_body_other);
     }else if(methodItem.req_body_form && methodItem.req_body_form.length>0){
       params=methodItem.req_body_form;
     }
-
-    //
 
     for (let i = 0, ilen = params.length; i < ilen; i++) {
       let item: ReqParam = params[i];
@@ -131,7 +143,7 @@ function transfer(
     return a;
   });
 
-  console.log(apis[0]);
+  // console.log(apis[0]);
 
   let webapiGroup: IWebApiGroup = {
     name,
@@ -162,6 +174,7 @@ export interface IYapiMethod {
   path: string;
   project_id: number;
   res_body_type: string;
+  req_body_other: string;
   uid: number;
   add_time: number;
   up_time: number;

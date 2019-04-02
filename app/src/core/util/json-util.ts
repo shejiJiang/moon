@@ -45,7 +45,7 @@ interface ITsGenResult{
  * @returns {Promise<string>}
  */
 export async function genTsFromSchema(name:string,jsonSchema:any):Promise<ITsGenResult>{
-  console.log("jsonSchema::",name,jsonSchema,);
+  // console.log("jsonSchema::",name,jsonSchema);
   let tsContent = await compile(
     jsonSchema,
     name,
@@ -55,7 +55,7 @@ export async function genTsFromSchema(name:string,jsonSchema:any):Promise<ITsGen
     typeName:jsonSchema.title?jsonSchema.title.replace(/ */ig,""):name,
     tsContent
   }
-  console.log(result);
+  // console.log(result);
   return result;
 }
 
