@@ -300,11 +300,12 @@ export interface IJsonSchemaBean extends IJSObjectProps {
 
 export interface ITypeShape {
   // type:"string"|"number"|"object"|"array";
-  comment?: string;
+  comment?: string; //TODO comment 与description 重复了..
   jsonSchema?: SchemaProps;
 }
 
 export interface IParamShape extends ITypeShape {
   name: string;
+  isInPath?:boolean;//参数是否在路径上带着? /account/refundOrders/{returnOrderNo}
   defaultValue?: any;
 }
