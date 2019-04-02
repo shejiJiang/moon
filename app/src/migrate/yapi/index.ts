@@ -32,6 +32,10 @@ import {
       await buildWebApi({
         webapiGroup,
         projectPath: '/Users/dong/extraIn/RHourseO2O/src/api', //join(__dirname, 'out'),
+        beforeCompile:(apiItem: IWebApiDefinded)=>{
+          apiItem.url="http://112.74.45.102:3002"+apiItem.url;
+          return apiItem;
+        },
         resSchemaModify: (schema: IJSObjectProps) => {
           //api外了一层. 所有内容均把data提取出来即可..
           //@ts-ignore;

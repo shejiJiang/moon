@@ -16,7 +16,7 @@ async function <%=apiItem.name%>(
 ):Promise<<%= apiItem.responseSchema?Util.genInterfaceName(apiItem.name,"res"):"any"%>> {
   let result = await sdk.<%=apiItem.method||"post"%><%-apiItem.responseSchema? "<"+Util.genInterfaceName(apiItem.name,"res")+">":""%>("<%=apiItem.url%>", {
       <% apiItem.requestParam.forEach(paramItem=>{ %>
-        <%=paramItem.name%>,
+        ...<%=paramItem.name%>,
       <% }) %>
   });
   return  result.data;

@@ -1,5 +1,54 @@
 {
 
+  "balance/bankcards":{
+    "title":"我的银行卡",
+    "pagePath": "balance/bankcards",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"cards",
+          "value":[{
+            "cardNo":"2312312312",
+            "name":"浙江农商银行",
+            "cardImg":"",
+            "type":"储蓄卡"
+          }]
+        }],
+        "events": [
+          {
+            "name": "del",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "cards",
+        "methods": []
+      },
+      {
+        "fileName": "cards",
+        "methods": []
+      }
+    ]
+  },
   "balance/withdraw-success":{
     "title":"提现结果",
     "pagePath": "balance/withdraw-success",
@@ -356,6 +405,7 @@
             "name":"info",
             "value":{
               "name":"",
+              "idNo":"",
               "idImg":"",
               "mobile":"",
               "idPic":""

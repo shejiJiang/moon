@@ -24,7 +24,8 @@ import {join} from "path";
     // 'login','register'
     // 'balance/wallet-charge',
     // 'balance/scan-pay',
-    'balance/withdraw-success',
+    // 'balance/withdraw-success',
+    'balance/bankcards',
     // 'balance/withdraw',
     // 'balance/wallet-qrcode',
     // 'balance/wallet-withdraw',
@@ -34,8 +35,8 @@ import {join} from "path";
     // 'balance/bankcard-info',
   ];
 
-  for(let _key in db){
-    if(toGenPage.includes(_key)){
+  for(let _key in db) {
+    if(toGenPage.includes(_key)) {
       let pageInfo: IPageDefined = db[_key];
       //TODO buildPage前要较下内容是不是重复了.
       await buildPage({

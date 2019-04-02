@@ -16,11 +16,11 @@
         "res_body_type": "json",
         "uid": 14,
         "add_time": 1550046481,
-        "up_time": 1553742828,
+        "up_time": 1553829634,
         "__v": 0,
         "markdown": "增加查询条件，创建时间（范围）\n\ncreate_timeB\ncreate_timeE\n\n\\-\\-\\-\\-2019\\.3\\.28 \badd by Alex\\.Ji",
         "desc": "<p>增加查询条件，创建时间（范围）</p>\n<p>create_timeB<br>\ncreate_timeE</p>\n<p>----2019.3.28 \badd by Alex.Ji</p>\n",
-        "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"cid\":{\"type\":\"number\"},\"openid\":{\"type\":\"string\"},\"employee\":{\"type\":\"number\"},\"car\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"null\"},\"money\":{\"type\":\"number\"},\"cname\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"},\"email\":{\"type\":\"null\"},\"qq\":{\"type\":\"null\"},\"ccode\":{\"type\":\"null\"},\"area\":{\"type\":\"number\"},\"head\":{\"type\":\"null\"},\"login_name\":{\"type\":\"string\"},\"cpassword\":{\"type\":\"string\"},\"type\":{\"type\":\"number\"},\"depot\":{\"type\":\"null\"},\"place\":{\"type\":\"null\"},\"address\":{\"type\":\"null\"},\"fax\":{\"type\":\"null\"},\"bdesc\":{\"type\":\"null\"},\"linkman\":{\"type\":\"null\"},\"job\":{\"type\":\"null\"},\"tel\":{\"type\":\"null\"},\"bankname\":{\"type\":\"null\"},\"account_name\":{\"type\":\"null\"},\"caccount\":{\"type\":\"null\"},\"taxpayer\":{\"type\":\"null\"},\"bill_time\":{\"type\":\"number\"},\"bill_title\":{\"type\":\"null\"},\"alipay\":{\"type\":\"null\"},\"weixinpay\":{\"type\":\"null\"},\"flag\":{\"type\":\"number\"}}}",
+        "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"cid\":{\"type\":\"number\"},\"openid\":{\"type\":[\"string\",\"null\"]},\"employee\":{\"type\":[\"null\",\"number\"]},\"car\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"idg\":{\"type\":\"string\"},\"number\":{\"type\":\"string\"}},\"required\":[\"idg\",\"number\"]}},\"id\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"null\"},\"money\":{\"type\":[\"number\",\"null\"]},\"cname\":{\"type\":\"string\"},\"phone\":{\"type\":[\"string\",\"null\"]},\"email\":{\"type\":[\"null\",\"string\"]},\"qq\":{\"type\":[\"null\",\"string\"]},\"ccode\":{\"type\":[\"null\",\"string\"]},\"area\":{\"type\":\"number\"},\"head\":{\"type\":[\"string\",\"null\"]},\"login_name\":{\"type\":[\"string\",\"null\"]},\"cpassword\":{\"type\":[\"string\",\"null\"]},\"type\":{\"type\":[\"null\",\"number\"]},\"depot\":{\"type\":[\"null\",\"number\"]},\"place\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"required\":[\"id\",\"name\"]},\"address\":{\"type\":[\"null\",\"string\"]},\"fax\":{\"type\":[\"null\",\"string\"]},\"bdesc\":{\"type\":[\"null\",\"string\"]},\"linkman\":{\"type\":[\"null\",\"string\"]},\"job\":{\"type\":[\"null\",\"string\"]},\"tel\":{\"type\":[\"null\",\"string\"]},\"bankname\":{\"type\":[\"null\",\"string\"]},\"account_name\":{\"type\":[\"null\",\"string\"]},\"caccount\":{\"type\":[\"null\",\"string\"]},\"taxpayer\":{\"type\":[\"null\",\"string\"]},\"bill_time\":{\"type\":[\"null\",\"number\"]},\"bill_title\":{\"type\":[\"null\",\"string\"]},\"alipay\":{\"type\":[\"null\",\"string\"]},\"weixinpay\":{\"type\":[\"null\",\"string\"]},\"flag\":{\"type\":\"number\"}},\"required\":[\"cid\",\"openid\",\"employee\",\"car\",\"id\",\"zipcode\",\"money\",\"cname\",\"phone\",\"email\",\"qq\",\"ccode\",\"area\",\"head\",\"login_name\",\"cpassword\",\"type\",\"depot\",\"place\",\"address\",\"fax\",\"bdesc\",\"linkman\",\"job\",\"tel\",\"bankname\",\"account_name\",\"caccount\",\"taxpayer\",\"bill_time\",\"bill_title\",\"alipay\",\"weixinpay\",\"flag\"]}}}}}}",
         "tag": [],
         "index": 0,
         "api_opened": false,
@@ -31,63 +31,63 @@
         "req_headers": [],
         "req_query": [
           {
-            "_id": "5c9c3beca998d11268e660ea",
+            "_id": "5c9d8f02a998d11268e66143",
             "desc": "公司(商家)ID",
             "example": "1",
             "name": "company",
             "required": "1"
           },
           {
-            "_id": "5c9c3beca998d11268e660e9",
+            "_id": "5c9d8f02a998d11268e66142",
             "desc": "{all, name,phone,linkMan,type,flag,employee,area,depot}",
             "example": "",
             "name": "likes",
             "required": "0"
           },
           {
-            "_id": "5c9c3beca998d11268e660e8",
+            "_id": "5c9d8f02a998d11268e66141",
             "desc": "",
             "example": "",
             "name": "id",
             "required": "0"
           },
           {
-            "_id": "5c9c3beca998d11268e660e7",
+            "_id": "5c9d8f02a998d11268e66140",
             "desc": "",
             "example": "",
             "name": "cid",
             "required": "0"
           },
           {
-            "_id": "5c9c3beca998d11268e660e6",
+            "_id": "5c9d8f02a998d11268e6613f",
             "desc": "",
             "example": "",
             "name": "openid",
             "required": "0"
           },
           {
-            "_id": "5c9c3beca998d11268e660e5",
+            "_id": "5c9d8f02a998d11268e6613e",
             "desc": "",
             "example": "",
             "name": "start",
             "required": "0"
           },
           {
-            "_id": "5c9c3beca998d11268e660e4",
+            "_id": "5c9d8f02a998d11268e6613d",
             "desc": "",
             "example": "",
             "name": "len",
             "required": "0"
           },
           {
-            "_id": "5c9c3beca998d11268e660e3",
+            "_id": "5c9d8f02a998d11268e6613c",
             "desc": "创建时间_开始",
             "example": "2019-02-18 22:19:34",
             "name": "create_timeB",
             "required": "0"
           },
           {
-            "_id": "5c9c3beca998d11268e660e2",
+            "_id": "5c9d8f02a998d11268e6613b",
             "desc": "创建时间_截止",
             "example": "2019-02-18 22:19:34",
             "name": "create_timeE",
@@ -112,10 +112,10 @@
         "res_body_type": "json",
         "uid": 14,
         "add_time": 1553743704,
-        "up_time": 1553825528,
+        "up_time": 1554110186,
         "__v": 0,
-        "markdown": "通过商家ID，员工ID，获取所有会员的总数量\n<span class=\"colour\" style=\"color:rgb(86, 156, 214)\">let</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">=</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(206, 145, 120)\">\\` select count\\(id\\) as num from customer where flag \\!= 1 and company =? \\`</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">;</span>\n<span class=\"colour\" style=\"color:rgb(197, 134, 192)\">return</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(197, 134, 192)\">await</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">db</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(220, 220, 170)\">simple</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">(</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">,</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">params</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">company</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">);</span>",
-        "desc": "<p>通过商家ID，员工ID，获取所有会员的总数量<br>\n<span class=\"colour\" style=\"color:rgb(86, 156, 214)\">let</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">=</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(206, 145, 120)\">` select count(id) as num from customer where flag != 1 and company =? `</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">;</span><br>\n<span class=\"colour\" style=\"color:rgb(197, 134, 192)\">return</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(197, 134, 192)\">await</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">db</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(220, 220, 170)\">simple</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">(</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">,</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">params</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">company</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">);</span></p>\n",
+        "markdown": "通过商家ID，员工ID，获取所有会员的总数量\n<span class=\"colour\" style=\"color:rgb(86, 156, 214)\">let</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">=</span><span class=\"colour\" style=\"color:rgb(206, 145, 120)\">`select count(id) as num from customer where flag != 1 and company =?  and employee =?`</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">;</span>\n<span class=\"colour\" style=\"color:rgb(197, 134, 192)\">return</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(197, 134, 192)\">await</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">db</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(220, 220, 170)\">simple</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">(</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">,</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">params</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">company</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">);</span>",
+        "desc": "<p>通过商家ID，员工ID，获取所有会员的总数量<br>\n<span class=\"colour\" style=\"color:rgb(86, 156, 214)\">let</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">=</span><span class=\"colour\" style=\"color:rgb(206, 145, 120)\"><code data-backticks=\"1\">select count(id) as num from customer where flag != 1 and company =?&nbsp; and employee =?</code></span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">;</span><br>\n<span class=\"colour\" style=\"color:rgb(197, 134, 192)\">return</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(197, 134, 192)\">await</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">db</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(220, 220, 170)\">simple</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">(</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">,</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">params</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">company</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">);</span></p>\n",
         "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"num\":{\"type\":\"number\"}}}}}}}}",
         "tag": [],
         "index": 0,
@@ -127,14 +127,14 @@
         "req_headers": [],
         "req_query": [
           {
-            "_id": "5c9d7ef8a998d11268e6611d",
+            "_id": "5ca1d6eaa998d11268e6617b",
             "desc": "公司「商家」ID",
             "example": "1",
             "name": "company",
             "required": "1"
           },
           {
-            "_id": "5c9d7ef8a998d11268e6611c",
+            "_id": "5ca1d6eaa998d11268e6617a",
             "desc": "所属员工ID",
             "example": "1",
             "name": "employee",
@@ -1103,11 +1103,11 @@
         "res_body_type": "json",
         "uid": 47,
         "add_time": 1552024836,
-        "up_time": 1552615080,
+        "up_time": 1553830096,
         "__v": 0,
         "markdown": "",
         "desc": "",
-        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{}}",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"string\",\"description\":\"1成功 0失败\"}},\"required\":[\"code\"]}",
         "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"type\":{\"type\":\"string\",\"description\":\"类型名称\"},\"reremarks\":{\"type\":\"string\",\"description\":\"备注\"},\"returnPro\":{\"type\":\"number\",\"description\":\"平台抽佣比例\"},\"tMaoPro\":{\"type\":\"number\",\"description\":\"天猫抽佣比例\"},\"jDongPro\":{\"type\":\"number\",\"description\":\"京东抽佣比例\"},\"sNingPro\":{\"type\":\"number\",\"description\":\"苏宁抽佣比例\"},\"tAobaoPro\":{\"type\":\"string\",\"description\":\"淘宝抽佣比例\"}},\"required\":[\"type\",\"sNingPro\",\"jDongPro\",\"tMaoPro\",\"returnPro\",\"tAobaoPro\"]}",
         "req_body_type": "json",
         "tag": [],
@@ -1116,13 +1116,13 @@
         "res_body_is_json_schema": true,
         "req_body_form": [
           {
-            "_id": "5c8b06a82c11a2126f378444",
+            "_id": "5c9d90d0a998d11268e6616a",
             "type": "text",
             "name": "type",
             "required": "1"
           },
           {
-            "_id": "5c8b06a82c11a2126f378443",
+            "_id": "5c9d90d0a998d11268e66169",
             "desc": "",
             "example": "",
             "type": "text",
@@ -1130,7 +1130,7 @@
             "required": "1"
           },
           {
-            "_id": "5c8b06a82c11a2126f378442",
+            "_id": "5c9d90d0a998d11268e66168",
             "desc": "",
             "example": "",
             "type": "text",
@@ -1138,7 +1138,7 @@
             "required": "1"
           },
           {
-            "_id": "5c8b06a82c11a2126f378441",
+            "_id": "5c9d90d0a998d11268e66167",
             "desc": "",
             "example": "",
             "type": "text",
@@ -1146,7 +1146,7 @@
             "required": "1"
           },
           {
-            "_id": "5c8b06a82c11a2126f378440",
+            "_id": "5c9d90d0a998d11268e66166",
             "desc": "",
             "example": "",
             "type": "text",
@@ -1158,7 +1158,7 @@
         "req_params": [],
         "req_headers": [
           {
-            "_id": "5c8b06a82c11a2126f37843f",
+            "_id": "5c9d90d0a998d11268e66165",
             "value": "application/json",
             "name": "Content-Type",
             "required": "1"
@@ -1183,27 +1183,27 @@
         "res_body_type": "json",
         "uid": 47,
         "add_time": 1552029977,
-        "up_time": 1552615379,
+        "up_time": 1553830116,
         "__v": 0,
         "markdown": "",
         "desc": "",
-        "res_body": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"string\",\"description\":\"1成功 0失败\"}},\"required\":[\"code\"]}",
         "req_body_type": "json",
         "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"typeId\":{\"type\":\"string\",\"description\":\"商家类型ID\"},\"type\":{\"type\":\"string\",\"description\":\"商家类型\"},\"reremarks\":{\"type\":\"string\",\"description\":\"备注\"},\"returnPro\":{\"type\":\"string\",\"description\":\"平台抽佣比例\"},\"tMaoPro\":{\"type\":\"string\",\"description\":\"天猫抽佣比例\"},\"jDongPro\":{\"type\":\"string\",\"description\":\"京东抽佣比例\"},\"sNingPro\":{\"type\":\"string\",\"description\":\"苏宁抽佣比例\"},\"tAobaoPro\":{\"type\":\"string\",\"description\":\"淘宝抽佣比例\"}},\"required\":[\"typeId\",\"type\",\"sNingPro\",\"jDongPro\",\"tMaoPro\",\"returnPro\",\"tAobaoPro\"]}",
         "tag": [],
         "index": 5,
         "api_opened": false,
-        "res_body_is_json_schema": false,
+        "res_body_is_json_schema": true,
         "req_body_form": [
           {
-            "_id": "5c8b07d32c11a2126f37844c",
+            "_id": "5c9d90e4a998d11268e66172",
             "desc": "商家ID",
             "type": "text",
             "name": "id",
             "required": "1"
           },
           {
-            "_id": "5c8b07d32c11a2126f37844b",
+            "_id": "5c9d90e4a998d11268e66171",
             "desc": "商家类型",
             "example": "",
             "type": "text",
@@ -1211,7 +1211,7 @@
             "required": "1"
           },
           {
-            "_id": "5c8b07d32c11a2126f37844a",
+            "_id": "5c9d90e4a998d11268e66170",
             "desc": "备注",
             "example": "",
             "type": "text",
@@ -1219,7 +1219,7 @@
             "required": "0"
           },
           {
-            "_id": "5c8b07d32c11a2126f378449",
+            "_id": "5c9d90e4a998d11268e6616f",
             "desc": "分销返佣比例",
             "example": "",
             "type": "text",
@@ -1227,7 +1227,7 @@
             "required": "1"
           },
           {
-            "_id": "5c8b07d32c11a2126f378448",
+            "_id": "5c9d90e4a998d11268e6616e",
             "desc": "天猫抽佣比例",
             "example": "",
             "type": "text",
@@ -1235,7 +1235,7 @@
             "required": "1"
           },
           {
-            "_id": "5c8b07d32c11a2126f378447",
+            "_id": "5c9d90e4a998d11268e6616d",
             "desc": "京东抽佣比例",
             "example": "",
             "type": "text",
@@ -1243,7 +1243,7 @@
             "required": "1"
           },
           {
-            "_id": "5c8b07d32c11a2126f378446",
+            "_id": "5c9d90e4a998d11268e6616c",
             "desc": "苏宁抽佣比例",
             "example": "",
             "type": "text",
@@ -1255,7 +1255,7 @@
         "req_params": [],
         "req_headers": [
           {
-            "_id": "5c8b07d32c11a2126f378445",
+            "_id": "5c9d90e4a998d11268e6616b",
             "value": "application/json",
             "name": "Content-Type",
             "required": "1"
@@ -1280,22 +1280,22 @@
         "res_body_type": "json",
         "uid": 47,
         "add_time": 1552031411,
-        "up_time": 1552615454,
+        "up_time": 1553830132,
         "__v": 0,
         "markdown": "",
         "desc": "",
-        "res_body": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"string\",\"description\":\"1成功 0失败\"}},\"required\":[\"code\"]}",
         "tag": [],
         "index": 6,
         "api_opened": false,
-        "res_body_is_json_schema": false,
+        "res_body_is_json_schema": true,
         "req_body_form": [],
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
         "req_query": [
           {
-            "_id": "5c8b081ea998d11268e65d36",
+            "_id": "5c9d90f42c11a2126f3787a2",
             "desc": "商家类型的唯一ID",
             "name": "typeId",
             "required": "1"
@@ -1328,7 +1328,7 @@
         "res_body_type": "json",
         "uid": 50,
         "add_time": 1552899375,
-        "up_time": 1553741367,
+        "up_time": 1554110758,
         "__v": 0,
         "markdown": "",
         "desc": "",
@@ -1343,24 +1343,38 @@
         "req_headers": [],
         "req_query": [
           {
-            "_id": "5c9c3637a998d11268e660de",
+            "_id": "5ca1d9262c11a2126f3787d6",
             "desc": "客户姓名 手机号",
             "example": "",
             "name": "all",
             "required": "0"
           },
           {
-            "_id": "5c9c3637a998d11268e660dd",
+            "_id": "5ca1d9262c11a2126f3787d5",
             "desc": "客户类型",
             "example": " ",
             "name": "type",
             "required": "1"
           },
           {
-            "_id": "5c9c3637a998d11268e660dc",
+            "_id": "5ca1d9262c11a2126f3787d4",
             "desc": "起始时间",
-            "example": "[\"2019-03-21T16:00:00.000Z\",\"2019-04-15T16:00:00.000Z\"]",
+            "example": "[\"2019-03-21T16",
             "name": "date",
+            "required": "1"
+          },
+          {
+            "_id": "5ca1d9262c11a2126f3787d3",
+            "desc": "起始条数",
+            "example": "",
+            "name": "from",
+            "required": "1"
+          },
+          {
+            "_id": "5ca1d9262c11a2126f3787d2",
+            "desc": "长度",
+            "example": "",
+            "name": "len",
             "required": "1"
           }
         ],
@@ -2224,18 +2238,18 @@
         "_id": 396,
         "method": "POST",
         "catid": 49,
-        "title": "钱包冲值_微信",
+        "title": "钱包充值_微信",
         "path": "/finance/saveMoneyByWX",
         "project_id": 12,
         "res_body_type": "json",
-        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"accountId\":{\"type\":\"string\",\"description\":\"账户ID\",\"mock\":{\"mock\":\"1\"}},\"money\":{\"type\":\"number\",\"description\":\"冲值金额\"}},\"required\":[\"accountId\",\"money\"]}",
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"account_id\":{\"type\":\"string\",\"description\":\"账户ID\",\"mock\":{\"mock\":\"1\"}},\"money\":{\"type\":\"number\",\"description\":\"冲值金额\"},\"flow_code\":{\"type\":\"string\",\"description\":\"流水号\"}},\"required\":[\"account_id\",\"money\",\"flow_code\"]}",
         "markdown": "",
         "desc": "",
         "res_body": "{\n   \"type\": \"object\",\n   \"title\": \"empty object\",\n   \"properties\": {}\n}",
         "req_body_type": "json",
         "uid": 14,
         "add_time": 1553651038,
-        "up_time": 1553651388,
+        "up_time": 1554112258,
         "__v": 0,
         "tag": [],
         "index": 0,
@@ -2243,7 +2257,7 @@
         "res_body_is_json_schema": false,
         "req_body_form": [
           {
-            "_id": "5c9ad6bca998d11268e66070",
+            "_id": "5ca1df022c11a2126f3787d9",
             "desc": "账户ID",
             "example": "1",
             "type": "text",
@@ -2251,7 +2265,7 @@
             "required": "1"
           },
           {
-            "_id": "5c9ad6bca998d11268e6606f",
+            "_id": "5ca1df022c11a2126f3787d8",
             "desc": "支付密码",
             "example": "abcdefg",
             "type": "text",
@@ -2263,7 +2277,7 @@
         "req_params": [],
         "req_headers": [
           {
-            "_id": "5c9ad6bca998d11268e6606e",
+            "_id": "5ca1df022c11a2126f3787d7",
             "value": "application/json",
             "name": "Content-Type",
             "required": "1"
@@ -2282,18 +2296,18 @@
         "_id": 400,
         "method": "POST",
         "catid": 49,
-        "title": "钱包冲值_支付宝",
+        "title": "钱包充值_支付宝",
         "path": "/finance/saveMoneyByalipay",
         "project_id": 12,
         "res_body_type": "json",
-        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"accountId\":{\"type\":\"string\",\"description\":\"账户ID\",\"mock\":{\"mock\":\"1\"}},\"money\":{\"type\":\"number\",\"description\":\"冲值金额\"}},\"required\":[\"accountId\",\"money\"]}",
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"account_id\":{\"type\":\"string\",\"description\":\"账户ID\",\"mock\":{\"mock\":\"1\"}},\"money\":{\"type\":\"number\",\"description\":\"冲值金额\"},\"flow_code\":{\"type\":\"string\",\"description\":\"流水号\"}},\"required\":[\"account_id\",\"money\",\"flow_code\"]}",
         "markdown": "",
         "desc": "",
         "res_body": "{\n   \"type\": \"object\",\n   \"title\": \"empty object\",\n   \"properties\": {}\n}",
         "req_body_type": "json",
         "uid": 14,
         "add_time": 1553651187,
-        "up_time": 1553651424,
+        "up_time": 1554112379,
         "__v": 0,
         "tag": [],
         "index": 0,
@@ -2301,7 +2315,7 @@
         "res_body_is_json_schema": false,
         "req_body_form": [
           {
-            "_id": "5c9ad6e02c11a2126f37869e",
+            "_id": "5ca1df7ba998d11268e6617e",
             "desc": "账户ID",
             "example": "1",
             "type": "text",
@@ -2309,7 +2323,7 @@
             "required": "1"
           },
           {
-            "_id": "5c9ad6e02c11a2126f37869d",
+            "_id": "5ca1df7ba998d11268e6617d",
             "desc": "支付密码",
             "example": "abcdefg",
             "type": "text",
@@ -2321,7 +2335,7 @@
         "req_params": [],
         "req_headers": [
           {
-            "_id": "5c9ad6e02c11a2126f37869c",
+            "_id": "5ca1df7ba998d11268e6617c",
             "value": "application/json",
             "name": "Content-Type",
             "required": "1"
@@ -2581,18 +2595,18 @@
     "index": 0,
     "list": [
       {
-        "_id": 435,
+        "_id": 453,
         "method": "POST",
         "catid": 53,
-        "title": "批量收货",
-        "path": "/depots/receivingGoods",
+        "title": "新增仓库区域",
+        "path": "/depots/addArea",
         "project_id": 12,
         "res_body_type": "json",
         "uid": 53,
-        "add_time": 1553759638,
-        "up_time": 1553760229,
+        "add_time": 1554101412,
+        "up_time": 1554101737,
         "__v": 0,
-        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"goodsId\":{\"type\":\"string\",\"mock\":{\"mock\":\"1121\"},\"description\":\"商品编号\"},\"acceptInfo\":{\"type\":\"object\",\"properties\":{\"receiveNum \":{\"type\":\"number\",\"mock\":{\"mock\":\"10\"},\"description\":\"收货数量\"},\"inDepotLocation\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"入库库位\"},\"batchNumber\":{\"type\":\"string\",\"mock\":{\"mock\":\"121\"},\"description\":\"批次号\"},\"producDate\":{\"type\":\"string\",\"mock\":{\"mock\":\"2019-09-09\"},\"description\":\"生产日期\"},\"shelfLife\":{\"type\":\"number\",\"mock\":{\"mock\":\"12\"},\"description\":\"保质期\"},\"invalidDate\":{\"type\":\"string\",\"mock\":{\"mock\":\"2019-09-09\"},\"description\":\"失效日期\"},\"qualityState\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"质量状态\"}},\"description\":\"收货信息\",\"required\":[\"receiveNum \",\"inDepotLocation\",\"batchNumber\",\"producDate\",\"shelfLife\",\"invalidDate\",\"qualityState\"]}},\"required\":[\"goodsId\",\"acceptInfo\"]}}},\"required\":[\"likes\"]}",
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"belongsDepot\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"所属仓库\"},\"sellStock\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"是否是可售库存\"},\"areaCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"12121\"},\"description\":\"区域编码\"},\"capacity\":{\"type\":\"number\",\"mock\":{\"mock\":\"1212\"},\"description\":\"容量上限\"},\"areaType\":{\"type\":\"number\",\"mock\":{\"mock\":\"112\"},\"description\":\"区域类型\"},\"handleOrder\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"作业顺序\"},\"usedMethod\":{\"type\":\"string\",\"mock\":{\"mock\":\"撒大声地所多所多\"},\"description\":\"使用方式\"},\"openStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"是否启用区域\"}},\"required\":[\"belongsDepot\",\"sellStock\",\"areaCode\",\"capacity\",\"areaType\",\"handleOrder\",\"usedMethod\",\"openStatus\"]}},\"required\":[\"likes\"]}",
         "markdown": "",
         "desc": "",
         "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
@@ -2606,7 +2620,7 @@
         "req_params": [],
         "req_headers": [
           {
-            "_id": "5c9c7fe5a998d11268e660f4",
+            "_id": "5ca1b5e9a998d11268e66177",
             "value": "application/json",
             "name": "Content-Type",
             "required": "1"
@@ -2614,7 +2628,7 @@
         ],
         "req_query": [],
         "query_path": {
-          "path": "/depots/receivingGoods",
+          "path": "/depots/addArea",
           "params": []
         },
         "type": "static",
@@ -2738,6 +2752,129 @@
         "req_query": [],
         "query_path": {
           "path": "/depots/outBillAllotAgain",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 447,
+        "method": "POST",
+        "catid": 53,
+        "title": "删除仓库",
+        "path": "/depots/deleteDepot",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1554086655,
+        "up_time": 1554086775,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"depotCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"001\"},\"description\":\"仓库编码\"}},\"required\":[\"depotCode\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca17b772c11a2126f3787c7",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/deleteDepot",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 452,
+        "method": "POST",
+        "catid": 53,
+        "title": "删除区域配置",
+        "path": "/depots/deleteArea",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1554099146,
+        "up_time": 1554099217,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"areaCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"1121\"},\"description\":\"区域编码\"}},\"required\":[\"areaCode\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca1ac112c11a2126f3787ca",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/deleteArea",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 460,
+        "method": "POST",
+        "catid": 53,
+        "title": "删除库区",
+        "path": "/depots/deleteDepotArea",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1554110485,
+        "up_time": 1554110573,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"depotAreaCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"2323\"},\"description\":\"库区编码\"}},\"required\":[\"depotAreaCode\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca1d86d2c11a2126f3787cc",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/deleteDepotArea",
           "params": []
         },
         "type": "static",
@@ -2991,18 +3128,18 @@
         "edit_uid": 0
       },
       {
-        "_id": 375,
+        "_id": 435,
         "method": "POST",
         "catid": 53,
-        "title": "出库单分配",
-        "path": "/depots/outBillAllot",
+        "title": "批量收货",
+        "path": "/depots/receivingGoods",
         "project_id": 12,
         "res_body_type": "json",
         "uid": 53,
-        "add_time": 1553584519,
-        "up_time": 1553585022,
+        "add_time": 1553759638,
+        "up_time": 1553760229,
         "__v": 0,
-        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"goodsId\":{\"type\":\"string\",\"mock\":{\"mock\":\"12\"},\"description\":\"商品编号\"},\"allotInfo\":{\"type\":\"object\",\"properties\":{\"allotNum\":{\"type\":\"number\",\"description\":\"分配数目\",\"mock\":{\"mock\":\"12\"}},\"depotLocation\":{\"type\":\"number\",\"description\":\"出库库位\",\"mock\":{\"mock\":\"2\"}},\"batchNumber\":{\"type\":\"string\",\"mock\":{\"mock\":\"A111\"},\"description\":\"批次号\"},\"receivingDate\":{\"type\":\"string\",\"description\":\"收货时间\",\"mock\":{\"mock\":\"2019-09-09\"}},\"producDate\":{\"type\":\"string\",\"mock\":{\"mock\":\"2019-09-09\"},\"description\":\"生产日期\"},\"invalidDate\":{\"type\":\"string\",\"mock\":{\"mock\":\"2019-09-09\"},\"description\":\"失效日期\"},\"qualityState\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"质量状态\"}},\"description\":\"分配信息\",\"required\":[\"allotNum\",\"depotLocation\",\"batchNumber\",\"receivingDate\",\"producDate\",\"invalidDate\",\"qualityState\"]}},\"required\":[\"goodsId\",\"allotInfo\"]}}},\"required\":[\"likes\"]}",
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"goodsId\":{\"type\":\"string\",\"mock\":{\"mock\":\"1121\"},\"description\":\"商品编号\"},\"acceptInfo\":{\"type\":\"object\",\"properties\":{\"receiveNum \":{\"type\":\"number\",\"mock\":{\"mock\":\"10\"},\"description\":\"收货数量\"},\"inDepotLocation\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"入库库位\"},\"batchNumber\":{\"type\":\"string\",\"mock\":{\"mock\":\"121\"},\"description\":\"批次号\"},\"producDate\":{\"type\":\"string\",\"mock\":{\"mock\":\"2019-09-09\"},\"description\":\"生产日期\"},\"shelfLife\":{\"type\":\"number\",\"mock\":{\"mock\":\"12\"},\"description\":\"保质期\"},\"invalidDate\":{\"type\":\"string\",\"mock\":{\"mock\":\"2019-09-09\"},\"description\":\"失效日期\"},\"qualityState\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"质量状态\"}},\"description\":\"收货信息\",\"required\":[\"receiveNum \",\"inDepotLocation\",\"batchNumber\",\"producDate\",\"shelfLife\",\"invalidDate\",\"qualityState\"]}},\"required\":[\"goodsId\",\"acceptInfo\"]}}},\"required\":[\"likes\"]}",
         "markdown": "",
         "desc": "",
         "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
@@ -3016,7 +3153,7 @@
         "req_params": [],
         "req_headers": [
           {
-            "_id": "5c99d37ea998d11268e66048",
+            "_id": "5c9c7fe5a998d11268e660f4",
             "value": "application/json",
             "name": "Content-Type",
             "required": "1"
@@ -3024,7 +3161,7 @@
         ],
         "req_query": [],
         "query_path": {
-          "path": "/depots/outBillAllot",
+          "path": "/depots/receivingGoods",
           "params": []
         },
         "type": "static",
@@ -3066,6 +3203,211 @@
         "req_query": [],
         "query_path": {
           "path": "/depots/backToNotpick",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 441,
+        "method": "POST",
+        "catid": 53,
+        "title": "新增仓库",
+        "path": "/depots/addDepots",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1553845209,
+        "up_time": 1553846088,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"depotCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"1122\"},\"description\":\"仓库编码\"},\"depotName\":{\"type\":\"string\",\"mock\":{\"mock\":\"江宁总库\"},\"description\":\"仓库名称\"},\"depotLinkmanName\":{\"type\":\"string\",\"mock\":{\"mock\":\"老刘\"},\"description\":\"仓库联系人\"},\"telephoneNum\":{\"type\":\"string\",\"mock\":{\"mock\":\"019-2222222\"},\"description\":\"联系人电话\"},\"province\":{\"type\":\"string\",\"mock\":{\"mock\":\"江苏省\"},\"description\":\"仓库所在省份\"},\"city\":{\"type\":\"string\",\"mock\":{\"mock\":\"南京市\"},\"description\":\"仓库所在市\"},\"area\":{\"type\":\"string\",\"mock\":{\"mock\":\"江宁区\"},\"description\":\"仓库所在区\"},\"depotAddress\\t\":{\"type\":\"string\",\"description\":\"仓库地址\\t\",\"mock\":{\"mock\":\"南京市雨花台区\"}},\"goodsQualityStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"商品质量状态\"},\"pickingRules\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"拣货规则\"},\"remarks\":{\"type\":\"string\",\"mock\":{\"mock\":\"撒大声地所\"},\"description\":\"备注\"},\"openStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"开启状态\"},\"longitude\":{\"type\":\"string\",\"mock\":{\"mock\":\"2121.212121\"},\"description\":\"经度\"},\"latitude\":{\"type\":\"string\",\"description\":\"纬度\",\"mock\":{\"mock\":\"21.898888\"}}},\"required\":[\"depotCode\",\"depotName\",\"depotLinkmanName\",\"telephoneNum\",\"province\",\"city\",\"area\",\"depotAddress\\t\",\"goodsQualityStatus\",\"pickingRules\",\"remarks\",\"openStatus\",\"longitude\",\"latitude\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9dcf48a998d11268e66174",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/addDepots",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 375,
+        "method": "POST",
+        "catid": 53,
+        "title": "出库单分配",
+        "path": "/depots/outBillAllot",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1553584519,
+        "up_time": 1553585022,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"goodsId\":{\"type\":\"string\",\"mock\":{\"mock\":\"12\"},\"description\":\"商品编号\"},\"allotInfo\":{\"type\":\"object\",\"properties\":{\"allotNum\":{\"type\":\"number\",\"description\":\"分配数目\",\"mock\":{\"mock\":\"12\"}},\"depotLocation\":{\"type\":\"number\",\"description\":\"出库库位\",\"mock\":{\"mock\":\"2\"}},\"batchNumber\":{\"type\":\"string\",\"mock\":{\"mock\":\"A111\"},\"description\":\"批次号\"},\"receivingDate\":{\"type\":\"string\",\"description\":\"收货时间\",\"mock\":{\"mock\":\"2019-09-09\"}},\"producDate\":{\"type\":\"string\",\"mock\":{\"mock\":\"2019-09-09\"},\"description\":\"生产日期\"},\"invalidDate\":{\"type\":\"string\",\"mock\":{\"mock\":\"2019-09-09\"},\"description\":\"失效日期\"},\"qualityState\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"质量状态\"}},\"description\":\"分配信息\",\"required\":[\"allotNum\",\"depotLocation\",\"batchNumber\",\"receivingDate\",\"producDate\",\"invalidDate\",\"qualityState\"]}},\"required\":[\"goodsId\",\"allotInfo\"]}}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c99d37ea998d11268e66048",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/outBillAllot",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 461,
+        "method": "POST",
+        "catid": 53,
+        "title": "新增库区",
+        "path": "/depots/addDepotArea",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1554112986,
+        "up_time": 1554113372,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"belongsDepot\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"所属仓库\"},\"splitPickBillStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"是否拆分拣货工单\"},\"belongsArea\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"所属区域\"},\"header\":{\"type\":\"string\",\"description\":\"拣货负责人\",\"mock\":{\"mock\":\"王了\"}},\"depotAreaCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"1123\"},\"description\":\"库区编码\"},\"capacity\":{\"type\":\"string\",\"mock\":{\"mock\":\"2000\"},\"description\":\"容量上限\"},\"depotAreaType\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"库区类型\"},\"handleOrder\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"作业顺序\"},\"usedMethod\":{\"type\":\"string\",\"description\":\"使用方式\",\"mock\":{\"mock\":\"实打实大所大所\"}},\"remark\":{\"type\":\"string\",\"description\":\"备注\",\"mock\":{\"mock\":\"的点点滴滴\"}},\"openStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"启用状态\"}},\"required\":[\"belongsDepot\",\"splitPickBillStatus\",\"belongsArea\",\"header\",\"depotAreaCode\",\"capacity\",\"depotAreaType\",\"handleOrder\",\"usedMethod\",\"remark\",\"openStatus\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca1e35ca998d11268e6617f",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/addDepotArea",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 446,
+        "method": "POST",
+        "catid": 53,
+        "title": "更新仓库信息",
+        "path": "/depots/updataDepotInfo",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1553854437,
+        "up_time": 1554085849,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"depotCode\":{\"type\":\"string\",\"description\":\"仓库编码\",\"mock\":{\"mock\":\"1212\"}},\"depotName\":{\"type\":\"string\",\"description\":\"仓库名称\",\"mock\":{\"mock\":\"江宁总库\"}},\"depotLinkmanName\":{\"type\":\"string\",\"description\":\"仓库联系人\",\"mock\":{\"mock\":\"开始\"}},\"telephoneNum\":{\"type\":\"string\",\"mock\":{\"mock\":\"019-2222222\"},\"description\":\"联系人电话\"},\"province\":{\"type\":\"string\",\"description\":\"仓库所在省份\",\"mock\":{\"mock\":\"江苏省\"}},\"city\":{\"type\":\"string\",\"description\":\"仓库所在市\",\"mock\":{\"mock\":\"南京市\"}},\"area\":{\"type\":\"string\",\"description\":\"仓库所在区\",\"mock\":{\"mock\":\"江宁区\"}},\"depotAddress\":{\"type\":\"string\",\"description\":\"仓库地址\\t\",\"mock\":{\"mock\":\"南京市雨花台区\"}},\"goodsQualityStatus\":{\"type\":\"number\",\"description\":\"商品质量状态\",\"mock\":{\"mock\":\"1\"}},\"pickingRules\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"拣货规则\"},\"remarks\":{\"type\":\"string\",\"description\":\"备注\",\"mock\":{\"mock\":\"撒大声地所\"}},\"openStatus\":{\"type\":\"string\",\"description\":\"开启状态\",\"mock\":{\"mock\":\"1\"}},\"longitude\":{\"type\":\"string\",\"description\":\"经度\",\"mock\":{\"mock\":\"2121.212121\"}},\"latitude\":{\"type\":\"string\",\"description\":\"纬度\",\"mock\":{\"mock\":\"21.898888\"}}},\"required\":[\"depotCode\",\"depotName\",\"depotLinkmanName\",\"telephoneNum\",\"province\",\"city\",\"area\",\"depotAddress\",\"goodsQualityStatus\",\"pickingRules\",\"remarks\",\"openStatus\",\"longitude\",\"latitude\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca177d92c11a2126f3787c6",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/updataDepotInfo",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 458,
+        "method": "POST",
+        "catid": 53,
+        "title": "更新仓库区域信息",
+        "path": "/depots/updataAreaInfo",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1554105134,
+        "up_time": 1554105393,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"belongsDepot\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"所属仓库\"},\"sellStock\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"是否是可售库存\"},\"areaCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"12121\"},\"description\":\"区域编码\"},\"capacity\":{\"type\":\"number\",\"description\":\"容量上限\",\"mock\":{\"mock\":\"222\"}},\"areaType\":{\"type\":\"number\",\"description\":\"区域类型\",\"mock\":{\"mock\":\"2\"}},\"handleOrder\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"作业顺序\"},\"usedMethod\":{\"type\":\"string\",\"description\":\"使用方式\",\"mock\":{\"mock\":\"对方水电费水电费单\"}},\"openStatus\":{\"type\":\"number\",\"description\":\"是否启用区域\",\"mock\":{\"mock\":\"2\"}}},\"required\":[\"belongsDepot\",\"areaCode\",\"capacity\",\"areaType\",\"handleOrder\",\"usedMethod\",\"openStatus\",\"sellStock\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca1c4312c11a2126f3787cb",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/updataAreaInfo",
           "params": []
         },
         "type": "static",
@@ -3196,6 +3538,88 @@
         "edit_uid": 0
       },
       {
+        "_id": 439,
+        "method": "POST",
+        "catid": 53,
+        "title": "获取仓库列表",
+        "path": "/depots/getDepotsList",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1553829379,
+        "up_time": 1553841165,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"start\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"},\"description\":\"开始页数\"},\"len\":{\"type\":\"number\",\"mock\":{\"mock\":\"10\"},\"description\":\"每页条数\"},\"likes\":{\"type\":\"object\",\"properties\":{\"depot\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"仓库名称\"}},\"required\":[\"depot\"]}},\"required\":[\"start\",\"len\",\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"depotCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"001\"},\"description\":\"仓库编码\"},\"depotName\":{\"type\":\"string\",\"mock\":{\"mock\":\"江宁总库\"},\"description\":\"仓库名称\"},\"depotLinkmanName\":{\"type\":\"string\",\"mock\":{\"mock\":\"老刘\"},\"description\":\"仓库联系人\"},\"telephoneNum\":{\"type\":\"string\",\"mock\":{\"mock\":\"019-2222222\"},\"description\":\"联系人电话\"},\"depotArea\":{\"type\":\"string\",\"mock\":{\"mock\":\"南京市\"},\"description\":\"仓库区域\"},\"depotAddress\":{\"type\":\"string\",\"mock\":{\"mock\":\"南京市雨花台区\"},\"description\":\"仓库地址\"},\"goodsQualityStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"商品质量状态\"},\"pickingRules\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"拣货规则\"},\"remarks\":{\"type\":\"string\",\"mock\":{\"mock\":\"科勒卡戴珊的\"},\"description\":\"备注\"},\"openStatus\":{\"type\":\"number\",\"description\":\"开启状态\",\"mock\":{\"mock\":\"1\"}},\"longitude\":{\"type\":\"string\",\"description\":\"经度\"},\"latitude\":{\"type\":\"string\",\"description\":\"纬度\"}},\"required\":[\"depotCode\",\"depotName\",\"depotLinkmanName\",\"telephoneNum\",\"depotArea\",\"depotAddress\",\"goodsQualityStatus\",\"pickingRules\",\"remarks\",\"openStatus\",\"longitude\",\"latitude\"]}}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9dbc0d2c11a2126f3787b4",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/getDepotsList",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 445,
+        "method": "POST",
+        "catid": 53,
+        "title": "获取仓库详情",
+        "path": "/depots/getDepotDetail",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1553851716,
+        "up_time": 1553853273,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"depotCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"121212\"},\"description\":\"仓库编号\"}},\"required\":[\"depotCode\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"depotCode\":{\"type\":\"string\",\"description\":\"仓库编码\",\"mock\":{\"mock\":\"002\"}},\"depotName\":{\"type\":\"string\",\"mock\":{\"mock\":\"江宁总库\"},\"description\":\"仓库名称\"},\"depotLinkmanName\":{\"type\":\"string\",\"description\":\"仓库联系人\",\"mock\":{\"mock\":\"老刘\"}},\"telephoneNum\":{\"type\":\"string\",\"mock\":{\"mock\":\"17899999999\"},\"description\":\"联系人电话\"},\"provinceAndCity\":{\"type\":\"string\",\"description\":\"仓库区域\",\"mock\":{\"mock\":\"10,162,2037\"}},\"depotAddress\":{\"type\":\"string\",\"mock\":{\"mock\":\"南京市雨花台区\"},\"description\":\"仓库详细地址\"},\"goodsQualityStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"商品质量状态\"},\"pickingRules\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"拣货规则\"},\"remarks\":{\"type\":\"string\",\"mock\":{\"mock\":\"撒大声地所多\"},\"description\":\"备注\"},\"openStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"开启状态\"},\"longitude\":{\"type\":\"string\",\"mock\":{\"mock\":\"23.22222\"},\"description\":\"经度\"},\"latitude\":{\"type\":\"string\",\"mock\":{\"mock\":\"222.33333\"},\"description\":\"纬度\"}},\"required\":[\"depotCode\",\"depotName\",\"depotLinkmanName\",\"telephoneNum\",\"provinceAndCity\",\"depotAddress\",\"goodsQualityStatus\",\"pickingRules\",\"remarks\",\"openStatus\",\"longitude\",\"latitude\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9deb59a998d11268e66175",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/getDepotDetail",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
         "_id": 414,
         "method": "POST",
         "catid": 53,
@@ -3271,6 +3695,129 @@
         "req_query": [],
         "query_path": {
           "path": "/depots/getOutBiiList",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 451,
+        "method": "POST",
+        "catid": 53,
+        "title": "获取区域列表",
+        "path": "/depots/getAreaList",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1554089759,
+        "up_time": 1554091046,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"belongsDepot\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"所属仓库\"},\"areaType\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"区域类型\"}}},\"start\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"},\"description\":\"开始页数\"},\"len\":{\"type\":\"number\",\"mock\":{\"mock\":\"10\"},\"description\":\"每页条数\"}},\"required\":[\"likes\",\"start\",\"len\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"areaCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"1122\"},\"description\":\"区域编码\"},\"areaType\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"区域类型\"},\"usedMethod\":{\"type\":\"string\",\"description\":\"使用方式\",\"mock\":{\"mock\":\"实打实大V订单\"}},\"belongsDepot\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"所属仓库\"},\"openStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"启用状态\"},\"capacity\":{\"type\":\"string\",\"description\":\"容量上限\",\"mock\":{\"mock\":\"1000kg\"}},\"handleOrder\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"作业顺序\"}},\"required\":[\"areaCode\",\"areaType\",\"usedMethod\",\"belongsDepot\",\"openStatus\",\"capacity\",\"handleOrder\"]}}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca18c26a998d11268e66176",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/getAreaList",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 457,
+        "method": "POST",
+        "catid": 53,
+        "title": "获取区域详情",
+        "path": "/depots/getAreaDetail",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1554102553,
+        "up_time": 1554103752,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"areaCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"12212\"},\"description\":\"区域编码\"}},\"required\":[\"areaCode\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"belongsDepot\":{\"type\":\"number\",\"description\":\"所属仓库\",\"mock\":{\"mock\":\"1\"}},\"sellStock\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"是否是可售库存\"},\"areaCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"1211\"},\"description\":\"区域编码\"},\"capacity\":{\"type\":\"string\",\"mock\":{\"mock\":\"334\"},\"description\":\"容量上限\"},\"areaType\":{\"type\":\"number\",\"description\":\"区域类型\",\"mock\":{\"mock\":\"2\"}},\"handleOrder\":{\"type\":\"string\",\"description\":\"作业顺序\",\"mock\":{\"mock\":\"2\"}},\"usedMethod\":{\"type\":\"string\",\"description\":\"使用方式\",\"mock\":{\"mock\":\"实打实大幅度\"}},\"openStatus\":{\"type\":\"number\",\"description\":\"是否启用区域\",\"mock\":{\"mock\":\"2\"}}},\"required\":[\"belongsDepot\",\"sellStock\",\"areaCode\",\"capacity\",\"areaType\",\"handleOrder\",\"usedMethod\",\"openStatus\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca1bdc8a998d11268e66178",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/getAreaDetail",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 459,
+        "method": "POST",
+        "catid": 53,
+        "title": "获取库区列表",
+        "path": "/depots/getDepotAreaList",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1554108415,
+        "up_time": 1554109014,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"start\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"},\"description\":\"开始页数\"},\"len\":{\"type\":\"number\",\"mock\":{\"mock\":\"10\"},\"description\":\"每页条数\"},\"likes\":{\"type\":\"object\",\"properties\":{\"belongsDepot\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"所属仓库\"},\"belongsArea\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"所属区域\"}}}},\"required\":[\"start\",\"len\",\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"depotAreaCode\":{\"type\":\"string\",\"mock\":{\"mock\":\"111\"},\"description\":\"库区编码\"},\"depotAreaType\":{\"type\":\"number\",\"mock\":{\"mock\":\"1\"},\"description\":\"库区类型\"},\"usedMethod\":{\"type\":\"string\",\"mock\":{\"mock\":\"撒大声地所多所多所\"},\"description\":\"使用方式\"},\"openStatus\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"启用状态\"},\"splitPickBillStatus\":{\"type\":\"number\",\"description\":\"拆分拣货清单\",\"mock\":{\"mock\":\"1\"}},\"header\":{\"type\":\"string\",\"mock\":{\"mock\":\"老郭\"},\"description\":\"拣货负责人\"},\"capacity\":{\"type\":\"string\",\"mock\":{\"mock\":\"1000\"},\"description\":\"容量上限\"},\"handleOrder\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"作业顺序\"}},\"required\":[\"depotAreaCode\",\"depotAreaType\",\"usedMethod\",\"openStatus\",\"splitPickBillStatus\",\"header\",\"capacity\",\"handleOrder\"]}}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca1d256a998d11268e66179",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/getDepotAreaList",
           "params": []
         },
         "type": "static",
@@ -3421,36 +3968,36 @@
         "res_body_type": "json",
         "markdown": "",
         "desc": "",
-        "res_body": "",
+        "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"num\":{\"type\":\"number\"}}}}}}}}",
         "uid": 14,
         "add_time": 1553650321,
-        "up_time": 1553744592,
+        "up_time": 1553828336,
         "__v": 0,
         "tag": [],
         "index": 0,
         "api_opened": false,
-        "res_body_is_json_schema": false,
+        "res_body_is_json_schema": true,
         "req_body_form": [],
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
         "req_query": [
           {
-            "_id": "5c9c42d0a998d11268e660f1",
+            "_id": "5c9d89f02c11a2126f37878f",
             "desc": "开始时间",
             "example": "2019-3-10 23",
             "name": "sbDate",
             "required": "1"
           },
           {
-            "_id": "5c9c42d0a998d11268e660f0",
+            "_id": "5c9d89f02c11a2126f37878e",
             "desc": "结束时间",
             "example": "2019-3-11 00",
             "name": "seDate",
             "required": "1"
           },
           {
-            "_id": "5c9c42d0a998d11268e660ef",
+            "_id": "5c9d89f02c11a2126f37878d",
             "desc": "商家ID",
             "example": "1",
             "name": "company",
@@ -3592,11 +4139,11 @@
         "res_body_type": "json",
         "uid": 11,
         "add_time": 1545014273,
-        "up_time": 1552531511,
+        "up_time": 1553829995,
         "__v": 0,
-        "markdown": "该接口功能包括**商品列表**、**货品列表**、**首页商品**、**经营屏蔽**、**库存预警**、**缺货商品**等\n\n等级价数据库对应字段内容为字符串数组，例如：\n[\n    { customerType: 1, price: 100 },\n    { customerType: 2, price: 200 }\n]\n接口需通过参数customerType的值查询对应项返回给前台，没传该参数则返回全部\n\n指定价数据库对应字段内容为字符串数组，例如：\n[\n    { customer: '231232432', price: 100 },\n    { customer: '989890239', price: 150 }\n]\n接口需通过参数customer的值查询对应项返回给前台，没传该参数则返回全部\n\n商品是否参与推广通过extend参数判断，-1为不参与推广，1为参与\n\n查询时如果参数cflag为true（1），则查询有设置自定义佣金比例的商品（佣金表中good字段不为空）",
-        "desc": "<p>该接口功能包括<strong>商品列表</strong>、<strong>货品列表</strong>、<strong>首页商品</strong>、<strong>经营屏蔽</strong>、<strong>库存预警</strong>、<strong>缺货商品</strong>等</p>\n<p>等级价数据库对应字段内容为字符串数组，例如：<br>\n[<br>\n&nbsp; &nbsp; { customerType: 1, price: 100 },<br>\n&nbsp; &nbsp; { customerType: 2, price: 200 }<br>\n]<br>\n接口需通过参数customerType的值查询对应项返回给前台，没传该参数则返回全部</p>\n<p>指定价数据库对应字段内容为字符串数组，例如：<br>\n[<br>\n&nbsp; &nbsp; { customer: '231232432', price: 100 },<br>\n&nbsp; &nbsp; { customer: '989890239', price: 150 }<br>\n]<br>\n接口需通过参数customer的值查询对应项返回给前台，没传该参数则返回全部</p>\n<p>商品是否参与推广通过extend参数判断，-1为不参与推广，1为参与</p>\n<p>查询时如果参数cflag为true（1），则查询有设置自定义佣金比例的商品（佣金表中good字段不为空）</p>\n",
-        "res_body": "{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"商品ID\",\"mock\":{\"mock\":\"@id\"}},\"idg\":{\"type\":\"integer\",\"description\":\"货品ID\",\"mock\":{\"mock\":\"@id\"}},\"cname\":{\"type\":\"string\",\"description\":\"商品名称\",\"mock\":{\"mock\":\"@cname\"}},\"code\":{\"type\":\"number\",\"description\":\"商品编号\",\"mock\":{\"mock\":\"@natural\"}},\"pic\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"图片地址\"},\"description\":\"商品图片\"},\"classify\":{\"type\":\"integer\",\"description\":\"分类ID\",\"mock\":{\"mock\":\"@id\"}},\"unit\":{\"type\":\"string\",\"description\":\"单位\"},\"flag\":{\"type\":\"integer\",\"description\":\"商品状态\"},\"extend\":{\"type\":\"integer\",\"description\":\"商品是否参与推广\"},\"rnum\":{\"type\":\"integer\",\"description\":\"可用库存\"},\"bnum\":{\"type\":\"string\",\"description\":\"系统库存\"},\"sprice\":{\"type\":\"number\",\"description\":\"销售价\"},\"snum\":{\"type\":\"integer\",\"description\":\"货品销量\"},\"icon\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"规格图\"},\"sname\":{\"type\":\"string\",\"mock\":{\"mock\":\"@cname\"},\"description\":\"规格名称\"},\"icode\":{\"type\":\"number\",\"mock\":{\"mock\":\"@natural\"},\"description\":\"规格编号\"},\"purchase\":{\"type\":\"integer\",\"description\":\"采购中数量（货品）\"},\"latestPrice\":{\"type\":\"number\",\"description\":\"最近一次采购价（货品）\"},\"iprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customerType\":{\"type\":\"number\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户类型ID\"},\"price\":{\"type\":\"number\",\"description\":\"等级价\"}},\"required\":[\"customerType\",\"price\"]},\"description\":\"等级价（货品）\"},\"oprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customer\":{\"type\":\"string\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户ID\"},\"price\":{\"type\":\"number\",\"description\":\"指定价\"}},\"required\":[\"customer\",\"price\"]},\"description\":\"指定价（货品）\"},\"shieldTypes\":{\"type\":\"array\",\"items\":{\"type\":\"number\",\"description\":\"客户类型ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有客户类型ID（商品）\"},\"shieldArea\":{\"type\":\"array\",\"items\":{\"type\":\"number\",\"description\":\"所属区域ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有区域ID（商品）\"},\"shieldCustomers\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"description\":\"客户ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有客户ID（商品）\"}},\"required\":[\"id\",\"cname\",\"code\",\"classify\",\"unit\",\"flag\",\"rnum\",\"bnum\",\"sprice\",\"snum\",\"icon\",\"sname\",\"icode\",\"idg\",\"pic\",\"purchase\",\"latestPrice\",\"iprice\",\"oprice\",\"shieldTypes\",\"shieldArea\",\"shieldCustomers\",\"extend\"]}}",
+        "markdown": "该接口功能包括**商品列表**、**货品列表**、**首页商品**、**经营屏蔽**、**库存预警**、**缺货商品**等\n\n等级价数据库对应字段内容为字符串数组，例如：\n[\n    { customerType: 1, price: 100 },\n    { customerType: 2, price: 200 }\n]\n接口需通过参数customerType的值查询对应项返回给前台，没传该参数则返回全部\n\n指定价数据库对应字段内容为字符串数组，例如：\n[\n    { customer: '231232432', price: 100 },\n    { customer: '989890239', price: 150 }\n]\n接口需通过参数customer的值查询对应项返回给前台，没传该参数则返回全部\n\n商品是否参与推广通过extend参数判断，-1为不参与推广，1为参与\n\n查询时如果参数cflag为true（1），则查询有设置自定义佣金比例的商品（佣金表中good字段不为空）\n\n张士全，2019-3-29，\n    新增返回参数：gradeReturnCom，gradeSmokeCom，appointReturnCom，appointSmokeCom",
+        "desc": "<p>该接口功能包括<strong>商品列表</strong>、<strong>货品列表</strong>、<strong>首页商品</strong>、<strong>经营屏蔽</strong>、<strong>库存预警</strong>、<strong>缺货商品</strong>等</p>\n<p>等级价数据库对应字段内容为字符串数组，例如：<br>\n[<br>\n&nbsp; &nbsp; { customerType: 1, price: 100 },<br>\n&nbsp; &nbsp; { customerType: 2, price: 200 }<br>\n]<br>\n接口需通过参数customerType的值查询对应项返回给前台，没传该参数则返回全部</p>\n<p>指定价数据库对应字段内容为字符串数组，例如：<br>\n[<br>\n&nbsp; &nbsp; { customer: '231232432', price: 100 },<br>\n&nbsp; &nbsp; { customer: '989890239', price: 150 }<br>\n]<br>\n接口需通过参数customer的值查询对应项返回给前台，没传该参数则返回全部</p>\n<p>商品是否参与推广通过extend参数判断，-1为不参与推广，1为参与</p>\n<p>查询时如果参数cflag为true（1），则查询有设置自定义佣金比例的商品（佣金表中good字段不为空）</p>\n<p>张士全，2019-3-29，<br>\n&nbsp; &nbsp; 新增返回参数：gradeReturnCom，gradeSmokeCom，appointReturnCom，appointSmokeCom</p>\n",
+        "res_body": "{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"商品ID\",\"mock\":{\"mock\":\"@id\"}},\"idg\":{\"type\":\"integer\",\"description\":\"货品ID\",\"mock\":{\"mock\":\"@id\"}},\"cname\":{\"type\":\"string\",\"description\":\"商品名称\",\"mock\":{\"mock\":\"@cname\"}},\"code\":{\"type\":\"number\",\"description\":\"商品编号\",\"mock\":{\"mock\":\"@natural\"}},\"pic\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"图片地址\"},\"description\":\"商品图片\"},\"classify\":{\"type\":\"integer\",\"description\":\"分类ID\",\"mock\":{\"mock\":\"@id\"}},\"unit\":{\"type\":\"string\",\"description\":\"单位\"},\"flag\":{\"type\":\"integer\",\"description\":\"商品状态\"},\"extend\":{\"type\":\"integer\",\"description\":\"商品是否参与推广\"},\"rnum\":{\"type\":\"integer\",\"description\":\"可用库存\"},\"bnum\":{\"type\":\"string\",\"description\":\"系统库存\"},\"sprice\":{\"type\":\"number\",\"description\":\"销售价\"},\"snum\":{\"type\":\"integer\",\"description\":\"货品销量\"},\"icon\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"规格图\"},\"sname\":{\"type\":\"string\",\"mock\":{\"mock\":\"@cname\"},\"description\":\"规格名称\"},\"icode\":{\"type\":\"number\",\"mock\":{\"mock\":\"@natural\"},\"description\":\"规格编号\"},\"purchase\":{\"type\":\"integer\",\"description\":\"采购中数量（货品）\"},\"latestPrice\":{\"type\":\"number\",\"description\":\"最近一次采购价（货品）\"},\"iprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customerType\":{\"type\":\"number\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户类型ID\"},\"price\":{\"type\":\"number\",\"description\":\"等级价\"}},\"required\":[\"customerType\",\"price\"]},\"description\":\"等级价（货品）\"},\"oprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customer\":{\"type\":\"string\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户ID\"},\"price\":{\"type\":\"number\",\"description\":\"指定价\"}},\"required\":[\"customer\",\"price\"]},\"description\":\"指定价（货品）\"},\"shieldTypes\":{\"type\":\"array\",\"items\":{\"type\":\"number\",\"description\":\"客户类型ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有客户类型ID（商品）\"},\"shieldArea\":{\"type\":\"array\",\"items\":{\"type\":\"number\",\"description\":\"所属区域ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有区域ID（商品）\"},\"shieldCustomers\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"description\":\"客户ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有客户ID（商品）\"},\"gradeReturnCom\":{\"type\":\"string\",\"description\":\"等级返佣：0没有 1已设置 2为设置\"},\"gradeSmokeCom\":{\"type\":\"string\",\"description\":\"等级抽佣：0没有 1已设置 2为设置\"},\"appointReturnCom\":{\"type\":\"string\",\"description\":\"指定返佣：0没有 1已设置 2为设置\"},\"appointSmokeCom\":{\"type\":\"string\",\"description\":\"指定抽佣：0没有 1已设置 2为设置\"}},\"required\":[\"id\",\"cname\",\"code\",\"classify\",\"unit\",\"flag\",\"rnum\",\"bnum\",\"sprice\",\"snum\",\"icon\",\"sname\",\"icode\",\"idg\",\"pic\",\"purchase\",\"latestPrice\",\"iprice\",\"oprice\",\"shieldTypes\",\"shieldArea\",\"shieldCustomers\",\"extend\",\"gradeReturnCom\",\"gradeSmokeCom\",\"appointReturnCom\",\"appointSmokeCom\"]}}",
         "tag": [
           "goods"
         ],
@@ -3609,231 +4156,231 @@
         "req_headers": [],
         "req_query": [
           {
-            "_id": "5c89c0372c11a2126f378424",
+            "_id": "5c9d906ba998d11268e66164",
             "desc": "SQL查询拼接字段",
             "example": "true",
             "name": "if",
             "required": "1"
           },
           {
-            "_id": "5c89c0372c11a2126f378423",
+            "_id": "5c9d906ba998d11268e66163",
             "desc": "公司ID",
             "example": "1",
             "name": "company",
             "required": "1"
           },
           {
-            "_id": "5c89c0372c11a2126f378422",
+            "_id": "5c9d906ba998d11268e66162",
             "desc": "是否只显示首页商品，0为否，1为真",
             "example": "0",
             "name": "title",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378421",
+            "_id": "5c9d906ba998d11268e66161",
             "desc": "当前客户类型ID，如有该值则不返回商品对应屏蔽字段中有该值的商品，并返回该客户类型对应的该商品等级价lprice",
             "example": "1",
             "name": "customerTypes",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378420",
+            "_id": "5c9d906ba998d11268e66160",
             "desc": "当前客户所属区域ID，如有该值则不返回商品对应屏蔽字段中有该值的商品",
             "example": "1",
             "name": "area",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37841f",
+            "_id": "5c9d906ba998d11268e6615f",
             "desc": "当前客户ID，如有该值则不返回商品对应屏蔽字段中有该值的商品，并返回该客户对应的该商品指定价oprice",
             "example": "0b80db10-f14d-11e8-84d6-9761b4fb1ef4",
             "name": "customer",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37841e",
+            "_id": "5c9d906ba998d11268e6615e",
             "desc": "商品ID",
             "example": "2cf66310-e7e2-11e8-89a2-9b48088ec8e5",
             "name": "id",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37841d",
+            "_id": "5c9d906ba998d11268e6615d",
             "desc": "条件查询，包括all、classify和tag。其中all为模糊查询商品名称、商品标签，货品名称、货品标签",
             "example": "{\n  all: '', \n  classify: '',\n  tag: ''\n}",
             "name": "likes",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37841c",
+            "_id": "5c9d906ba998d11268e6615c",
             "desc": "商品名称",
             "example": "安慕希",
             "name": "cname",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37841b",
+            "_id": "5c9d906ba998d11268e6615b",
             "desc": "商品编号",
             "example": "984820923",
             "name": "code",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37841a",
+            "_id": "5c9d906ba998d11268e6615a",
             "desc": "商品分类ID",
             "example": "1",
             "name": "classify",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378419",
+            "_id": "5c9d906ba998d11268e66159",
             "desc": "商品标签ID",
             "example": "1",
             "name": "tag",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378418",
+            "_id": "5c9d906ba998d11268e66158",
             "desc": "商品品牌ID",
             "example": "1",
             "name": "brand",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378417",
+            "_id": "5c9d906ba998d11268e66157",
             "desc": "供应商ID",
             "example": "1",
             "name": "supplier",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378416",
+            "_id": "5c9d906ba998d11268e66156",
             "desc": "单位ID",
             "example": "1",
             "name": "unit",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378415",
+            "_id": "5c9d906ba998d11268e66155",
             "desc": "商品状态，0为上架、2为下架",
             "example": "0",
             "name": "goodFlag",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378414",
+            "_id": "5c9d906ba998d11268e66154",
             "desc": "是否参与推广，-1为不参与，1为参与（分销员）",
             "example": "0",
             "name": "extend",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378413",
+            "_id": "5c9d906ba998d11268e66153",
             "desc": "商品是否自定义佣金比例，-1为否，1为是（分销员）",
             "example": "1",
             "name": "cflag",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378412",
+            "_id": "5c9d906ba998d11268e66152",
             "desc": "商品分页起始值",
             "example": "0",
             "name": "start",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378411",
+            "_id": "5c9d906ba998d11268e66151",
             "desc": "商品分页长度值",
             "example": "10",
             "name": "len",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378410",
+            "_id": "5c9d906ba998d11268e66150",
             "desc": "规格名称",
             "example": "24盒装",
             "name": "sname",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37840f",
+            "_id": "5c9d906ba998d11268e6614f",
             "desc": "规格编号",
             "example": "001",
             "name": "icode",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37840e",
+            "_id": "5c9d906ba998d11268e6614e",
             "desc": "商品规格ID（货品ID）",
             "example": "1",
             "name": "stands",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37840d",
+            "_id": "5c9d906ba998d11268e6614d",
             "desc": "是否显示库存预警商品，0为否，为1则返回可用库存（rnum）的值小于min的货品",
             "example": "0",
             "name": "warning",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37840c",
+            "_id": "5c9d906ba998d11268e6614c",
             "desc": "是否显示缺货商品，0为否，为1则返回可用库存（rnum）的值小于等于0的货品",
             "example": "0",
             "name": "shortage",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37840b",
+            "_id": "5c9d906ba998d11268e6614b",
             "desc": "是否只显示有库存货品，0为否，为1则返回可用库存（rnum）大于0的货品",
             "example": "0",
             "name": "stock",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f37840a",
+            "_id": "5c9d906ba998d11268e6614a",
             "desc": "货品条形码",
             "example": "123324332",
             "name": "bcode",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378409",
+            "_id": "5c9d906ba998d11268e66149",
             "desc": "销售价下限",
             "example": "100",
             "name": "priceMin",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378408",
+            "_id": "5c9d906ba998d11268e66148",
             "desc": "销售价上限",
             "example": "2000",
             "name": "priceMax",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378407",
+            "_id": "5c9d906ba998d11268e66147",
             "desc": "货品状态",
             "example": "0",
             "name": "flag",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378406",
+            "_id": "5c9d906ba998d11268e66146",
             "desc": "货品ID",
             "example": "[1, 2]",
             "name": "goodsinfos",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378405",
+            "_id": "5c9d906ba998d11268e66145",
             "desc": "货品分页起始值",
             "example": "0",
             "name": "infoStart",
             "required": "0"
           },
           {
-            "_id": "5c89c0372c11a2126f378404",
+            "_id": "5c9d906ba998d11268e66144",
             "desc": "货品分页长度值",
             "example": "10",
             "name": "infolength",
@@ -6346,7 +6893,7 @@
         "res_body_type": "json",
         "uid": 14,
         "add_time": 1549959837,
-        "up_time": 1553590193,
+        "up_time": 1553846278,
         "__v": 0,
         "markdown": "",
         "desc": "",
@@ -6361,98 +6908,98 @@
         "req_headers": [],
         "req_query": [
           {
-            "_id": "5c99e7b1a998d11268e66057",
+            "_id": "5c9dd0062c11a2126f3787c3",
             "desc": "",
             "example": "",
             "name": "count",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e66056",
+            "_id": "5c9dd0062c11a2126f3787c2",
             "desc": "",
             "example": "",
             "name": "company",
-            "required": "1"
+            "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e66055",
+            "_id": "5c9dd0062c11a2126f3787c1",
             "desc": "订单来源：1天猫 2京东 3苏宁 4淘宝",
             "example": "",
             "name": "otype",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e66054",
-            "desc": "",
+            "_id": "5c9dd0062c11a2126f3787c0",
+            "desc": "订单分类：8待分配 9已分配",
             "example": "",
             "name": "ctype",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e66053",
+            "_id": "5c9dd0062c11a2126f3787bf",
             "desc": "",
             "example": "",
             "name": "id",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e66052",
+            "_id": "5c9dd0062c11a2126f3787be",
             "desc": "交易状态：1 TRADE_NO_CREATE_PAY(没有创建支付宝交易)  \n2 WAIT_BUYER_PAY(等待买家付款) \n3 SELLER_CONSIGNED_PART(卖家部分发货) \n4 WAIT_SELLER_SEND_GOODS(买家已付款) \n5 WAIT_BUYER_CONFIRM_GOODS(卖家已发货) \n6 TRADE_BUYER_SIGNED(买家已签收) \n7 TRADE_FINISHED(交易成功) \n8 TRADE_CLOSED(交易关闭) \n9 TRADE_CLOSED_BY_TAOBAO(交易关闭) \n10 PAY_PENDING(付款确认中) \n11 WAIT_PRE_AUTH_CONFIRM(0元购合约中) \n12 PAID_FORBID_CONSIGN(禁止发货))",
             "example": "",
             "name": "type",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e66051",
+            "_id": "5c9dd0062c11a2126f3787bd",
             "desc": "",
             "example": "",
             "name": "code",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e66050",
+            "_id": "5c9dd0062c11a2126f3787bc",
             "desc": "分配状态：6待确认\n                  7已确认 \n                  8已拒绝\n                  9无库存",
             "example": "",
             "name": "flag",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e6604f",
+            "_id": "5c9dd0062c11a2126f3787bb",
             "desc": "",
             "example": "",
             "name": "custom",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e6604e",
+            "_id": "5c9dd0062c11a2126f3787ba",
             "desc": "",
             "example": "",
             "name": "border",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e6604d",
+            "_id": "5c9dd0062c11a2126f3787b9",
             "desc": "{all}",
             "example": "",
             "name": "like",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e6604c",
+            "_id": "5c9dd0062c11a2126f3787b8",
             "desc": "",
             "example": "",
             "name": "start",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e6604b",
+            "_id": "5c9dd0062c11a2126f3787b7",
             "desc": "",
             "example": "",
             "name": "len",
             "required": "0"
           },
           {
-            "_id": "5c99e7b1a998d11268e6604a",
+            "_id": "5c9dd0062c11a2126f3787b6",
             "desc": "",
             "example": "",
             "name": "last",

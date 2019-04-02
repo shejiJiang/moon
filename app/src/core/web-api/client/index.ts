@@ -141,6 +141,7 @@ export interface IWebApiContext {
   projectPath: string;
   //修改返回值的schema信息; 进行调整以生成ts定义; 因为多了api层的修改;
   resSchemaModify?: (resScheme: SchemaProps) => SchemaProps;
+  beforeCompile?: (apiItem: IWebApiDefinded) => Promise<IWebApiDefinded>|IWebApiDefinded;
 }
 
 /**
@@ -156,6 +157,12 @@ export async function buildWebApi(context: IWebApiContext) {
     tplBase: join(__dirname, 'tpl'),
   });
   //生成 方法入参入出参的ts定义;
+  if(context.beforeCompile){
+    for (let i = 0, ilen = webapiGroup.apis.length; i < ilen; i++) {
+      let apiItem = webapiGroup.apis[i];
+      webapiGroup.apis[i]= await context.beforeCompile(apiItem);
+    }
+  }
 
   let tsDefinded = await generateTsDefined(context);
   //本项目公共的ts定义;
