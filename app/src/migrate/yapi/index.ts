@@ -29,7 +29,7 @@ import {
         getMethodName: methodItem => methodItem.path.replace('/finance/', ''),
       });
 
-      // fse.writeJson(join(__dirname,"web-api.json"),item);
+      fse.writeJson(join(__dirname,"web-api.json"),item);
 
       await buildWebApi({
         webapiGroup,
@@ -91,16 +91,17 @@ function transfer(
 
     let params: ReqParam[] = [];
     //空字符串处理.
-
-    if(methodItem.req_query && methodItem.req_query.length>0){
-      params=methodItem.req_query;
-    }else if(methodItem.req_body_other){
-    //TODO 是否对比下参数的多少. 决定 取那个呢  ?  /finance/saveMoneyByWX 两个值都有的情况 怎么出现  ?
+    if(methodItem.req_body_is_json_schema){
+      //TODO 是否对比下参数的多少. 决定 取那个呢  ?  /finance/saveMoneyByWX 两个值都有的情况 怎么出现  ?
       params=JSON.parse(methodItem.req_body_other);
-    }else if(methodItem.req_body_form && methodItem.req_body_form.length>0){
-      params=methodItem.req_body_form;
-    }
+    }else{
+      if(methodItem.req_query && methodItem.req_query.length>0){
+        params=methodItem.req_query;
+      }else if(methodItem.req_body_form && methodItem.req_body_form.length>0){
+        params=methodItem.req_body_form;
+      }
 
+    }
     for (let i = 0, ilen = params.length; i < ilen; i++) {
       let item: ReqParam = params[i];
       let propertier = {
