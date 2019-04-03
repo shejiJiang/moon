@@ -1,0 +1,1043 @@
+{
+    "name": "finance",
+    "apis": [{
+        "url": "/finance/flowList",
+        "method": "get",
+        "name": "flowList",
+        "comment": "流水列表",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "all": {
+                        "type": "string",
+                        "description": "客户姓名 手机号 "
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "客户类型  "
+                    },
+                    "date": {
+                        "type": "string",
+                        "description": "起始时间 [\"2019-03-21T16"
+                    },
+                    "from": {
+                        "type": "string",
+                        "description": "起始条数 "
+                    },
+                    "len": {
+                        "type": "string",
+                        "description": "长度 "
+                    }
+                },
+                "required": ["type", "date", "from", "len"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {
+                "code": {
+                    "type": "number",
+                    "mock": {
+                        "mock": "0"
+                    }
+                },
+                "obj": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "flowCode": {
+                                        "type": "string",
+                                        "description": "流水单号"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "description": "类型"
+                                    },
+                                    "money": {
+                                        "type": "string",
+                                        "description": "金额"
+                                    },
+                                    "orderNumber": {
+                                        "type": "string",
+                                        "description": "业务订单号"
+                                    },
+                                    "payType": {
+                                        "type": "string",
+                                        "description": "付款方式"
+                                    },
+                                    "relFlowCode": {
+                                        "type": "string",
+                                        "description": "关联流水号"
+                                    },
+                                    "createDate": {
+                                        "type": "string",
+                                        "description": "创建时间"
+                                    }
+                                },
+                                "required": ["flowCode", "type", "money", "orderNumber", "payType", "relFlowCode", "createDate"]
+                            }
+                        }
+                    },
+                    "required": ["data"]
+                }
+            },
+            "required": ["code", "obj"]
+        }
+    }, {
+        "url": "/finance/createReview",
+        "method": "post",
+        "name": "createReview",
+        "comment": "创建审核",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "type": "string",
+                        "description": "账号ID "
+                    },
+                    "cash_amount": {
+                        "type": "string",
+                        "description": "提现金额 "
+                    },
+                    "WD_bank": {
+                        "type": "string",
+                        "description": "开户行 "
+                    },
+                    "WD_number": {
+                        "type": "string",
+                        "description": "银行卡号 "
+                    }
+                },
+                "required": ["account_id", "cash_amount", "WD_bank", "WD_number"]
+            }
+        }],
+        "responseSchema": null
+    }, {
+        "url": "/finance/reviewAction",
+        "method": "post",
+        "name": "reviewAction",
+        "comment": "审核提现",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "type": "string",
+                        "description": "账户ID "
+                    },
+                    "auditor": {
+                        "type": "string",
+                        "description": "审核人 "
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "审核id "
+                    },
+                    "notice": {
+                        "type": "string",
+                        "description": "备注 "
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "是否通过 "
+                    }
+                },
+                "required": ["account_id", "auditor", "id", "notice", "status"]
+            }
+        }],
+        "responseSchema": null
+    }, {
+        "url": "/finance/expendList",
+        "method": "get",
+        "name": "expendList",
+        "comment": "支出列表",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "type": "string",
+                        "description": "账户Id "
+                    },
+                    "from": {
+                        "type": "string",
+                        "description": "起始条数 "
+                    },
+                    "len": {
+                        "type": "string",
+                        "description": "长度 "
+                    },
+                    "likes": {
+                        "type": "string",
+                        "description": "搜索条件 {\"type\":1,\"paytype\":\"3\"}"
+                    }
+                },
+                "required": ["from", "len", "likes"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {
+                "code": {
+                    "type": "number",
+                    "mock": {
+                        "mock": "0"
+                    }
+                },
+                "obj": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "account_name": {
+                                        "type": "string",
+                                        "description": "账户名称"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "description": "支出类型"
+                                    },
+                                    "sales_order_code": {
+                                        "type": "string",
+                                        "description": "业务订单号"
+                                    },
+                                    "account_type": {
+                                        "type": "string",
+                                        "description": "账户类型"
+                                    },
+                                    "create_date": {
+                                        "type": "string",
+                                        "description": "创建时间"
+                                    },
+                                    "flow_code": {
+                                        "type": "string",
+                                        "description": "流水号"
+                                    },
+                                    "money": {
+                                        "type": "string",
+                                        "description": "余额"
+                                    },
+                                    "pay_type": {
+                                        "type": "string",
+                                        "description": "支出方式"
+                                    },
+                                    "rel_flow_code": {
+                                        "type": "string",
+                                        "description": "关联流水号"
+                                    }
+                                },
+                                "required": ["account_name", "account_type", "create_date", "flow_code", "money", "pay_type", "rel_flow_code", "sales_order_code", "type"]
+                            }
+                        }
+                    },
+                    "required": ["data"]
+                }
+            },
+            "required": ["code", "obj"]
+        }
+    }, {
+        "url": "/finance/incomeList",
+        "method": "get",
+        "name": "incomeList",
+        "comment": "收入列表",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "type": "string",
+                        "description": "账户ID "
+                    },
+                    "from": {
+                        "type": "string",
+                        "description": "开始条数 "
+                    },
+                    "len": {
+                        "type": "string",
+                        "description": "长度 "
+                    },
+                    "likes": {
+                        "type": "string",
+                        "description": "搜索条件 {\"type\":1,\"paytype\":\"1\"}"
+                    }
+                },
+                "required": ["from", "len"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {
+                "code": {
+                    "type": "number",
+                    "mock": {
+                        "mock": "0"
+                    }
+                },
+                "obj": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "account_name": {
+                                        "type": "string",
+                                        "description": "账户名称"
+                                    },
+                                    "account_type": {
+                                        "type": "string",
+                                        "description": "账户类型"
+                                    },
+                                    "create_date": {
+                                        "type": "string",
+                                        "description": "创建时间"
+                                    },
+                                    "flow_code": {
+                                        "type": "string",
+                                        "description": "流水号"
+                                    },
+                                    "money": {
+                                        "type": "string",
+                                        "description": "交易金额"
+                                    },
+                                    "pay_type": {
+                                        "type": "string",
+                                        "description": "收入方式"
+                                    },
+                                    "rel_flow_code": {
+                                        "type": "string",
+                                        "description": "关联流水号"
+                                    },
+                                    "sales_order_code": {
+                                        "type": "string",
+                                        "description": "业务订单号"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "description": "收入类型"
+                                    }
+                                },
+                                "required": ["account_name", "account_type", "create_date", "flow_code", "money", "pay_type", "rel_flow_code", "sales_order_code", "type"]
+                            }
+                        }
+                    },
+                    "required": ["data"]
+                }
+            },
+            "required": ["code", "obj"]
+        }
+    }, {
+        "url": "/finance/updateAccount",
+        "method": "post",
+        "name": "updateAccount",
+        "comment": "更新账户",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "IC_number": {
+                        "type": "string",
+                        "description": "IC卡号 "
+                    },
+                    "ID_A": {
+                        "type": "string",
+                        "description": "身份证正面 "
+                    },
+                    "ID_number": {
+                        "type": "string",
+                        "description": "身份证号 "
+                    },
+                    "account_id": {
+                        "type": "string",
+                        "description": "账户ID "
+                    },
+                    "account_name": {
+                        "type": "string",
+                        "description": "账户名称 "
+                    },
+                    "bank_mobile_number": {
+                        "type": "string",
+                        "description": "银行预留手机号 "
+                    },
+                    "bank_number": {
+                        "type": "string",
+                        "description": "银行卡号 "
+                    },
+                    "create_date": {
+                        "type": "string",
+                        "description": "创建时间 "
+                    },
+                    "mobile_number": {
+                        "type": "string",
+                        "description": "手机号 "
+                    },
+                    "money": {
+                        "type": "string",
+                        "description": "余额 "
+                    },
+                    "opening_bank": {
+                        "type": "string",
+                        "description": "开户行 "
+                    },
+                    "real_name": {
+                        "type": "string",
+                        "description": "真实名称 "
+                    },
+                    "set_pwd": {
+                        "type": "string",
+                        "description": "是否设置密码 "
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "状态 "
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "账户类型 "
+                    }
+                },
+                "required": ["IC_number", "ID_A", "ID_number", "account_id", "account_name", "bank_mobile_number", "bank_number", "create_date", "mobile_number", "money", "opening_bank", "real_name", "set_pwd", "status", "type"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {
+                "code": {
+                    "type": "number",
+                    "mock": {
+                        "mock": "0"
+                    }
+                },
+                "obj": {
+                    "type": "object",
+                    "properties": {}
+                }
+            },
+            "required": ["code", "obj"]
+        }
+    }, {
+        "url": "/finance/updateAccountFund",
+        "method": "post",
+        "name": "updateAccountFund",
+        "comment": "更新账户资金",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "HXverificationCode": {
+                        "type": "string",
+                        "description": "验证码code "
+                    },
+                    "account_id": {
+                        "type": "string",
+                        "description": "账户ID "
+                    },
+                    "money": {
+                        "type": "string",
+                        "description": "交易金额 "
+                    },
+                    "notice": {
+                        "type": "string",
+                        "description": "备注 "
+                    },
+                    "pay_type": {
+                        "type": "string",
+                        "description": "支付方式 "
+                    },
+                    "recharge": {
+                        "type": "string",
+                        "description": "充值OR扣款 true"
+                    },
+                    "rel_flow_code": {
+                        "type": "string",
+                        "description": "相关订单号 "
+                    },
+                    "verificationCode": {
+                        "type": "string",
+                        "description": "验证码 "
+                    },
+                    "voucher": {
+                        "type": "string",
+                        "description": "凭证图 "
+                    }
+                },
+                "required": ["HXverificationCode", "account_id", "money", "notice", "pay_type", "recharge", "rel_flow_code", "verificationCode", "voucher"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {}
+        }
+    }, {
+        "url": "/finance/reviewList",
+        "method": "get",
+        "name": "reviewList",
+        "comment": "审核列表",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "from": {
+                        "type": "string",
+                        "description": "起始条数 "
+                    },
+                    "len": {
+                        "type": "string",
+                        "description": "长度 "
+                    },
+                    "likes": {
+                        "type": "string",
+                        "description": "搜索条件 {\"like\":\"\",\"status\":1}"
+                    }
+                },
+                "required": ["from", "len", "likes"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {
+                "code": {
+                    "type": "number",
+                    "mock": {
+                        "mock": "0"
+                    }
+                },
+                "obj": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "account_id": {
+                                        "type": "string",
+                                        "description": "账户ID"
+                                    },
+                                    "account_name": {
+                                        "type": "string",
+                                        "description": "账户名称"
+                                    },
+                                    "account_type": {
+                                        "type": "string",
+                                        "description": "账户类型"
+                                    },
+                                    "audit_time": {
+                                        "type": "string",
+                                        "description": "审核时间"
+                                    },
+                                    "auditor": {
+                                        "type": "string",
+                                        "description": "审核人"
+                                    },
+                                    "bank_number": {
+                                        "type": "string",
+                                        "description": "银行卡号"
+                                    },
+                                    "cash_account": {
+                                        "type": "string",
+                                        "description": "提现账号"
+                                    },
+                                    "cash_amount": {
+                                        "type": "string",
+                                        "description": "提现金额"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "notice": {
+                                        "type": "string",
+                                        "description": "备注"
+                                    },
+                                    "number": {
+                                        "type": "string",
+                                        "description": "单号"
+                                    },
+                                    "real_name": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "money": {
+                                        "type": "string",
+                                        "description": "账户余额"
+                                    }
+                                },
+                                "required": ["account_id", "account_name", "account_type", "audit_time", "auditor", "bank_number", "cash_account", "cash_amount", "id", "notice", "number", "real_name", "status", "money"]
+                            }
+                        }
+                    },
+                    "required": ["data"]
+                }
+            },
+            "required": ["code", "obj"]
+        }
+    }, {
+        "url": "/finance/sendVerCode",
+        "method": "get",
+        "name": "sendVerCode",
+        "comment": "获得验证码",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "mobile_number": {
+                        "type": "string",
+                        "description": "手机号 "
+                    },
+                    "account_id": {
+                        "type": "string",
+                        "description": "账户ID 1"
+                    }
+                },
+                "required": ["mobile_number", "account_id"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {
+                "code": {
+                    "type": "number",
+                    "description": "0"
+                },
+                "obj": {
+                    "type": "object",
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "description": "加密字段"
+                        }
+                    },
+                    "required": ["code"]
+                }
+            },
+            "required": ["code", "obj"]
+        }
+    }, {
+        "url": "/finance/SetAccountPayPWD",
+        "method": "post",
+        "name": "SetAccountPayPWD",
+        "comment": "设置支付密码",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "type": "string",
+                        "description": "账户ID",
+                        "mock": {
+                            "mock": "1"
+                        }
+                    },
+                    "pay_PWD": {
+                        "type": "string",
+                        "description": "密码字符串",
+                        "mock": {
+                            "mock": "abcdefg"
+                        }
+                    },
+                    "accountId": {
+                        "type": "string",
+                        "description": "账户ID 1"
+                    },
+                    "payPWD": {
+                        "type": "string",
+                        "description": "支付密码 abcdefg"
+                    }
+                },
+                "required": ["account_id", "pay_PWD", "accountId", "payPWD"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {}
+        }
+    }, {
+        "url": "/finance/setAccountStatus",
+        "method": "post",
+        "name": "setAccountStatus",
+        "comment": "设置账户状态",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "accountID": {
+                        "type": "string",
+                        "description": "账户ID 0"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "状态 false"
+                    }
+                },
+                "required": ["accountID", "status"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {
+                "code": {
+                    "type": "number",
+                    "mock": {
+                        "mock": "0"
+                    }
+                },
+                "data": {
+                    "type": "object",
+                    "properties": {}
+                }
+            },
+            "required": ["code", "data"]
+        }
+    }, {
+        "url": "/finance/accountList",
+        "method": "get",
+        "name": "accountList",
+        "comment": "账户列表",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "账户类型 "
+                    },
+                    "like": {
+                        "type": "string",
+                        "description": "模糊搜索( 客户名称/手机号/实名 ) "
+                    },
+                    "user_id": {
+                        "type": "string",
+                        "description": "登录用户ID 11"
+                    },
+                    "from": {
+                        "type": "string",
+                        "description": "起始条数 "
+                    },
+                    "len": {
+                        "type": "string",
+                        "description": "每页数量 "
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "账户ID "
+                    }
+                },
+                "required": ["from", "len", "id"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {
+                "code": {
+                    "type": "number",
+                    "mock": {
+                        "mock": "0"
+                    }
+                },
+                "obj": {
+                    "type": "object",
+                    "properties": {
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "IC_number": {
+                                        "type": "string",
+                                        "description": "银行卡号"
+                                    },
+                                    "ID_A": {
+                                        "type": "string",
+                                        "description": "身份证正面"
+                                    },
+                                    "ID_number": {
+                                        "type": "string",
+                                        "description": "身份证号"
+                                    },
+                                    "account_name": {
+                                        "type": "number",
+                                        "description": "账户名称"
+                                    },
+                                    "bank_mobile_number": {
+                                        "type": "number",
+                                        "description": "银行预留手机号"
+                                    },
+                                    "bank_number": {
+                                        "type": "boolean",
+                                        "description": "银行卡号"
+                                    },
+                                    "create_date": {
+                                        "type": "string",
+                                        "description": "创建时间"
+                                    },
+                                    "mobile_number": {
+                                        "type": "string",
+                                        "description": "手机号"
+                                    },
+                                    "money": {
+                                        "type": "string",
+                                        "description": "余额"
+                                    },
+                                    "opening_bank": {
+                                        "type": "string",
+                                        "description": "开户行"
+                                    },
+                                    "real_name": {
+                                        "type": "string",
+                                        "description": "真实姓名"
+                                    },
+                                    "user_id": {
+                                        "type": "string",
+                                        "description": "用户ID"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "description": "账户类型"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "description": "账户状态"
+                                    },
+                                    "set_pwd": {
+                                        "type": "string",
+                                        "description": "是否设置密码"
+                                    }
+                                },
+                                "required": ["IC_number", "ID_A", "ID_number", "account_name", "bank_mobile_number", "bank_number", "create_date", "mobile_number", "money", "opening_bank", "real_name", "set_pwd", "status", "type", "user_id"]
+                            },
+                            "description": "账户列表"
+                        },
+                        "$data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "IC_number": {
+                                        "type": "string"
+                                    },
+                                    "mobile_number": {
+                                        "type": "string"
+                                    },
+                                    "ID_A": {
+                                        "type": "string"
+                                    },
+                                    "ID_number": {
+                                        "type": "string"
+                                    },
+                                    "account_id": {
+                                        "type": "string"
+                                    },
+                                    "account_name": {
+                                        "type": "string"
+                                    },
+                                    "bank_mobile_number": {
+                                        "type": "string"
+                                    },
+                                    "bank_number": {
+                                        "type": "string"
+                                    },
+                                    "create_date": {
+                                        "type": "string"
+                                    },
+                                    "money": {
+                                        "type": "string"
+                                    },
+                                    "opening_bank": {
+                                        "type": "string"
+                                    },
+                                    "real_name": {
+                                        "type": "string"
+                                    },
+                                    "set_pwd": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["IC_number", "ID_A", "ID_number", "account_id", "account_name", "bank_mobile_number", "bank_number", "create_date", "mobile_number", "money", "opening_bank", "real_name", "set_pwd", "status", "type", "user_id"]
+                            },
+                            "description": "详情"
+                        }
+                    },
+                    "required": ["data", "$data"]
+                }
+            },
+            "required": ["code", "obj"]
+        }
+    }, {
+        "url": "/finance/saveMoneyByWX",
+        "method": "post",
+        "name": "saveMoneyByWX",
+        "comment": "钱包充值_微信",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "type": "string",
+                        "description": "账户ID",
+                        "mock": {
+                            "mock": "1"
+                        }
+                    },
+                    "appid": {
+                        "type": "number"
+                    },
+                    "openid": {
+                        "type": "string"
+                    },
+                    "total_fee": {
+                        "type": "string",
+                        "description": "交易金额"
+                    },
+                    "mch_id": {
+                        "type": "string",
+                        "description": "商户号"
+                    },
+                    "api": {
+                        "type": "string",
+                        "description": "api秘钥"
+                    }
+                },
+                "required": ["account_id", "appid", "openid", "total_fee", "mch_id", "api"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {}
+        }
+    }, {
+        "url": "/finance/saveMoneyByalipay",
+        "method": "post",
+        "name": "saveMoneyByalipay",
+        "comment": "钱包充值_支付宝",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "type": "string",
+                        "description": "账户ID",
+                        "mock": {
+                            "mock": "1"
+                        }
+                    },
+                    "money": {
+                        "type": "number",
+                        "description": "冲值金额"
+                    },
+                    "flow_code": {
+                        "type": "string",
+                        "description": "流水号"
+                    },
+                    "accountId": {
+                        "type": "string",
+                        "description": "账户ID 1"
+                    },
+                    "payPWD": {
+                        "type": "string",
+                        "description": "支付密码 abcdefg"
+                    }
+                },
+                "required": ["account_id", "money", "flow_code", "accountId", "payPWD"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {}
+        }
+    }, {
+        "url": "/finance/comparVerCode",
+        "method": "post",
+        "name": "comparVerCode",
+        "comment": "验证手机",
+        "requestParam": [{
+            "name": "param",
+            "comment": "",
+            "jsonSchema": {
+                "type": "object",
+                "properties": {
+                    "sMobileNum": {
+                        "type": "string",
+                        "description": "手机号 13677777777"
+                    },
+                    "verificationCode": {
+                        "type": "string",
+                        "description": "验证码 786503"
+                    }
+                },
+                "required": ["sMobileNum", "verificationCode"]
+            }
+        }],
+        "responseSchema": {
+            "type": "object",
+            "title": "empty object",
+            "properties": {
+                "bresult": {
+                    "type": "boolean",
+                    "description": "是否验证成功"
+                }
+            },
+            "required": ["bresult"]
+        }
+    }]
+}
