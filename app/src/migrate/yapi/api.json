@@ -1,328 +1,337 @@
-[{
-  "name": "客户",
-  "desc": null,
-  "add_time": 1544511749,
-  "up_time": 1544511749,
-  "index": 0,
-  "list": [{
-    "_id": 224,
-    "method": "GET",
-    "catid": 14,
-    "title": "会员列表",
-    "path": "/customer/customers",
-    "project_id": 12,
-    "res_body_type": "json",
-    "uid": 14,
-    "add_time": 1550046481,
-    "up_time": 1553829634,
-    "__v": 0,
-    "markdown": "增加查询条件，创建时间（范围）\n\ncreate_timeB\ncreate_timeE\n\n\\-\\-\\-\\-2019\\.3\\.28 \badd by Alex\\.Ji",
-    "desc": "<p>增加查询条件，创建时间（范围）</p>\n<p>create_timeB<br>\ncreate_timeE</p>\n<p>----2019.3.28 \badd by Alex.Ji</p>\n",
-    "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"cid\":{\"type\":\"number\"},\"openid\":{\"type\":[\"string\",\"null\"]},\"employee\":{\"type\":[\"null\",\"number\"]},\"car\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"idg\":{\"type\":\"string\"},\"number\":{\"type\":\"string\"}},\"required\":[\"idg\",\"number\"]}},\"id\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"null\"},\"money\":{\"type\":[\"number\",\"null\"]},\"cname\":{\"type\":\"string\"},\"phone\":{\"type\":[\"string\",\"null\"]},\"email\":{\"type\":[\"null\",\"string\"]},\"qq\":{\"type\":[\"null\",\"string\"]},\"ccode\":{\"type\":[\"null\",\"string\"]},\"area\":{\"type\":\"number\"},\"head\":{\"type\":[\"string\",\"null\"]},\"login_name\":{\"type\":[\"string\",\"null\"]},\"cpassword\":{\"type\":[\"string\",\"null\"]},\"type\":{\"type\":[\"null\",\"number\"]},\"depot\":{\"type\":[\"null\",\"number\"]},\"place\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"required\":[\"id\",\"name\"]},\"address\":{\"type\":[\"null\",\"string\"]},\"fax\":{\"type\":[\"null\",\"string\"]},\"bdesc\":{\"type\":[\"null\",\"string\"]},\"linkman\":{\"type\":[\"null\",\"string\"]},\"job\":{\"type\":[\"null\",\"string\"]},\"tel\":{\"type\":[\"null\",\"string\"]},\"bankname\":{\"type\":[\"null\",\"string\"]},\"account_name\":{\"type\":[\"null\",\"string\"]},\"caccount\":{\"type\":[\"null\",\"string\"]},\"taxpayer\":{\"type\":[\"null\",\"string\"]},\"bill_time\":{\"type\":[\"null\",\"number\"]},\"bill_title\":{\"type\":[\"null\",\"string\"]},\"alipay\":{\"type\":[\"null\",\"string\"]},\"weixinpay\":{\"type\":[\"null\",\"string\"]},\"flag\":{\"type\":\"number\"}},\"required\":[\"cid\",\"openid\",\"employee\",\"car\",\"id\",\"zipcode\",\"money\",\"cname\",\"phone\",\"email\",\"qq\",\"ccode\",\"area\",\"head\",\"login_name\",\"cpassword\",\"type\",\"depot\",\"place\",\"address\",\"fax\",\"bdesc\",\"linkman\",\"job\",\"tel\",\"bankname\",\"account_name\",\"caccount\",\"taxpayer\",\"bill_time\",\"bill_title\",\"alipay\",\"weixinpay\",\"flag\"]}}}}}}",
-    "tag": [],
+[
+  {
+    "name": "客户",
+    "desc": null,
+    "add_time": 1544511749,
+    "up_time": 1544511749,
     "index": 0,
-    "api_opened": false,
-    "res_body_is_json_schema": true,
-    "req_body_form": [],
-    "req_body_is_json_schema": false,
-    "req_params": [],
-    "req_headers": [],
-    "req_query": [{
-      "_id": "5c9d8f02a998d11268e66143",
-      "desc": "公司(商家)ID",
-      "example": "1",
-      "name": "company",
-      "required": "1"
-    },
+    "list": [
       {
-        "_id": "5c9d8f02a998d11268e66142",
-        "desc": "{all, name,phone,linkMan,type,flag,employee,area,depot}",
-        "example": "",
-        "name": "likes",
-        "required": "0"
-      },
-      {
-        "_id": "5c9d8f02a998d11268e66141",
-        "desc": "",
-        "example": "",
-        "name": "id",
-        "required": "0"
-      },
-      {
-        "_id": "5c9d8f02a998d11268e66140",
-        "desc": "",
-        "example": "",
-        "name": "cid",
-        "required": "0"
-      },
-      {
-        "_id": "5c9d8f02a998d11268e6613f",
-        "desc": "",
-        "example": "",
-        "name": "openid",
-        "required": "0"
-      },
-      {
-        "_id": "5c9d8f02a998d11268e6613e",
-        "desc": "",
-        "example": "",
-        "name": "start",
-        "required": "0"
-      },
-      {
-        "_id": "5c9d8f02a998d11268e6613d",
-        "desc": "",
-        "example": "",
-        "name": "len",
-        "required": "0"
-      },
-      {
-        "_id": "5c9d8f02a998d11268e6613c",
-        "desc": "创建时间_开始",
-        "example": "2019-02-18 22:19:34",
-        "name": "create_timeB",
-        "required": "0"
-      },
-      {
-        "_id": "5c9d8f02a998d11268e6613b",
-        "desc": "创建时间_截止",
-        "example": "2019-02-18 22:19:34",
-        "name": "create_timeE",
-        "required": "0"
-      }
-    ],
-    "query_path": {
-      "path": "/customer/customers",
-      "params": []
-    },
-    "type": "static",
-    "status": "undone",
-    "edit_uid": 0
-  },
-    {
-      "_id": 422,
-      "method": "GET",
-      "catid": 14,
-      "title": "会员总数",
-      "path": "/customer/customerN",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 14,
-      "add_time": 1553743704,
-      "up_time": 1554110186,
-      "__v": 0,
-      "markdown": "通过商家ID，员工ID，获取所有会员的总数量\n<span class=\"colour\" style=\"color:rgb(86, 156, 214)\">let</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">=</span><span class=\"colour\" style=\"color:rgb(206, 145, 120)\">`select count(id) as num from customer where flag != 1 and company =?  and employee =?`</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">;</span>\n<span class=\"colour\" style=\"color:rgb(197, 134, 192)\">return</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(197, 134, 192)\">await</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">db</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(220, 220, 170)\">simple</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">(</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">,</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">params</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">company</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">);</span>",
-      "desc": "<p>通过商家ID，员工ID，获取所有会员的总数量<br>\n<span class=\"colour\" style=\"color:rgb(86, 156, 214)\">let</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">=</span><span class=\"colour\" style=\"color:rgb(206, 145, 120)\"><code data-backticks=\"1\">select count(id) as num from customer where flag != 1 and company =?&nbsp; and employee =?</code></span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">;</span><br>\n<span class=\"colour\" style=\"color:rgb(197, 134, 192)\">return</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(197, 134, 192)\">await</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">db</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(220, 220, 170)\">simple</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">(</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">,</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">params</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">company</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">);</span></p>\n",
-      "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"num\":{\"type\":\"number\"}}}}}}}}",
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": false,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5ca1d6eaa998d11268e6617b",
-        "desc": "公司「商家」ID",
-        "example": "1",
-        "name": "company",
-        "required": "1"
-      },
-        {
-          "_id": "5ca1d6eaa998d11268e6617a",
-          "desc": "所属员工ID",
-          "example": "1",
-          "name": "employee",
-          "required": "0"
-        }
-      ],
-      "query_path": {
-        "path": "/customer/customerN",
-        "params": []
-      },
-      "type": "static",
-      "status": "done",
-      "edit_uid": 0
-    },
-    {
-      "_id": 225,
-      "method": "GET",
-      "catid": 14,
-      "title": "修改会员",
-      "path": "/customer/updateCustomer",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 14,
-      "add_time": 1550046532,
-      "up_time": 1550046532,
-      "__v": 0,
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": false,
-      "req_body_form": [],
-      "req_body_is_json_schema": false,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [],
-      "query_path": {
-        "path": "/customer/updateCustomer",
-        "params": []
-      },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
-    {
-      "_id": 14,
-      "method": "GET",
-      "catid": 14,
-      "title": "客户地址查询",
-      "path": "/customer/customAddress",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 11,
-      "add_time": 1544511769,
-      "up_time": 1544512344,
-      "__v": 0,
-      "markdown": "",
-      "desc": "",
-      "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"integer\",\"description\":\"状态码\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"integer\",\"description\":\"地址ID\"},\"address\":{\"type\":\"string\",\"description\":\"地址内容，为JSON字符串，前台需转成JSON对象\"},\"create_time\":{\"type\":\"string\",\"description\":\"创建时间\"},\"mod_time\":{\"type\":\"string\",\"description\":\"修改时间\"},\"flag\":{\"type\":\"integer\",\"description\":\"状态标识\"},\"company\":{\"type\":\"integer\",\"description\":\"公司ID\"},\"custom\":{\"type\":\"string\",\"description\":\"客户ID\"}},\"required\":[\"id\",\"address\",\"create_time\",\"mod_time\",\"flag\",\"company\",\"custom\"]},\"description\":\"数据\"}},\"required\":[\"code\",\"data\"]}",
-      "tag": [
-        "customer"
-      ],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": true,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5c0f63582c11a2126f377f9d",
-        "desc": "客户ID",
-        "example": "0b80db10-f14d-11e8-84d6-9761b4fb1ef4",
-        "name": "custom",
-        "required": "1"
-      },
-        {
-          "_id": "5c0f63582c11a2126f377f9c",
-          "desc": "公司ID",
-          "example": "1",
-          "name": "company",
-          "required": "1"
-        }
-      ],
-      "query_path": {
-        "path": "/customer/customAddress",
-        "params": []
-      },
-      "type": "static",
-      "status": "done",
-      "edit_uid": 0
-    },
-    {
-      "_id": 427,
-      "method": "GET",
-      "catid": 14,
-      "title": "获取休眠客户数",
-      "path": "/customer/GetcustomerN_noorder",
-      "project_id": 12,
-      "res_body_type": "json",
-      "markdown": "获取指定时间内注册，一直没有下单的会员的总数量",
-      "desc": "<p>获取指定时间内注册，一直没有下单的会员的总数量</p>\n",
-      "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"num\":{\"type\":\"number\"}}}}}}}}",
-      "uid": 14,
-      "add_time": 1553744877,
-      "up_time": 1553825548,
-      "__v": 0,
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": false,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5c9d7f0c2c11a2126f37875d",
-        "desc": "公司「商家」ID",
-        "example": "1",
-        "name": "company",
-        "required": "0"
-      },
-        {
-          "_id": "5c9d7f0c2c11a2126f37875c",
-          "desc": "",
-          "example": "2019-12-12 12:12:12",
-          "name": "create_timeB",
-          "required": "1"
+        "_id": 224,
+        "method": "GET",
+        "catid": 14,
+        "title": "会员列表",
+        "path": "/customer/customers",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 14,
+        "add_time": 1550046481,
+        "up_time": 1553829634,
+        "__v": 0,
+        "markdown": "增加查询条件，创建时间（范围）\n\ncreate_timeB\ncreate_timeE\n\n\\-\\-\\-\\-2019\\.3\\.28 \badd by Alex\\.Ji",
+        "desc": "<p>增加查询条件，创建时间（范围）</p>\n<p>create_timeB<br>\ncreate_timeE</p>\n<p>----2019.3.28 \badd by Alex.Ji</p>\n",
+        "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"cid\":{\"type\":\"number\"},\"openid\":{\"type\":[\"string\",\"null\"]},\"employee\":{\"type\":[\"null\",\"number\"]},\"car\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"idg\":{\"type\":\"string\"},\"number\":{\"type\":\"string\"}},\"required\":[\"idg\",\"number\"]}},\"id\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"null\"},\"money\":{\"type\":[\"number\",\"null\"]},\"cname\":{\"type\":\"string\"},\"phone\":{\"type\":[\"string\",\"null\"]},\"email\":{\"type\":[\"null\",\"string\"]},\"qq\":{\"type\":[\"null\",\"string\"]},\"ccode\":{\"type\":[\"null\",\"string\"]},\"area\":{\"type\":\"number\"},\"head\":{\"type\":[\"string\",\"null\"]},\"login_name\":{\"type\":[\"string\",\"null\"]},\"cpassword\":{\"type\":[\"string\",\"null\"]},\"type\":{\"type\":[\"null\",\"number\"]},\"depot\":{\"type\":[\"null\",\"number\"]},\"place\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"required\":[\"id\",\"name\"]},\"address\":{\"type\":[\"null\",\"string\"]},\"fax\":{\"type\":[\"null\",\"string\"]},\"bdesc\":{\"type\":[\"null\",\"string\"]},\"linkman\":{\"type\":[\"null\",\"string\"]},\"job\":{\"type\":[\"null\",\"string\"]},\"tel\":{\"type\":[\"null\",\"string\"]},\"bankname\":{\"type\":[\"null\",\"string\"]},\"account_name\":{\"type\":[\"null\",\"string\"]},\"caccount\":{\"type\":[\"null\",\"string\"]},\"taxpayer\":{\"type\":[\"null\",\"string\"]},\"bill_time\":{\"type\":[\"null\",\"number\"]},\"bill_title\":{\"type\":[\"null\",\"string\"]},\"alipay\":{\"type\":[\"null\",\"string\"]},\"weixinpay\":{\"type\":[\"null\",\"string\"]},\"flag\":{\"type\":\"number\"}},\"required\":[\"cid\",\"openid\",\"employee\",\"car\",\"id\",\"zipcode\",\"money\",\"cname\",\"phone\",\"email\",\"qq\",\"ccode\",\"area\",\"head\",\"login_name\",\"cpassword\",\"type\",\"depot\",\"place\",\"address\",\"fax\",\"bdesc\",\"linkman\",\"job\",\"tel\",\"bankname\",\"account_name\",\"caccount\",\"taxpayer\",\"bill_time\",\"bill_title\",\"alipay\",\"weixinpay\",\"flag\"]}}}}}}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c9d8f02a998d11268e66143",
+            "desc": "公司(商家)ID",
+            "example": "1",
+            "name": "company",
+            "required": "1"
+          },
+          {
+            "_id": "5c9d8f02a998d11268e66142",
+            "desc": "{all, name,phone,linkMan,type,flag,employee,area,depot}",
+            "example": "",
+            "name": "likes",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d8f02a998d11268e66141",
+            "desc": "",
+            "example": "",
+            "name": "id",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d8f02a998d11268e66140",
+            "desc": "",
+            "example": "",
+            "name": "cid",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d8f02a998d11268e6613f",
+            "desc": "",
+            "example": "",
+            "name": "openid",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d8f02a998d11268e6613e",
+            "desc": "",
+            "example": "",
+            "name": "start",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d8f02a998d11268e6613d",
+            "desc": "",
+            "example": "",
+            "name": "len",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d8f02a998d11268e6613c",
+            "desc": "创建时间_开始",
+            "example": "2019-02-18 22:19:34",
+            "name": "create_timeB",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d8f02a998d11268e6613b",
+            "desc": "创建时间_截止",
+            "example": "2019-02-18 22:19:34",
+            "name": "create_timeE",
+            "required": "0"
+          }
+        ],
+        "query_path": {
+          "path": "/customer/customers",
+          "params": []
         },
-        {
-          "_id": "5c9d7f0c2c11a2126f37875b",
-          "desc": "",
-          "example": "2019-12-12 12:12:12",
-          "name": "create_timeE",
-          "required": "1"
-        }
-      ],
-      "query_path": {
-        "path": "/customer/GetcustomerN_noorder",
-        "params": []
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    }
-  ]
-},
+      {
+        "_id": 422,
+        "method": "GET",
+        "catid": 14,
+        "title": "会员总数",
+        "path": "/customer/customerN",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 14,
+        "add_time": 1553743704,
+        "up_time": 1554110186,
+        "__v": 0,
+        "markdown": "通过商家ID，员工ID，获取所有会员的总数量\n<span class=\"colour\" style=\"color:rgb(86, 156, 214)\">let</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">=</span><span class=\"colour\" style=\"color:rgb(206, 145, 120)\">`select count(id) as num from customer where flag != 1 and company =?  and employee =?`</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">;</span>\n<span class=\"colour\" style=\"color:rgb(197, 134, 192)\">return</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(197, 134, 192)\">await</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">db</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(220, 220, 170)\">simple</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">(</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">,</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">params</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">company</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">);</span>",
+        "desc": "<p>通过商家ID，员工ID，获取所有会员的总数量<br>\n<span class=\"colour\" style=\"color:rgb(86, 156, 214)\">let</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">=</span><span class=\"colour\" style=\"color:rgb(206, 145, 120)\"><code data-backticks=\"1\">select count(id) as num from customer where flag != 1 and company =?&nbsp; and employee =?</code></span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">;</span><br>\n<span class=\"colour\" style=\"color:rgb(197, 134, 192)\">return</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(197, 134, 192)\">await</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\"></span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">db</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(220, 220, 170)\">simple</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">(</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">sql</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">,</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">params</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">.</span><span class=\"colour\" style=\"color:rgb(156, 220, 254)\">company</span><span class=\"colour\" style=\"color:rgb(212, 212, 212)\">);</span></p>\n",
+        "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"num\":{\"type\":\"number\"}}}}}}}}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5ca1d6eaa998d11268e6617b",
+            "desc": "公司「商家」ID",
+            "example": "1",
+            "name": "company",
+            "required": "1"
+          },
+          {
+            "_id": "5ca1d6eaa998d11268e6617a",
+            "desc": "所属员工ID",
+            "example": "1",
+            "name": "employee",
+            "required": "0"
+          }
+        ],
+        "query_path": {
+          "path": "/customer/customerN",
+          "params": []
+        },
+        "type": "static",
+        "status": "done",
+        "edit_uid": 0
+      },
+      {
+        "_id": 225,
+        "method": "GET",
+        "catid": 14,
+        "title": "修改会员",
+        "path": "/customer/updateCustomer",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 14,
+        "add_time": 1550046532,
+        "up_time": 1550046532,
+        "__v": 0,
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": false,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [],
+        "query_path": {
+          "path": "/customer/updateCustomer",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      },
+      {
+        "_id": 14,
+        "method": "GET",
+        "catid": 14,
+        "title": "客户地址查询",
+        "path": "/customer/customAddress",
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 11,
+        "add_time": 1544511769,
+        "up_time": 1544512344,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"integer\",\"description\":\"状态码\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"integer\",\"description\":\"地址ID\"},\"address\":{\"type\":\"string\",\"description\":\"地址内容，为JSON字符串，前台需转成JSON对象\"},\"create_time\":{\"type\":\"string\",\"description\":\"创建时间\"},\"mod_time\":{\"type\":\"string\",\"description\":\"修改时间\"},\"flag\":{\"type\":\"integer\",\"description\":\"状态标识\"},\"company\":{\"type\":\"integer\",\"description\":\"公司ID\"},\"custom\":{\"type\":\"string\",\"description\":\"客户ID\"}},\"required\":[\"id\",\"address\",\"create_time\",\"mod_time\",\"flag\",\"company\",\"custom\"]},\"description\":\"数据\"}},\"required\":[\"code\",\"data\"]}",
+        "tag": [
+          "customer"
+        ],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c0f63582c11a2126f377f9d",
+            "desc": "客户ID",
+            "example": "0b80db10-f14d-11e8-84d6-9761b4fb1ef4",
+            "name": "custom",
+            "required": "1"
+          },
+          {
+            "_id": "5c0f63582c11a2126f377f9c",
+            "desc": "公司ID",
+            "example": "1",
+            "name": "company",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/customer/customAddress",
+          "params": []
+        },
+        "type": "static",
+        "status": "done",
+        "edit_uid": 0
+      },
+      {
+        "_id": 427,
+        "method": "GET",
+        "catid": 14,
+        "title": "获取休眠客户数",
+        "path": "/customer/GetcustomerN_noorder",
+        "project_id": 12,
+        "res_body_type": "json",
+        "markdown": "获取指定时间内注册，一直没有下单的会员的总数量",
+        "desc": "<p>获取指定时间内注册，一直没有下单的会员的总数量</p>\n",
+        "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"num\":{\"type\":\"number\"}}}}}}}}",
+        "uid": 14,
+        "add_time": 1553744877,
+        "up_time": 1553825548,
+        "__v": 0,
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c9d7f0c2c11a2126f37875d",
+            "desc": "公司「商家」ID",
+            "example": "1",
+            "name": "company",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d7f0c2c11a2126f37875c",
+            "desc": "",
+            "example": "2019-12-12 12:12:12",
+            "name": "create_timeB",
+            "required": "1"
+          },
+          {
+            "_id": "5c9d7f0c2c11a2126f37875b",
+            "desc": "",
+            "example": "2019-12-12 12:12:12",
+            "name": "create_timeE",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/customer/GetcustomerN_noorder",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
+      }
+    ]
+  },
   {
     "name": "分销员",
     "desc": null,
     "add_time": 1545189402,
     "up_time": 1545189402,
     "index": 0,
-    "list": [{
-      "_id": 154,
-      "method": "GET",
-      "catid": 34,
-      "title": "查询分销员设置",
-      "path": "/distribution/salesman",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 11,
-      "add_time": 1545293048,
-      "up_time": 1546573570,
-      "__v": 0,
-      "markdown": "保护期参数预留，功能暂时不实现\n\n由于后台接口代码在判断参数时0将作为false判断，所以参数值尽量避免为0",
-      "desc": "<p>保护期参数预留，功能暂时不实现</p>\n<p>由于后台接口代码在判断参数时0将作为false判断，所以参数值尽量避免为0</p>\n",
-      "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"auditing\":{\"type\":\"integer\",\"description\":\"分销员审核开启关闭，-1为关闭，1为开启\"},\"protect\":{\"type\":\"integer\",\"description\":\"是否开启分销员保护期，-1为关闭，1为开启\"},\"protectDays\":{\"type\":\"integer\",\"description\":\"保护期天数\"},\"settlementWay\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"slevel\":{\"type\":\"integer\",\"description\":\"分销层级数\"},\"clevel\":{\"type\":\"integer\",\"description\":\"分销员级数\"},\"rate\":{\"type\":\"integer\",\"description\":\"佣金比例或积分数\"}},\"required\":[\"slevel\",\"clevel\",\"rate\"]}},\"description\":\"结算方式\"},\"goodsSet\":{\"type\":\"integer\",\"description\":\"创建商品后是否默认参与推广，-1为不参与，1为参与\"},\"compute\":{\"type\":\"integer\",\"description\":\"佣金结算，消费者以会员价购买，分销员无佣金，-1为否，1为是\"},\"cutTime\":{\"type\":\"integer\",\"description\":\"结算时间，1为交易完成结算（发货后7天内，含7天），2为售后维权处理期结束后计算（交易完成15天后）\"},\"display\":{\"type\":\"array\",\"items\":{\"type\":\"integer\",\"description\":\"1为显示佣金，2为显示佣金比例\"},\"description\":\"佣金显示方式，不能为空，可多选\"},\"goodsSort\":{\"type\":\"integer\",\"description\":\"商品列表排序，1为商品佣金越高越靠前，2为商品价格越高越靠前，3为商品销量越高越靠前，4为商品上架越晚越靠前\"},\"salesName\":{\"type\":\"string\",\"mock\":{\"mock\":\"@cname\"},\"description\":\"分销员名称\"},\"icon\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"分享图标\"},\"salesCount\":{\"type\":\"integer\",\"description\":\"分销支持层级数，默认为2\"}},\"description\":\"分销员设置\",\"required\":[\"auditing\",\"protect\",\"protectDays\",\"settlementWay\",\"goodsSet\",\"compute\",\"cutTime\",\"display\",\"goodsSort\",\"salesName\",\"icon\",\"salesCount\"]}",
-      "tag": [
-        "salesman"
-      ],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": false,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5c2ed702a998d11268e65a1f",
-        "desc": "公司ID",
-        "example": "1",
-        "name": "company",
-        "required": "1"
-      }],
-      "query_path": {
+    "list": [
+      {
+        "_id": 154,
+        "method": "GET",
+        "catid": 34,
+        "title": "查询分销员设置",
         "path": "/distribution/salesman",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 11,
+        "add_time": 1545293048,
+        "up_time": 1546573570,
+        "__v": 0,
+        "markdown": "保护期参数预留，功能暂时不实现\n\n由于后台接口代码在判断参数时0将作为false判断，所以参数值尽量避免为0",
+        "desc": "<p>保护期参数预留，功能暂时不实现</p>\n<p>由于后台接口代码在判断参数时0将作为false判断，所以参数值尽量避免为0</p>\n",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"auditing\":{\"type\":\"integer\",\"description\":\"分销员审核开启关闭，-1为关闭，1为开启\"},\"protect\":{\"type\":\"integer\",\"description\":\"是否开启分销员保护期，-1为关闭，1为开启\"},\"protectDays\":{\"type\":\"integer\",\"description\":\"保护期天数\"},\"settlementWay\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"slevel\":{\"type\":\"integer\",\"description\":\"分销层级数\"},\"clevel\":{\"type\":\"integer\",\"description\":\"分销员级数\"},\"rate\":{\"type\":\"integer\",\"description\":\"佣金比例或积分数\"}},\"required\":[\"slevel\",\"clevel\",\"rate\"]}},\"description\":\"结算方式\"},\"goodsSet\":{\"type\":\"integer\",\"description\":\"创建商品后是否默认参与推广，-1为不参与，1为参与\"},\"compute\":{\"type\":\"integer\",\"description\":\"佣金结算，消费者以会员价购买，分销员无佣金，-1为否，1为是\"},\"cutTime\":{\"type\":\"integer\",\"description\":\"结算时间，1为交易完成结算（发货后7天内，含7天），2为售后维权处理期结束后计算（交易完成15天后）\"},\"display\":{\"type\":\"array\",\"items\":{\"type\":\"integer\",\"description\":\"1为显示佣金，2为显示佣金比例\"},\"description\":\"佣金显示方式，不能为空，可多选\"},\"goodsSort\":{\"type\":\"integer\",\"description\":\"商品列表排序，1为商品佣金越高越靠前，2为商品价格越高越靠前，3为商品销量越高越靠前，4为商品上架越晚越靠前\"},\"salesName\":{\"type\":\"string\",\"mock\":{\"mock\":\"@cname\"},\"description\":\"分销员名称\"},\"icon\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"分享图标\"},\"salesCount\":{\"type\":\"integer\",\"description\":\"分销支持层级数，默认为2\"}},\"description\":\"分销员设置\",\"required\":[\"auditing\",\"protect\",\"protectDays\",\"settlementWay\",\"goodsSet\",\"compute\",\"cutTime\",\"display\",\"goodsSort\",\"salesName\",\"icon\",\"salesCount\"]}",
+        "tag": [
+          "salesman"
+        ],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c2ed702a998d11268e65a1f",
+            "desc": "公司ID",
+            "example": "1",
+            "name": "company",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/distribution/salesman",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
       {
         "_id": 127,
         "method": "POST",
@@ -349,12 +358,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c2ed55ca998d11268e65a1d",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c2ed55ca998d11268e65a1d",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/distribution/updateSalesman",
@@ -389,13 +400,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c52649ba998d11268e65acd",
-          "desc": "公司ID",
-          "example": "1",
-          "name": "company",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c52649ba998d11268e65acd",
+            "desc": "公司ID",
+            "example": "1",
+            "name": "company",
+            "required": "1"
+          },
           {
             "_id": "5c52649ba998d11268e65acc",
             "desc": "加入分销员的时间（开始日期）",
@@ -522,12 +534,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c304e612c11a2126f3781e8",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c304e612c11a2126f3781e8",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/distribution/createSales",
@@ -563,12 +577,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c304e70a998d11268e65a91",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c304e70a998d11268e65a91",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/distribution/updateSales",
@@ -603,13 +619,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c32cb8aa998d11268e65aab",
-          "desc": "开始日期",
-          "example": "2019-01-01",
-          "name": "startTime",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c32cb8aa998d11268e65aab",
+            "desc": "开始日期",
+            "example": "2019-01-01",
+            "name": "startTime",
+            "required": "0"
+          },
           {
             "_id": "5c32cb8aa998d11268e65aaa",
             "desc": "结束日期",
@@ -679,13 +696,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c32eab4a998d11268e65aaf",
-          "desc": "开始时间",
-          "example": "2018-01-01",
-          "name": "startTime",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c32eab4a998d11268e65aaf",
+            "desc": "开始时间",
+            "example": "2018-01-01",
+            "name": "startTime",
+            "required": "0"
+          },
           {
             "_id": "5c32eab4a998d11268e65aae",
             "desc": "结束时间",
@@ -741,13 +759,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c32f39ca998d11268e65ab1",
-          "desc": "订单号",
-          "example": "DH-20180101-001",
-          "name": "orderCode",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c32f39ca998d11268e65ab1",
+            "desc": "订单号",
+            "example": "DH-20180101-001",
+            "name": "orderCode",
+            "required": "0"
+          },
           {
             "_id": "5c32f39ca998d11268e65ab0",
             "desc": "公司ID",
@@ -772,115 +791,119 @@
     "add_time": 1552528712,
     "up_time": 1552528712,
     "index": 0,
-    "list": [{
-      "_id": 123,
-      "method": "POST",
-      "catid": 48,
-      "title": "添加商家",
-      "path": "/company/company",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 22,
-      "add_time": 1545187215,
-      "up_time": 1553765643,
-      "__v": 0,
-      "markdown": "第三方商家使用",
-      "desc": "<p>第三方商家使用</p>\n",
-      "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{}}",
-      "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{}}",
-      "req_body_type": "json",
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": true,
-      "req_params": [],
-      "req_headers": [{
-        "_id": "5c9c950b2c11a2126f378742",
-        "value": "application/json",
-        "name": "Content-Type",
-        "required": "1"
-      }],
-      "req_query": [{
-        "_id": "5c9c950b2c11a2126f378741",
-        "desc": "公司「商家」「门店」名称",
-        "example": "",
-        "name": "cname",
-        "required": "1"
-      },
-        {
-          "_id": "5c9c950b2c11a2126f378740",
-          "desc": "图标",
-          "example": "",
-          "name": "log",
-          "required": "1"
-        },
-        {
-          "_id": "5c9c950b2c11a2126f37873f",
-          "desc": "手机",
-          "example": "",
-          "name": "phone",
-          "required": "1"
-        },
-        {
-          "_id": "5c9c950b2c11a2126f37873e",
-          "desc": "所在地区",
-          "example": "",
-          "name": "area",
-          "required": "1"
-        },
-        {
-          "_id": "5c9c950b2c11a2126f37873d",
-          "desc": "联系人",
-          "example": "",
-          "name": "linkman",
-          "required": "1"
-        },
-        {
-          "_id": "5c9c950b2c11a2126f37873c",
-          "desc": "传真",
-          "example": "",
-          "name": "fax",
-          "required": "1"
-        },
-        {
-          "_id": "5c9c950b2c11a2126f37873b",
-          "desc": "描述",
-          "example": "",
-          "name": "cdesc",
-          "required": "1"
-        },
-        {
-          "_id": "5c9c950b2c11a2126f37873a",
-          "desc": "标记",
-          "example": "",
-          "name": "flag",
-          "required": "1"
-        },
-        {
-          "_id": "5c9c950b2c11a2126f378739",
-          "desc": "地址",
-          "example": "",
-          "name": "address",
-          "required": "1"
-        },
-        {
-          "_id": "5c9c950b2c11a2126f378738",
-          "desc": "办公电话",
-          "example": "",
-          "name": "tel",
-          "required": "1"
-        }
-      ],
-      "query_path": {
+    "list": [
+      {
+        "_id": 123,
+        "method": "POST",
+        "catid": 48,
+        "title": "添加商家",
         "path": "/company/company",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 22,
+        "add_time": 1545187215,
+        "up_time": 1553765643,
+        "__v": 0,
+        "markdown": "第三方商家使用",
+        "desc": "<p>第三方商家使用</p>\n",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{}}",
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{}}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9c950b2c11a2126f378742",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [
+          {
+            "_id": "5c9c950b2c11a2126f378741",
+            "desc": "公司「商家」「门店」名称",
+            "example": "",
+            "name": "cname",
+            "required": "1"
+          },
+          {
+            "_id": "5c9c950b2c11a2126f378740",
+            "desc": "图标",
+            "example": "",
+            "name": "log",
+            "required": "1"
+          },
+          {
+            "_id": "5c9c950b2c11a2126f37873f",
+            "desc": "手机",
+            "example": "",
+            "name": "phone",
+            "required": "1"
+          },
+          {
+            "_id": "5c9c950b2c11a2126f37873e",
+            "desc": "所在地区",
+            "example": "",
+            "name": "area",
+            "required": "1"
+          },
+          {
+            "_id": "5c9c950b2c11a2126f37873d",
+            "desc": "联系人",
+            "example": "",
+            "name": "linkman",
+            "required": "1"
+          },
+          {
+            "_id": "5c9c950b2c11a2126f37873c",
+            "desc": "传真",
+            "example": "",
+            "name": "fax",
+            "required": "1"
+          },
+          {
+            "_id": "5c9c950b2c11a2126f37873b",
+            "desc": "描述",
+            "example": "",
+            "name": "cdesc",
+            "required": "1"
+          },
+          {
+            "_id": "5c9c950b2c11a2126f37873a",
+            "desc": "标记",
+            "example": "",
+            "name": "flag",
+            "required": "1"
+          },
+          {
+            "_id": "5c9c950b2c11a2126f378739",
+            "desc": "地址",
+            "example": "",
+            "name": "address",
+            "required": "1"
+          },
+          {
+            "_id": "5c9c950b2c11a2126f378738",
+            "desc": "办公电话",
+            "example": "",
+            "name": "tel",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/company/company",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
       {
         "_id": 155,
         "method": "GET",
@@ -904,13 +927,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9cc37c2c11a2126f378758",
-          "desc": "",
-          "example": "",
-          "name": "cname",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c9cc37c2c11a2126f378758",
+            "desc": "",
+            "example": "",
+            "name": "cname",
+            "required": "0"
+          },
           {
             "_id": "5c9cc37c2c11a2126f378757",
             "desc": "",
@@ -1006,13 +1030,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c94e32c11a2126f378737",
-          "desc": "当count为true的时候返回总条数，不传或者为0返回正常数据",
-          "example": "",
-          "name": "count",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c9c94e32c11a2126f378737",
+            "desc": "当count为true的时候返回总条数，不传或者为0返回正常数据",
+            "example": "",
+            "name": "count",
+            "required": "0"
+          },
           {
             "_id": "5c9c94e32c11a2126f378736",
             "desc": "门店「商家」ID",
@@ -1052,12 +1077,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c91a47ea998d11268e65e2e",
-          "desc": "当count为true的时候返回总条数，不传或者为0返回正常数据",
-          "name": "count",
-          "required": "0"
-        }],
+        "req_query": [
+          {
+            "_id": "5c91a47ea998d11268e65e2e",
+            "desc": "当count为true的时候返回总条数，不传或者为0返回正常数据",
+            "name": "count",
+            "required": "0"
+          }
+        ],
         "query_path": {
           "path": "/business/businessTypeList",
           "params": []
@@ -1087,12 +1114,13 @@
         "index": 4,
         "api_opened": false,
         "res_body_is_json_schema": true,
-        "req_body_form": [{
-          "_id": "5c9d90d0a998d11268e6616a",
-          "type": "text",
-          "name": "type",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5c9d90d0a998d11268e6616a",
+            "type": "text",
+            "name": "type",
+            "required": "1"
+          },
           {
             "_id": "5c9d90d0a998d11268e66169",
             "desc": "",
@@ -1128,12 +1156,14 @@
         ],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9d90d0a998d11268e66165",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9d90d0a998d11268e66165",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/business/addBusinessType",
@@ -1164,13 +1194,14 @@
         "index": 5,
         "api_opened": false,
         "res_body_is_json_schema": true,
-        "req_body_form": [{
-          "_id": "5c9d90e4a998d11268e66172",
-          "desc": "商家ID",
-          "type": "text",
-          "name": "id",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5c9d90e4a998d11268e66172",
+            "desc": "商家ID",
+            "type": "text",
+            "name": "id",
+            "required": "1"
+          },
           {
             "_id": "5c9d90e4a998d11268e66171",
             "desc": "商家类型",
@@ -1222,12 +1253,14 @@
         ],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9d90e4a998d11268e6616b",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9d90e4a998d11268e6616b",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/business/editBusinessType",
@@ -1260,12 +1293,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9d90f42c11a2126f3787a2",
-          "desc": "商家类型的唯一ID",
-          "name": "typeId",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c9d90f42c11a2126f3787a2",
+            "desc": "商家类型的唯一ID",
+            "name": "typeId",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/business/deletBusinessType",
           "params": []
@@ -1282,73 +1317,75 @@
     "add_time": 1552613566,
     "up_time": 1552642031,
     "index": 0,
-    "list": [{
-      "_id": 331,
-      "method": "GET",
-      "catid": 49,
-      "title": "流水列表",
-      "path": "/finance/flowList",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 50,
-      "add_time": 1552899375,
-      "up_time": 1554110758,
-      "__v": 0,
-      "markdown": "",
-      "desc": "",
-      "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"flowCode\":{\"type\":\"string\",\"description\":\"流水单号\"},\"type\":{\"type\":\"string\",\"description\":\"类型\"},\"money\":{\"type\":\"string\",\"description\":\"金额\"},\"orderNumber\":{\"type\":\"string\",\"description\":\"业务订单号\"},\"payType\":{\"type\":\"string\",\"description\":\"付款方式\"},\"relFlowCode\":{\"type\":\"string\",\"description\":\"关联流水号\"},\"createDate\":{\"type\":\"string\",\"description\":\"创建时间\"}},\"required\":[\"flowCode\",\"type\",\"money\",\"orderNumber\",\"payType\",\"relFlowCode\",\"createDate\"]}}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": false,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5ca1d9262c11a2126f3787d6",
-        "desc": "客户姓名 手机号",
-        "example": "",
-        "name": "all",
-        "required": "0"
-      },
-        {
-          "_id": "5ca1d9262c11a2126f3787d5",
-          "desc": "客户类型",
-          "example": " ",
-          "name": "type",
-          "required": "1"
-        },
-        {
-          "_id": "5ca1d9262c11a2126f3787d4",
-          "desc": "起始时间",
-          "example": "[\"2019-03-21T16",
-          "name": "date",
-          "required": "1"
-        },
-        {
-          "_id": "5ca1d9262c11a2126f3787d3",
-          "desc": "起始条数",
-          "example": "",
-          "name": "from",
-          "required": "1"
-        },
-        {
-          "_id": "5ca1d9262c11a2126f3787d2",
-          "desc": "长度",
-          "example": "",
-          "name": "len",
-          "required": "1"
-        }
-      ],
-      "query_path": {
+    "list": [
+      {
+        "_id": 331,
+        "method": "GET",
+        "catid": 49,
+        "title": "流水列表",
         "path": "/finance/flowList",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 50,
+        "add_time": 1552899375,
+        "up_time": 1554110758,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"flowCode\":{\"type\":\"string\",\"description\":\"流水单号\"},\"type\":{\"type\":\"string\",\"description\":\"类型\"},\"money\":{\"type\":\"string\",\"description\":\"金额\"},\"orderNumber\":{\"type\":\"string\",\"description\":\"业务订单号\"},\"payType\":{\"type\":\"string\",\"description\":\"付款方式\"},\"relFlowCode\":{\"type\":\"string\",\"description\":\"关联流水号\"},\"createDate\":{\"type\":\"string\",\"description\":\"创建时间\"}},\"required\":[\"flowCode\",\"type\",\"money\",\"orderNumber\",\"payType\",\"relFlowCode\",\"createDate\"]}}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5ca1d9262c11a2126f3787d6",
+            "desc": "客户姓名 手机号",
+            "example": "",
+            "name": "all",
+            "required": "0"
+          },
+          {
+            "_id": "5ca1d9262c11a2126f3787d5",
+            "desc": "客户类型",
+            "example": " ",
+            "name": "type",
+            "required": "1"
+          },
+          {
+            "_id": "5ca1d9262c11a2126f3787d4",
+            "desc": "起始时间",
+            "example": "[\"2019-03-21T16",
+            "name": "date",
+            "required": "1"
+          },
+          {
+            "_id": "5ca1d9262c11a2126f3787d3",
+            "desc": "起始条数",
+            "example": "",
+            "name": "from",
+            "required": "1"
+          },
+          {
+            "_id": "5ca1d9262c11a2126f3787d2",
+            "desc": "长度",
+            "example": "",
+            "name": "len",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/finance/flowList",
+          "params": []
+        },
+        "type": "static",
+        "status": "done",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "done",
-      "edit_uid": 0
-    },
       {
         "_id": 431,
         "method": "POST",
@@ -1369,14 +1406,15 @@
         "index": 0,
         "api_opened": false,
         "res_body_is_json_schema": false,
-        "req_body_form": [{
-          "_id": "5c9c8ee1a998d11268e660fe",
-          "desc": "账号ID",
-          "example": "",
-          "type": "text",
-          "name": "account_id",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5c9c8ee1a998d11268e660fe",
+            "desc": "账号ID",
+            "example": "",
+            "type": "text",
+            "name": "account_id",
+            "required": "1"
+          },
           {
             "_id": "5c9c8ee1a998d11268e660fd",
             "desc": "提现金额",
@@ -1404,12 +1442,14 @@
         ],
         "req_body_is_json_schema": false,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c8ee1a998d11268e660fa",
-          "value": "application/x-www-form-urlencoded",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c8ee1a998d11268e660fa",
+            "value": "application/x-www-form-urlencoded",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/finance/createReview",
@@ -1439,14 +1479,15 @@
         "index": 0,
         "api_opened": false,
         "res_body_is_json_schema": false,
-        "req_body_form": [{
-          "_id": "5c9b49592c11a2126f3786da",
-          "desc": "账户ID",
-          "example": "",
-          "type": "text",
-          "name": "account_id",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5c9b49592c11a2126f3786da",
+            "desc": "账户ID",
+            "example": "",
+            "type": "text",
+            "name": "account_id",
+            "required": "1"
+          },
           {
             "_id": "5c9b49592c11a2126f3786d9",
             "desc": "审核人",
@@ -1482,12 +1523,14 @@
         ],
         "req_body_is_json_schema": false,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9b49592c11a2126f3786d5",
-          "value": "application/x-www-form-urlencoded",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9b49592c11a2126f3786d5",
+            "value": "application/x-www-form-urlencoded",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/finance/reviewAction",
@@ -1520,13 +1563,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c36062c11a2126f3786fa",
-          "desc": "账户Id",
-          "example": "",
-          "name": "account_id",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c9c36062c11a2126f3786fa",
+            "desc": "账户Id",
+            "example": "",
+            "name": "account_id",
+            "required": "0"
+          },
           {
             "_id": "5c9c36062c11a2126f3786f9",
             "desc": "起始条数",
@@ -1580,13 +1624,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5ca219102c11a2126f3787dd",
-          "desc": "账户ID",
-          "example": "",
-          "name": "account_id",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5ca219102c11a2126f3787dd",
+            "desc": "账户ID",
+            "example": "",
+            "name": "account_id",
+            "required": "0"
+          },
           {
             "_id": "5ca219102c11a2126f3787dc",
             "desc": "开始条数",
@@ -1637,14 +1682,15 @@
         "index": 0,
         "api_opened": false,
         "res_body_is_json_schema": true,
-        "req_body_form": [{
-          "_id": "5c9c36422c11a2126f378714",
-          "desc": "IC卡号",
-          "example": "",
-          "type": "text",
-          "name": "IC_number",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5c9c36422c11a2126f378714",
+            "desc": "IC卡号",
+            "example": "",
+            "type": "text",
+            "name": "IC_number",
+            "required": "1"
+          },
           {
             "_id": "5c9c36422c11a2126f378713",
             "desc": "身份证正面",
@@ -1760,12 +1806,14 @@
         ],
         "req_body_is_json_schema": false,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c36422c11a2126f378705",
-          "value": "application/x-www-form-urlencoded",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c36422c11a2126f378705",
+            "value": "application/x-www-form-urlencoded",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/finance/updateAccount",
@@ -1795,14 +1843,15 @@
         "index": 0,
         "api_opened": false,
         "res_body_is_json_schema": true,
-        "req_body_form": [{
-          "_id": "5c9c36212c11a2126f378704",
-          "desc": "验证码code",
-          "example": "",
-          "type": "text",
-          "name": "HXverificationCode",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5c9c36212c11a2126f378704",
+            "desc": "验证码code",
+            "example": "",
+            "type": "text",
+            "name": "HXverificationCode",
+            "required": "1"
+          },
           {
             "_id": "5c9c36212c11a2126f378703",
             "desc": "账户ID",
@@ -1870,12 +1919,14 @@
         ],
         "req_body_is_json_schema": false,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c36212c11a2126f3786fb",
-          "value": "application/x-www-form-urlencoded",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c36212c11a2126f3786fb",
+            "value": "application/x-www-form-urlencoded",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/finance/updateAccountFund",
@@ -1908,13 +1959,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c362ba998d11268e660db",
-          "desc": "起始条数",
-          "example": "",
-          "name": "from",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c9c362ba998d11268e660db",
+            "desc": "起始条数",
+            "example": "",
+            "name": "from",
+            "required": "1"
+          },
           {
             "_id": "5c9c362ba998d11268e660da",
             "desc": "长度",
@@ -1961,13 +2013,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c3613a998d11268e660d8",
-          "desc": "手机号",
-          "example": "",
-          "name": "mobile_number",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c9c3613a998d11268e660d8",
+            "desc": "手机号",
+            "example": "",
+            "name": "mobile_number",
+            "required": "1"
+          },
           {
             "_id": "5c9c3613a998d11268e660d7",
             "desc": "账户ID",
@@ -2005,14 +2058,15 @@
         "index": 0,
         "api_opened": false,
         "res_body_is_json_schema": false,
-        "req_body_form": [{
-          "_id": "5c9c364aa998d11268e660e1",
-          "desc": "账户ID",
-          "example": "1",
-          "type": "text",
-          "name": "accountId",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5c9c364aa998d11268e660e1",
+            "desc": "账户ID",
+            "example": "1",
+            "type": "text",
+            "name": "accountId",
+            "required": "1"
+          },
           {
             "_id": "5c9c364aa998d11268e660e0",
             "desc": "支付密码",
@@ -2024,12 +2078,14 @@
         ],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c364aa998d11268e660df",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c364aa998d11268e660df",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/finance/SetAccountPayPWD",
@@ -2059,14 +2115,15 @@
         "index": 0,
         "api_opened": false,
         "res_body_is_json_schema": true,
-        "req_body_form": [{
-          "_id": "5c9c35f62c11a2126f3786f6",
-          "desc": "账户ID",
-          "example": "0",
-          "type": "text",
-          "name": "accountID",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5c9c35f62c11a2126f3786f6",
+            "desc": "账户ID",
+            "example": "0",
+            "type": "text",
+            "name": "accountID",
+            "required": "1"
+          },
           {
             "_id": "5c9c35f62c11a2126f3786f5",
             "desc": "状态",
@@ -2078,12 +2135,14 @@
         ],
         "req_body_is_json_schema": false,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c35f62c11a2126f3786f4",
-          "value": "application/x-www-form-urlencoded",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c35f62c11a2126f3786f4",
+            "value": "application/x-www-form-urlencoded",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/finance/setAccountStatus",
@@ -2116,13 +2175,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c35eda998d11268e660d1",
-          "desc": "账户类型",
-          "example": "",
-          "name": "type",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c9c35eda998d11268e660d1",
+            "desc": "账户类型",
+            "example": "",
+            "name": "type",
+            "required": "0"
+          },
           {
             "_id": "5c9c35eda998d11268e660d0",
             "desc": "模糊搜索( 客户名称/手机号/实名 )",
@@ -2182,37 +2242,23 @@
         "req_body_type": "json",
         "uid": 14,
         "add_time": 1553651038,
-        "up_time": 1554199189,
+        "up_time": 1554246280,
         "__v": 0,
         "tag": [],
         "index": 0,
         "api_opened": false,
         "res_body_is_json_schema": false,
-        "req_body_form": [{
-          "_id": "5ca332952c11a2126f3787f4",
-          "desc": "账户ID",
-          "example": "1",
-          "type": "text",
-          "name": "accountId",
-          "required": "1"
-        },
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
           {
-            "_id": "5ca332952c11a2126f3787f3",
-            "desc": "支付密码",
-            "example": "abcdefg",
-            "type": "text",
-            "name": "payPWD",
+            "_id": "5ca3ea88a998d11268e66195",
+            "value": "application/json",
+            "name": "Content-Type",
             "required": "1"
           }
         ],
-        "req_body_is_json_schema": true,
-        "req_params": [],
-        "req_headers": [{
-          "_id": "5ca332952c11a2126f3787f2",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
         "req_query": [],
         "query_path": {
           "path": "/finance/saveMoneyByWX",
@@ -2243,14 +2289,15 @@
         "index": 0,
         "api_opened": false,
         "res_body_is_json_schema": false,
-        "req_body_form": [{
-          "_id": "5ca1df7ba998d11268e6617e",
-          "desc": "账户ID",
-          "example": "1",
-          "type": "text",
-          "name": "accountId",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5ca1df7ba998d11268e6617e",
+            "desc": "账户ID",
+            "example": "1",
+            "type": "text",
+            "name": "accountId",
+            "required": "1"
+          },
           {
             "_id": "5ca1df7ba998d11268e6617d",
             "desc": "支付密码",
@@ -2262,12 +2309,14 @@
         ],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca1df7ba998d11268e6617c",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca1df7ba998d11268e6617c",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/finance/saveMoneyByalipay",
@@ -2301,19 +2350,22 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c36532c11a2126f378717",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
-        "req_query": [{
-          "_id": "5c9c36532c11a2126f378716",
-          "desc": "手机号",
-          "example": "13677777777",
-          "name": "sMobileNum",
-          "required": "1"
-        },
+        "req_headers": [
+          {
+            "_id": "5c9c36532c11a2126f378717",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [
+          {
+            "_id": "5c9c36532c11a2126f378716",
+            "desc": "手机号",
+            "example": "13677777777",
+            "name": "sMobileNum",
+            "required": "1"
+          },
           {
             "_id": "5c9c36532c11a2126f378715",
             "desc": "验证码",
@@ -2338,45 +2390,48 @@
     "add_time": 1552623720,
     "up_time": 1552623720,
     "index": 0,
-    "list": [{
-      "_id": 339,
-      "method": "POST",
-      "catid": 50,
-      "title": "OMS订单手动分配",
-      "path": "/order/updateOmsSingleOrderStatus",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 47,
-      "add_time": 1552977377,
-      "up_time": 1553825664,
-      "__v": 0,
-      "markdown": "张士全，2019-3-29，已废弃，暂保留。",
-      "desc": "<p>张士全，2019-3-29，已废弃，暂保留。</p>\n",
-      "res_body": "",
-      "req_body_type": "json",
-      "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"tid\":{\"type\":\"string\",\"description\":\"订单编号\"},\"id\":{\"type\":\"string\",\"description\":\"门店编号\"}},\"required\":[\"tid\",\"id\"]}",
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": false,
-      "req_body_form": [],
-      "req_body_is_json_schema": true,
-      "req_params": [],
-      "req_headers": [{
-        "_id": "5c9d7f80a998d11268e66122",
-        "value": "application/json",
-        "name": "Content-Type",
-        "required": "1"
-      }],
-      "req_query": [],
-      "query_path": {
+    "list": [
+      {
+        "_id": 339,
+        "method": "POST",
+        "catid": 50,
+        "title": "OMS订单手动分配",
         "path": "/order/updateOmsSingleOrderStatus",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 47,
+        "add_time": 1552977377,
+        "up_time": 1553825664,
+        "__v": 0,
+        "markdown": "张士全，2019-3-29，已废弃，暂保留。",
+        "desc": "<p>张士全，2019-3-29，已废弃，暂保留。</p>\n",
+        "res_body": "",
+        "req_body_type": "json",
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"tid\":{\"type\":\"string\",\"description\":\"订单编号\"},\"id\":{\"type\":\"string\",\"description\":\"门店编号\"}},\"required\":[\"tid\",\"id\"]}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": false,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c9d7f80a998d11268e66122",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/order/updateOmsSingleOrderStatus",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
       {
         "_id": 327,
         "method": "POST",
@@ -2401,12 +2456,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9d7f64a998d11268e6611e",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9d7f64a998d11268e6611e",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/order/updateOmsOrderListStorage",
@@ -2439,12 +2496,13 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9d7f752c11a2126f378765",
-          "desc": "开始数字",
-          "name": "start",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c9d7f752c11a2126f378765",
+            "desc": "开始数字",
+            "name": "start",
+            "required": "0"
+          },
           {
             "_id": "5c9d7f752c11a2126f378764",
             "desc": "每页条数",
@@ -2511,45 +2569,48 @@
     "add_time": 1552984094,
     "up_time": 1552984094,
     "index": 0,
-    "list": [{
-      "_id": 446,
-      "method": "POST",
-      "catid": 53,
-      "title": "更新仓库信息",
-      "path": "/depots/updataDepotInfo",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 53,
-      "add_time": 1553854437,
-      "up_time": 1554085849,
-      "__v": 0,
-      "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"depotCode\":{\"type\":\"string\",\"description\":\"仓库编码\",\"mock\":{\"mock\":\"1212\"}},\"depotName\":{\"type\":\"string\",\"description\":\"仓库名称\",\"mock\":{\"mock\":\"江宁总库\"}},\"depotLinkmanName\":{\"type\":\"string\",\"description\":\"仓库联系人\",\"mock\":{\"mock\":\"开始\"}},\"telephoneNum\":{\"type\":\"string\",\"mock\":{\"mock\":\"019-2222222\"},\"description\":\"联系人电话\"},\"province\":{\"type\":\"string\",\"description\":\"仓库所在省份\",\"mock\":{\"mock\":\"江苏省\"}},\"city\":{\"type\":\"string\",\"description\":\"仓库所在市\",\"mock\":{\"mock\":\"南京市\"}},\"area\":{\"type\":\"string\",\"description\":\"仓库所在区\",\"mock\":{\"mock\":\"江宁区\"}},\"depotAddress\":{\"type\":\"string\",\"description\":\"仓库地址\\t\",\"mock\":{\"mock\":\"南京市雨花台区\"}},\"goodsQualityStatus\":{\"type\":\"number\",\"description\":\"商品质量状态\",\"mock\":{\"mock\":\"1\"}},\"pickingRules\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"拣货规则\"},\"remarks\":{\"type\":\"string\",\"description\":\"备注\",\"mock\":{\"mock\":\"撒大声地所\"}},\"openStatus\":{\"type\":\"string\",\"description\":\"开启状态\",\"mock\":{\"mock\":\"1\"}},\"longitude\":{\"type\":\"string\",\"description\":\"经度\",\"mock\":{\"mock\":\"2121.212121\"}},\"latitude\":{\"type\":\"string\",\"description\":\"纬度\",\"mock\":{\"mock\":\"21.898888\"}}},\"required\":[\"depotCode\",\"depotName\",\"depotLinkmanName\",\"telephoneNum\",\"province\",\"city\",\"area\",\"depotAddress\",\"goodsQualityStatus\",\"pickingRules\",\"remarks\",\"openStatus\",\"longitude\",\"latitude\"]}},\"required\":[\"likes\"]}",
-      "markdown": "",
-      "desc": "",
-      "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
-      "req_body_type": "json",
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": true,
-      "req_params": [],
-      "req_headers": [{
-        "_id": "5ca177d92c11a2126f3787c6",
-        "value": "application/json",
-        "name": "Content-Type",
-        "required": "1"
-      }],
-      "req_query": [],
-      "query_path": {
+    "list": [
+      {
+        "_id": 446,
+        "method": "POST",
+        "catid": 53,
+        "title": "更新仓库信息",
         "path": "/depots/updataDepotInfo",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 53,
+        "add_time": 1553854437,
+        "up_time": 1554085849,
+        "__v": 0,
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"likes\":{\"type\":\"object\",\"properties\":{\"depotCode\":{\"type\":\"string\",\"description\":\"仓库编码\",\"mock\":{\"mock\":\"1212\"}},\"depotName\":{\"type\":\"string\",\"description\":\"仓库名称\",\"mock\":{\"mock\":\"江宁总库\"}},\"depotLinkmanName\":{\"type\":\"string\",\"description\":\"仓库联系人\",\"mock\":{\"mock\":\"开始\"}},\"telephoneNum\":{\"type\":\"string\",\"mock\":{\"mock\":\"019-2222222\"},\"description\":\"联系人电话\"},\"province\":{\"type\":\"string\",\"description\":\"仓库所在省份\",\"mock\":{\"mock\":\"江苏省\"}},\"city\":{\"type\":\"string\",\"description\":\"仓库所在市\",\"mock\":{\"mock\":\"南京市\"}},\"area\":{\"type\":\"string\",\"description\":\"仓库所在区\",\"mock\":{\"mock\":\"江宁区\"}},\"depotAddress\":{\"type\":\"string\",\"description\":\"仓库地址\\t\",\"mock\":{\"mock\":\"南京市雨花台区\"}},\"goodsQualityStatus\":{\"type\":\"number\",\"description\":\"商品质量状态\",\"mock\":{\"mock\":\"1\"}},\"pickingRules\":{\"type\":\"number\",\"mock\":{\"mock\":\"2\"},\"description\":\"拣货规则\"},\"remarks\":{\"type\":\"string\",\"description\":\"备注\",\"mock\":{\"mock\":\"撒大声地所\"}},\"openStatus\":{\"type\":\"string\",\"description\":\"开启状态\",\"mock\":{\"mock\":\"1\"}},\"longitude\":{\"type\":\"string\",\"description\":\"经度\",\"mock\":{\"mock\":\"2121.212121\"}},\"latitude\":{\"type\":\"string\",\"description\":\"纬度\",\"mock\":{\"mock\":\"21.898888\"}}},\"required\":[\"depotCode\",\"depotName\",\"depotLinkmanName\",\"telephoneNum\",\"province\",\"city\",\"area\",\"depotAddress\",\"goodsQualityStatus\",\"pickingRules\",\"remarks\",\"openStatus\",\"longitude\",\"latitude\"]}},\"required\":[\"likes\"]}",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"obj\":{\"type\":\"object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"result\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"result\"]}},\"required\":[\"data\"]}},\"required\":[\"code\",\"obj\"]}",
+        "req_body_type": "json",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5ca177d92c11a2126f3787c6",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/depots/updataDepotInfo",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
       {
         "_id": 418,
         "method": "POST",
@@ -2574,12 +2635,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c4620a998d11268e660f3",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c4620a998d11268e660f3",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getInBillDetail",
@@ -2613,12 +2676,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9b2e8ea998d11268e6607c",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9b2e8ea998d11268e6607c",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getOutBillDetail",
@@ -2652,12 +2717,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c99efbca998d11268e66059",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c99efbca998d11268e66059",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/outBillAllotAgain",
@@ -2691,12 +2758,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca17b772c11a2126f3787c7",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca17b772c11a2126f3787c7",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/deleteDepot",
@@ -2730,12 +2799,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca1ac112c11a2126f3787ca",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca1ac112c11a2126f3787ca",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/deleteArea",
@@ -2769,12 +2840,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca2dd6fa998d11268e66181",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca2dd6fa998d11268e66181",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/deleteDepotPosition",
@@ -2808,12 +2881,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca1d86d2c11a2126f3787cc",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca1d86d2c11a2126f3787cc",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/deleteDepotArea",
@@ -2847,12 +2922,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9b1cf52c11a2126f3786a4",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9b1cf52c11a2126f3786a4",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/checkSendSubmit",
@@ -2886,12 +2963,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9b20a3a998d11268e6607a",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9b20a3a998d11268e6607a",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/backToPicked",
@@ -2925,12 +3004,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9ad921a998d11268e66074",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9ad921a998d11268e66074",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/pickedSubmit",
@@ -2964,12 +3045,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9ade68a998d11268e66076",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9ade68a998d11268e66076",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/backToAllot",
@@ -3003,12 +3086,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c8d982c11a2126f378733",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c8d982c11a2126f378733",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/upGoods",
@@ -3042,12 +3127,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c9e642c11a2126f37874e",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c9e642c11a2126f37874e",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/lowerGoods",
@@ -3081,12 +3168,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c7fe5a998d11268e660f4",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c7fe5a998d11268e660f4",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/receivingGoods",
@@ -3120,12 +3209,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9aed71a998d11268e66078",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9aed71a998d11268e66078",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/backToNotpick",
@@ -3159,12 +3250,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9dcf48a998d11268e66174",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9dcf48a998d11268e66174",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/addDepots",
@@ -3198,12 +3291,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca1b5e9a998d11268e66177",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca1b5e9a998d11268e66177",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/addArea",
@@ -3237,12 +3332,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca2dba32c11a2126f3787e3",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca2dba32c11a2126f3787e3",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/addDepotPosition",
@@ -3276,12 +3373,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca1e35ca998d11268e6617f",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca1e35ca998d11268e6617f",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/addDepotArea",
@@ -3315,12 +3414,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c99d37ea998d11268e66048",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c99d37ea998d11268e66048",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/outBillAllot",
@@ -3354,12 +3455,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca1c4312c11a2126f3787cb",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca1c4312c11a2126f3787cb",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/updataAreaInfo",
@@ -3393,12 +3496,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca2ff67a998d11268e66182",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca2ff67a998d11268e66182",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/updateDepotPosiInfo",
@@ -3432,12 +3537,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca2c43b2c11a2126f3787e1",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca2c43b2c11a2126f3787e1",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/updateDepotAreaInfo",
@@ -3471,12 +3578,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca32da42c11a2126f3787ee",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca32da42c11a2126f3787ee",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/createOutBill",
@@ -3510,12 +3619,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9ae7f72c11a2126f3786a2",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9ae7f72c11a2126f3786a2",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/createCheckBill",
@@ -3549,12 +3660,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c99f244a998d11268e6605a",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c99f244a998d11268e6605a",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/creactPickWill",
@@ -3588,12 +3701,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca30f13a998d11268e66184",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca30f13a998d11268e66184",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getDepotsList",
@@ -3627,12 +3742,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9deb59a998d11268e66175",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9deb59a998d11268e66175",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getDepotDetail",
@@ -3666,12 +3783,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9b49922c11a2126f3786db",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9b49922c11a2126f3786db",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getInBillList",
@@ -3705,12 +3824,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9873192c11a2126f378651",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9873192c11a2126f378651",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getOutBiiList",
@@ -3744,12 +3865,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca313682c11a2126f3787e7",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca313682c11a2126f3787e7",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getAreaList",
@@ -3783,12 +3906,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca311112c11a2126f3787e6",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca311112c11a2126f3787e6",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getAreaDetail",
@@ -3822,12 +3947,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca2d1622c11a2126f3787e2",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca2d1622c11a2126f3787e2",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getDepotPositionList",
@@ -3861,12 +3988,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca31c41a998d11268e66186",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca31c41a998d11268e66186",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getDepotPositionDetail",
@@ -3900,12 +4029,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca31a7c2c11a2126f3787e9",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca31a7c2c11a2126f3787e9",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getDepotAreaList",
@@ -3939,12 +4070,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca316a62c11a2126f3787e8",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca316a62c11a2126f3787e8",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getDepotAreaDetail",
@@ -3980,12 +4113,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca32e6ba998d11268e6618c",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca32e6ba998d11268e6618c",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getWaybill",
@@ -4019,12 +4154,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca339702c11a2126f3787f9",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca339702c11a2126f3787f9",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/getWaybillDetail",
@@ -4058,12 +4195,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca32ecf2c11a2126f3787f1",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca32ecf2c11a2126f3787f1",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/depots/wayBillReturn",
@@ -4081,59 +4220,61 @@
     "add_time": 1553650010,
     "up_time": 1553650010,
     "index": 0,
-    "list": [{
-      "_id": 392,
-      "method": "GET",
-      "catid": 57,
-      "title": "获取订单客户总数量",
-      "path": "/order/GetTotalOrderCusCountByDate",
-      "project_id": 12,
-      "res_body_type": "json",
-      "markdown": "",
-      "desc": "",
-      "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"num\":{\"type\":\"number\"}}}}}}}}",
-      "uid": 14,
-      "add_time": 1553650321,
-      "up_time": 1553828336,
-      "__v": 0,
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": false,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5c9d89f02c11a2126f37878f",
-        "desc": "开始时间",
-        "example": "2019-3-10 23",
-        "name": "sbDate",
-        "required": "1"
-      },
-        {
-          "_id": "5c9d89f02c11a2126f37878e",
-          "desc": "结束时间",
-          "example": "2019-3-11 00",
-          "name": "seDate",
-          "required": "1"
-        },
-        {
-          "_id": "5c9d89f02c11a2126f37878d",
-          "desc": "商家ID",
-          "example": "1",
-          "name": "company",
-          "required": "0"
-        }
-      ],
-      "query_path": {
+    "list": [
+      {
+        "_id": 392,
+        "method": "GET",
+        "catid": 57,
+        "title": "获取订单客户总数量",
         "path": "/order/GetTotalOrderCusCountByDate",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"num\":{\"type\":\"number\"}}}}}}}}",
+        "uid": 14,
+        "add_time": 1553650321,
+        "up_time": 1553828336,
+        "__v": 0,
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c9d89f02c11a2126f37878f",
+            "desc": "开始时间",
+            "example": "2019-3-10 23",
+            "name": "sbDate",
+            "required": "1"
+          },
+          {
+            "_id": "5c9d89f02c11a2126f37878e",
+            "desc": "结束时间",
+            "example": "2019-3-11 00",
+            "name": "seDate",
+            "required": "1"
+          },
+          {
+            "_id": "5c9d89f02c11a2126f37878d",
+            "desc": "商家ID",
+            "example": "1",
+            "name": "company",
+            "required": "0"
+          }
+        ],
+        "query_path": {
+          "path": "/order/GetTotalOrderCusCountByDate",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
       {
         "_id": 391,
         "method": "GET",
@@ -4157,13 +4298,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9d7fc32c11a2126f37876b",
-          "desc": "开始时间",
-          "example": "2019-3-10 23",
-          "name": "sbDate",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c9d7fc32c11a2126f37876b",
+            "desc": "开始时间",
+            "example": "2019-3-10 23",
+            "name": "sbDate",
+            "required": "1"
+          },
           {
             "_id": "5c9d7fc32c11a2126f37876a",
             "desc": "结束时间",
@@ -4210,13 +4352,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9d7f93a998d11268e66125",
-          "desc": "开始时间",
-          "example": "2019-3-10 23:59:59",
-          "name": "sbDate",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c9d7f93a998d11268e66125",
+            "desc": "开始时间",
+            "example": "2019-3-10 23:59:59",
+            "name": "sbDate",
+            "required": "1"
+          },
           {
             "_id": "5c9d7f93a998d11268e66124",
             "desc": "结束时间",
@@ -4248,271 +4391,273 @@
     "add_time": 1545014241,
     "up_time": 1545014241,
     "index": 1,
-    "list": [{
-      "_id": 28,
-      "method": "GET",
-      "catid": 23,
-      "title": "查询商品",
-      "path": "/goods/goodsByCompany",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 11,
-      "add_time": 1545014273,
-      "up_time": 1553829995,
-      "__v": 0,
-      "markdown": "该接口功能包括**商品列表**、**货品列表**、**首页商品**、**经营屏蔽**、**库存预警**、**缺货商品**等\n\n等级价数据库对应字段内容为字符串数组，例如：\n[\n    { customerType: 1, price: 100 },\n    { customerType: 2, price: 200 }\n]\n接口需通过参数customerType的值查询对应项返回给前台，没传该参数则返回全部\n\n指定价数据库对应字段内容为字符串数组，例如：\n[\n    { customer: '231232432', price: 100 },\n    { customer: '989890239', price: 150 }\n]\n接口需通过参数customer的值查询对应项返回给前台，没传该参数则返回全部\n\n商品是否参与推广通过extend参数判断，-1为不参与推广，1为参与\n\n查询时如果参数cflag为true（1），则查询有设置自定义佣金比例的商品（佣金表中good字段不为空）\n\n张士全，2019-3-29，\n    新增返回参数：gradeReturnCom，gradeSmokeCom，appointReturnCom，appointSmokeCom",
-      "desc": "<p>该接口功能包括<strong>商品列表</strong>、<strong>货品列表</strong>、<strong>首页商品</strong>、<strong>经营屏蔽</strong>、<strong>库存预警</strong>、<strong>缺货商品</strong>等</p>\n<p>等级价数据库对应字段内容为字符串数组，例如：<br>\n[<br>\n&nbsp; &nbsp; { customerType: 1, price: 100 },<br>\n&nbsp; &nbsp; { customerType: 2, price: 200 }<br>\n]<br>\n接口需通过参数customerType的值查询对应项返回给前台，没传该参数则返回全部</p>\n<p>指定价数据库对应字段内容为字符串数组，例如：<br>\n[<br>\n&nbsp; &nbsp; { customer: '231232432', price: 100 },<br>\n&nbsp; &nbsp; { customer: '989890239', price: 150 }<br>\n]<br>\n接口需通过参数customer的值查询对应项返回给前台，没传该参数则返回全部</p>\n<p>商品是否参与推广通过extend参数判断，-1为不参与推广，1为参与</p>\n<p>查询时如果参数cflag为true（1），则查询有设置自定义佣金比例的商品（佣金表中good字段不为空）</p>\n<p>张士全，2019-3-29，<br>\n&nbsp; &nbsp; 新增返回参数：gradeReturnCom，gradeSmokeCom，appointReturnCom，appointSmokeCom</p>\n",
-      "res_body": "{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"商品ID\",\"mock\":{\"mock\":\"@id\"}},\"idg\":{\"type\":\"integer\",\"description\":\"货品ID\",\"mock\":{\"mock\":\"@id\"}},\"cname\":{\"type\":\"string\",\"description\":\"商品名称\",\"mock\":{\"mock\":\"@cname\"}},\"code\":{\"type\":\"number\",\"description\":\"商品编号\",\"mock\":{\"mock\":\"@natural\"}},\"pic\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"图片地址\"},\"description\":\"商品图片\"},\"classify\":{\"type\":\"integer\",\"description\":\"分类ID\",\"mock\":{\"mock\":\"@id\"}},\"unit\":{\"type\":\"string\",\"description\":\"单位\"},\"flag\":{\"type\":\"integer\",\"description\":\"商品状态\"},\"extend\":{\"type\":\"integer\",\"description\":\"商品是否参与推广\"},\"rnum\":{\"type\":\"integer\",\"description\":\"可用库存\"},\"bnum\":{\"type\":\"string\",\"description\":\"系统库存\"},\"sprice\":{\"type\":\"number\",\"description\":\"销售价\"},\"snum\":{\"type\":\"integer\",\"description\":\"货品销量\"},\"icon\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"规格图\"},\"sname\":{\"type\":\"string\",\"mock\":{\"mock\":\"@cname\"},\"description\":\"规格名称\"},\"icode\":{\"type\":\"number\",\"mock\":{\"mock\":\"@natural\"},\"description\":\"规格编号\"},\"purchase\":{\"type\":\"integer\",\"description\":\"采购中数量（货品）\"},\"latestPrice\":{\"type\":\"number\",\"description\":\"最近一次采购价（货品）\"},\"iprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customerType\":{\"type\":\"number\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户类型ID\"},\"price\":{\"type\":\"number\",\"description\":\"等级价\"}},\"required\":[\"customerType\",\"price\"]},\"description\":\"等级价（货品）\"},\"oprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customer\":{\"type\":\"string\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户ID\"},\"price\":{\"type\":\"number\",\"description\":\"指定价\"}},\"required\":[\"customer\",\"price\"]},\"description\":\"指定价（货品）\"},\"shieldTypes\":{\"type\":\"array\",\"items\":{\"type\":\"number\",\"description\":\"客户类型ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有客户类型ID（商品）\"},\"shieldArea\":{\"type\":\"array\",\"items\":{\"type\":\"number\",\"description\":\"所属区域ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有区域ID（商品）\"},\"shieldCustomers\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"description\":\"客户ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有客户ID（商品）\"},\"gradeReturnCom\":{\"type\":\"string\",\"description\":\"等级返佣：0没有 1已设置 2为设置\"},\"gradeSmokeCom\":{\"type\":\"string\",\"description\":\"等级抽佣：0没有 1已设置 2为设置\"},\"appointReturnCom\":{\"type\":\"string\",\"description\":\"指定返佣：0没有 1已设置 2为设置\"},\"appointSmokeCom\":{\"type\":\"string\",\"description\":\"指定抽佣：0没有 1已设置 2为设置\"}},\"required\":[\"id\",\"cname\",\"code\",\"classify\",\"unit\",\"flag\",\"rnum\",\"bnum\",\"sprice\",\"snum\",\"icon\",\"sname\",\"icode\",\"idg\",\"pic\",\"purchase\",\"latestPrice\",\"iprice\",\"oprice\",\"shieldTypes\",\"shieldArea\",\"shieldCustomers\",\"extend\",\"gradeReturnCom\",\"gradeSmokeCom\",\"appointReturnCom\",\"appointSmokeCom\"]}}",
-      "tag": [
-        "goods"
-      ],
-      "index": 0,
-      "api_opened": true,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": true,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5c9d906ba998d11268e66164",
-        "desc": "SQL查询拼接字段",
-        "example": "true",
-        "name": "if",
-        "required": "1"
-      },
-        {
-          "_id": "5c9d906ba998d11268e66163",
-          "desc": "公司ID",
-          "example": "1",
-          "name": "company",
-          "required": "1"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66162",
-          "desc": "是否只显示首页商品，0为否，1为真",
-          "example": "0",
-          "name": "title",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66161",
-          "desc": "当前客户类型ID，如有该值则不返回商品对应屏蔽字段中有该值的商品，并返回该客户类型对应的该商品等级价lprice",
-          "example": "1",
-          "name": "customerTypes",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66160",
-          "desc": "当前客户所属区域ID，如有该值则不返回商品对应屏蔽字段中有该值的商品",
-          "example": "1",
-          "name": "area",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6615f",
-          "desc": "当前客户ID，如有该值则不返回商品对应屏蔽字段中有该值的商品，并返回该客户对应的该商品指定价oprice",
-          "example": "0b80db10-f14d-11e8-84d6-9761b4fb1ef4",
-          "name": "customer",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6615e",
-          "desc": "商品ID",
-          "example": "2cf66310-e7e2-11e8-89a2-9b48088ec8e5",
-          "name": "id",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6615d",
-          "desc": "条件查询，包括all、classify和tag。其中all为模糊查询商品名称、商品标签，货品名称、货品标签",
-          "example": "{\n  all: '', \n  classify: '',\n  tag: ''\n}",
-          "name": "likes",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6615c",
-          "desc": "商品名称",
-          "example": "安慕希",
-          "name": "cname",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6615b",
-          "desc": "商品编号",
-          "example": "984820923",
-          "name": "code",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6615a",
-          "desc": "商品分类ID",
-          "example": "1",
-          "name": "classify",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66159",
-          "desc": "商品标签ID",
-          "example": "1",
-          "name": "tag",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66158",
-          "desc": "商品品牌ID",
-          "example": "1",
-          "name": "brand",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66157",
-          "desc": "供应商ID",
-          "example": "1",
-          "name": "supplier",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66156",
-          "desc": "单位ID",
-          "example": "1",
-          "name": "unit",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66155",
-          "desc": "商品状态，0为上架、2为下架",
-          "example": "0",
-          "name": "goodFlag",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66154",
-          "desc": "是否参与推广，-1为不参与，1为参与（分销员）",
-          "example": "0",
-          "name": "extend",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66153",
-          "desc": "商品是否自定义佣金比例，-1为否，1为是（分销员）",
-          "example": "1",
-          "name": "cflag",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66152",
-          "desc": "商品分页起始值",
-          "example": "0",
-          "name": "start",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66151",
-          "desc": "商品分页长度值",
-          "example": "10",
-          "name": "len",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66150",
-          "desc": "规格名称",
-          "example": "24盒装",
-          "name": "sname",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6614f",
-          "desc": "规格编号",
-          "example": "001",
-          "name": "icode",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6614e",
-          "desc": "商品规格ID（货品ID）",
-          "example": "1",
-          "name": "stands",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6614d",
-          "desc": "是否显示库存预警商品，0为否，为1则返回可用库存（rnum）的值小于min的货品",
-          "example": "0",
-          "name": "warning",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6614c",
-          "desc": "是否显示缺货商品，0为否，为1则返回可用库存（rnum）的值小于等于0的货品",
-          "example": "0",
-          "name": "shortage",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6614b",
-          "desc": "是否只显示有库存货品，0为否，为1则返回可用库存（rnum）大于0的货品",
-          "example": "0",
-          "name": "stock",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e6614a",
-          "desc": "货品条形码",
-          "example": "123324332",
-          "name": "bcode",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66149",
-          "desc": "销售价下限",
-          "example": "100",
-          "name": "priceMin",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66148",
-          "desc": "销售价上限",
-          "example": "2000",
-          "name": "priceMax",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66147",
-          "desc": "货品状态",
-          "example": "0",
-          "name": "flag",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66146",
-          "desc": "货品ID",
-          "example": "[1, 2]",
-          "name": "goodsinfos",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66145",
-          "desc": "货品分页起始值",
-          "example": "0",
-          "name": "infoStart",
-          "required": "0"
-        },
-        {
-          "_id": "5c9d906ba998d11268e66144",
-          "desc": "货品分页长度值",
-          "example": "10",
-          "name": "infolength",
-          "required": "0"
-        }
-      ],
-      "query_path": {
+    "list": [
+      {
+        "_id": 28,
+        "method": "GET",
+        "catid": 23,
+        "title": "查询商品",
         "path": "/goods/goodsByCompany",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 11,
+        "add_time": 1545014273,
+        "up_time": 1553829995,
+        "__v": 0,
+        "markdown": "该接口功能包括**商品列表**、**货品列表**、**首页商品**、**经营屏蔽**、**库存预警**、**缺货商品**等\n\n等级价数据库对应字段内容为字符串数组，例如：\n[\n    { customerType: 1, price: 100 },\n    { customerType: 2, price: 200 }\n]\n接口需通过参数customerType的值查询对应项返回给前台，没传该参数则返回全部\n\n指定价数据库对应字段内容为字符串数组，例如：\n[\n    { customer: '231232432', price: 100 },\n    { customer: '989890239', price: 150 }\n]\n接口需通过参数customer的值查询对应项返回给前台，没传该参数则返回全部\n\n商品是否参与推广通过extend参数判断，-1为不参与推广，1为参与\n\n查询时如果参数cflag为true（1），则查询有设置自定义佣金比例的商品（佣金表中good字段不为空）\n\n张士全，2019-3-29，\n    新增返回参数：gradeReturnCom，gradeSmokeCom，appointReturnCom，appointSmokeCom",
+        "desc": "<p>该接口功能包括<strong>商品列表</strong>、<strong>货品列表</strong>、<strong>首页商品</strong>、<strong>经营屏蔽</strong>、<strong>库存预警</strong>、<strong>缺货商品</strong>等</p>\n<p>等级价数据库对应字段内容为字符串数组，例如：<br>\n[<br>\n&nbsp; &nbsp; { customerType: 1, price: 100 },<br>\n&nbsp; &nbsp; { customerType: 2, price: 200 }<br>\n]<br>\n接口需通过参数customerType的值查询对应项返回给前台，没传该参数则返回全部</p>\n<p>指定价数据库对应字段内容为字符串数组，例如：<br>\n[<br>\n&nbsp; &nbsp; { customer: '231232432', price: 100 },<br>\n&nbsp; &nbsp; { customer: '989890239', price: 150 }<br>\n]<br>\n接口需通过参数customer的值查询对应项返回给前台，没传该参数则返回全部</p>\n<p>商品是否参与推广通过extend参数判断，-1为不参与推广，1为参与</p>\n<p>查询时如果参数cflag为true（1），则查询有设置自定义佣金比例的商品（佣金表中good字段不为空）</p>\n<p>张士全，2019-3-29，<br>\n&nbsp; &nbsp; 新增返回参数：gradeReturnCom，gradeSmokeCom，appointReturnCom，appointSmokeCom</p>\n",
+        "res_body": "{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"商品ID\",\"mock\":{\"mock\":\"@id\"}},\"idg\":{\"type\":\"integer\",\"description\":\"货品ID\",\"mock\":{\"mock\":\"@id\"}},\"cname\":{\"type\":\"string\",\"description\":\"商品名称\",\"mock\":{\"mock\":\"@cname\"}},\"code\":{\"type\":\"number\",\"description\":\"商品编号\",\"mock\":{\"mock\":\"@natural\"}},\"pic\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"图片地址\"},\"description\":\"商品图片\"},\"classify\":{\"type\":\"integer\",\"description\":\"分类ID\",\"mock\":{\"mock\":\"@id\"}},\"unit\":{\"type\":\"string\",\"description\":\"单位\"},\"flag\":{\"type\":\"integer\",\"description\":\"商品状态\"},\"extend\":{\"type\":\"integer\",\"description\":\"商品是否参与推广\"},\"rnum\":{\"type\":\"integer\",\"description\":\"可用库存\"},\"bnum\":{\"type\":\"string\",\"description\":\"系统库存\"},\"sprice\":{\"type\":\"number\",\"description\":\"销售价\"},\"snum\":{\"type\":\"integer\",\"description\":\"货品销量\"},\"icon\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"规格图\"},\"sname\":{\"type\":\"string\",\"mock\":{\"mock\":\"@cname\"},\"description\":\"规格名称\"},\"icode\":{\"type\":\"number\",\"mock\":{\"mock\":\"@natural\"},\"description\":\"规格编号\"},\"purchase\":{\"type\":\"integer\",\"description\":\"采购中数量（货品）\"},\"latestPrice\":{\"type\":\"number\",\"description\":\"最近一次采购价（货品）\"},\"iprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customerType\":{\"type\":\"number\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户类型ID\"},\"price\":{\"type\":\"number\",\"description\":\"等级价\"}},\"required\":[\"customerType\",\"price\"]},\"description\":\"等级价（货品）\"},\"oprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customer\":{\"type\":\"string\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户ID\"},\"price\":{\"type\":\"number\",\"description\":\"指定价\"}},\"required\":[\"customer\",\"price\"]},\"description\":\"指定价（货品）\"},\"shieldTypes\":{\"type\":\"array\",\"items\":{\"type\":\"number\",\"description\":\"客户类型ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有客户类型ID（商品）\"},\"shieldArea\":{\"type\":\"array\",\"items\":{\"type\":\"number\",\"description\":\"所属区域ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有区域ID（商品）\"},\"shieldCustomers\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"description\":\"客户ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽的所有客户ID（商品）\"},\"gradeReturnCom\":{\"type\":\"string\",\"description\":\"等级返佣：0没有 1已设置 2为设置\"},\"gradeSmokeCom\":{\"type\":\"string\",\"description\":\"等级抽佣：0没有 1已设置 2为设置\"},\"appointReturnCom\":{\"type\":\"string\",\"description\":\"指定返佣：0没有 1已设置 2为设置\"},\"appointSmokeCom\":{\"type\":\"string\",\"description\":\"指定抽佣：0没有 1已设置 2为设置\"}},\"required\":[\"id\",\"cname\",\"code\",\"classify\",\"unit\",\"flag\",\"rnum\",\"bnum\",\"sprice\",\"snum\",\"icon\",\"sname\",\"icode\",\"idg\",\"pic\",\"purchase\",\"latestPrice\",\"iprice\",\"oprice\",\"shieldTypes\",\"shieldArea\",\"shieldCustomers\",\"extend\",\"gradeReturnCom\",\"gradeSmokeCom\",\"appointReturnCom\",\"appointSmokeCom\"]}}",
+        "tag": [
+          "goods"
+        ],
+        "index": 0,
+        "api_opened": true,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c9d906ba998d11268e66164",
+            "desc": "SQL查询拼接字段",
+            "example": "true",
+            "name": "if",
+            "required": "1"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66163",
+            "desc": "公司ID",
+            "example": "1",
+            "name": "company",
+            "required": "1"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66162",
+            "desc": "是否只显示首页商品，0为否，1为真",
+            "example": "0",
+            "name": "title",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66161",
+            "desc": "当前客户类型ID，如有该值则不返回商品对应屏蔽字段中有该值的商品，并返回该客户类型对应的该商品等级价lprice",
+            "example": "1",
+            "name": "customerTypes",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66160",
+            "desc": "当前客户所属区域ID，如有该值则不返回商品对应屏蔽字段中有该值的商品",
+            "example": "1",
+            "name": "area",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6615f",
+            "desc": "当前客户ID，如有该值则不返回商品对应屏蔽字段中有该值的商品，并返回该客户对应的该商品指定价oprice",
+            "example": "0b80db10-f14d-11e8-84d6-9761b4fb1ef4",
+            "name": "customer",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6615e",
+            "desc": "商品ID",
+            "example": "2cf66310-e7e2-11e8-89a2-9b48088ec8e5",
+            "name": "id",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6615d",
+            "desc": "条件查询，包括all、classify和tag。其中all为模糊查询商品名称、商品标签，货品名称、货品标签",
+            "example": "{\n  all: '', \n  classify: '',\n  tag: ''\n}",
+            "name": "likes",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6615c",
+            "desc": "商品名称",
+            "example": "安慕希",
+            "name": "cname",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6615b",
+            "desc": "商品编号",
+            "example": "984820923",
+            "name": "code",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6615a",
+            "desc": "商品分类ID",
+            "example": "1",
+            "name": "classify",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66159",
+            "desc": "商品标签ID",
+            "example": "1",
+            "name": "tag",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66158",
+            "desc": "商品品牌ID",
+            "example": "1",
+            "name": "brand",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66157",
+            "desc": "供应商ID",
+            "example": "1",
+            "name": "supplier",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66156",
+            "desc": "单位ID",
+            "example": "1",
+            "name": "unit",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66155",
+            "desc": "商品状态，0为上架、2为下架",
+            "example": "0",
+            "name": "goodFlag",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66154",
+            "desc": "是否参与推广，-1为不参与，1为参与（分销员）",
+            "example": "0",
+            "name": "extend",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66153",
+            "desc": "商品是否自定义佣金比例，-1为否，1为是（分销员）",
+            "example": "1",
+            "name": "cflag",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66152",
+            "desc": "商品分页起始值",
+            "example": "0",
+            "name": "start",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66151",
+            "desc": "商品分页长度值",
+            "example": "10",
+            "name": "len",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66150",
+            "desc": "规格名称",
+            "example": "24盒装",
+            "name": "sname",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6614f",
+            "desc": "规格编号",
+            "example": "001",
+            "name": "icode",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6614e",
+            "desc": "商品规格ID（货品ID）",
+            "example": "1",
+            "name": "stands",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6614d",
+            "desc": "是否显示库存预警商品，0为否，为1则返回可用库存（rnum）的值小于min的货品",
+            "example": "0",
+            "name": "warning",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6614c",
+            "desc": "是否显示缺货商品，0为否，为1则返回可用库存（rnum）的值小于等于0的货品",
+            "example": "0",
+            "name": "shortage",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6614b",
+            "desc": "是否只显示有库存货品，0为否，为1则返回可用库存（rnum）大于0的货品",
+            "example": "0",
+            "name": "stock",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e6614a",
+            "desc": "货品条形码",
+            "example": "123324332",
+            "name": "bcode",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66149",
+            "desc": "销售价下限",
+            "example": "100",
+            "name": "priceMin",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66148",
+            "desc": "销售价上限",
+            "example": "2000",
+            "name": "priceMax",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66147",
+            "desc": "货品状态",
+            "example": "0",
+            "name": "flag",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66146",
+            "desc": "货品ID",
+            "example": "[1, 2]",
+            "name": "goodsinfos",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66145",
+            "desc": "货品分页起始值",
+            "example": "0",
+            "name": "infoStart",
+            "required": "0"
+          },
+          {
+            "_id": "5c9d906ba998d11268e66144",
+            "desc": "货品分页长度值",
+            "example": "10",
+            "name": "infolength",
+            "required": "0"
+          }
+        ],
+        "query_path": {
+          "path": "/goods/goodsByCompany",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
       {
         "_id": 269,
         "method": "GET",
@@ -4536,13 +4681,15 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c329f2c11a2126f3786f2",
-          "desc": "商品ID",
-          "example": "",
-          "name": "id",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c9c329f2c11a2126f3786f2",
+            "desc": "商品ID",
+            "example": "",
+            "name": "id",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/goods/getGoodsGradeContent",
           "params": []
@@ -4575,12 +4722,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c3345a998d11268e660ca",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c3345a998d11268e660ca",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/goods/updateGoodsGradeContent",
@@ -4613,12 +4762,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c33e22c11a2126f3786f3",
-          "desc": "商品ID",
-          "name": "id",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c9c33e22c11a2126f3786f3",
+            "desc": "商品ID",
+            "name": "id",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/goods/getGoodsGradeComContent",
           "params": []
@@ -4651,12 +4802,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c3430a998d11268e660cb",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c3430a998d11268e660cb",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/goods/updateGoodsGradeComContent",
@@ -4689,12 +4842,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c32472c11a2126f3786f1",
-          "desc": "商品ID",
-          "name": "id",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c9c32472c11a2126f3786f1",
+            "desc": "商品ID",
+            "name": "id",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/goods/getGoodsAppiontContent",
           "params": []
@@ -4727,12 +4882,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c2fd92c11a2126f3786ee",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c2fd92c11a2126f3786ee",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/goods/updateGoodsAppiontContent",
@@ -4765,12 +4922,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c317b2c11a2126f3786ef",
-          "desc": "商品ID",
-          "name": "id",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c9c317b2c11a2126f3786ef",
+            "desc": "商品ID",
+            "name": "id",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/goods/getGoodsAppiontComContent",
           "params": []
@@ -4803,12 +4962,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c9c31db2c11a2126f3786f0",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c9c31db2c11a2126f3786f0",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/goods/updateGoodsAppiontComContent",
@@ -4841,13 +5002,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9c3201a998d11268e660c9",
-          "desc": "商家名称/编号/手机号",
-          "example": " ",
-          "name": "searchInput",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c9c3201a998d11268e660c9",
+            "desc": "商家名称/编号/手机号",
+            "example": " ",
+            "name": "searchInput",
+            "required": "0"
+          },
           {
             "_id": "5c9c3201a998d11268e660c8",
             "desc": "商品ID",
@@ -4911,12 +5073,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c1c8a682c11a2126f378185",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c1c8a682c11a2126f378185",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/goods/createGoods",
@@ -4939,7 +5103,7 @@
         "up_time": 1546659672,
         "__v": 0,
         "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"goods\":{\"type\":\"object\",\"properties\":{\"title\":{\"type\":\"integer\",\"description\":\"是否为首页商品，0为否，1为是\"},\"attr\":{\"type\":\"string\",\"description\":\"商品属性\"},\"pic\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"description\":\"图片地址\",\"mock\":{\"mock\":\"@image\"}},\"description\":\"商品相册\"},\"picinfo\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"description\":\"图片地址\",\"mock\":{\"mock\":\"@image\"}},\"description\":\"商品详情\"},\"option\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"description\":\"第一个值标记“是否启用组合规格”，第二个值标记“是否分别设置不同价格”\"},\"description\":\"规格选项\"},\"name\":{\"type\":\"string\",\"mock\":{\"mock\":\"@cname\"},\"description\":\"商品名称\"},\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"@natural\"},\"description\":\"商品编号\"},\"classify\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@id\"},\"description\":\"分类ID\"},\"unit\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@id\"},\"description\":\"单位ID\"},\"label\":{\"type\":\"string\",\"mock\":{\"mock\":\"@cname\"},\"description\":\"单位名\"}},\"required\":[\"id\",\"label\"]},\"description\":\"多单位\"},\"brand\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@id\"},\"description\":\"品牌ID\"},\"supplier\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@id\"},\"description\":\"供应商ID\"},\"min\":{\"type\":\"integer\",\"description\":\"安全库存下限\"},\"max\":{\"type\":\"integer\",\"description\":\"安全库存上限\"},\"flag\":{\"type\":\"integer\",\"description\":\"商品状态，0为上架、2为下架、1为删除\"},\"tag\":{\"type\":\"string\",\"description\":\"标签ID，形式如：1,2,3\"},\"id\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"description\":\"商品ID\"},\"description\":\"商品ID\"},\"shieldTypes\":{\"type\":\"array\",\"items\":{\"type\":\"integer\",\"description\":\"客户类型ID\",\"mock\":{\"mock\":\"@id\"}},\"description\":\"屏蔽客户类型ID\"},\"shieldArea\":{\"type\":\"array\",\"items\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@id\"},\"description\":\"区域ID\"},\"description\":\"屏蔽区域ID\"},\"shieldCustomers\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户ID\"},\"description\":\"屏蔽客户ID\"},\"cflag\":{\"type\":\"integer\",\"description\":\"是否启用自定义佣金比例，1为启用，-1为禁用（分销员）\"},\"extend\":{\"type\":\"integer\",\"description\":\"是否参与推广，1为参与，-1为不参与（分销员）\"}},\"description\":\"商品信息\",\"required\":[\"name\",\"unit\",\"id\"]},\"goodInfo\":{\"type\":\"object\",\"properties\":{\"purchase\":{\"type\":\"integer\",\"description\":\"采购中数量\"},\"oprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customer\":{\"type\":\"string\",\"description\":\"客户ID\",\"mock\":{\"mock\":\"@id\"}},\"price\":{\"type\":\"integer\",\"description\":\"指定价\"}},\"required\":[\"customer\",\"price\"]},\"description\":\"指定价\"},\"lprice\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"customerType\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@id\"},\"description\":\"客户类型ID\"},\"price\":{\"type\":\"integer\",\"description\":\"等级价\"}},\"required\":[\"customerType\",\"price\"]},\"description\":\"等级价\"},\"snum\":{\"type\":\"integer\",\"description\":\"销量\"},\"rnum\":{\"type\":\"integer\",\"description\":\"可用库存\"},\"bnum\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"number\":{\"type\":\"integer\",\"description\":\"库存数\"},\"depot\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@id\"},\"description\":\"仓库ID\"}},\"required\":[\"number\",\"depot\"]},\"description\":\"系统库存\"},\"minNum\":{\"type\":\"integer\",\"description\":\"起订量\"},\"limitNum\":{\"type\":\"integer\",\"description\":\"限定量\"},\"size\":{\"type\":\"integer\",\"description\":\"体积\"},\"weight\":{\"type\":\"integer\",\"description\":\"重量\"},\"icon\":{\"type\":\"string\",\"mock\":{\"mock\":\"@image\"},\"description\":\"规格图\"},\"name\":{\"type\":\"string\",\"mock\":{\"mock\":\"@cname\"},\"description\":\"规格名称（货品名）\"},\"stands\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"description\":\"规格名ID-规格值ID\"},\"description\":\"规格ID\"},\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"@natural\"},\"description\":\"规格编号\"},\"price\":{\"type\":\"integer\",\"description\":\"零售价\"},\"sprice\":{\"type\":\"integer\",\"description\":\"销售价\"},\"bcode\":{\"type\":\"string\",\"description\":\"条形码\"},\"flag\":{\"type\":\"integer\",\"description\":\"货品状态\"},\"idg\":{\"type\":\"array\",\"items\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@id\"},\"description\":\"货品ID\"},\"description\":\"货品ID\"},\"latestPrice\":{\"type\":\"integer\",\"description\":\"最近一次采购价\"}},\"description\":\"货品信息\",\"required\":[\"name\",\"stands\",\"sprice\",\"flag\",\"idg\"]}}}",
-        "markdown": "如果cflag值为1，则将佣金表中所有good字段值等于商品ID的项flag值修改为0，为-1则修改为1",
+        "markdow": "如果cflag值为1，则将佣金表中所有good字段值等于商品ID的项flag值修改为0，为-1则修改为1",
         "desc": "<p>如果cflag值为1，则将佣金表中所有good字段值等于商品ID的项flag值修改为0，为-1则修改为1</p>\n",
         "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"integer\",\"description\":\"状态码\"},\"data\":{\"type\":\"object\",\"properties\":{},\"description\":\"返回数据\"}},\"required\":[\"code\",\"data\"]}",
         "req_body_type": "json",
@@ -4952,12 +5116,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c302758a998d11268e65a83",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c302758a998d11268e65a83",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/goods/updateGoods",
@@ -4990,13 +5156,15 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c1b4bb02c11a2126f378110",
-          "desc": "公司ID",
-          "example": "1",
-          "name": "company",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c1b4bb02c11a2126f378110",
+            "desc": "公司ID",
+            "example": "1",
+            "name": "company",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/goods/goodNum",
           "params": []
@@ -5057,13 +5225,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c64d9b72c11a2126f378299",
-          "desc": "",
-          "example": "1",
-          "name": "good",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c64d9b72c11a2126f378299",
+            "desc": "",
+            "example": "1",
+            "name": "good",
+            "required": "1"
+          },
           {
             "_id": "5c64d9b72c11a2126f378298",
             "desc": "",
@@ -5119,13 +5288,15 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c1b4b3d2c11a2126f37810e",
-          "desc": "公司ID",
-          "example": "1",
-          "name": "company",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c1b4b3d2c11a2126f37810e",
+            "desc": "公司ID",
+            "example": "1",
+            "name": "company",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/goods/shield",
           "params": []
@@ -5189,13 +5360,14 @@
         "index": 17,
         "api_opened": false,
         "res_body_is_json_schema": false,
-        "req_body_form": [{
-          "_id": "5c1b6110a998d11268e65963",
-          "example": "",
-          "type": "text",
-          "name": "{",
-          "required": "1"
-        },
+        "req_body_form": [
+          {
+            "_id": "5c1b6110a998d11268e65963",
+            "example": "",
+            "type": "text",
+            "name": "{",
+            "required": "1"
+          },
           {
             "_id": "5c1b6110a998d11268e65962",
             "desc": "",
@@ -5615,12 +5787,14 @@
         ],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c1b6110a998d11268e6592e",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c1b6110a998d11268e6592e",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/goods/updateClassify",
@@ -5655,13 +5829,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c19a6b72c11a2126f3780ef",
-          "desc": "公司ID",
-          "example": "1",
-          "name": "companyid",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c19a6b72c11a2126f3780ef",
+            "desc": "公司ID",
+            "example": "1",
+            "name": "companyid",
+            "required": "1"
+          },
           {
             "_id": "5c19a6b72c11a2126f3780ee",
             "desc": "类型",
@@ -6104,45 +6279,48 @@
     "add_time": 1545017772,
     "up_time": 1545017772,
     "index": 2,
-    "list": [{
-      "_id": 206,
-      "method": "POST",
-      "catid": 24,
-      "title": "创建订单_批量",
-      "path": "/order/createOrders",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 14,
-      "add_time": 1549960674,
-      "up_time": 1553589739,
-      "__v": 0,
-      "markdown": "2019-3-25，张士全\n1.字段备注参数给自己看的",
-      "desc": "<p>2019-3-25，张士全<br>\n1.字段备注参数给自己看的</p>\n",
-      "res_body": "",
-      "req_body_type": "json",
-      "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"orders\":{\"type\":\"string\"},\"ctype\":{\"type\":\"number\",\"description\":\"订单分类：1待分配订单 2全部订单\"},\"otype\":{\"type\":\"array\",\"items\":{\"type\":\"number\"},\"description\":\"订单来源：1天猫 2京东 3苏宁 4淘宝\"},\"custom\":{\"type\":\"string\",\"description\":\"客户\"},\"time\":{\"type\":\"string\",\"description\":\"交货日期(created创建时间)\"},\"express\":{\"type\":\"string\",\"description\":\"配送方式\"},\"billType\":{\"type\":\"number\",\"description\":\"发票类型\"},\"context\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"pic_path\":{\"type\":\"string\",\"description\":\"商品规格图片\"},\"title\":{\"type\":\"string\",\"description\":\"商品名称\"},\"sku_id\":{\"type\":\"string\",\"description\":\"商品编码\"},\"sku_properties_name\":{\"type\":\"string\",\"description\":\"规格名称\"},\"num\":{\"type\":\"string\",\"description\":\"数量\"},\"price\":{\"type\":\"string\",\"description\":\"单价\"},\"total_fee\":{\"type\":\"string\",\"description\":\"小计\"},\"divide_order_fee\":{\"type\":\"string\",\"description\":\"备注\"}},\"required\":[\"pic_path\",\"title\",\"sku_id\",\"sku_properties_name\",\"num\",\"price\",\"total_fee\",\"divide_order_fee\"]},\"description\":\" 订货清单（order）\"},\"size\":{\"type\":\"string\",\"description\":\"总体积\"},\"weight\":{\"type\":\"string\",\"description\":\"总重量\"},\"eprice\":{\"type\":\"string\",\"description\":\"配送费用\"},\"taxes\":{\"type\":\"string\",\"description\":\"税费\"},\"oprice\":{\"type\":\"string\",\"description\":\"订单总额(payment)\"},\"sprice\":{\"type\":\"string\",\"description\":\"订单特批价\"},\"address\":{\"type\":\"string\",\"description\":\"收货信息：\\n  lat，lng-receiver_state receiver_city receiver_district receiver_address\"},\"billTitle\":{\"type\":\"string\",\"description\":\"发票抬头售后状态（sale_service）售后状态：    1无退款记录    2有退款记录    3订单异常\"},\"identityNumber\":{\"type\":\"string\",\"description\":\"纳税人识别号\"},\"billContext\":{\"type\":\"string\",\"description\":\"发票内容\"},\"bdesc\":{\"type\":\"string\",\"description\":\"备注(暂存拉取订单号）\"},\"attachment\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"上传附件\"},\"replaced\":{\"type\":\"string\",\"description\":\"代客下单\"},\"rmoney\":{\"type\":\"string\",\"description\":\"已收款金额\"},\"dmoney\":{\"type\":\"string\",\"description\":\"待收款金额\"},\"smoney\":{\"type\":\"string\",\"description\":\"待审核金额\"},\"man\":{\"type\":\"string\",\"description\":\"制单人（收货人）\"},\"cancel\":{\"type\":\"string\",\"description\":\"作废原因\"},\"sf\":{\"type\":\"string\",\"description\":\"强制完成原因\"},\"reject\":{\"type\":\"string\",\"description\":\"驳回原因\"},\"supplier\":{\"type\":\"string\",\"description\":\"供应商\"},\"depot\":{\"type\":\"string\",\"description\":\"仓库ID\"},\"border\":{\"type\":\"string\",\"description\":\"关联订单ID\"},\"flag\":{\"type\":\"string\",\"description\":\" 0为订货单：分配状态：6待确认\\n                  7已确认 \\n                  8已拒绝\\n                  9无库存\"},\"log\":{\"type\":\"string\",\"description\":\"日志\"},\"stime\":{\"type\":\"string\",\"description\":\" 审核时间(handle_time订单分配时间 )\"},\"oman\":{\"type\":\"string\",\"description\":\"订单审核人\"},\"fman\":{\"type\":\"string\",\"description\":\"财务审核人\"},\"orderTime\":{\"type\":\"string\",\"description\":\"订单审核时间(handle_get_time订单同步时间)\"},\"fanTime\":{\"type\":\"string\",\"description\":\"财务审核时间\"},\"company\":{\"type\":\"string\",\"description\":\"公司ID\"},\"DistributionFee\":{\"type\":\"string\",\"description\":\"分销费\"},\"cost\":{\"type\":\"string\",\"description\":\"成本\"},\"odesc\":{\"type\":\"string\",\"description\":\"卖家给买家的留言(buyer_message)\"},\"linkman\":{\"type\":\"string\",\"description\":\"联系人(receiver_name)\"},\"phone\":{\"type\":\"string\",\"description\":\"手机号(receiver_mobile, 待定receiver_phone)\"},\"type\":{\"type\":\"string\",\"description\":\"订单状态(status:订单状态：\\n1:TRADE_NO_CREATE_PAY(没有创建支付宝交易)  \\n2:WAIT_BUYER_PAY(等待买家付款) \\n3:SELLER_CONSIGNED_PART(卖家部分发货) \\n4:WAIT_SELLER_SEND_GOODS(买家已付款) \\n5:WAIT_BUYER_CONFIRM_GOODS(卖家已发货) \\n6:TRADE_BUYER_SIGNED(买家已签收) \\n7:TRADE_FINISHED(交易成功) \\n8:TRADE_CLOSED(交易关闭) \\n9:TRADE_CLOSED_BY_TAOBAO(交易关闭) \\n10:PAY_PENDING(付款确认中) \\n11:WAIT_PRE_AUTH_CONFIRM(0元购合约中) \\n12:PAID_FORBID_CONSIGN(禁止发货))\"},\"orderCode\":{\"type\":\"string\",\"description\":\"订单编号 (本地生成）\"}},\"required\":[\"otype\",\"custom\",\"time\",\"express\",\"billType\",\"context\",\"size\",\"weight\",\"eprice\",\"taxes\",\"oprice\",\"sprice\",\"address\",\"billTitle\",\"identityNumber\",\"billContext\",\"bdesc\",\"attachment\",\"replaced\",\"rmoney\",\"dmoney\",\"smoney\",\"man\",\"cancel\",\"sf\",\"reject\",\"supplier\",\"depot\",\"border\",\"flag\",\"log\",\"stime\",\"oman\",\"fman\",\"orderTime\",\"fanTime\",\"company\",\"DistributionFee\",\"type\",\"phone\",\"linkman\",\"odesc\",\"cost\",\"orderCode\",\"orders\"]}",
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": false,
-      "req_body_form": [],
-      "req_body_is_json_schema": true,
-      "req_params": [],
-      "req_headers": [{
-        "_id": "5c99e5eba998d11268e66049",
-        "value": "application/json",
-        "name": "Content-Type",
-        "required": "1"
-      }],
-      "req_query": [],
-      "query_path": {
+    "list": [
+      {
+        "_id": 206,
+        "method": "POST",
+        "catid": 24,
+        "title": "创建订单_批量",
         "path": "/order/createOrders",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 14,
+        "add_time": 1549960674,
+        "up_time": 1553589739,
+        "__v": 0,
+        "markdown": "2019-3-25，张士全\n1.字段备注参数给自己看的",
+        "desc": "<p>2019-3-25，张士全<br>\n1.字段备注参数给自己看的</p>\n",
+        "res_body": "",
+        "req_body_type": "json",
+        "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"orders\":{\"type\":\"string\"},\"ctype\":{\"type\":\"number\",\"description\":\"订单分类：1待分配订单 2全部订单\"},\"otype\":{\"type\":\"array\",\"items\":{\"type\":\"number\"},\"description\":\"订单来源：1天猫 2京东 3苏宁 4淘宝\"},\"custom\":{\"type\":\"string\",\"description\":\"客户\"},\"time\":{\"type\":\"string\",\"description\":\"交货日期(created创建时间)\"},\"express\":{\"type\":\"string\",\"description\":\"配送方式\"},\"billType\":{\"type\":\"number\",\"description\":\"发票类型\"},\"context\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"pic_path\":{\"type\":\"string\",\"description\":\"商品规格图片\"},\"title\":{\"type\":\"string\",\"description\":\"商品名称\"},\"sku_id\":{\"type\":\"string\",\"description\":\"商品编码\"},\"sku_properties_name\":{\"type\":\"string\",\"description\":\"规格名称\"},\"num\":{\"type\":\"string\",\"description\":\"数量\"},\"price\":{\"type\":\"string\",\"description\":\"单价\"},\"total_fee\":{\"type\":\"string\",\"description\":\"小计\"},\"divide_order_fee\":{\"type\":\"string\",\"description\":\"备注\"}},\"required\":[\"pic_path\",\"title\",\"sku_id\",\"sku_properties_name\",\"num\",\"price\",\"total_fee\",\"divide_order_fee\"]},\"description\":\" 订货清单（order）\"},\"size\":{\"type\":\"string\",\"description\":\"总体积\"},\"weight\":{\"type\":\"string\",\"description\":\"总重量\"},\"eprice\":{\"type\":\"string\",\"description\":\"配送费用\"},\"taxes\":{\"type\":\"string\",\"description\":\"税费\"},\"oprice\":{\"type\":\"string\",\"description\":\"订单总额(payment)\"},\"sprice\":{\"type\":\"string\",\"description\":\"订单特批价\"},\"address\":{\"type\":\"string\",\"description\":\"收货信息：\\n  lat，lng-receiver_state receiver_city receiver_district receiver_address\"},\"billTitle\":{\"type\":\"string\",\"description\":\"发票抬头售后状态（sale_service）售后状态：    1无退款记录    2有退款记录    3订单异常\"},\"identityNumber\":{\"type\":\"string\",\"description\":\"纳税人识别号\"},\"billContext\":{\"type\":\"string\",\"description\":\"发票内容\"},\"bdesc\":{\"type\":\"string\",\"description\":\"备注(暂存拉取订单号）\"},\"attachment\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"上传附件\"},\"replaced\":{\"type\":\"string\",\"description\":\"代客下单\"},\"rmoney\":{\"type\":\"string\",\"description\":\"已收款金额\"},\"dmoney\":{\"type\":\"string\",\"description\":\"待收款金额\"},\"smoney\":{\"type\":\"string\",\"description\":\"待审核金额\"},\"man\":{\"type\":\"string\",\"description\":\"制单人（收货人）\"},\"cancel\":{\"type\":\"string\",\"description\":\"作废原因\"},\"sf\":{\"type\":\"string\",\"description\":\"强制完成原因\"},\"reject\":{\"type\":\"string\",\"description\":\"驳回原因\"},\"supplier\":{\"type\":\"string\",\"description\":\"供应商\"},\"depot\":{\"type\":\"string\",\"description\":\"仓库ID\"},\"border\":{\"type\":\"string\",\"description\":\"关联订单ID\"},\"flag\":{\"type\":\"string\",\"description\":\" 0为订货单：分配状态：6待确认\\n                  7已确认 \\n                  8已拒绝\\n                  9无库存\"},\"log\":{\"type\":\"string\",\"description\":\"日志\"},\"stime\":{\"type\":\"string\",\"description\":\" 审核时间(handle_time订单分配时间 )\"},\"oman\":{\"type\":\"string\",\"description\":\"订单审核人\"},\"fman\":{\"type\":\"string\",\"description\":\"财务审核人\"},\"orderTime\":{\"type\":\"string\",\"description\":\"订单审核时间(handle_get_time订单同步时间)\"},\"fanTime\":{\"type\":\"string\",\"description\":\"财务审核时间\"},\"company\":{\"type\":\"string\",\"description\":\"公司ID\"},\"DistributionFee\":{\"type\":\"string\",\"description\":\"分销费\"},\"cost\":{\"type\":\"string\",\"description\":\"成本\"},\"odesc\":{\"type\":\"string\",\"description\":\"卖家给买家的留言(buyer_message)\"},\"linkman\":{\"type\":\"string\",\"description\":\"联系人(receiver_name)\"},\"phone\":{\"type\":\"string\",\"description\":\"手机号(receiver_mobile, 待定receiver_phone)\"},\"type\":{\"type\":\"string\",\"description\":\"订单状态(status:订单状态：\\n1:TRADE_NO_CREATE_PAY(没有创建支付宝交易)  \\n2:WAIT_BUYER_PAY(等待买家付款) \\n3:SELLER_CONSIGNED_PART(卖家部分发货) \\n4:WAIT_SELLER_SEND_GOODS(买家已付款) \\n5:WAIT_BUYER_CONFIRM_GOODS(卖家已发货) \\n6:TRADE_BUYER_SIGNED(买家已签收) \\n7:TRADE_FINISHED(交易成功) \\n8:TRADE_CLOSED(交易关闭) \\n9:TRADE_CLOSED_BY_TAOBAO(交易关闭) \\n10:PAY_PENDING(付款确认中) \\n11:WAIT_PRE_AUTH_CONFIRM(0元购合约中) \\n12:PAID_FORBID_CONSIGN(禁止发货))\"},\"orderCode\":{\"type\":\"string\",\"description\":\"订单编号 (本地生成）\"}},\"required\":[\"otype\",\"custom\",\"time\",\"express\",\"billType\",\"context\",\"size\",\"weight\",\"eprice\",\"taxes\",\"oprice\",\"sprice\",\"address\",\"billTitle\",\"identityNumber\",\"billContext\",\"bdesc\",\"attachment\",\"replaced\",\"rmoney\",\"dmoney\",\"smoney\",\"man\",\"cancel\",\"sf\",\"reject\",\"supplier\",\"depot\",\"border\",\"flag\",\"log\",\"stime\",\"oman\",\"fman\",\"orderTime\",\"fanTime\",\"company\",\"DistributionFee\",\"type\",\"phone\",\"linkman\",\"odesc\",\"cost\",\"orderCode\",\"orders\"]}",
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": false,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [
+          {
+            "_id": "5c99e5eba998d11268e66049",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
+        "req_query": [],
+        "query_path": {
+          "path": "/order/createOrders",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
       {
         "_id": 194,
         "method": "GET",
@@ -6166,13 +6344,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c62827d2c11a2126f378220",
-          "desc": "",
-          "example": "",
-          "name": "id",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c62827d2c11a2126f378220",
+            "desc": "",
+            "example": "",
+            "name": "id",
+            "required": "1"
+          },
           {
             "_id": "5c62827d2c11a2126f37821f",
             "desc": "",
@@ -6310,13 +6489,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c62905aa998d11268e65b7c",
-          "desc": "",
-          "example": "",
-          "name": "reject",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c62905aa998d11268e65b7c",
+            "desc": "",
+            "example": "",
+            "name": "reject",
+            "required": "0"
+          },
           {
             "_id": "5c62905aa998d11268e65b7b",
             "desc": "",
@@ -6687,12 +6867,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c627eb22c11a2126f378210",
-          "desc": "{way,cdesc,certificates,cancel,caccount,flag,`order`,company,ccode,type,cname,price,sprice,check_type,touching_man,Auditing_man, times}",
-          "name": "checks",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c627eb22c11a2126f378210",
+            "desc": "{way,cdesc,certificates,cancel,caccount,flag,`order`,company,ccode,type,cname,price,sprice,check_type,touching_man,Auditing_man, times}",
+            "name": "checks",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/order/createCheck",
           "params": []
@@ -6725,12 +6907,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5ca345ec2c11a2126f3787fa",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5ca345ec2c11a2126f3787fa",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/order/updateDepotOrder",
@@ -6793,12 +6977,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c6299eb2c11a2126f37828e",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c6299eb2c11a2126f37828e",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/order/createDepotOrder",
@@ -6831,13 +7017,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c627ceca998d11268e65adc",
-          "desc": "如果存在该参数，则获取总数",
-          "example": "1",
-          "name": "count",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c627ceca998d11268e65adc",
+            "desc": "如果存在该参数，则获取总数",
+            "example": "1",
+            "name": "count",
+            "required": "0"
+          },
           {
             "_id": "5c627ceca998d11268e65adb",
             "desc": "",
@@ -6898,13 +7085,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c629721a998d11268e65b85",
-          "desc": "",
-          "example": "",
-          "name": "count",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c629721a998d11268e65b85",
+            "desc": "",
+            "example": "",
+            "name": "count",
+            "required": "0"
+          },
           {
             "_id": "5c629721a998d11268e65b84",
             "desc": "",
@@ -6993,13 +7181,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c9dd0062c11a2126f3787c3",
-          "desc": "",
-          "example": "",
-          "name": "count",
-          "required": "0"
-        },
+        "req_query": [
+          {
+            "_id": "5c9dd0062c11a2126f3787c3",
+            "desc": "",
+            "example": "",
+            "name": "count",
+            "required": "0"
+          },
           {
             "_id": "5c9dd0062c11a2126f3787c2",
             "desc": "",
@@ -7137,80 +7326,82 @@
     "add_time": 1545017794,
     "up_time": 1545017794,
     "index": 4,
-    "list": [{
-      "_id": 87,
-      "method": "GET",
-      "catid": 28,
-      "title": "查询供应商",
-      "path": "/goods/supplier",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 14,
-      "add_time": 1545124572,
-      "up_time": 1545806182,
-      "__v": 0,
-      "markdown": "",
-      "desc": "",
-      "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"cname\":{\"type\":\"string\",\"description\":\"名称\"},\"depot\":{\"type\":\"number\",\"description\":\"仓库\"},\"linkman\":{\"type\":\"string\",\"description\":\"联系人\"},\"iphone\":{\"type\":\"string\",\"description\":\"手机号\"},\"tel\":{\"type\":\"string\",\"description\":\"电话\"},\"address\":{\"type\":\"string\",\"description\":\"地址\"},\"sdesc\":{\"type\":\"string\"},\"company\":{\"type\":\"number\",\"description\":\"公司ID\"},\"create_time\":{\"type\":\"string\",\"description\":\"创建时间\"},\"mod_time\":{\"type\":\"string\",\"description\":\"修改时间\"},\"flag\":{\"type\":\"number\",\"description\":\"标记\"},\"legalname\":{\"type\":\"string\",\"description\":\"法定公司名称\"},\"legalnature\":{\"type\":\"string\",\"description\":\"法定经营性质\"},\"legaladdress\":{\"type\":\"string\",\"description\":\"法定公司地址\"},\"marketname\":{\"type\":\"string\",\"description\":\"市场名称\"},\"marketaddress\":{\"type\":\"string\",\"description\":\"市场铺位\"},\"administrativearea1\":{\"type\":\"string\",\"description\":\"行政区省\"},\"administrativearea2\":{\"type\":\"string\",\"description\":\"行政区市\"},\"administrativearea3\":{\"type\":\"string\",\"description\":\"行政区区县\"},\"administrativearea4\":{\"type\":\"string\",\"description\":\"行政区街道镇\"},\"sendaddress\":{\"type\":\"string\",\"description\":\"发货地址\"},\"operatemode\":{\"type\":\"string\",\"description\":\"经营模式\"},\"logoimgurl\":{\"type\":\"string\",\"description\":\"商铺LOGO\"},\"headimgurl\":{\"type\":\"string\",\"description\":\"商铺头像\"},\"operatelevel\":{\"type\":\"number\",\"description\":\"商铺等级\"},\"operatedesc\":{\"type\":\"string\",\"description\":\"商铺描述\"},\"identitycardimgurl_f\":{\"type\":\"string\",\"description\":\"身份证正面\"},\"identitycardimgurl_b\":{\"type\":\"string\",\"description\":\"身份证反面\"},\"operateimgurl\":{\"type\":\"string\",\"description\":\"营业执照\"},\"operateimgurl2\":{\"type\":\"string\",\"description\":\"执照照片备用\"},\"operatestate\":{\"type\":\"string\",\"description\":\"经营状态是否开店\"},\"loginname\":{\"type\":\"string\",\"description\":\"登录名\"},\"loginpwd\":{\"type\":\"string\",\"description\":\"登录密码\"}},\"required\":[\"id\",\"cname\",\"depot\",\"linkman\",\"iphone\",\"tel\",\"address\",\"sdesc\",\"company\",\"create_time\",\"mod_time\",\"flag\",\"legalname\",\"legalnature\",\"legaladdress\",\"marketname\",\"marketaddress\",\"administrativearea1\",\"administrativearea2\",\"administrativearea3\",\"administrativearea4\",\"sendaddress\",\"operatemode\",\"logoimgurl\",\"headimgurl\",\"operatelevel\",\"operatedesc\",\"identitycardimgurl_f\",\"identitycardimgurl_b\",\"operateimgurl2\",\"operateimgurl\",\"operatestate\",\"loginpwd\",\"loginname\"]}}}}}}",
-      "tag": [],
-      "index": 17,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": false,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5c2321662c11a2126f3781e1",
-        "desc": "公司ID",
-        "example": "1",
-        "name": "id",
-        "required": "1"
-      },
-        {
-          "_id": "5c2321662c11a2126f3781e0",
-          "desc": "加入时间，----排序条件",
-          "example": "",
-          "name": "create_time",
-          "required": "0"
-        },
-        {
-          "_id": "5c2321662c11a2126f3781df",
-          "desc": "铺位号，----排序条件",
-          "example": "",
-          "name": "marketaddress",
-          "required": "0"
-        },
-        {
-          "_id": "5c2321662c11a2126f3781de",
-          "desc": "星级，----排序条件",
-          "example": "",
-          "name": "operatelevel",
-          "required": "0"
-        },
-        {
-          "_id": "5c2321662c11a2126f3781dd",
-          "desc": "排序，----正序和倒序；a-正序，d-倒序",
-          "example": "d",
-          "name": "sort",
-          "required": "0"
-        },
-        {
-          "_id": "5c2321662c11a2126f3781dc",
-          "desc": "供应商ID",
-          "example": "1",
-          "name": "supplier",
-          "required": "0"
-        }
-      ],
-      "query_path": {
+    "list": [
+      {
+        "_id": 87,
+        "method": "GET",
+        "catid": 28,
+        "title": "查询供应商",
         "path": "/goods/supplier",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 14,
+        "add_time": 1545124572,
+        "up_time": 1545806182,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"obj\":{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"cname\":{\"type\":\"string\",\"description\":\"名称\"},\"depot\":{\"type\":\"number\",\"description\":\"仓库\"},\"linkman\":{\"type\":\"string\",\"description\":\"联系人\"},\"iphone\":{\"type\":\"string\",\"description\":\"手机号\"},\"tel\":{\"type\":\"string\",\"description\":\"电话\"},\"address\":{\"type\":\"string\",\"description\":\"地址\"},\"sdesc\":{\"type\":\"string\"},\"company\":{\"type\":\"number\",\"description\":\"公司ID\"},\"create_time\":{\"type\":\"string\",\"description\":\"创建时间\"},\"mod_time\":{\"type\":\"string\",\"description\":\"修改时间\"},\"flag\":{\"type\":\"number\",\"description\":\"标记\"},\"legalname\":{\"type\":\"string\",\"description\":\"法定公司名称\"},\"legalnature\":{\"type\":\"string\",\"description\":\"法定经营性质\"},\"legaladdress\":{\"type\":\"string\",\"description\":\"法定公司地址\"},\"marketname\":{\"type\":\"string\",\"description\":\"市场名称\"},\"marketaddress\":{\"type\":\"string\",\"description\":\"市场铺位\"},\"administrativearea1\":{\"type\":\"string\",\"description\":\"行政区省\"},\"administrativearea2\":{\"type\":\"string\",\"description\":\"行政区市\"},\"administrativearea3\":{\"type\":\"string\",\"description\":\"行政区区县\"},\"administrativearea4\":{\"type\":\"string\",\"description\":\"行政区街道镇\"},\"sendaddress\":{\"type\":\"string\",\"description\":\"发货地址\"},\"operatemode\":{\"type\":\"string\",\"description\":\"经营模式\"},\"logoimgurl\":{\"type\":\"string\",\"description\":\"商铺LOGO\"},\"headimgurl\":{\"type\":\"string\",\"description\":\"商铺头像\"},\"operatelevel\":{\"type\":\"number\",\"description\":\"商铺等级\"},\"operatedesc\":{\"type\":\"string\",\"description\":\"商铺描述\"},\"identitycardimgurl_f\":{\"type\":\"string\",\"description\":\"身份证正面\"},\"identitycardimgurl_b\":{\"type\":\"string\",\"description\":\"身份证反面\"},\"operateimgurl\":{\"type\":\"string\",\"description\":\"营业执照\"},\"operateimgurl2\":{\"type\":\"string\",\"description\":\"执照照片备用\"},\"operatestate\":{\"type\":\"string\",\"description\":\"经营状态是否开店\"},\"loginname\":{\"type\":\"string\",\"description\":\"登录名\"},\"loginpwd\":{\"type\":\"string\",\"description\":\"登录密码\"}},\"required\":[\"id\",\"cname\",\"depot\",\"linkman\",\"iphone\",\"tel\",\"address\",\"sdesc\",\"company\",\"create_time\",\"mod_time\",\"flag\",\"legalname\",\"legalnature\",\"legaladdress\",\"marketname\",\"marketaddress\",\"administrativearea1\",\"administrativearea2\",\"administrativearea3\",\"administrativearea4\",\"sendaddress\",\"operatemode\",\"logoimgurl\",\"headimgurl\",\"operatelevel\",\"operatedesc\",\"identitycardimgurl_f\",\"identitycardimgurl_b\",\"operateimgurl2\",\"operateimgurl\",\"operatestate\",\"loginpwd\",\"loginname\"]}}}}}}",
+        "tag": [],
+        "index": 17,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c2321662c11a2126f3781e1",
+            "desc": "公司ID",
+            "example": "1",
+            "name": "id",
+            "required": "1"
+          },
+          {
+            "_id": "5c2321662c11a2126f3781e0",
+            "desc": "加入时间，----排序条件",
+            "example": "",
+            "name": "create_time",
+            "required": "0"
+          },
+          {
+            "_id": "5c2321662c11a2126f3781df",
+            "desc": "铺位号，----排序条件",
+            "example": "",
+            "name": "marketaddress",
+            "required": "0"
+          },
+          {
+            "_id": "5c2321662c11a2126f3781de",
+            "desc": "星级，----排序条件",
+            "example": "",
+            "name": "operatelevel",
+            "required": "0"
+          },
+          {
+            "_id": "5c2321662c11a2126f3781dd",
+            "desc": "排序，----正序和倒序；a-正序，d-倒序",
+            "example": "d",
+            "name": "sort",
+            "required": "0"
+          },
+          {
+            "_id": "5c2321662c11a2126f3781dc",
+            "desc": "供应商ID",
+            "example": "1",
+            "name": "supplier",
+            "required": "0"
+          }
+        ],
+        "query_path": {
+          "path": "/goods/supplier",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
       {
         "_id": 91,
         "method": "GET",
@@ -7234,13 +7425,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c243f4fa998d11268e65a0d",
-          "desc": "",
-          "example": "",
-          "name": "id",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c243f4fa998d11268e65a0d",
+            "desc": "",
+            "example": "",
+            "name": "id",
+            "required": "1"
+          },
           {
             "_id": "5c243f4fa998d11268e65a0c",
             "desc": "商户名称",
@@ -7505,12 +7697,14 @@
         "req_body_form": [],
         "req_body_is_json_schema": true,
         "req_params": [],
-        "req_headers": [{
-          "_id": "5c219a662c11a2126f3781af",
-          "value": "application/json",
-          "name": "Content-Type",
-          "required": "1"
-        }],
+        "req_headers": [
+          {
+            "_id": "5c219a662c11a2126f3781af",
+            "value": "application/json",
+            "name": "Content-Type",
+            "required": "1"
+          }
+        ],
         "req_query": [],
         "query_path": {
           "path": "/goods/updateSupplier",
@@ -7528,44 +7722,47 @@
     "add_time": 1545017818,
     "up_time": 1545017818,
     "index": 5,
-    "list": [{
-      "_id": 122,
-      "method": "GET",
-      "catid": 31,
-      "title": "查询客户类型",
-      "path": "/customertype",
-      "project_id": 12,
-      "res_body_type": "json",
-      "markdown": "用于客户等级，经销商给下级批发客户的分类，通过分类进行阶梯比例价格设置",
-      "desc": "<p>用于客户等级，经销商给下级批发客户的分类，通过分类进行阶梯比例价格设置</p>\n",
-      "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"string\",\"description\":\"成功失败\"},\"data\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"integer\"},\"ctname\":{\"type\":\"string\",\"description\":\"类型描述，如A级客户\"},\"ctdesc\":{\"type\":\"string\",\"description\":\"排序\"},\"create_time\":{\"type\":\"string\"},\"mod_time\":{\"type\":\"string\"},\"flag\":{\"type\":\"string\",\"description\":\"标记\"},\"cvalue\":{\"type\":\"string\",\"description\":\"比例，如90%\"}},\"required\":[\"id\",\"ctdesc\",\"create_time\",\"mod_time\",\"flag\",\"cvalue\",\"ctname\"]}},\"required\":[\"code\",\"data\"]}",
-      "uid": 22,
-      "add_time": 1545184514,
-      "up_time": 1545186926,
-      "__v": 0,
-      "tag": [],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": false,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5c19ae6e2c11a2126f3780f0",
-        "desc": "企业识别ID",
-        "example": "",
-        "name": "company",
-        "required": "1"
-      }],
-      "query_path": {
+    "list": [
+      {
+        "_id": 122,
+        "method": "GET",
+        "catid": 31,
+        "title": "查询客户类型",
         "path": "/customertype",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "markdown": "用于客户等级，经销商给下级批发客户的分类，通过分类进行阶梯比例价格设置",
+        "desc": "<p>用于客户等级，经销商给下级批发客户的分类，通过分类进行阶梯比例价格设置</p>\n",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"code\":{\"type\":\"string\",\"description\":\"成功失败\"},\"data\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"integer\"},\"ctname\":{\"type\":\"string\",\"description\":\"类型描述，如A级客户\"},\"ctdesc\":{\"type\":\"string\",\"description\":\"排序\"},\"create_time\":{\"type\":\"string\"},\"mod_time\":{\"type\":\"string\"},\"flag\":{\"type\":\"string\",\"description\":\"标记\"},\"cvalue\":{\"type\":\"string\",\"description\":\"比例，如90%\"}},\"required\":[\"id\",\"ctdesc\",\"create_time\",\"mod_time\",\"flag\",\"cvalue\",\"ctname\"]}},\"required\":[\"code\",\"data\"]}",
+        "uid": 22,
+        "add_time": 1545184514,
+        "up_time": 1545186926,
+        "__v": 0,
+        "tag": [],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": false,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c19ae6e2c11a2126f3780f0",
+            "desc": "企业识别ID",
+            "example": "",
+            "name": "company",
+            "required": "1"
+          }
+        ],
+        "query_path": {
+          "path": "/customertype",
+          "params": []
+        },
+        "type": "static",
+        "status": "undone",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "undone",
-      "edit_uid": 0
-    },
       {
         "_id": 53,
         "method": "GET",
@@ -7589,13 +7786,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c18b400a998d11268e65901",
-          "desc": "",
-          "example": "",
-          "name": "id",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c18b400a998d11268e65901",
+            "desc": "",
+            "example": "",
+            "name": "id",
+            "required": "1"
+          },
           {
             "_id": "5c18b400a998d11268e65900",
             "desc": "品牌名称",
@@ -7655,13 +7853,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c19a5802c11a2126f3780ed",
-          "desc": "",
-          "example": "",
-          "name": "id",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c19a5802c11a2126f3780ed",
+            "desc": "",
+            "example": "",
+            "name": "id",
+            "required": "1"
+          },
           {
             "_id": "5c19a5802c11a2126f3780ec",
             "desc": "类型名称",
@@ -7729,13 +7928,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c1864e22c11a2126f3780da",
-          "desc": "",
-          "example": "",
-          "name": "id",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c1864e22c11a2126f3780da",
+            "desc": "",
+            "example": "",
+            "name": "id",
+            "required": "1"
+          },
           {
             "_id": "5c1864e22c11a2126f3780d9",
             "desc": "商品标签名",
@@ -7803,13 +8003,15 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c18b43ea998d11268e65902",
-          "desc": "公司识别ID",
-          "example": "",
-          "name": "company",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c18b43ea998d11268e65902",
+            "desc": "公司识别ID",
+            "example": "",
+            "name": "company",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/brand",
           "params": []
@@ -7841,12 +8043,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c17702aa998d11268e65893",
-          "desc": "企业ID",
-          "name": "company",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c17702aa998d11268e65893",
+            "desc": "企业ID",
+            "name": "company",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/unit",
           "params": []
@@ -7878,12 +8082,13 @@
         "req_body_is_json_schema": true,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c175be4a998d11268e6582a",
-          "desc": "",
-          "name": "id",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c175be4a998d11268e6582a",
+            "desc": "",
+            "name": "id",
+            "required": "1"
+          },
           {
             "_id": "5c175be4a998d11268e65829",
             "desc": "",
@@ -7923,13 +8128,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c1864cda998d11268e658f7",
-          "desc": "公司识别ID",
-          "example": "",
-          "name": "company",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c1864cda998d11268e658f7",
+            "desc": "公司识别ID",
+            "example": "",
+            "name": "company",
+            "required": "1"
+          },
           {
             "_id": "5c1864cda998d11268e658f6",
             "desc": "flag为0则为商品标签，为2则为图片标签",
@@ -7969,12 +8175,13 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c1864a32c11a2126f3780d4",
-          "desc": "品牌名称",
-          "name": "name",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c1864a32c11a2126f3780d4",
+            "desc": "品牌名称",
+            "name": "name",
+            "required": "1"
+          },
           {
             "_id": "5c1864a32c11a2126f3780d3",
             "desc": "",
@@ -8021,13 +8228,14 @@
         "req_body_is_json_schema": true,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c1753da2c11a2126f378070",
-          "desc": "企业名称",
-          "example": "南京红马",
-          "name": "uname",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c1753da2c11a2126f378070",
+            "desc": "企业名称",
+            "example": "南京红马",
+            "name": "uname",
+            "required": "1"
+          },
           {
             "_id": "5c1753da2c11a2126f37806f",
             "desc": "排序",
@@ -8074,13 +8282,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c18b9742c11a2126f3780e7",
-          "desc": "用于区分用户等级",
-          "example": "A级客户",
-          "name": "name",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c18b9742c11a2126f3780e7",
+            "desc": "用于区分用户等级",
+            "example": "A级客户",
+            "name": "name",
+            "required": "1"
+          },
           {
             "_id": "5c18b9742c11a2126f3780e6",
             "desc": "排序",
@@ -8134,13 +8343,14 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c186503a998d11268e658fc",
-          "desc": "商品标签名",
-          "example": "字符串",
-          "name": "name",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c186503a998d11268e658fc",
+            "desc": "商品标签名",
+            "example": "字符串",
+            "name": "name",
+            "required": "1"
+          },
           {
             "_id": "5c186503a998d11268e658fb",
             "desc": "添加颜色",
@@ -8186,54 +8396,56 @@
     "add_time": 1544767225,
     "up_time": 1544767225,
     "index": 6,
-    "list": [{
-      "_id": 15,
-      "method": "GET",
-      "catid": 17,
-      "title": "地区详细信息",
-      "path": "/area/info",
-      "project_id": 12,
-      "res_body_type": "json",
-      "uid": 14,
-      "add_time": 1544767393,
-      "up_time": 1544767678,
-      "__v": 0,
-      "markdown": "",
-      "desc": "",
-      "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{}}",
-      "tag": [
-        "基础数据"
-      ],
-      "index": 0,
-      "api_opened": false,
-      "res_body_is_json_schema": true,
-      "req_body_form": [],
-      "req_body_is_json_schema": true,
-      "req_params": [],
-      "req_headers": [],
-      "req_query": [{
-        "_id": "5c1348be2c11a2126f377fa4",
-        "desc": "",
-        "example": "1",
-        "name": "id",
-        "required": "0"
-      },
-        {
-          "_id": "5c1348be2c11a2126f377fa3",
-          "desc": "",
-          "example": "3",
-          "name": "level",
-          "required": "0"
-        }
-      ],
-      "query_path": {
+    "list": [
+      {
+        "_id": 15,
+        "method": "GET",
+        "catid": 17,
+        "title": "地区详细信息",
         "path": "/area/info",
-        "params": []
+        "project_id": 12,
+        "res_body_type": "json",
+        "uid": 14,
+        "add_time": 1544767393,
+        "up_time": 1544767678,
+        "__v": 0,
+        "markdown": "",
+        "desc": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{}}",
+        "tag": [
+          "基础数据"
+        ],
+        "index": 0,
+        "api_opened": false,
+        "res_body_is_json_schema": true,
+        "req_body_form": [],
+        "req_body_is_json_schema": true,
+        "req_params": [],
+        "req_headers": [],
+        "req_query": [
+          {
+            "_id": "5c1348be2c11a2126f377fa4",
+            "desc": "",
+            "example": "1",
+            "name": "id",
+            "required": "0"
+          },
+          {
+            "_id": "5c1348be2c11a2126f377fa3",
+            "desc": "",
+            "example": "3",
+            "name": "level",
+            "required": "0"
+          }
+        ],
+        "query_path": {
+          "path": "/area/info",
+          "params": []
+        },
+        "type": "static",
+        "status": "done",
+        "edit_uid": 0
       },
-      "type": "static",
-      "status": "done",
-      "edit_uid": 0
-    },
       {
         "_id": 319,
         "method": "GET",
@@ -8257,13 +8469,15 @@
         "req_body_is_json_schema": false,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c8b5a8b2c11a2126f37845e",
-          "desc": "",
-          "example": "http://api.map.baidu.com/routematrix/v2/driving?output=json&origins=40.45,116.34|40.54,116.35&destinations=40.34,116.45|40.35,116.46&ak=UXZ8jGbhQddaTRySwScsWRjUgEZxWHtv",
-          "name": "url",
-          "required": "1"
-        }],
+        "req_query": [
+          {
+            "_id": "5c8b5a8b2c11a2126f37845e",
+            "desc": "",
+            "example": "http://api.map.baidu.com/routematrix/v2/driving?output=json&origins=40.45,116.34|40.54,116.35&destinations=40.34,116.45|40.35,116.46&ak=UXZ8jGbhQddaTRySwScsWRjUgEZxWHtv",
+            "name": "url",
+            "required": "1"
+          }
+        ],
         "query_path": {
           "path": "/tool/map",
           "params": []
@@ -8295,13 +8509,14 @@
         "req_body_is_json_schema": true,
         "req_params": [],
         "req_headers": [],
-        "req_query": [{
-          "_id": "5c17176da998d11268e65723",
-          "desc": "上级",
-          "example": "1",
-          "name": "id",
-          "required": "1"
-        },
+        "req_query": [
+          {
+            "_id": "5c17176da998d11268e65723",
+            "desc": "上级",
+            "example": "1",
+            "name": "id",
+            "required": "1"
+          },
           {
             "_id": "5c17176da998d11268e65722",
             "desc": "",

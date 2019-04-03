@@ -210,6 +210,7 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
       if (resSchemaModify) {
         _resSchema = await resSchemaModify(apiItem.responseSchema);
       }
+      apiItem.responseSchema =_resSchema;
 
     if(_resSchema) {
       let {tsContent} = await genTsFromSchema(

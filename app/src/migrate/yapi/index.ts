@@ -29,17 +29,19 @@ import {
         getMethodName: methodItem => methodItem.path.replace('/finance/', ''),
       });
 
-      fse.writeJson(join(__dirname,"web-api.json"),item);
+      fse.writeJson(join(__dirname, 'web-api.json'), webapiGroup);
 
       await buildWebApi({
         webapiGroup,
         projectPath: '/Users/dong/extraIn/RHourseO2O/src/api', //join(__dirname, 'out'),
-        beforeCompile:(apiItem: IWebApiDefinded)=>{
-          apiItem.url="https://pay.npej.net"+apiItem.url;
+        beforeCompile: (apiItem: IWebApiDefinded) => {
+          apiItem.url = 'https://pay.npej.net' + apiItem.url;
           return apiItem;
         },
         resSchemaModify: (schema: IJSObjectProps) => {
           //api外了一层. 所有内容均把data提取出来即可..
+
+          //TODO void怎么表示  ?
           //@ts-ignore;
           if (
             schema &&
@@ -49,13 +51,13 @@ import {
             schema.properties.obj['type'] === 'object'
           ) {
             //@ts-ignore;
-            if(schema.properties.obj.properties.data){
+            if (schema.properties.obj.properties.data) {
               //@ts-ignore;
               return schema.properties.obj.properties.data;
               //@ts-ignore;
-            }else if(schema.properties.obj.properties.code){
-              //@ts-ignore;
-              return schema.properties.obj.properties.code;
+            } else if (getKeyCount(schema.properties.obj.properties) === 0) {
+              console.log('hit key count 0 ',schema);
+              return null;
             } else {
               return null;
             }
@@ -68,6 +70,14 @@ import {
   }
 })();
 
+function getKeyCount(obj: object): number {
+  let count = 0;
+  for (let key in obj) {
+    count++;
+  }
+  return count;
+}
+
 function transfer(
   yapiDef: any,
   options: {name: string; getMethodName: (methodItem: IYapiMethod) => string},
@@ -77,31 +87,38 @@ function transfer(
   let apis = yapiDef.list.map((methodItem: IYapiMethod): IWebApiDefinded => {
     //@ts-ignore;这里的写法很不好 TODO
 
-    let jsonSchema: IJSObjectProps = {
-      type: 'object',
-      properties: {},
-      required: [],
-    };
-
     let requestParam: IParamShape = {
       name: 'param',
       comment: '',
-      jsonSchema,
+      jsonSchema:{
+        type: 'object',
+        properties: {},
+        required: [],
+      },
     };
 
     let params: ReqParam[] = [];
     //空字符串处理.
-    if(methodItem.req_body_is_json_schema){
-      //TODO 是否对比下参数的多少. 决定 取那个呢  ?  /finance/saveMoneyByWX 两个值都有的情况 怎么出现  ?
-      params=JSON.parse(methodItem.req_body_other);
-    }else{
-      if(methodItem.req_query && methodItem.req_query.length>0){
-        params=methodItem.req_query;
-      }else if(methodItem.req_body_form && methodItem.req_body_form.length>0){
-        params=methodItem.req_body_form;
-      }
+    if (methodItem.req_body_other) {
+      requestParam.jsonSchema = JSON.parse(methodItem.req_body_other);
+      //@ts-ignore 直接应该设置为正确的值
 
+      if(!requestParam.jsonSchema.required){
+        //@ts-ignore;
+        requestParam.jsonSchema.required=[];
+      }
+      //@ts-ignore;
+      delete requestParam.jsonSchema.title;
     }
+
+    if (methodItem.req_query && methodItem.req_query.length > 0) {
+      params = params.concat(methodItem.req_query);
+    }
+
+    if (methodItem.req_body_form && methodItem.req_body_form.length > 0) {
+      params = params.concat(methodItem.req_body_form);
+    }
+
     for (let i = 0, ilen = params.length; i < ilen; i++) {
       let item: ReqParam = params[i];
       let propertier = {
@@ -109,10 +126,11 @@ function transfer(
         description: item.desc + ' ' + item.example,
       };
       if (item.required === '1') {
-        jsonSchema.required.push(item.name);
+        //@ts-ignore
+        requestParam.jsonSchema.required.push(item.name);
       }
       //@ts-ignore;这里的写法很不好 TODO
-      jsonSchema.properties[item.name] = propertier;
+      requestParam.jsonSchema.properties[item.name] = propertier;
     }
 
     //如果是get请求, 把参数聚合起来,单参数设计;
@@ -122,8 +140,8 @@ function transfer(
       resJsonSchema = JSON.parse(methodItem.res_body);
     } else {
       //any的表示呢 ?
-      if (methodItem.res_body && methodItem.res_body.includes('\\"type\\"')) {
-        console.warn(`方法返回值类型定义有问题:${methodItem.path}`);
+      if (methodItem.res_body && methodItem.res_body.includes('"type"')) {
+        // console.warn(`方法返回值类型定义有问题:${methodItem.path}`);
         resJsonSchema = JSON.parse(methodItem.res_body);
       } else {
         resJsonSchema = null;
@@ -174,6 +192,7 @@ export interface IYapiMethod {
   title: string;
   path: string;
   project_id: number;
+  req_body_type: 'json' | 'form';
   res_body_type: string;
   req_body_other: string;
   uid: number;
