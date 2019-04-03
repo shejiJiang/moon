@@ -21,7 +21,7 @@ export default (dispatch) => {
          * 初始化数据
          */
         async init() {
-            dispatch({ type: INIT } as Action);
+            dispatch({ type: INIT,payload:{} } as Action);
         },
 
         /**
