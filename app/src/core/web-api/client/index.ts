@@ -182,6 +182,8 @@ export async function buildWebApi(context: IWebApiContext) {
     },
     {saveFilePath: webapiGroup.name + '.ts'},
   );
+
+  //TODO 自动向index文件中添加引用;
 }
 
 async function generateTsDefined(context: IWebApiContext): Promise<string> {

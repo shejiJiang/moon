@@ -26,19 +26,16 @@ async function readFile(filePath: string): Promise<string> {
   klaw(path)
     .on('data', item => {
       if(item.stats.isFile()) {
+        //TODO 图片等文件也可以过滤掉.
         filePaths.push(item.path);
       }
     })
     .on('end', async () => {
-      console.dir(filePaths);
-      console.log(111);
-
-
       for (let i = 0, ilen = filePaths.length; i < ilen; i++) {
         let filePath = filePaths[i];
         let content  = await readFile(filePath);
 
-        let res  = /\/\/TODO([^\n]*)/;
+        let res  = /\/\/ *TODO([^\n]*)/;
 
         // console.log(333)
         let results  = res.exec(content);

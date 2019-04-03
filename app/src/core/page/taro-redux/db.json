@@ -1,5 +1,110 @@
 {
 
+
+
+  "wallet-pay-findpass":{
+    "title":"找回支付密码",
+    "pagePath": "wallet-pay-findpass",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"loginType",
+          "value":{}
+        }],
+        "events": [
+          {
+            "name": "chageLoginType",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "chageLoginType",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "header",
+        "methods": []
+      }
+    ]
+  },
+
+
+  "balance/withdraw-list":{
+    "title":"提现管理",
+    "pagePath": "balance/withdraw-list",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"dataList",
+          "value":[{},{},{}]
+        },
+        {
+          "name":"request",
+          "value":{
+            "from":0,
+            "len":10,
+            "type":""
+          }
+        }
+        ],
+        "events": [
+          {
+            "name": "changeReq",
+            "param": ""
+          },
+          {
+            "name": "addDatas",
+            "param": ""
+          },
+          {
+            "name": "reQuery",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "changeType",
+            "param": ""
+          },
+          {
+            "name": "query",
+            "param": ""
+          },
+          {
+            "name": "nextPage",
+            "param": ""
+          },
+          {
+            "name": "toDetail",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "list",
+        "methods": []
+      }
+    ]
+  },
   "balance/bankcards":{
     "title":"我的银行卡",
     "pagePath": "balance/bankcards",

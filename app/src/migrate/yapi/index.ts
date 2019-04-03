@@ -22,53 +22,73 @@ import {
   let yapis = await fse.readJSON(join(__dirname, 'api.json'));
 
   for (let i = 0, ilen = yapis.length; i < ilen; i++) {
+    let webapiGroup: IWebApiGroup;
+
+    let hostPre="";
+
     let item = yapis[i];
     if (item.name === '财务') {
-      let webapiGroup: IWebApiGroup = await transfer(item, {
+      webapiGroup = await transfer(item, {
         name: 'finance',
         getMethodName: methodItem => methodItem.path.replace('/finance/', ''),
       });
+      hostPre="https://pay.npej.net";
+    } else if(item.name === "订单统计"){
+      // hostPre="";
+      webapiGroup = await transfer(item, {
+        name: 'order-summary',
+        getMethodName: methodItem => methodItem.path.replace('/order/', ''),
+      });
+    }
 
+    if(webapiGroup) {
       fse.writeJson(join(__dirname, 'web-api.json'), webapiGroup);
 
       await buildWebApi({
         webapiGroup,
         projectPath: '/Users/dong/extraIn/RHourseO2O/src/api', //join(__dirname, 'out'),
         beforeCompile: (apiItem: IWebApiDefinded) => {
-          apiItem.url = 'https://pay.npej.net' + apiItem.url;
+          apiItem.url =hostPre + apiItem.url;
           return apiItem;
         },
-        resSchemaModify: (schema: IJSObjectProps) => {
-          //api外了一层. 所有内容均把data提取出来即可..
-
-          //TODO void怎么表示  ?
-          //@ts-ignore;
-          if (
-            schema &&
-            schema.properties &&
-            schema.type === 'object' &&
-            schema.properties.obj &&
-            schema.properties.obj['type'] === 'object'
-          ) {
-            //@ts-ignore;
-            if (schema.properties.obj.properties.data) {
-              //@ts-ignore;
-              return schema.properties.obj.properties.data;
-              //@ts-ignore;
-            } else if (getKeyCount(schema.properties.obj.properties) === 0) {
-              console.log('hit key count 0 ',schema);
-              return null;
-            } else {
-              return null;
-            }
-          } else {
-            return schema;
-          }
-        },
+        resSchemaModify,
       });
+
     }
+
+
   }
 })();
+
+function resSchemaModify(schema: IJSObjectProps){
+
+
+  //api外了一层. 所有内容均把data提取出来即可..
+
+  //TODO void怎么表示  ?
+  //@ts-ignore;
+  if (
+    schema &&
+    schema.properties &&
+    schema.type === 'object' &&
+    schema.properties.obj &&
+    schema.properties.obj['type'] === 'object'
+  ) {
+    //@ts-ignore;
+    if (schema.properties.obj.properties.data) {
+      //@ts-ignore;
+      return schema.properties.obj.properties.data;
+      //@ts-ignore;
+    } else if (getKeyCount(schema.properties.obj.properties) === 0) {
+      console.log('hit key count 0 ',schema);
+      return null;
+    } else {
+      return null;
+    }
+  } else {
+    return schema;
+  }
+}
 
 function getKeyCount(obj: object): number {
   let count = 0;
