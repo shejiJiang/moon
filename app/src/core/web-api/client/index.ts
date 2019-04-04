@@ -186,6 +186,7 @@ export async function buildWebApi(context: IWebApiContext) {
   //TODO 自动向index文件中添加引用;
 }
 
+
 async function generateTsDefined(context: IWebApiContext): Promise<string> {
   let {webapiGroup, resSchemaModify} = context;
 
@@ -196,11 +197,7 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
 
     for (let i = 0, ilen = apiItem.requestParam.length; i < ilen; i++) {
       let param: IParamShape = apiItem.requestParam[i];
-
-      let result = await compile(
-        param.jsonSchema as any,
-        Util.genInterfaceName(apiItem.name, param.name, 'req'),
-      );
+      let result = await  genTsFromSchema(Util.genInterfaceName(apiItem.name, param.name, 'req'),param.jsonSchema as any,context)
       results.push(result);
     }
 
@@ -217,7 +214,7 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
     if(_resSchema) {
       let {tsContent} = await genTsFromSchema(
         Util.genInterfaceName(apiItem.name, 'res'),
-        _resSchema as any,
+        _resSchema as any,context
       );
       results.push(tsContent);
     }

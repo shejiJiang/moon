@@ -10,7 +10,7 @@
 
 import  * as  generateSchema  from  'generate-schema';
 import {compile, compileFromFile} from 'json-schema-to-typescript';
-import {SchemaProps} from "../web-api/client";
+import {IWebApiContext, SchemaProps} from "../web-api/client";
 
 
 /**
@@ -19,9 +19,9 @@ import {SchemaProps} from "../web-api/client";
  * @param value
  * @returns {any}
  */
-export async function genTsFromJSON(name:string,value:any):Promise<IJsonTsGenResult> {
+export async function genTsFromJSON(name:string,value:any,context: IWebApiContext):Promise<IJsonTsGenResult> {
   let schema  = generateSchema.json(name,value);
-  let tsResult = await genTsFromSchema(name,schema);
+  let tsResult = await genTsFromSchema(name,schema,context);
   return {...tsResult, schema};
 }
 
@@ -37,6 +37,8 @@ interface ITsGenResult{
   tsContent:string
 }
 
+//考虑使用z隐式传参呢..
+
 /**
  * 将json schema 转换为ts定义
  *
@@ -44,12 +46,30 @@ interface ITsGenResult{
  * @param jsonSchema
  * @returns {Promise<string>}
  */
-export async function genTsFromSchema(name:string,jsonSchema:any):Promise<ITsGenResult>{
-  // console.log("jsonSchema::",name,jsonSchema);
+export async function genTsFromSchema(name:string,jsonSchema:any,context: IWebApiContext):Promise<ITsGenResult>{
+
+  // let reg  = /#\/definitions\//;
+  // let parse = {
+  //   order: 1,
+  //   canParse:reg ,
+  //   parse: function(refStr) {
+  //     console.log('definitions==>',refStr,context.webapiGroup.definitions[refStr.replace(reg,"")]);
+  //
+  //     if(typeof(refStr)==='string'){
+  //       return context.webapiGroup.definitions[refStr.replace(reg,"")];
+  //     }
+  //   }
+  // }
+
   let tsContent = await compile(
     jsonSchema,
     name,{
-      bannerComment:""
+      bannerComment:"",
+      // $refOptions:{
+      //   parse:{
+      //     definitions:parse
+      //   }
+      // }
     }
   );
 

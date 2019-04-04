@@ -10,7 +10,14 @@
 import * as request from 'request';
 import * as fse from 'fs-extra';
 import {join} from 'path';
-import {IJsonSchemaRef, IParamShape, IWebApiDefinded, IWebApiGroup, SchemaProps} from '../../core/web-api/client';
+import {
+  buildWebApi,
+  IJsonSchemaRef,
+  IParamShape,
+  IWebApiDefinded,
+  IWebApiGroup,
+  SchemaProps
+} from '../../core/web-api/client';
 import {IOptions} from "tslint";
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
@@ -35,15 +42,33 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
 (async () => {
   // let apiJson = await loadJson();
   //   // // console.log(apiJson);
-  //   // await fse.writeJSON(join(__dirname, 'api.json'), apiJson);
+  //   await fse.writeJSON(join(__dirname, 'api.json'), apiJson);
   //   // //按分组;
-
-  let apiJson= await fse.readJSON(join(__dirname, 'api.json'));
+  // let apiJson= await fse.readJSON(join(__dirname, 'api.json'));
 
   //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
-  let apiGroups = transfer(apiJson);
+  // let apiGroups = transfer(apiJson);
 
-  await fse.writeJSON(join(__dirname,"webapi-defs.json"),apiGroups);
+  let apiGroups = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
+
+  // await fse.writeJSON(join(__dirname,"webapi-defs.json"),apiGroups);
+
+
+
+  // for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
+    let webapiGroup = apiGroups[0];
+  webapiGroup.apis=[webapiGroup.apis[0]];
+
+    await buildWebApi({
+      webapiGroup,
+      projectPath: join(__dirname, 'out'),
+      beforeCompile: (apiItem: IWebApiDefinded) => {
+        // apiItem.url =hostPre + apiItem.url;
+        return apiItem;
+      },
+      // resSchemaModify,
+    });
+  // }
 
   //还是生成 一个总的 ?
   //转换
@@ -102,12 +127,13 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
 
     console.log("definitions:",definitions);
 
-
     let  defResult  = {};
     //[] 转为{}
     for (let i = 0, ilen = definitions.length; i < ilen; i++) {
       let item = definitions[i];
-      defResult[item.title]= definitions[i];
+      if(item.title){
+        defResult[item.title]= definitions[i];
+      }
     }
 
     KeyMap[groupKey].definitions=defResult;
