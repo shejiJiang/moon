@@ -48,7 +48,9 @@ export async function genTsFromSchema(name:string,jsonSchema:any):Promise<ITsGen
   // console.log("jsonSchema::",name,jsonSchema);
   let tsContent = await compile(
     jsonSchema,
-    name,
+    name,{
+      bannerComment:""
+    }
   );
 
   let result ={

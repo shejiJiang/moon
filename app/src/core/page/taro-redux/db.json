@@ -1,6 +1,24 @@
 {
-
-
+  "after-sales-desc":{
+    "title":"售后细则",
+    "pagePath": "after-sales-descs",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[],
+        "events": [
+        ]
+      }
+    ],
+    "actions": [{
+      "fileName": "action",
+      "methods": [
+      ]
+    }
+    ],
+    "subComps": [
+    ]
+  },
 
   "wallet-pay-findpass":{
     "title":"找回支付密码",
@@ -9,12 +27,33 @@
       {
         "fileName": "reducer",
         "datas":[{
-          "name":"loginType",
-          "value":{}
-        }],
+          "name":"idCard",
+          "value":""
+        },
+          {
+            "name":"mobile",
+            "value":""
+          },
+          {
+            "name":"step",
+            "value":1
+          },
+          {
+            "name":"smsCode",
+            "value":""
+          },
+          {
+            "name":"newPwd",
+            "value":""
+          },
+          {
+            "name":"step",
+            "value":1
+          }
+        ],
         "events": [
           {
-            "name": "chageLoginType",
+            "name": "typeInfo",
             "param": ""
           }
         ]
@@ -25,7 +64,15 @@
         "fileName": "action",
         "methods": [
           {
-            "name": "chageLoginType",
+            "name": "type",
+            "param": ""
+          },
+          {
+            "name": "sendSms",
+            "param": ""
+          },
+          {
+            "name": "confirm",
             "param": ""
           }
         ]
@@ -34,6 +81,18 @@
     "subComps": [
       {
         "fileName": "header",
+        "methods": []
+      },
+      {
+        "fileName": "input",
+        "methods": []
+      },
+      {
+        "fileName": "pwd-input",
+        "methods": []
+      },
+      {
+        "fileName": "pwd-confirm",
         "methods": []
       }
     ]

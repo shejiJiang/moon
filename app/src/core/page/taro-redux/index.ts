@@ -24,7 +24,9 @@ import {join} from "path";
     // 'login','register'
     // 'balance/wallet-charge',
     // 'balance/scan-pay',
-    'balance/withdraw-list',
+    'after-sales-desc',
+    'wallet-pay-findpass',
+    // 'balance/withdraw-list',
     // 'balance/wallet-balance-list',
     // 'balance/withdraw-success',
     // 'balance/bankcards',
@@ -39,7 +41,7 @@ import {join} from "path";
 
   let projectPath ="/Users/dong/extraIn/RHourseO2O/";
   let prettiesConfig={};
-  try{
+  try {
      prettiesConfig = await fse.readJSON(join(projectPath,"pretties.json"));
   } catch(err) {
 

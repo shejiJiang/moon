@@ -23,3 +23,13 @@
 参考代码:/Users/dong/Falcon/moon/app/src/migrate/yapi/index.ts
 
 ## 场景3: 定义modal,自动生成服务端, 及客户端代码;
+
+
+
+## 项目工作量定制
+
+1. 按页面算;
+
+2. 按领域算;
+
+3. 按功能算;
