@@ -1,4 +1,41 @@
 {
+  "custom":{
+    "title":"客户",
+    "pagePath": "custom",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"newCount",
+          "value":0
+        },{
+          "name":"totalCount",
+          "value":0
+        },{
+          "name":"actCount",
+          "value":0
+        },{
+          "name":"sleepCount",
+          "value":0
+        }],
+        "events": [
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "top",
+        "methods": []
+      }
+    ]
+  },
   "after-sales-desc":{
     "title":"售后细则",
     "pagePath": "after-sales-descs",
@@ -1015,6 +1052,7 @@
     ]
   },
   "shop-set/shop-position":{
+    "title":"店铺位置",
     "pagePath": "shop-set/shop-position",
     "subComps": [
     ],
@@ -1022,19 +1060,13 @@
       {
         "fileName": "action",
         "methods": [{
-          "name": "clean",
-          "param": ""
-        },{
           "name": "changeAddress",
           "param": ""
         },{
-          "name": "changeGps",
+          "name": "chooseMap",
           "param": ""
         },{
           "name": "save",
-          "param": ""
-        },{
-          "name": "modify",
           "param": ""
         }
         ]
@@ -1044,6 +1076,10 @@
       {
         "fileName": "reducer",
         "datas":[
+          {
+            "name":"company",
+            "value":{}
+          },
           {
             "name":"areas",
             "value":null,
@@ -1056,13 +1092,47 @@
         ],
         "events": [
           {
-            "name": "init",
-            "param": ""
-          },
-          {
-            "name": "change",
+            "name": "infoChange",
             "param": ""
           }
+        ]
+      }
+    ]
+  },"shop-set/shop-setting":{
+    "title":"店铺设置",
+    "pagePath": "shop-set/shop-setting",
+  "actors": [
+    {
+      "fileName": "reducer",
+      "datas":[
+        {
+          "name":"company",
+          "value":{}
+        }
+      ],
+      "events": [
+        {
+          "name": "infoChange",
+          "param": ""
+        }
+      ]
+    }
+  ],
+    "subComps": [
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "changeIcon",
+          "param": ""
+        },{
+          "name": "changeInfo",
+          "param": ""
+        },{
+          "name": "save",
+          "param": ""
+        }
         ]
       }
     ]

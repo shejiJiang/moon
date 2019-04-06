@@ -24,8 +24,10 @@ import {join} from "path";
     // 'login','register'
     // 'balance/wallet-charge',
     // 'balance/scan-pay',
-    'after-sales-desc',
-    'wallet-pay-findpass',
+    // 'after-sales-desc',
+    // 'shop-set/shop-setting',
+    // 'shop-set/shop-position',
+    // 'wallet-pay-findpass',
     // 'balance/withdraw-list',
     // 'balance/wallet-balance-list',
     // 'balance/withdraw-success',

@@ -19,7 +19,7 @@ import {IWebApiContext, SchemaProps} from "../web-api/client";
  * @param value
  * @returns {any}
  */
-export async function genTsFromJSON(name:string,value:any,context: IWebApiContext):Promise<IJsonTsGenResult> {
+export async function genTsFromJSON(name:string,value:any,context?: IWebApiContext):Promise<IJsonTsGenResult> {
   let schema  = generateSchema.json(name,value);
   let tsResult = await genTsFromSchema(name,schema,context);
   return {...tsResult, schema};
@@ -46,7 +46,7 @@ interface ITsGenResult{
  * @param jsonSchema
  * @returns {Promise<string>}
  */
-export async function genTsFromSchema(name:string,jsonSchema:any,context: IWebApiContext):Promise<ITsGenResult>{
+export async function genTsFromSchema(name:string,jsonSchema:any,context?: IWebApiContext):Promise<ITsGenResult>{
 
   // let reg  = /#\/definitions\//;
   // let parse = {

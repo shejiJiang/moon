@@ -12,7 +12,7 @@ import {join} from 'path';
 import {insertContent, getHandleFile} from '../../util/compile-util';
 import * as stringUtil from '../../util/string-util';
 import {compile, compileFromFile} from 'json-schema-to-typescript';
-import {genTsFromSchema} from "../../util/json-util";
+import {genTsFromSchema} from '../../util/json-util';
 
 const Util = {
   ...stringUtil,
@@ -43,9 +43,9 @@ export interface IWebApiGroup {
   name: string;
   apis: IWebApiDefinded[];
   //公共的props, 供其他人调用;
-  definitions?:{
-    [defName:string]:SchemaProps;
-  }
+  definitions?: {
+    [defName: string]: SchemaProps;
+  };
 }
 
 // (async()=>{
@@ -144,7 +144,9 @@ export interface IWebApiContext {
   projectPath: string;
   //修改返回值的schema信息; 进行调整以生成ts定义; 因为多了api层的修改;
   resSchemaModify?: (resScheme: SchemaProps) => SchemaProps;
-  beforeCompile?: (apiItem: IWebApiDefinded) => Promise<IWebApiDefinded>|IWebApiDefinded;
+  beforeCompile?: (
+    apiItem: IWebApiDefinded,
+  ) => Promise<IWebApiDefinded> | IWebApiDefinded;
 }
 
 /**
@@ -160,10 +162,10 @@ export async function buildWebApi(context: IWebApiContext) {
     tplBase: join(__dirname, 'tpl'),
   });
   //生成 方法入参入出参的ts定义;
-  if(context.beforeCompile) {
+  if (context.beforeCompile) {
     for (let i = 0, ilen = webapiGroup.apis.length; i < ilen; i++) {
       let apiItem = webapiGroup.apis[i];
-      webapiGroup.apis[i]= await context.beforeCompile(apiItem);
+      webapiGroup.apis[i] = await context.beforeCompile(apiItem);
     }
   }
 
@@ -186,7 +188,6 @@ export async function buildWebApi(context: IWebApiContext) {
   //TODO 自动向index文件中添加引用;
 }
 
-
 async function generateTsDefined(context: IWebApiContext): Promise<string> {
   let {webapiGroup, resSchemaModify} = context;
 
@@ -197,8 +198,12 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
 
     for (let i = 0, ilen = apiItem.requestParam.length; i < ilen; i++) {
       let param: IParamShape = apiItem.requestParam[i];
-      let result = await  genTsFromSchema(Util.genInterfaceName(apiItem.name, param.name, 'req'),param.jsonSchema as any,context)
-      results.push(result);
+      let {tsContent} = await genTsFromSchema(
+        Util.genInterfaceName(apiItem.name, param.name, 'req'),
+        param.jsonSchema as any,
+        context,
+      );
+      results.push(tsContent);
     }
 
     if (apiItem.responseSchema && apiItem.responseSchema) {
@@ -209,16 +214,16 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
       if (resSchemaModify) {
         _resSchema = await resSchemaModify(apiItem.responseSchema);
       }
-      apiItem.responseSchema =_resSchema;
+      apiItem.responseSchema = _resSchema;
 
-    if(_resSchema) {
-      let {tsContent} = await genTsFromSchema(
-        Util.genInterfaceName(apiItem.name, 'res'),
-        _resSchema as any,context
-      );
-      results.push(tsContent);
-    }
-
+      if (_resSchema) {
+        let {tsContent} = await genTsFromSchema(
+          Util.genInterfaceName(apiItem.name, 'res'),
+          _resSchema as any,
+          context,
+        );
+        results.push(tsContent);
+      }
     }
   }
   return results.join('\n');
@@ -300,6 +305,6 @@ export interface ITypeShape {
 
 export interface IParamShape extends ITypeShape {
   name: string;
-  isInPath?:boolean;//参数是否在路径上带着? /account/refundOrders/{returnOrderNo}
+  isInPath?: boolean; //参数是否在路径上带着? /account/refundOrders/{returnOrderNo}
   defaultValue?: any;
 }

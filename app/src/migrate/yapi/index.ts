@@ -39,6 +39,12 @@ import {
         name: 'order-summary',
         getMethodName: methodItem => methodItem.path.replace('/order/', ''),
       });
+    } else if(item.name === "客户"){
+      // hostPre="";
+      webapiGroup = await transfer(item, {
+        name: 'customer',
+        getMethodName: methodItem => methodItem.path.replace('/customer/', ''),
+      });
     }
 
     if(webapiGroup) {
