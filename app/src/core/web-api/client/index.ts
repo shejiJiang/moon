@@ -193,14 +193,16 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
 
   // let results = [];
 
-  let param2RespTypes = []
+  let param2RespTypes = [];
 
   for (let i = 0, ilen = webapiGroup.apis.length; i < ilen; i++) {
     let apiItem: IWebApiDefinded = webapiGroup.apis[i];
 
     for (let i = 0, ilen = apiItem.requestParam.length; i < ilen; i++) {
       let param: IParamShape = apiItem.requestParam[i];
-      param2RespTypes.push(Util.genInterfaceName(apiItem.name, param.name, 'req'))
+      //@ts-ignore
+      param.jsonSchema.title=Util.genInterfaceName(apiItem.name, param.name, 'req');
+      param2RespTypes.push(param.jsonSchema);
       // let {tsContent} = await genTsFromSchema(
       //   Util.genInterfaceName(apiItem.name, param.name, 'req'),
       //   param.jsonSchema as any,
@@ -232,8 +234,15 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
   }
 
 
- let content  = genTsFromDefines({
-    definitions:param2RespTypes.concat(context.webapiGroup.definitions)
+  console.log("genTsFromDefines");
+
+  for (let i = 0, ilen = param2RespTypes.length; i < ilen; i++) {
+    let item = param2RespTypes[i];
+    context.webapiGroup.definitions[item.title]=item;
+  }
+
+ let content  = await genTsFromDefines({
+    definitions:context.webapiGroup.definitions
   });
 
   return content;

@@ -45,19 +45,18 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
   //   await fse.writeJSON(join(__dirname, 'api.json'), apiJson);
   //   // //按分组;
   // let apiJson= await fse.readJSON(join(__dirname, 'api.json'));
-
-  //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
+  //
+  // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
   // let apiGroups = transfer(apiJson);
-
-  let apiGroups = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
-
+  // //
   // await fse.writeJSON(join(__dirname,"webapi-defs.json"),apiGroups);
+let apiGroups = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
 
-
-
+  //
   // for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
     let webapiGroup = apiGroups[0];
   webapiGroup.apis=[webapiGroup.apis[0]];
+  console.log(webapiGroup);
 
     await buildWebApi({
       webapiGroup,
@@ -79,6 +78,10 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
   let apiGroups: IWebApiGroup[] = [];
   let KeyMap = {};
   for (let url in apiDocs.paths) {
+    if(url!=='/account/allOfflineAccounts'){
+      continue;
+    }
+  // let url  = "/account/allOffline Accounts";
     //默认都以/开头.
     let apiItem = apiDocs.paths[url];
     let groupKey = url.split('/')[1];
@@ -96,7 +99,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
 
     //TODO 会不会有两个及三个方法呢 ? 会 account/invoiceProject/{projectId}
     for(let method in apiItem) {
-      console.log(url,method);
+      // console.log(url,method);
       let apiDefItem:any ={url,method};//IWebApiDefinded
       let methodInfo = apiItem[method];
 
@@ -125,21 +128,15 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
       KeyMap[groupKey].apis.push(apiDefItem);
     }
 
-    console.log("definitions:",definitions);
 
-    let  defResult  = {};
-    //[] 转为{}
     for (let i = 0, ilen = definitions.length; i < ilen; i++) {
       let item = definitions[i];
-      if(item.title){
-        defResult[item.title]= definitions[i];
+      if(item.title  && !KeyMap[groupKey].definitions[item.title]){
+        KeyMap[groupKey].definitions[item.title]=definitions[i];
       }
     }
-
-    KeyMap[groupKey].definitions=defResult;
   }
 
-  apiDocs.paths;
 
   for(let key in KeyMap){
     apiGroups.push(KeyMap[key]);
@@ -160,7 +157,7 @@ function  findAllRefType(definitions: {
   let refLeng =refs.length;
    traverseObj(obj,refs);
 
-  console.log("findAllRefType:",refs);
+  // console.log("findAllRefType:",refs);
   //TODO 这里要不要把名字改了呢 ?
   let results  = [];
 
