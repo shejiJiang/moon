@@ -13,6 +13,34 @@
                 "$ref": "#/definitions/OfflineAccountVO"
             }
         }
+    }, {
+        "url": "/account/base/bank",
+        "method": "get",
+        "name": "getBaseBankUsingGET",
+        "comment": "获取配置银行列表",
+        "requestParam": [],
+        "responseSchema": {
+            "originalRef": "BaseResponse«List«BaseBank»»",
+            "$ref": "#/definitions/BaseResponse«List«BaseBank»»"
+        }
+    }, {
+        "url": "/account/confirm",
+        "method": "post",
+        "name": "confirmUsingPOST",
+        "comment": "确认订单收款",
+        "requestParam": [{
+            "name": "payOrderOperateRequest",
+            "isInPath": false,
+            "comment": "payOrderOperateRequest",
+            "jsonSchema": {
+                "originalRef": "TradeConfirmPayOrderRequest",
+                "$ref": "#/definitions/TradeConfirmPayOrderRequest"
+            }
+        }],
+        "responseSchema": {
+            "originalRef": "BaseResponse",
+            "$ref": "#/definitions/BaseResponse"
+        }
     }],
     "definitions": {
         "OfflineAccountVO": {
@@ -85,6 +113,120 @@
                 }
             },
             "title": "OfflineAccountVO"
+        },
+        "BaseResponse«List«BaseBank»»": {
+            "type": "object",
+            "required": ["code"],
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "结果码"
+                },
+                "context": {
+                    "type": "array",
+                    "description": "内容",
+                    "items": {
+                        "originalRef": "BaseBank",
+                        "$ref": "#/definitions/BaseBank"
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "description": "消息内容"
+                }
+            },
+            "title": "BaseResponse«List«BaseBank»»"
+        },
+        "BaseBank": {
+            "type": "object",
+            "properties": {
+                "bankCode": {
+                    "type": "string",
+                    "description": "银行编号"
+                },
+                "bankName": {
+                    "type": "string",
+                    "description": "银行名称"
+                }
+            },
+            "title": "BaseBank"
+        },
+        "TradeConfirmPayOrderRequest": {
+            "type": "object",
+            "properties": {
+                "operator": {
+                    "description": "操作人",
+                    "originalRef": "Operator",
+                    "$ref": "#/definitions/Operator"
+                },
+                "payOrderIds": {
+                    "type": "array",
+                    "description": "支付单id列表",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "title": "TradeConfirmPayOrderRequest"
+        },
+        "Operator": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "type": "string",
+                    "description": "操作人账号"
+                },
+                "adminId": {
+                    "type": "string",
+                    "description": "管理员Id"
+                },
+                "companyType": {
+                    "type": "string",
+                    "description": "供应商类型\n* NO: 否\n* YES: 是",
+                    "enum": ["0", "1"]
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "操作所在的Ip地址"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "操作人"
+                },
+                "platform": {
+                    "type": "string",
+                    "description": "操作方\n* BOSS: BOSS\n* CUSTOMER: 商户(小B)\n* THIRD: 第三方\n* SUPPLIER: 供应商\n* PLATFORM: 平台",
+                    "enum": ["BOSS", "CUSTOMER", "THIRD", "SUPPLIER", "PLATFORM"]
+                },
+                "storeId": {
+                    "type": "string",
+                    "description": "店铺id"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "用户Id"
+                }
+            },
+            "title": "Operator"
+        },
+        "BaseResponse": {
+            "type": "object",
+            "required": ["code"],
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "结果码"
+                },
+                "context": {
+                    "type": "object",
+                    "description": "内容"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "消息内容"
+                }
+            },
+            "title": "BaseResponse"
         }
     }
 }]

@@ -16,8 +16,36 @@ async function findAllOfflineAccountsWithDeleteUsingGET(): Promise<
   return result.data;
 }
 
+/**
+ *
+ * 获取配置银行列表
+ *
+ */
+async function getBaseBankUsingGET(): Promise<IGetBaseBankUsingGETRes> {
+  let result = await sdk.get<IGetBaseBankUsingGETRes>('/account/base/bank', {});
+  return result.data;
+}
+
+/**
+ *
+ * 确认订单收款
+ *
+ */
+async function confirmUsingPOST(
+  payOrderOperateRequest: IConfirmUsingPOSTPayOrderOperateRequestReq,
+): Promise<IConfirmUsingPOSTRes> {
+  let result = await sdk.post<IConfirmUsingPOSTRes>('/account/confirm', {
+    ...payOrderOperateRequest,
+  });
+  return result.data;
+}
+
 export default {
   findAllOfflineAccountsWithDeleteUsingGET,
+
+  getBaseBankUsingGET,
+
+  confirmUsingPOST,
 };
 
 /**
@@ -100,6 +128,175 @@ export interface OfflineAccountVO {
   update_time?: string;
   [k: string]: any;
 }
+/**
+ * This interface was referenced by `IgnoreType`'s JSON-Schema
+ * via the `definition` "BaseResponse«List«BaseBank»»".
+ */
+export interface BaseResponseListBaseBank {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: BaseBank[];
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+export interface BaseBank {
+  /**
+   * 银行编号
+   */
+  bankCode?: string;
+  /**
+   * 银行名称
+   */
+  bankName?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by `IgnoreType`'s JSON-Schema
+ * via the `definition` "BaseBank".
+ */
+export interface BaseBank1 {
+  /**
+   * 银行编号
+   */
+  bankCode?: string;
+  /**
+   * 银行名称
+   */
+  bankName?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by `IgnoreType`'s JSON-Schema
+ * via the `definition` "TradeConfirmPayOrderRequest".
+ */
+export interface TradeConfirmPayOrderRequest {
+  operator?: Operator;
+  /**
+   * 支付单id列表
+   */
+  payOrderIds?: string[];
+  [k: string]: any;
+}
+/**
+ * 操作人
+ */
+export interface Operator {
+  /**
+   * 操作人账号
+   */
+  account?: string;
+  /**
+   * 管理员Id
+   */
+  adminId?: string;
+  /**
+   * 供应商类型
+   * * NO: 否
+   * * YES: 是
+   */
+  companyType?: '0' | '1';
+  /**
+   * 操作所在的Ip地址
+   */
+  ip?: string;
+  /**
+   * 操作人
+   */
+  name?: string;
+  /**
+   * 操作方
+   * * BOSS: BOSS
+   * * CUSTOMER: 商户(小B)
+   * * THIRD: 第三方
+   * * SUPPLIER: 供应商
+   * * PLATFORM: 平台
+   */
+  platform?: 'BOSS' | 'CUSTOMER' | 'THIRD' | 'SUPPLIER' | 'PLATFORM';
+  /**
+   * 店铺id
+   */
+  storeId?: string;
+  /**
+   * 用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by `IgnoreType`'s JSON-Schema
+ * via the `definition` "Operator".
+ */
+export interface Operator1 {
+  /**
+   * 操作人账号
+   */
+  account?: string;
+  /**
+   * 管理员Id
+   */
+  adminId?: string;
+  /**
+   * 供应商类型
+   * * NO: 否
+   * * YES: 是
+   */
+  companyType?: '0' | '1';
+  /**
+   * 操作所在的Ip地址
+   */
+  ip?: string;
+  /**
+   * 操作人
+   */
+  name?: string;
+  /**
+   * 操作方
+   * * BOSS: BOSS
+   * * CUSTOMER: 商户(小B)
+   * * THIRD: 第三方
+   * * SUPPLIER: 供应商
+   * * PLATFORM: 平台
+   */
+  platform?: 'BOSS' | 'CUSTOMER' | 'THIRD' | 'SUPPLIER' | 'PLATFORM';
+  /**
+   * 店铺id
+   */
+  storeId?: string;
+  /**
+   * 用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by `IgnoreType`'s JSON-Schema
+ * via the `definition` "BaseResponse".
+ */
+export interface BaseResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: {
+    [k: string]: any;
+  };
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
 export interface OfflineAccountVO1 {
   /**
    * 线下账户id
@@ -165,5 +362,57 @@ export interface OfflineAccountVO1 {
    * 修改时间
    */
   update_time?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by `IgnoreType`'s JSON-Schema
+ * via the `definition` "IGetBaseBankUsingGETRes".
+ */
+export interface IGetBaseBankUsingGETRes {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: BaseBank[];
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by `IgnoreType`'s JSON-Schema
+ * via the `definition` "IConfirmUsingPOSTPayOrderOperateRequestReq".
+ */
+export interface IConfirmUsingPOSTPayOrderOperateRequestReq {
+  operator?: Operator;
+  /**
+   * 支付单id列表
+   */
+  payOrderIds?: string[];
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by `IgnoreType`'s JSON-Schema
+ * via the `definition` "IConfirmUsingPOSTRes".
+ */
+export interface IConfirmUsingPOSTRes {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: {
+    [k: string]: any;
+  };
+  /**
+   * 消息内容
+   */
+  message?: string;
   [k: string]: any;
 }
