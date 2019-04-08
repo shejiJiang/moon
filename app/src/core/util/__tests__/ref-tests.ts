@@ -7,20 +7,44 @@
  * @Date    2019/4/2
  **/
 
-import {genTsFromSchema} from '../json-util';
+import {genTsFromSchema,genTsFromDefines} from '../json-util';
 import {join} from 'path';
 import * as fse from 'fs-extra';
 
 
 (async()=>{
 
-  let result  =await  genTsFromSchema('test',{
-    "type": "array",
-    "items": {
-      "$ref": "#/definitions/OfflineAccountVO",
-      "originalRef": "OfflineAccountVO"
-    },
+  let result  =await  genTsFromDefines({
+    // "type": "array",
+    // "items": {
+    //   "$ref": "#/definitions/OfflineAccountVO",
+    //   "originalRef": "OfflineAccountVO"
+    // },
     definitions:{
+      "TestArray2":{
+        "title": "TestArray2",
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/OfflineAccountVO",
+          "originalRef": "OfflineAccountVO"
+        },
+      },
+      "TestArray1":{
+        "title": "TestArray1",
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/OfflineAccountVO",
+          "originalRef": "OfflineAccountVO"
+        },
+      },
+      "TestArray":{
+          "title": "TestArray",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OfflineAccountVO",
+            "originalRef": "OfflineAccountVO"
+          },
+      },
       "OfflineAccountVO": {
         "type": "object",
         "properties": {
@@ -95,6 +119,5 @@ import * as fse from 'fs-extra';
     }
   });
 
-  console.log(result);
-  fse.writeFileSync(join(__dirname,"test.ts"),result.tsContent);
+  fse.writeFileSync(join(__dirname,"test.ts"),result);
 })()

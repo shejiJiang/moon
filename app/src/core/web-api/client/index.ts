@@ -12,7 +12,7 @@ import {join} from 'path';
 import {insertContent, getHandleFile} from '../../util/compile-util';
 import * as stringUtil from '../../util/string-util';
 import {compile, compileFromFile} from 'json-schema-to-typescript';
-import {genTsFromSchema} from '../../util/json-util';
+import {genTsFromDefines, genTsFromSchema} from '../../util/json-util';
 
 const Util = {
   ...stringUtil,
@@ -191,24 +191,25 @@ export async function buildWebApi(context: IWebApiContext) {
 async function generateTsDefined(context: IWebApiContext): Promise<string> {
   let {webapiGroup, resSchemaModify} = context;
 
-  let results = [];
+  // let results = [];
+
+  let param2RespTypes = []
 
   for (let i = 0, ilen = webapiGroup.apis.length; i < ilen; i++) {
     let apiItem: IWebApiDefinded = webapiGroup.apis[i];
 
     for (let i = 0, ilen = apiItem.requestParam.length; i < ilen; i++) {
       let param: IParamShape = apiItem.requestParam[i];
-      let {tsContent} = await genTsFromSchema(
-        Util.genInterfaceName(apiItem.name, param.name, 'req'),
-        param.jsonSchema as any,
-        context,
-      );
-      results.push(tsContent);
+      param2RespTypes.push(Util.genInterfaceName(apiItem.name, param.name, 'req'))
+      // let {tsContent} = await genTsFromSchema(
+      //   Util.genInterfaceName(apiItem.name, param.name, 'req'),
+      //   param.jsonSchema as any,
+      //   context,
+      // );
+      // results.push(tsContent);
     }
 
     if (apiItem.responseSchema && apiItem.responseSchema) {
-      //@ts-ignore;//TODO 这里可以不删除的  充分利用
-      delete apiItem.responseSchema.title;
 
       let _resSchema = apiItem.responseSchema;
       if (resSchemaModify) {
@@ -217,16 +218,25 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
       apiItem.responseSchema = _resSchema;
 
       if (_resSchema) {
-        let {tsContent} = await genTsFromSchema(
-          Util.genInterfaceName(apiItem.name, 'res'),
-          _resSchema as any,
-          context,
-        );
-        results.push(tsContent);
+        //@ts-ignore
+        _resSchema.title=Util.genInterfaceName(apiItem.name, 'res');
+        param2RespTypes.push(_resSchema);
+        // let {tsContent} = await genTsFromSchema(
+        //   Util.genInterfaceName(apiItem.name, 'res'),
+        //   _resSchema as any,
+        //   context,
+        // );
+        // results.push(tsContent);
       }
     }
   }
-  return results.join('\n');
+
+
+ let content  = genTsFromDefines({
+    definitions:param2RespTypes.concat(context.webapiGroup.definitions)
+  });
+
+  return content;
 }
 
 interface IJsonSchemaProps {

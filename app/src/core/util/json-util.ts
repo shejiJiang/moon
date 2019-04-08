@@ -12,7 +12,6 @@ import  * as  generateSchema  from  'generate-schema';
 import {compile, compileFromFile} from 'json-schema-to-typescript';
 import {IWebApiContext, SchemaProps} from "../web-api/client";
 
-
 /**
  * 将json转换为ts定义
  *
@@ -54,18 +53,25 @@ export async function genTsFromSchema(name:string,jsonSchema:any,context?: IWebA
   //   order: 1,
   //   canParse:reg ,
   //   parse: function(refStr) {
-  //     console.log('definitions==>',refStr,context.webapiGroup.definitions[refStr.replace(reg,"")]);
+  //     console.log('definitions==>',refStr,
+  //       // context.webapiGroup.definitions[refStr.replace(reg,"")]
+  //     )
+  //     ;
   //
-  //     if(typeof(refStr)==='string'){
-  //       return context.webapiGroup.definitions[refStr.replace(reg,"")];
-  //     }
+  //     // if(typeof(refStr)==='string'){
+  //     //   return context.webapiGroup.definitions[refStr.replace(reg,"")];
+  //     // }
   //   }
   // }
 
+  // let _jsonSchema  = await $RefParser.dereference(jsonSchema);
+
+  // console.log(_jsonSchema);
   let tsContent = await compile(
     jsonSchema,
     name,{
       bannerComment:"",
+      // unreachableDefinitions:true,
       // $refOptions:{
       //   parse:{
       //     definitions:parse
@@ -75,12 +81,29 @@ export async function genTsFromSchema(name:string,jsonSchema:any,context?: IWebA
   );
 
   let result ={
+    //TODO 这是一个默认的规则;
     typeName:jsonSchema.title?jsonSchema.title.replace(/ */ig,""):name,
     tsContent
   }
   // console.log(result);
   return result;
 }
+
+export async function genTsFromDefines(definitions:{
+  definitions:{[key:string]:any}
+},name='IgnoreType'):Promise<string>{
+  let tsContent = await compile(
+    definitions,name
+    ,{
+      bannerComment:"",
+      unreachableDefinitions:true,
+    }
+  );
+  return tsContent;
+}
+
+
+
 
 // (async()=>{
 //
