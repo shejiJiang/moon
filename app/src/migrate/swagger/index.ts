@@ -44,19 +44,17 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
   //   // // console.log(apiJson);
   //   await fse.writeJSON(join(__dirname, 'api.json'), apiJson);
   //   // //按分组;
-  let apiJson= await fse.readJSON(join(__dirname, 'api.json'));
+  // let apiJson= await fse.readJSON(join(__dirname, 'api.json'));
   //
   // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
-  let apiGroups = transfer(apiJson);
+  // let apiGroups = transfer(apiJson);
   // //
-  await fse.writeJSON(join(__dirname,"webapi-defs.json"),apiGroups);
-// let apiGroups = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
+  // await fse.writeJSON(join(__dirname,"webapi-defs.json"),apiGroups);
+let apiGroups = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
 
-  //
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
-    let webapiGroup = apiGroups[0];
-  // webapiGroup.apis=[webapiGroup.apis[0]];
-  // console.log(webapiGroup);
+    let webapiGroup = apiGroups[i];
+    console.log('处理webapigrpu',webapiGroup.name);
 
     await buildWebApi({
       webapiGroup,
@@ -84,9 +82,9 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
   let apiGroups: IWebApiGroup[] = [];
   let KeyMap = {};
   for (let url in apiDocs.paths) {
-    if(!toDealUrls.includes(url)){
-      continue;
-    }
+    // if(!toDealUrls.includes(url)){
+    //   continue;
+    // }
   // let url  = "/account/allOffline Accounts";
     //默认都以/开头.
     let apiItem = apiDocs.paths[url];
@@ -138,7 +136,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
     for (let i = 0, ilen = definitions.length; i < ilen; i++) {
       let item = definitions[i];
       if(item.title  && !KeyMap[groupKey].definitions[item.title]){
-      console.log(`向defintions中添加定义definitions${item.title}`);
+      // console.log(`向defintions中添加定义definitions${item.title}`);
         KeyMap[groupKey].definitions[item.title]=definitions[i];
       }
     }
@@ -156,7 +154,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
 function  findAllRefType(definitions: {
   [defName: string]: SchemaProps;
 },obj:any,refs:string[]=[]):SchemaProps[] {
-console.log(`findAllRefType obj:${JSON.stringify(obj)}, refs:${refs}`);
+// console.log(`findAllRefType obj:${JSON.stringify(obj)}, refs:${refs}`);
   // let initLen  = refs.length;
   if(!obj){
     return [];
@@ -183,7 +181,7 @@ console.log(`findAllRefType obj:${JSON.stringify(obj)}, refs:${refs}`);
       //遍历对象, 至到找到所有的引用内容为至;
       let jlen = refs.length;
       traverseObj(definitions[ref],refs);
-      console.log('子 traverseObj',refs);
+      // console.log('子 traverseObj',refs);
       if(refs.length > jlen){ //有新的ref添加进来..
 
         for (let j = jlen, allen = refs.length; j < allen; j++) {

@@ -14,6 +14,10 @@ import * as stringUtil from '../../util/string-util';
 import {compile, compileFromFile} from 'json-schema-to-typescript';
 import {genTsFromDefines, genTsFromSchema} from '../../util/json-util';
 
+
+//TODO 参数是file类型的处理
+//TODO 类型生成重复的问题?
+
 const Util = {
   ...stringUtil,
 
