@@ -1,6 +1,7 @@
 [{
     "name": "account",
-    "apis": [{
+    "apis": [
+      {
         "url": "/account/allOfflineAccounts",
         "method": "get",
         "name": "findAllOfflineAccountsWithDeleteUsingGET",

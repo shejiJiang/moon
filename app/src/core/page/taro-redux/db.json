@@ -57,28 +57,22 @@
     ]
   },
 
-  "wallet-pay-findpass":{
+  "balance/wallet-pay-findpass":{
     "title":"找回支付密码",
-    "pagePath": "wallet-pay-findpass",
+    "pagePath": "balance/wallet-pay-findpass",
     "actors": [
       {
         "fileName": "reducer",
         "datas":[{
           "name":"idCard",
           "value":""
+        },{
+          "name":"mobile",
+          "value":""
+        },{
+          "name":"smsCode",
+          "value":""
         },
-          {
-            "name":"mobile",
-            "value":""
-          },
-          {
-            "name":"step",
-            "value":1
-          },
-          {
-            "name":"smsCode",
-            "value":""
-          },
           {
             "name":"newPwd",
             "value":""
@@ -90,7 +84,11 @@
         ],
         "events": [
           {
-            "name": "typeInfo",
+            "name": "changeInfo",
+            "param": ""
+          },
+          {
+            "name": "nextStep",
             "param": ""
           }
         ]
@@ -109,6 +107,12 @@
             "param": ""
           },
           {
+            "name": "confirm",
+            "param": ""
+          },{
+            "name": "typePwd",
+            "param": ""
+          },{
             "name": "confirm",
             "param": ""
           }

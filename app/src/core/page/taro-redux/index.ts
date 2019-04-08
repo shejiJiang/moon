@@ -25,6 +25,7 @@ import {join} from "path";
     // 'balance/wallet-charge',
     // 'balance/scan-pay',
     // 'after-sales-desc',
+    'balance/wallet-pay-findpass',
     // 'shop-set/shop-setting',
     // 'shop-set/shop-position',
     // 'wallet-pay-findpass',

@@ -48,6 +48,7 @@ interface ITsGenResult{
  */
 export async function genTsFromSchema(name:string,jsonSchema:any,context?: IWebApiContext):Promise<ITsGenResult>{
 
+  // context.webapiGroup.definitions
   // let reg  = /#\/definitions\//;
   // let parse = {
   //   order: 1,
