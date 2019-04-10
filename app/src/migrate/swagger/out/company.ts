@@ -48,7 +48,7 @@ async function accountDetailUsingGET(
     ),
 
     {
-      ...companyInfoId,
+      companyInfoId,
     },
   );
   return result.data;
@@ -98,7 +98,7 @@ async function findOneUsingGET(
     '/company/{id}'.replace('{id}', id),
 
     {
-      ...id,
+      id,
     },
   );
   return result.data;

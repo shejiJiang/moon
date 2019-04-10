@@ -13,7 +13,7 @@ async function brandListVerifyUsingGET(
     '/contract/brand/list/verify/{storeId}'.replace('{storeId}', storeId),
 
     {
-      ...storeId,
+      storeId,
     },
   );
   return result.data;
@@ -31,7 +31,7 @@ async function brandListUsingGET(
     '/contract/brand/list/{storeId}'.replace('{storeId}', storeId),
 
     {
-      ...storeId,
+      storeId,
     },
   );
   return result.data;
@@ -49,7 +49,7 @@ async function brandRelevanceUsingGET(
     '/contract/brand/relevance/{storeId}'.replace('{storeId}', storeId),
 
     {
-      ...storeId,
+      storeId,
     },
   );
   return result.data;
@@ -72,9 +72,9 @@ async function cateDelVerifyUsingGET(
       .replace('{storeId}', storeId),
 
     {
-      ...cateId,
+      cateId,
 
-      ...storeId,
+      storeId,
     },
   );
   return result.data;
@@ -92,7 +92,7 @@ async function cateListUsingGET(
     '/contract/cate/list/{storeId}'.replace('{storeId}', storeId),
 
     {
-      ...storeId,
+      storeId,
     },
   );
   return result.data;
@@ -110,7 +110,7 @@ async function listBrandUsingGET(
     '/contract/goods/brand/list/{storeId}'.replace('{storeId}', storeId),
 
     {
-      ...storeId,
+      storeId,
     },
   );
   return result.data;
@@ -128,7 +128,7 @@ async function listCateUsingGET(
     '/contract/goods/cate/list/{storeId}'.replace('{storeId}', storeId),
 
     {
-      ...storeId,
+      storeId,
     },
   );
   return result.data;

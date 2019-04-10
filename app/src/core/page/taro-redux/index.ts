@@ -25,7 +25,8 @@ import {join} from "path";
     // 'balance/wallet-charge',
     // 'balance/scan-pay',
     // 'after-sales-desc',
-    'balance/wallet-pay-findpass',
+    'balance/bankcardsTest',
+    // 'balance/wallet-pay-findpass',
     // 'shop-set/shop-setting',
     // 'shop-set/shop-position',
     // 'wallet-pay-findpass',
@@ -55,6 +56,8 @@ import {join} from "path";
     if(toGenPage.includes(_key)) {
       let pageInfo: IPageDefined = db[_key];
       //TODO buildPage前要较下内容是不是重复了.
+
+      //根据filepath计算是不是子页面如果是子页面则要添加动态注册reducer
       await buildPage({
         prettiesConfig,
         projectPath,

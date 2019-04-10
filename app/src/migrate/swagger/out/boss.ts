@@ -376,7 +376,7 @@ async function delExpressCompanyUsingDELETE(
     ),
 
     {
-      ...expressCompanyId,
+      expressCompanyId,
     },
   );
   return result.data;

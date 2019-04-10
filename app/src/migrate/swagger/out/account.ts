@@ -258,7 +258,7 @@ async function listUsingGET_8(
     '/account/list/{companyInfoId}'.replace('{companyInfoId}', companyInfoId),
 
     {
-      ...companyInfoId,
+      companyInfoId,
     },
   );
   return result.data;
@@ -292,7 +292,7 @@ async function disableOfflineByIdUsingPOST(
     '/account/offline/disable/{accountId}'.replace('{accountId}', accountId),
 
     {
-      ...accountId,
+      accountId,
     },
   );
   return result.data;
@@ -310,7 +310,7 @@ async function enableOfflineByIdUsingPOST(
     '/account/offline/enable/{accountId}'.replace('{accountId}', accountId),
 
     {
-      ...accountId,
+      accountId,
     },
   );
   return result.data;
@@ -360,7 +360,7 @@ async function findOfflineAccountByIdUsingGET(
     '/account/offlineAccount/{accountId}'.replace('{accountId}', accountId),
 
     {
-      ...accountId,
+      accountId,
     },
   );
   return result.data;
@@ -378,7 +378,7 @@ async function removeOfflineByIdUsingDELETE(
     '/account/offlineAccount/{accountId}'.replace('{accountId}', accountId),
 
     {
-      ...accountId,
+      accountId,
     },
   );
   return result.data;
