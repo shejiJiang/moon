@@ -9,6 +9,7 @@
 import {join, parse} from 'path';
 import * as fse from 'fs-extra';
 import * as prettier from 'prettier';
+import {IContext, IFileSaveOptions} from "../page/taro-redux/redux-taro";
 
 interface IHandlePageParam {
   saveFilePath: string;
@@ -17,6 +18,7 @@ interface IHandlePageParam {
 export interface IHandleFile {
   outDir: string;
   tplBase: string;
+  context: IContext;
   prettiesConfig?: object;
 }
 
@@ -44,6 +46,7 @@ interface IInsertOption {
 export function getHandleFile({
   outDir,
   tplBase,
+  context,
   prettiesConfig = {},
 }: IHandleFile) {
   prettiesConfig = {
@@ -66,16 +69,29 @@ export function getHandleFile({
     let _tplContent = await fse.readFile(_tplFilePath);
     console.log('开始处理模板: ', _tplFilePath);
     let content = await dealCal(_tplContent.toString());
-    await fse.ensureDir(join(outDir, parse(_param.saveFilePath).dir));
+
+    let saveOptions:IFileSaveOptions = {
+      projectOutDir:"",
+      toSaveFilePath:_param.saveFilePath
+    };
+
+    if(context.beforeSave) {
+      saveOptions= await context.beforeSave(saveOptions,context);
+    }
+
+    await fse.ensureDir(join(outDir, parse(saveOptions.toSaveFilePath).dir));
 
     try {
       //TODO 最好的方法是, 判断后缀决定是否格式化;
       content = prettier.format(content, prettiesConfig);
     } catch (err) {}
 
-    let outputFilePath = join(outDir, _param.saveFilePath);
+    let outputFilePath = join(outDir, saveOptions.toSaveFilePath);
     console.log('output filePath: ', outputFilePath);
     await fse.writeFile(outputFilePath, content);
+    if(context.afterSave) {
+      await   context.afterSave(saveOptions,context);
+    }
   };
 }
 

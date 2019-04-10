@@ -60,7 +60,8 @@ export async function generate(context: IContext) {
   );
 
   let handlePage = getHandleFile({prettiesConfig,outDir:join(projectPath,'/src/pages/', pageInfo.pagePath)
-      ,tplBase:join(__dirname,"tpl")
+      ,tplBase:join(__dirname,"tpl"),
+    context
     });
 
   let base = {
@@ -181,22 +182,30 @@ export async function generate(context: IContext) {
   });
 }
 
+
+export interface IFileSaveOptions{
+  projectOutDir:string;
+  toSaveFilePath:string;
+}
+
+
 /**
  *
  * @param {string} filePath
  * @param {(tplContent: string) => Promise<string>} dealCal
  * @returns {Promise<void>}
  */
-
-interface IContext {
+export interface IContext {
   projectPath: string;
   pageInfo: IPageDefined;
   prettiesConfig?: object;
+  beforeSave?: (options:IFileSaveOptions,context: IContext)=>Promise<IFileSaveOptions>;
+  afterSave?: (options:IFileSaveOptions,context: IContext)=>Promise<void>;
 }
 
 export async function buildPage(context: IContext) {
   //在项目中生成相关文件
-  let projectSrc = join(context.projectPath, 'src');
+  // let projectSrc = join(context.projectPath, 'src');
   let pageInfo = context.pageInfo;
 
 
@@ -206,36 +215,5 @@ export async function buildPage(context: IContext) {
   //在项目配置中添加store.reducer  及 页面显示的配置. ;
   //先判断是否有, 如果有的话, 不再重新生成了.
 
-  //redux 框架简化添加流程;;
-
-  let pagePath = join('pages', pageInfo.pagePath);
-  let pageFilePath = join('@/', pagePath, 'reducer');
-
-  await insertContent(join(projectSrc, 'reducers/index.ts'), [
-    {
-      mark: '//mark1//',
-      isBefore: true,
-      content: `import ${Util.toLCamelize(
-        pageInfo.pageKey,
-      )} from "${pageFilePath}";`,
-      check: (content): boolean => !content.includes(pageFilePath),
-    },
-    {
-      mark: '//mark2//',
-      isBefore: false,
-      content: Util.toLCamelize(pageInfo.pageKey) + ',',
-      check: (content, rawContent): boolean =>
-        !rawContent.includes(pageFilePath),
-    },
-  ]);
-
-  await insertContent(join(projectSrc, 'app.tsx'), [
-    {
-      mark: `'pages/empty/index'`,
-      isBefore: true,
-      content: `"${pagePath}/index",`,
-      check: (content): boolean => !content.includes(pagePath),
-    },
-  ]);
 }
 
