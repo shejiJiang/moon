@@ -50,10 +50,15 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
   // let apiGroups = transfer(apiJson);
   // //
   // await fse.writeJSON(join(__dirname,"webapi-defs.json"),apiGroups);
-let apiGroups = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
+let apiGroups:IWebApiGroup[] = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
 
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
-    let webapiGroup = apiGroups[i];
+    let webapiGroup:IWebApiGroup = apiGroups[i];
+
+    if(webapiGroup.name!=='customer'){
+      continue;
+    }
+
     console.log('处理webapigrpu',webapiGroup.name);
 
     await buildWebApi({

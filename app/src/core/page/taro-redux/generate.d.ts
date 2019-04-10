@@ -21,9 +21,11 @@ export interface IPageDefined{
    *   a/b/c/e-d
    */
   title:string;
+
   pagePath:string;
   //通过filepath计算出来
   pageKey?:string;
+
   actors:IActorItem[];
   actions:IAction[];
   subComps:ISubComp[];
@@ -46,11 +48,13 @@ export interface IType {
 }
 
 export interface IActorEvent {
+  content?: string;
   name: string;
   param: any;
 }
 
 export interface IAction {
+  content?: string;
   fileName: string;
   methods: IActionItem[];
 }

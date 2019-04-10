@@ -27,8 +27,9 @@ export default function <%=Util.toLCamelize(pageInfo.pageKey)%>(state = _.cloneD
         case CLEAN:
             return _.cloneDeep(INITIAL_STATE);
 
-
      <% actor.events.forEach(event=>{ %>
+
+        //<%=event.comment||""%>
         case <%=event.name.toUpperCase()%>:
                    return {
                        ...state

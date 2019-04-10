@@ -20,6 +20,7 @@
         }],
         "events": [
           {
+            "comment":"事件描述",
             "name": "chageLoginType",
             "param": ""
           }
@@ -31,6 +32,7 @@
         "fileName": "action",
         "methods": [
           {
+           "comment":"方法描述",
             "name": "chageLoginType",
             "param": ""
           }
