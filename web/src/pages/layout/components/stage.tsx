@@ -25,6 +25,9 @@ export default class Stage extends React.Component<IProps, IState> {
   };
 
   render() {
-    return <div className="stage" />;
+    return <div className="stage" >
+
+
+    </div>;
   }
 }

@@ -11,6 +11,7 @@ import Generate from '../generate';
 import Header from  './components/header';
 import requireAuthentication from './components/login-validate';
 import './index.less';
+import Layout from "../layout";
 
 @StoreProvider(AppStore, {debug: __DEV__})
 export default class HelloApp extends React.Component<any, any> {
@@ -24,7 +25,8 @@ export default class HelloApp extends React.Component<any, any> {
       <div className="page-wrapper">
         {/*<Header {...this.props} />*/}
         <div className="page-content">
-          <Route path="/" exact component={Generate} />
+          {/*<Route path="/" exact component={Generate} />*/}
+          <Route path="/" exact component={Layout} />
         </div>
       </div>
     );
