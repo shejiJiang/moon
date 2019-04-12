@@ -9,7 +9,7 @@
 
 import * as ejs from 'ejs';
 import {join} from 'path';
-import {insertContent, getHandleFile} from '../../util/compile-util';
+import {insertFile, getHandleFile} from '../../util/compile-util';
 import * as stringUtil from '../../util/string-util';
 import {compile, compileFromFile} from 'json-schema-to-typescript';
 import {genTsFromDefines, genTsFromSchema} from '../../util/json-util';

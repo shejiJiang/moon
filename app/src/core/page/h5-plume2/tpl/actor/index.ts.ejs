@@ -1,0 +1,11 @@
+//import Main from './main';
+
+ <% pageInfo.actors.forEach(item=>{ %>
+ import <%=Util.toUCamelize(item.fileName)%> from './<%=item.filename%>';
+ <% }) %>
+
+export default [
+ <% pageInfo.actors.forEach(item=>{ %>
+  new <%=Util.toUCamelize(item.fileName)%>().
+ <% }) %>
+];

@@ -1,0 +1,55 @@
+{
+  "layouttest":{
+    "title":"布局",
+    "pagePath": "layouttest",
+    "actors": [
+      {
+        "fileName": "main",
+        "datas":[
+          {
+          "name":"bankcards",
+          "value":[{
+            "id":"sdf",
+            "name":"123132"
+          }]
+        },{
+          "name":"totalCount",
+          "value":0
+        },{
+          "name":"actCount",
+          "value":0
+        },{
+          "name":"sleepCount",
+          "value":0
+        }],
+        "events": [
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "main",
+        "methods": [
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "list",
+        "methods": []
+      },
+      {
+        "fileName": "card",
+        "methods": []
+      }
+    ]
+  }
+}

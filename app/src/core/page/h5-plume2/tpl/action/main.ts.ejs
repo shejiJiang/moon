@@ -1,0 +1,22 @@
+import { ViewAction } from "plume2";
+import Store from "../store";
+//import webapi from "webapi";
+//import { message } from "antd";
+
+export default class <% Util.toUCamelize(action.fileName) %> extends ViewAction {
+  store: Store;
+
+  init() {
+    // this.query();
+  }
+
+    <% action.methods.forEach(method=>{ %>
+        /**
+         * <%= method.comment||"" %>
+         */
+      <%=method.name%>(actorIndex:number) {
+        //this.store.dispatch("main:actor:event:add", actorIndex);
+      }
+    <% }) %>
+
+}

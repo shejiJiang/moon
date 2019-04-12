@@ -10,9 +10,10 @@ import * as ejs from 'ejs';
 import {join} from 'path';
 import * as fse from 'fs-extra';
 import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, ISubComp, IType,} from './generate';
-import {insertContent, getHandleFile} from "../../util/compile-util";
+import {insertFile, getHandleFile} from "../../util/compile-util";
 import * as stringUitl from  '../../util/string-util';
 import {genTsFromJSON} from "../../util/json-util";
+
 const Util = {
   ... stringUitl,
 
@@ -186,6 +187,7 @@ export async function generate(context: IContext) {
 export interface IFileSaveOptions{
   projectOutDir:string;
   toSaveFilePath:string;
+  content:string;
 }
 
 
@@ -207,8 +209,6 @@ export async function buildPage(context: IContext) {
   //在项目中生成相关文件
   // let projectSrc = join(context.projectPath, 'src');
   let pageInfo = context.pageInfo;
-
-
   pageInfo.pageKey = pageInfo.pagePath.replace('/',"-").replace('.',"-");
 
   await generate(context);

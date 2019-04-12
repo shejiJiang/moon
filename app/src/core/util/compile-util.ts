@@ -72,51 +72,67 @@ export function getHandleFile({
 
     let saveOptions:IFileSaveOptions = {
       projectOutDir:"",
-      toSaveFilePath:_param.saveFilePath
+      toSaveFilePath:join(outDir, _param.saveFilePath),
+      content
     };
 
     if(context.beforeSave) {
       saveOptions= await context.beforeSave(saveOptions,context);
     }
 
-    await fse.ensureDir(join(outDir, parse(saveOptions.toSaveFilePath).dir));
+    await fse.ensureDir(parse(saveOptions.toSaveFilePath).dir);
 
     try {
       //TODO 最好的方法是, 判断后缀决定是否格式化;
       content = prettier.format(content, prettiesConfig);
     } catch (err) {}
-
-    let outputFilePath = join(outDir, saveOptions.toSaveFilePath);
-    console.log('output filePath: ', outputFilePath);
-    await fse.writeFile(outputFilePath, content);
+    console.log('output filePath: ', saveOptions.toSaveFilePath);
+    await fse.writeFile(saveOptions.toSaveFilePath, content);
     if(context.afterSave) {
       await   context.afterSave(saveOptions,context);
     }
   };
 }
 
-export async function insertContent(
-  filepath: string,
-  inserts: IInsertOption[],
-) {
-  let rawContent = await readFile(filepath);
-  let content = rawContent;
+/**
+ * 向内容中间插入数据;
+ *
+ * @param {string} rawContent
+ * @param {IInsertOption[]} inserts
+ * @returns {string}
+ */
+export function insertContent(rawContent:string,inserts: IInsertOption[]) {
+
+  let content  = rawContent;
   for (let i = 0, ilen = inserts.length; i < ilen; i++) {
     let item: IInsertOption = inserts[i];
     if (item.check(content, rawContent)) {
       let index = content.indexOf(item.mark);
-
       if (!item.isBefore) {
         index = index + item.mark.length;
       }
-
       content = `${content.substring(0, index)}
     ${item.content} 
-    ${content.substring(index)}
-    `;
+    ${content.substring(index)}`;
     }
   }
+  return content;
+}
 
+
+/**
+ *
+ * 向文件内容中间插入数据; 插入后再保存数据;
+ * @param {string} filepath
+ * @param {IInsertOption[]} inserts
+ * @returns {Promise<void>}
+ */
+export async function insertFile(
+  filepath: string,
+  inserts: IInsertOption[],
+) {
+  let rawContent = await readFile(filepath);
+  let content = insertContent(rawContent,inserts);
   await fse.writeFile(filepath, content);
 }
 
