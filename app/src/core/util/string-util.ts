@@ -18,7 +18,11 @@ export function toUCamelize(name: string) {
   return name
     .split(/[-\.]/)
     .map(item => {
-      return item[0].toUpperCase() + item.substr(1);
+      if(typeof (item) ==='string'){
+        return item[0].toUpperCase() + item.substr(1);
+      }else{
+        throw new Error(`传入参数不正确:${name} ${item}`);
+      }
     })
     .join('');
 }

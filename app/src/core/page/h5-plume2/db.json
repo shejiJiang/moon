@@ -1,34 +1,77 @@
 {
-  "layouttest":{
+  "layout":{
     "title":"布局",
-    "pagePath": "layouttest",
+    "pagePath": "layout",
     "actors": [
       {
-        "fileName": "main",
+        "fileName": "ui-manager",
         "datas":[
           {
-          "name":"bankcards",
+            "name":"ui-info",
+            "value":{}
+          }],
+        "events": [
+          {
+            "name": "ui:manger:update",
+            "comment": "",
+            "param": ""
+          }
+        ]
+      },
+      {
+        "fileName": "comp-def",
+        "datas":[
+          {
+          "name":"compInfo",
           "value":[{
-            "id":"sdf",
-            "name":"123132"
+            "key":"",
+            "style":{},
+            "props":{},
+            "children":[
+            ]
           }]
         },{
-          "name":"totalCount",
-          "value":0
-        },{
-          "name":"actCount",
-          "value":0
-        },{
-          "name":"sleepCount",
-          "value":0
+          "name":"context",
+          "value":{
+            "platform":""
+          }
         }],
         "events": [
+          {
+            "name": "comp:add",
+            "comment": "添加组件",
+            "param": ""
+          },
+          {
+            "name": "comp:del",
+            "comment": "删除组件",
+            "param": ""
+          },
+          {
+            "name": "comp:update",
+            "comment": "更新组件属性",
+            "param": ""
+          },
+          {
+            "name": "context:update",
+            "comment": "更新组件上下文信息",
+            "param": ""
+          }
         ]
       }
     ],
     "actions": [
       {
-        "fileName": "main",
+        "fileName": "ui-manager",
+        "methods": [
+          {
+            "name": "change",
+            "param": ""
+          }
+        ]
+      },
+      {
+        "fileName": "comp-define",
         "methods": [
           {
             "name": "add",
@@ -37,17 +80,37 @@
           {
             "name": "del",
             "param": ""
+          },
+          {
+            "name": "update",
+            "param": ""
+          },
+          {
+            "name": "changeContext",
+            "param": ""
           }
         ]
       }
     ],
     "subComps": [
       {
-        "fileName": "list",
+        "fileName": "outline",
         "methods": []
       },
       {
-        "fileName": "card",
+        "fileName": "properties",
+        "methods": []
+      },
+      {
+        "fileName": "stage",
+        "methods": []
+      },
+      {
+        "fileName": "toolbar",
+        "methods": []
+      },
+      {
+        "fileName": "weapon",
         "methods": []
       }
     ]

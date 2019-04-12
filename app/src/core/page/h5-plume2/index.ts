@@ -17,7 +17,7 @@ import {IFileSaveOptions} from "../taro-redux/redux-taro";
 import * as stringUitl from "../../util/string-util";
 
 let toGenePages=[
-  'layouttest'
+  'layout'
 ];
 
 export interface IContextPlume2 {
@@ -38,7 +38,7 @@ const Util = {
    * @param {string} eventName
    */
   getEventFunName:(eventName:string)=>{
-    return stringUitl.toUCamelize(eventName.replace(/:*/ig,"-"));
+    return stringUitl.toUCamelize(eventName.replace(/:+/ig,"-"));
   },
   ... stringUitl,
 };
