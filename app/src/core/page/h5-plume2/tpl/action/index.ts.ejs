@@ -6,6 +6,6 @@
 
 export default {
  <% pageInfo.actions.forEach(item=>{ %>
-  new <%=Util.toUCamelize(item.fileName)%>(),
+  <%=Util.toLCamelize(item.fileName)%>:<%=Util.toUCamelize(item.fileName)%>,
  <% }) %>
 };
