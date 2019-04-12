@@ -14,7 +14,7 @@ export default class <% Util.toUCamelize(action.fileName) %> extends ViewAction 
         /**
          * <%= method.comment||"" %>
          */
-      <%=method.name%>(actorIndex:number) {
+      <%=method.name%>() {
         //this.store.dispatch("main:actor:event:add", actorIndex);
       }
     <% }) %>

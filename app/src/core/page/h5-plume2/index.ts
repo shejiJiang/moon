@@ -17,7 +17,7 @@ import {IFileSaveOptions} from "../taro-redux/redux-taro";
 import * as stringUitl from "../../util/string-util";
 
 let toGenePages=[
-  'layout'
+  'layouttest'
 ];
 
 export interface IContextPlume2 {
@@ -106,6 +106,13 @@ async function buildPage (context:IContextPlume2) {
     return conent;
   });
 
+  //store生成
+  await handlePage('store.ts.ejs', async (tplConent: string) => {
+    let conent = ejs.render(tplConent, {
+      ...base,
+    });
+    return conent;
+  });
   await handlePage('index.less.ejs', async (tplConent: string) => {
     let conent = ejs.render(tplConent, {
       ...base,
@@ -113,21 +120,21 @@ async function buildPage (context:IContextPlume2) {
     return conent;
   });
 
-  pageInfo.actors.forEach(async (actor: IActorItem, index: number) => {
-    //reducer生成
+  for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
+    let actor = pageInfo.actors[i];
     await handlePage(
       'actor/main.ts.ejs',
       async (tplConent: string) => {
         let conent = ejs.render(tplConent, {
           ...base,
           actor,
-          index,
+          index:i,
         });
         return conent;
       },
-      {saveFilePath: actor.fileName + '.ts'},
+      {saveFilePath: `actor/${actor.fileName}.ts`},
     );
-  });
+  }
 
   //reducer index 生成
   await handlePage(
@@ -140,12 +147,10 @@ async function buildPage (context:IContextPlume2) {
     }
   );
 
-
-
   //action生成
   pageInfo.actions.forEach(async (action: IAction) => {
     await handlePage(
-      'action/action.ts.ejs',
+      'action/main.ts.ejs',
       async (tplConent: string) => {
         let conent = ejs.render(tplConent, {
           ...base,
@@ -153,9 +158,19 @@ async function buildPage (context:IContextPlume2) {
         });
         return conent;
       },
-      {saveFilePath: action.fileName + '.ts'},
+      {saveFilePath: `action/${action.fileName}.ts`},
     );
   });
+
+  await handlePage(
+    'action/index.ts.ejs',
+    async (tplConent: string) => {
+      let conent = ejs.render(tplConent, {
+        ...base,
+      });
+      return conent;
+    }
+  );
 
   //子组件生成;
   pageInfo.subComps.forEach(async (subComp: ISubComp, index: number) => {

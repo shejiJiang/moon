@@ -63,7 +63,7 @@ export function getHandleFile({
     dealCal: (tplContent: string) => Promise<string>,
     param?: IHandlePageParam,
   ) {
-    let _param = {saveFilePath: tplPath.replace('.tpl', ''), ...param};
+    let _param = {saveFilePath: tplPath.replace('.tpl', '').replace('.ejs', ''), ...param};
     let _tplFilePath = join(tplBase, tplPath);
 
     let _tplContent = await fse.readFile(_tplFilePath);
