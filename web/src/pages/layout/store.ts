@@ -1,0 +1,17 @@
+import {Store, IOptions} from 'plume2';
+import actors from './actor';
+import viewAction from './action';
+
+export default class AppStore extends Store {
+  constructor(props: IOptions) {
+    super(props);
+  }
+
+  bindActor() {
+    return actors;
+  }
+
+  bindViewAction() {
+    return viewAction;
+  }
+}

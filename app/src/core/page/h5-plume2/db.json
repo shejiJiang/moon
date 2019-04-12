@@ -7,7 +7,7 @@
         "fileName": "ui-manager",
         "datas":[
           {
-            "name":"ui-info",
+            "name":"uiInfo",
             "value":{}
           }],
         "events": [
