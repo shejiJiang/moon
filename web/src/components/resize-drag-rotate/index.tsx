@@ -175,6 +175,7 @@ export default class DRR extends Component<IProps, IState> implements IAlignable
   }
 
   componentWillUnmount() {
+    //resize时, 会监听
     document.body.removeEventListener("mousemove", this.handleMove, false);
     document.body.removeEventListener("mouseup", this.handleUp, false);
   }
@@ -182,7 +183,7 @@ export default class DRR extends Component<IProps, IState> implements IAlignable
   render() {
     const {children, draggable, rotatable, resizable, directions, classname} = this.props;
     const {w, h, x, y, r} = this.state;
-
+    //浮在一个对象上的.
     const style: React.CSSProperties = {
       width: w,
       height: h,
