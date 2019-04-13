@@ -11,6 +11,16 @@ export default class extends ViewAction {
   }
 
   /**
+   * 选中一个节点
+   */
+  chooseComp(compPaths:string[]) {
+    this.store.dispatch("ui:manger:update", {
+      keyPath:['uiInfo','choosedCompPath'],
+      value:compPaths
+    });
+  }
+
+  /**
    *
    */
   change() {

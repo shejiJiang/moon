@@ -7,7 +7,6 @@ import Properties from './components/properties';
 import Stage from './components/stage';
 import Toolbar from './components/toolbar';
 import Weapon from './components/weapon';
-
 import './index.less';
 
 @StoreProvider(AppStore, {debug: __DEV__})

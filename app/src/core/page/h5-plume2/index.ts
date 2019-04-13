@@ -38,7 +38,7 @@ const Util = {
    * @param {string} eventName
    */
   getEventFunName:(eventName:string)=>{
-    return stringUitl.toUCamelize(eventName.replace(/:+/ig,"-"));
+    return stringUitl.toLCamelize(eventName.replace(/:+/ig,"-"));
   },
   ... stringUitl,
 };

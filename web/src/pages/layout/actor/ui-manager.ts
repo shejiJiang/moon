@@ -4,7 +4,9 @@ import {Action, Actor, IMap} from 'plume2';
 export default class UiManager extends Actor {
   defaultState() {
     return {
-      uiInfo: {},
+      uiInfo: {
+        choosedCompPath:null
+      },
     } as any;
   }
 
@@ -12,7 +14,7 @@ export default class UiManager extends Actor {
    *
    */
   @Action('ui:manger:update')
-  UiMangerUpdate(state: IMap, payload) {
-    return state;
+  UiMangerUpdate(state: IMap, {keyPath,value}:{keyPath:string[],value}) {
+    return state.setIn(keyPath,value);
   }
 }
