@@ -1,0 +1,115 @@
+@cdn-path: 'https://oss-hz.qianmi.com/x-site/public/x-site-ui-wechat/statics/freelayout';
+@resize-color: #08a1ef;
+@rotate-color: #44cb83;
+@rotate-icon: '@{cdn-path}/mouserotate.ico';
+
+.draggable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: content-box;
+  cursor: move;
+  // z-index: 99;
+  z-index: 1;
+  .drag-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .drag-ctrl {
+    // position: absolute;
+    // width: 100%;
+    // height: 100%;
+    // left: 0px;
+    // top: 0px;
+    // z-index: 1;
+    box-sizing: border-box;
+    .resize {
+      @base-width: 4px;
+      cursor: se-resize;
+      background: @resize-color;
+      position: absolute;
+      z-index: 2;
+      width: @base-width * 2;
+      height: @base-width * 2;
+      border-radius: 100%;
+      background-color: #fff;
+      border: 1px solid @resize-color;
+      position: absolute;
+      // pointer-events: auto;
+      &.resize-top {
+        left: 50%;
+        margin-left: -@base-width;
+        top: -@base-width;
+        cursor: ns-resize;
+      }
+      &.resize-bottom {
+        cursor: ns-resize;
+        left: 50%;
+        margin-left: -@base-width;
+        bottom: -@base-width;
+      }
+      &.resize-left {
+        top: 50%;
+        margin-top: -@base-width;
+        left: -@base-width;
+        cursor: ew-resize;
+      }
+
+      &.resize-right {
+        top: 50%;
+        margin-top: -@base-width;
+        right: -@base-width;
+        cursor: ew-resize;
+      }
+
+      &.resize-top-left {
+        cursor: nwse-resize;
+        top: -@base-width;
+        left: -@base-width;
+      }
+      &.resize-top-right {
+        cursor: nesw-resize;
+        top: -@base-width;
+        right: -@base-width;
+      }
+      &.resize-bottom-right {
+        cursor: nwse-resize;
+        bottom: -@base-width;
+        right: -@base-width;
+      }
+      &.resize-bottom-left {
+        cursor: nesw-resize;
+        bottom: -@base-width;
+        left: -@base-width;
+      }
+    }
+
+    /* 旋转相关按钮 */
+    .rotate {
+      // pointer-events: auto;
+      @base-width: 5px;
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      margin-left: -@base-width;
+      z-index: 1;
+      width: @base-width*2;
+      height: @base-width*2;
+      border-radius: 100%;
+      border: none;
+      background-color: #44cb83;
+      cursor: url(@rotate-icon) 10 10, default;
+      &::before {
+        content: '';
+        width: 1px;
+        height: 8px;
+        background-color: #44cb83;
+        margin: 0 auto;
+        position: absolute;
+        top: @base-width * 2;
+        left: @base-width;
+      }
+    }
+  }
+}
