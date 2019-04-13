@@ -124,8 +124,8 @@ export default class CompDef extends Actor {
    *
    */
   @Action('comp:update')
-  CompUpdate(state: IMap, {propPath,value}) {
-    return state.setIn(propPath,fromJS(value));
+  CompUpdate(state: IMap, {propPath,props}) {
+    return state.mergeIn(propPath,fromJS(props));
   }
 
   /**

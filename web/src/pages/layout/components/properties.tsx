@@ -61,45 +61,50 @@ export default class Properties extends React.Component<IProps, IState> {
           data-type="style"
           data-name="width"
           onChange={this._onChangeValue}
-          defaultValue=""
+          defaultValue={choosedCompProps.style.width}
         />
         <Input
           addonBefore="高度"
           data-type="style"
           data-name="height"
           onChange={this._onChangeValue}
-          defaultValue=""
+          defaultValue={choosedCompProps.style.height}
         />
         <Input
           addonBefore="高度"
           data-type="style"
           data-name="height"
           onChange={this._onChangeValue}
-          defaultValue=""
+          defaultValue={choosedCompProps.style.height}
         />
-
+        <Input
+          addonBefore="position"
+          data-type="style"
+          data-name="position"
+          onChange={this._onChangeValue}
+          value={choosedCompProps.style.position}
+        />
         <Input
           addonBefore="顺序"
           
           data-type="style"
           data-name="order"
           onChange={this._onChangeValue}
-          // defaultValue={choosedCompProps.style.order}
+          defaultValue={choosedCompProps.style.order}
         />
         <Input
           addonBefore="放大比例"
-          
           data-type="style"
           data-name="flexGrow"
           onChange={this._onChangeValue}
-          // defaultValue={choosedCompProps.style.order}
+          defaultValue={choosedCompProps.style.flexGrow}
         /> <Input
           addonBefore="缩小比例"
           
           data-type="style"
           data-name="flexShrink"
           onChange={this._onChangeValue}
-          // defaultValue={choosedCompProps.style.order}
+          defaultValue={choosedCompProps.style.flexShrink}
         />
         <div className="hbox ">
           <span>主轴对齐</span>
@@ -275,8 +280,10 @@ export default class Properties extends React.Component<IProps, IState> {
 
     viewAction.compDefine.update({
       compPath: choosedCompPath,
-      propPath: choosedCompPath.concat([type, name]),
-      value,
+      propPath: choosedCompPath.concat([type]),
+      props:{
+        [name]:value
+      },
     });
 }
 
@@ -293,8 +300,10 @@ export default class Properties extends React.Component<IProps, IState> {
 
     viewAction.compDefine.update({
       compPath: choosedCompPath,
-      propPath: choosedCompPath.concat([type, name]),
-      value,
+      propPath: choosedCompPath.concat([type]),
+      props:{
+        [name]:value
+      },
     });
   };
 }

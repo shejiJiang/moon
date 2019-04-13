@@ -33,16 +33,18 @@ export default class extends ViewAction {
   }
 
   /**
-   * 更新组件配置.
+   * 更新组件配置单个属性.
+   * 如果是单个属性直接到位置, 如果是多个属性则
    *
    */
   update(param:{
     compPath:string[];
     propPath:string[];
-    value:string|number
+    props:object
    }) {
     this.store.dispatch("comp:update", param);
   }
+
 
   /**
    *

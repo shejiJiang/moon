@@ -19,6 +19,9 @@ interface IStyle {
   order:string;
 
   backgroundColor:string;
+  flexGrow:string;
+  flexShrink:string;
+  position:string;
   [name:string]:string|number;
 }
 
