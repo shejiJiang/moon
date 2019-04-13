@@ -80,7 +80,7 @@ export default class Properties extends React.Component<IProps, IState> {
 
         <Input
           addonBefore="顺序"
-          type="color"
+          
           data-type="style"
           data-name="order"
           onChange={this._onChangeValue}
@@ -88,14 +88,14 @@ export default class Properties extends React.Component<IProps, IState> {
         />
         <Input
           addonBefore="放大比例"
-          type="color"
+          
           data-type="style"
           data-name="flexGrow"
           onChange={this._onChangeValue}
           // defaultValue={choosedCompProps.style.order}
         /> <Input
           addonBefore="缩小比例"
-          type="color"
+          
           data-type="style"
           data-name="flexShrink"
           onChange={this._onChangeValue}

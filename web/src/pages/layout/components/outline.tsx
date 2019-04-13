@@ -135,7 +135,9 @@ export default class Outline extends React.Component<IProps, IState> {
 
   onSelect = (selectedKeys, e:{selected?: boolean, selectedNodes?:any, node, event}) => {
     // console.log(selectedKeys,e);
-    this.props.relaxProps.viewAction.uiManager.chooseComp(selectedKeys[0].split('-'))
+    if(selectedKeys && selectedKeys.length>0) {
+      this.props.relaxProps.viewAction.uiManager.chooseComp(selectedKeys[0].split('-'));
+    }
   };
 }
 
