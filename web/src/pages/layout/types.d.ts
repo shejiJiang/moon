@@ -16,6 +16,7 @@ interface IStyle {
   width:string;
   padding:string;
   margin:string;
+  order:string;
 
   backgroundColor:string;
   [name:string]:string|number;

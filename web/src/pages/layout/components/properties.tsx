@@ -3,9 +3,9 @@ import {Relax, TViewAction} from 'plume2';
 import viewAction from '../action';
 import './properties.less';
 import {Input, Select, Icon} from 'antd';
-import {render} from "react-dom";
-import {choosedCompProps} from "../ql";
-import {ICompDef} from "../types";
+import {render} from 'react-dom';
+import {choosedCompProps} from '../ql';
+import {ICompDef} from '../types';
 
 interface IProps {
   relaxProps?: {
@@ -28,21 +28,20 @@ export default class Properties extends React.Component<IProps, IState> {
 
   static relaxProps = {
     viewAction: 'viewAction',
-    choosedCompProps:choosedCompProps,
+    choosedCompProps: choosedCompProps,
     choosedCompPath: ['uiInfo', 'choosedCompPath'],
   };
 
   render() {
-    let  {choosedCompProps,choosedCompPath}  = this.props.relaxProps;
+    let {choosedCompProps, choosedCompPath} = this.props.relaxProps;
 
-
-    if(!choosedCompProps){
-      return <div></div>
+    if (!choosedCompProps) {
+      return <div />;
     }
 
     //验证规则对的情况下才去同步
     return (
-      <div key={choosedCompPath.join("-")} className="properties">
+      <div key={choosedCompPath.join('-')} className="properties">
         <Input
           addonBefore="display"
           readOnly
@@ -78,13 +77,208 @@ export default class Properties extends React.Component<IProps, IState> {
           onChange={this._onChangeValue}
           defaultValue=""
         />
+
+        <Input
+          addonBefore="顺序"
+          type="color"
+          data-type="style"
+          data-name="order"
+          onChange={this._onChangeValue}
+          // defaultValue={choosedCompProps.style.order}
+        />
+        <Input
+          addonBefore="放大比例"
+          type="color"
+          data-type="style"
+          data-name="flexGrow"
+          onChange={this._onChangeValue}
+          // defaultValue={choosedCompProps.style.order}
+        /> <Input
+          addonBefore="缩小比例"
+          type="color"
+          data-type="style"
+          data-name="flexShrink"
+          onChange={this._onChangeValue}
+          // defaultValue={choosedCompProps.style.order}
+        />
         <div className="hbox ">
-          <span>主轴</span>
-          <div> <Icon type="home" /> <Icon type="home" /> <Icon type="home" /> <Icon type="home" /></div>
+          <span>主轴对齐</span>
+          <div>
+           <Icon type="home"
+                 onClick={this._onChooseItem}
+                 data-type="style"
+                 data-name="justifyContent"
+                 data-value="flex-start"
+           />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="justifyContent"
+                  data-value="flex-end"/>
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="justifyContent"
+                  data-value="center"/>
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="justifyContent"
+                  data-value="space-between"/>
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="justifyContent"
+                  data-value="space-around"/>
+          </div>
         </div>
+        <div className="hbox ">
+          <span>主轴方向</span>
+          <div>
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="flexDirection"
+                  data-value="row-reverse"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="flexDirection"
+                  data-value="row"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="flexDirection"
+                  data-value="column"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="flexDirection"
+                  data-value="column-reverse"
+            />
+          </div>
+        </div>
+
+        <div className="hbox ">
+          <span>换行</span>
+          <div>
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="flexWrap"
+                  data-value="nowrap"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="flexWrap"
+                  data-value="wrap"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="flexWrap"
+                  data-value="wrap-reverse"
+            />
+          </div>
+        </div>
+        <div className="hbox ">
+          <span>交叉轴对象</span>
+          <div>
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignItems"
+                  data-value="flex-start"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignItems"
+                  data-value="flex-end"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignItems"
+                  data-value="center"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignItems"
+                  data-value="baseline"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignItems"
+                  data-value="stretch"
+            />
+          </div>
+        </div>
+
+        <div className="hbox ">
+          <span>align-content对象</span>
+          <div>
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignContent"
+                  data-value="flex-start"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignContent"
+                  data-value="flex-end"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignContent"
+                  data-value="center"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignContent"
+                  data-value="space-between"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignContent"
+                  data-value="space-around"
+            />
+            <Icon type="home"
+                  onClick={this._onChooseItem}
+                  data-type="style"
+                  data-name="alignContent"
+                  data-value="stretch"
+            />
+          </div>
+        </div>
+
+
+
       </div>
     );
   }
+
+  _onChooseItem=(event)=>{
+    let {viewAction, choosedCompPath} = this.props.relaxProps;
+    let  {name,type,value} = event.currentTarget.dataset;
+
+    viewAction.compDefine.update({
+      compPath: choosedCompPath,
+      propPath: choosedCompPath.concat([type, name]),
+      value,
+    });
+}
 
   /**
    * 在类value值的改变. 通过type来确定是叙属性
@@ -94,12 +288,12 @@ export default class Properties extends React.Component<IProps, IState> {
    */
   _onChangeValue = event => {
     // currentTarget.dataset.type  value
-    let {dataset:{type,name},value} = event.currentTarget;
+    let {dataset: {type, name}, value} = event.currentTarget;
     let {viewAction, choosedCompPath} = this.props.relaxProps;
 
     viewAction.compDefine.update({
-      compPath:choosedCompPath,
-      propPath: choosedCompPath.concat([type,name]),
+      compPath: choosedCompPath,
+      propPath: choosedCompPath.concat([type, name]),
       value,
     });
   };
