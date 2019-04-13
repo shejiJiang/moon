@@ -346,6 +346,7 @@ export default class DRR extends Component<IProps, IState> implements IAlignable
     let newY = lastY + deltaY;
     // 边界控制
     const boundsInfo = this.getBoundsInfo(bounds);
+    // console.log('边界控制',boundsInfo, this.state);
     const {w, h} = this.state;
     if (boundsInfo) {
       const minX = boundsInfo.left;
@@ -365,21 +366,27 @@ export default class DRR extends Component<IProps, IState> implements IAlignable
   // 获取bounds元素相对坐标
   getBoundsInfo = (bounds): { left: number; top: number; right: number; bottom: number } => {
     if (!bounds) return;
-    const parent = this.wrapper.parentNode;
-    const target = bounds === "parent" ? parent : document.querySelector(bounds);
-    if (!(target instanceof HTMLElement)) return;
+    // const parent = this.wrapper.parentNode;
+    const parentTarget = bounds === "parent" ? this.wrapper.parentNode : document.querySelector(bounds);
+    if (!(parentTarget instanceof HTMLElement)) return;
     const {
       left: targetLeft,
       top: targetTop,
       right: targetRight,
       bottom: targetBottom
-    } = target.getBoundingClientRect();
-    const {left: parentLeft, top: parentTop} = (parent as HTMLElement).getBoundingClientRect();
+    } = parentTarget.getBoundingClientRect();
+    // const {left: parentLeft, top: parentTop} = (parent as HTMLElement).getBoundingClientRect();
+    // return {
+    //   left: targetLeft - parentLeft,
+    //   top: targetTop - parentTop,
+    //   right: targetRight - parentLeft,
+    //   bottom: targetBottom - parentTop
+    // };
     return {
-      left: targetLeft - parentLeft,
-      top: targetTop - parentTop,
-      right: targetRight - parentLeft,
-      bottom: targetBottom - parentTop
+      left: targetLeft ,
+      top: targetTop ,
+      right: targetRight ,
+      bottom: targetBottom
     };
   };
 
