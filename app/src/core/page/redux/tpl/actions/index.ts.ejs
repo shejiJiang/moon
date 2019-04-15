@@ -1,0 +1,27 @@
+import Store from '@/redux/store';
+import {Command} from '../constant';
+import {Dispatch} from "@/typings";
+import BankInfo from './bank-info.ts'
+
+export default (dispatch:Dispatch) => {
+  const actions = {
+
+    bankInfo:BankInfo(dispatch),
+
+    /**
+     * 初始化数据
+     */
+    async init() {
+      dispatch({type: Command.INIT,payload:{}});
+    },
+
+    /**
+     * 重置
+     */
+    async clean() {
+      dispatch({type: Command.CLEAN});
+    },
+  };
+
+  return actions;
+};

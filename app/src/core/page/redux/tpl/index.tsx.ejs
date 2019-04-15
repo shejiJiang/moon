@@ -1,0 +1,49 @@
+import * as React from 'react';
+import { connect } from 'react-redux';
+import './index.less.ejs';
+import { IProps} from './types';
+import actions from './actions/index.ts';
+
+ <% pageInfo.subComps.forEach(subComp=>{ %>
+import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fileName%>"; %>
+ <% }) %>
+
+
+<% pageInfo.actors.forEach(actor=>{ %>
+        // import <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%> from "./reducers/<%=actor.fileName%>"
+        // import {registerReducer} from "@/redux/store";
+        // registerReducer({<%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>});
+<% }) %>
+
+
+@connect(
+  ({
+    <% pageInfo.actors.forEach(actor=>{ %>
+                     <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
+    <% }) %>
+  }:any) =>
+    ({
+    <% pageInfo.actors.forEach(actor=>{ %>
+                <%=Util.toLCamelize(actor.fileName)%>  =  <%=getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
+    <% }) %>
+    }),
+  actions,
+)
+export default class <%=className%> extends React.Component<IProps, any> {
+
+  componentDidMount() {
+    this.props.init();
+  }
+
+  componentWillUnmount() {
+    this.props.clean();
+  }
+
+  render() {
+    return (
+      <div className="<%=instanceName%>">
+        <div/>
+      </div>
+    );
+  }
+}

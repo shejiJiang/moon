@@ -1,0 +1,39 @@
+import * as React from 'react';
+
+import { IProps ,I<%=Util.toUCamelize(item.fileName)%>State,I<%=Util.toUCamelize(item.fileName)%>Props} from './types';
+import './info.less.ejs';
+import actions from '../actions/index.ts';
+import { connect } from 'react-redux';
+
+@connect(
+  ({
+    <% pageInfo.actors.forEach(actor=>{ %>
+                     <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
+    <% }) %>
+  }:any) =>
+    ({
+    <% pageInfo.actors.forEach(actor=>{ %>
+                <%=Util.toLCamelize(actor.fileName)%>  =  <%=getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
+    <% }) %>
+    }),
+  actions,
+)
+
+
+class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<IProps & I<%=Util.toUCamelize(item.fileName)%>Props, I<%=Util.toUCamelize(item.fileName)%>State> {
+  constructor(props:InfoProps) {
+    super(props);
+  }
+
+  render() {
+    const {bankInfo} = this.props.balanceBankcardInfo;
+    return (
+      <div className="<%=Util.toLCamelize(subComp.fileName)%>">
+        bankcard-info
+      </div>
+    );
+  }
+}
+
+export default (Info as any ) as React.Component<IInfoProps, IInfoState>;
+// export default Info;

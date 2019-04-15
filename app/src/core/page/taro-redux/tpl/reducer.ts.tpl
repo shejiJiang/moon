@@ -11,7 +11,7 @@ const INITIAL_STATE: I<%=className%>Reducer = {
     <% }) %>
 };
 
-export default function <%=Util.toLCamelize(pageInfo.pageKey)%>(state = _.cloneDeep(INITIAL_STATE), action: Action): I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer {
+export default function <%=Util.toLCamelize(pageInfo.pageKey)%>(state = INITIAL_STATE, action: Action): I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer {
     const { type, payload } = action;
 
     return produce(state, draftState => {

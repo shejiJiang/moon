@@ -1,0 +1,96 @@
+{
+
+  "balance/bankcard-info":{
+    "pagePath": "balance/bankcard-info",
+    "title":"银行卡详情",
+    "actors": [
+      {
+        "fileName": "bank-info",
+        "datas":[
+          {
+            "name":"bankInfo",
+            "value":{
+              "id":""
+            }
+          }
+        ],
+        "events": [
+          {
+            "name": "bankInfo",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "bank-info",
+        "methods": [
+          {
+            "name": "unlock",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "info",
+        "methods": []
+      }
+    ]
+  },
+  "balance/bankcardsTest":{
+    "title":"客户",
+    "pagePath": "balance/bankcardsTest",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"bankcards",
+            "value":[{
+              "id":"sdf",
+              "name":"123132"
+            }]
+          },{
+            "name":"totalCount",
+            "value":0
+          },{
+            "name":"actCount",
+            "value":0
+          },{
+            "name":"sleepCount",
+            "value":0
+          }],
+        "events": [
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "list",
+        "methods": []
+      },
+      {
+        "fileName": "card",
+        "methods": []
+      }
+    ]
+  }
+}

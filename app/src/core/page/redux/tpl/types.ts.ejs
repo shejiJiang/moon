@@ -1,0 +1,27 @@
+import Actions from './actions/index.ts';
+
+<% pageInfo.actors.forEach(actor=>{ %>
+        export interface <%=Util.getReducerTsName(actor.fileName)%> {
+            isReady:boolean;
+            <% actor.datas.forEach(dataItem=>{ %>
+                         <%=dataItem.name%>:<%=dataItem.typeName%>;
+            <% }) %>
+        }
+<% }) %>
+
+export type ActionType = ReturnType<typeof Actions>;
+
+//默认是全部的属性,可以自定义
+export type IProps = {
+    <% pageInfo.actors.forEach(actor=>{ %>
+                <%=Util.toLCamelize(actor.fileName)%>  = <%=Util.getReducerTsName(actor.fileName)%>,
+    <% }) %>
+} & ActionType;
+
+
+ <% pageInfo.subComps.forEach(item=>{ %>
+export type I<%=Util.toUCamelize(item.fileName)%>Props = { } & I<%=Util.toUCamelize(pageInfo.pageKey)%>Props;
+export type I<%=Util.toUCamelize(item.fileName)%>State = { };
+ <% }) %>
+
+ <%=valueTsDefinds%>
