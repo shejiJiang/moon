@@ -24,7 +24,7 @@ import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fil
   }:any) =>
     ({
     <% pageInfo.actors.forEach(actor=>{ %>
-                <%=Util.toLCamelize(actor.fileName)%>  =  <%=getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
+                <%=Util.toLCamelize(actor.fileName)%>  :  <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
     <% }) %>
     }),
   actions,

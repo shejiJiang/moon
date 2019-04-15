@@ -1,7 +1,6 @@
 import {Command} from '../constant';
-import {IBalanceBankcardInfoReducer} from '../types';
 import _ from 'lodash';
-import { <%=Util.getReducerTsName(actor.fileName)%> } from "./types";
+import { <%=Util.getReducerTsName(actor.fileName)%> } from "../types";
 import {Action} from "typings/index";
 import produce from "immer";
 
@@ -18,17 +17,17 @@ export default function <%=Util.toLCamelize(actor.fileName)%>(
 ): <%=Util.getReducerTsName(actor.fileName)%>  {
   const {type, payload} = action;
 
-  return produce<<%=Util.toLCamelize(pageInfo.pageKey)%>>(state, draftState => {
+  return produce<<%=Util.getReducerTsName(actor.fileName)%>>(state, draftState => {
     switch (type) {
 
            <% actor.events.forEach(event=>{ %>
                 //<%=event.comment||""%>
-                case Command.<%=event.name.toUpperCase()%>:
+                case Command.<%=event.name%>:
                     return draftState;
           <% }) %>
 
       //初始化
-      case Command.INIT:
+      case Command.init:
 
         draftState.isReady=true;
         for (let propKey in payload) {
@@ -38,7 +37,7 @@ export default function <%=Util.toLCamelize(actor.fileName)%>(
         return draftState;
 
       //重置
-      case Command.CLEAN:
+      case Command.clean:
         for (let propKey in INITIAL_STATE) {
           //@ts-ignore 这里处理的不够好.
           draftState[propKey] =payload[propKey];

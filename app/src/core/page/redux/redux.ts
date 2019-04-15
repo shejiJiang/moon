@@ -9,7 +9,7 @@
 import * as ejs from 'ejs';
 import {join} from 'path';
 import * as fse from 'fs-extra';
-import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, ISubComp, IType,} from './generate';
+import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, ISubComp, IType,} from '../generate';
 import {insertFile, getHandleFile} from "../../util/compile-util";
 import * as stringUitl from  '../../util/string-util';
 import {genTsFromJSON} from "../../util/json-util";
@@ -46,7 +46,7 @@ const Util = {
    * @returns {string}
    */
   getReducerUniqName(pageKey:string,reducerFileName:string) {
-    return `${pageKey + Util.toUCamelize(reducerFileName)}`;
+    return `${Util.toLCamelize(pageKey + Util.toUCamelize(reducerFileName))}`;
   },
 
   /**
@@ -168,6 +168,15 @@ export async function generate(context: IContext) {
     );
   });
 
+  await handlePage(
+    'actions/index.ts.ejs',
+    async (tplConent: string) => {
+      let conent = ejs.render(tplConent, {
+        ...base,
+      });
+      return conent;
+    }
+  );
   //子组件生成;
 
   pageInfo.subComps.forEach(async (subComp: ISubComp, index: number) => {

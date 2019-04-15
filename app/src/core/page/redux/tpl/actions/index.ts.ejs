@@ -1,25 +1,31 @@
 import Store from '@/redux/store';
 import {Command} from '../constant';
 import {Dispatch} from "@/typings";
-import BankInfo from './bank-info.ts'
+
+<% pageInfo.actions.forEach(action=>{ %>
+import <%=Util.toUCamelize(action.fileName) %> from './<%=action.fileName%>'
+<% }) %>
+
+
 
 export default (dispatch:Dispatch) => {
   const actions = {
 
-    bankInfo:BankInfo(dispatch),
-
+    <% pageInfo.actions.forEach(action=>{ %>
+        <%=Util.toLCamelize(action.fileName) %> :<%=Util.toUCamelize(action.fileName) %> (dispatch),
+    <% }) %>
     /**
      * 初始化数据
      */
     async init() {
-      dispatch({type: Command.INIT,payload:{}});
+      dispatch({type: Command.init,payload:{}});
     },
 
     /**
      * 重置
      */
     async clean() {
-      dispatch({type: Command.CLEAN});
+      dispatch({type: Command.clean});
     },
   };
 

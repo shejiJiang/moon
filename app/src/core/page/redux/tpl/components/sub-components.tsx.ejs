@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { IProps ,I<%=Util.toUCamelize(item.fileName)%>State,I<%=Util.toUCamelize(item.fileName)%>Props} from './types';
+import { IProps ,I<%=Util.toUCamelize(subComp.fileName)%>State,I<%=Util.toUCamelize(subComp.fileName)%>Props} from '../types';
 import './info.less.ejs';
-import actions from '../actions/index.ts';
+import actions from '../actions/index';
 import { connect } from 'react-redux';
 
 @connect(
@@ -13,15 +13,15 @@ import { connect } from 'react-redux';
   }:any) =>
     ({
     <% pageInfo.actors.forEach(actor=>{ %>
-                <%=Util.toLCamelize(actor.fileName)%>  =  <%=getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
+                <%=Util.toLCamelize(actor.fileName)%>  :  <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
     <% }) %>
     }),
   actions,
 )
 
 
-class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<IProps & I<%=Util.toUCamelize(item.fileName)%>Props, I<%=Util.toUCamelize(item.fileName)%>State> {
-  constructor(props:InfoProps) {
+class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<IProps & I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State> {
+  constructor(props:IProps & I<%=Util.toUCamelize(subComp.fileName)%>Props) {
     super(props);
   }
 
