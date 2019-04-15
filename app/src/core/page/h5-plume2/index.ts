@@ -12,7 +12,7 @@ import * as ejs from 'ejs';
 import {join} from 'path';
 import {getHandleFile, insertContent, insertFile} from '../../util/compile-util';
 import {toLCamelize} from '../../util/string-util';
-import {IAction, IActorEvent, IActorItem, IPageDefined, ISubComp} from "../taro-redux/generate";
+import {IAction, IActorEvent, IActorItem, IPageDefined, ISubComp} from "../generate";
 import {IFileSaveOptions} from "../taro-redux/redux-taro";
 import * as stringUitl from "../../util/string-util";
 

@@ -6,7 +6,7 @@
  * @company qianmi.com
  * @Date    2019/3/19
  **/
-import {SchemaProps} from "../../web-api/client";
+import {SchemaProps} from "../web-api/client/index";
 
 export interface IPageDefined{
   /**

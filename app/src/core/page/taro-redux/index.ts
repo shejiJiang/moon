@@ -1,4 +1,4 @@
-import {IPageDefined} from './generate';
+import {IPageDefined} from '../generate';
 import {buildPage} from './redux-taro';
 import * as fse from 'fs-extra';
 import {join} from 'path';
