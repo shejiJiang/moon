@@ -106,7 +106,7 @@ export async function generate(context: IContext) {
   pageInfo.actors.forEach(async (actor: IActorItem, index: number) => {
     //reducer生成
     await handlePage(
-      'reducer.ts.ejs',
+      'reducers/reducer.ts.ejs',
       async (tplConent: string) => {
         let conent = ejs.render(tplConent, {
           ...base,
@@ -115,7 +115,7 @@ export async function generate(context: IContext) {
         });
         return conent;
       },
-      {saveFilePath: actor.fileName + '.ts'},
+      {saveFilePath: "reducers/"+actor.fileName + '.ts'},
     );
   });
 
@@ -127,8 +127,6 @@ export async function generate(context: IContext) {
     });
     return conent;
   });
-
-
 
   //types生成
   await handlePage('types.ts.ejs', async (tplConent: string) => {
@@ -158,7 +156,7 @@ export async function generate(context: IContext) {
   //action生成
   pageInfo.actions.forEach(async (action: IAction) => {
     await handlePage(
-      'action.ts.ejs',
+      'actions/action.ts.ejs',
       async (tplConent: string) => {
         let conent = ejs.render(tplConent, {
           ...base,
@@ -166,7 +164,7 @@ export async function generate(context: IContext) {
         });
         return conent;
       },
-      {saveFilePath: action.fileName + '.ts'},
+      {saveFilePath: "actions/"+action.fileName + '.ts'},
     );
   });
 
