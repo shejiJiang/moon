@@ -41,24 +41,47 @@ let toGenSub1Page = [
 
     if (toGenMainPage.includes(_key)) {
       await buildPage({
-        // afterSave: async (options, context) => {
-        //   if(options.toSaveFilePath.includes("index.tsx")) {
-        //     console.log('应该只打印一遍的. ');
-        //     await mainAfterSave(
-        //       projectPath,
-        //       join('pages', context.pageInfo.pagePath),
-        //       context.pageInfo.pageKey,
-        //     );
-        //
-        //   }
-        // },
+        afterSave: async (options, context) => {
+          if(options.toSaveFilePath.includes("index.tsx")) {
+
+            console.log('应该只打印一遍的. ');
+            let projectSrc  = projectPath;
+            let pageKey = context.pageInfo.pageKey;
+            let pageFilePath =join('pages', context.pageInfo.pagePath);
+
+            await insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
+              {
+                mark: '//mark1//',
+                isBefore: true,
+                content: `import ${toLCamelize(pageKey)} from "@/${pageFilePath}";`,
+                check: (content): boolean => !content.includes(pageFilePath),
+              },
+              {
+                mark: '//mark2//',
+                isBefore: false,
+                content: toLCamelize(pageKey) + ',',
+                check: (content, rawContent): boolean =>
+                  !rawContent.includes(pageFilePath),
+              },
+            ]);
+
+            //TODO 路由添加下呢.
+
+          }
+        },
         prettiesConfig,
         projectPath,
         pageInfo,
       });
     } else if (toGenSub1Page.includes(_key)) {
       await buildPage({
-        // beforeSave: async (options, context) => {
+        //动态加载;
+      //   import balanceBankcardInfoBankInfo from "./reducers/bank-info"
+      //   import {registerReducer} from "@/redux/store";
+      // registerReducer({balanceBankcardInfoBankInfo});
+
+
+      // beforeSave: async (options, context) => {
         //   console.log('toSaveFilePath',options);
         //   options.toSaveFilePath = options.toSaveFilePath.replace(
         //     'pages',
@@ -100,39 +123,25 @@ let toGenSub1Page = [
     }
   }
 })();
-
-async function mainAfterSave(
-  projectPath: string,
-  pagePath: string,
-  pageKey: string,
-) {
-  let projectSrc = join(projectPath, 'src');
-
-  // let pageInfo  = context.pageInfo;
-  //redux 框架简化添加流程;;
-  let pageFilePath = join('@/', pagePath, 'reducer');
-  await insertFile(join(projectSrc, 'reducers/index.ts'), [
-    {
-      mark: '//mark1//',
-      isBefore: true,
-      content: `import ${toLCamelize(pageKey)} from "${pageFilePath}";`,
-      check: (content): boolean => !content.includes(pageFilePath),
-    },
-    {
-      mark: '//mark2//',
-      isBefore: false,
-      content: toLCamelize(pageKey) + ',',
-      check: (content, rawContent): boolean =>
-        !rawContent.includes(pageFilePath),
-    },
-  ]);
-
-  await insertFile(join(projectSrc, 'app.tsx'), [
-    {
-      mark: `'pages/empty/index'`,
-      isBefore: true,
-      content: `"${pagePath}/index",`,
-      check: (content): boolean => !content.includes(pagePath),
-    },
-  ]);
-}
+//
+// async function mainAfterSave(
+//   projectPath: string,
+//   pagePath: string,
+//   pageKey: string,
+// ) {
+//   let projectSrc = join(projectPath, 'src');
+//
+//   // let pageInfo  = context.pageInfo;
+//   //redux 框架简化添加流程;;
+//   let pageFilePath = join('@/', pagePath, 'reducer');
+//
+//
+//   await insertFile(join(projectSrc, 'app.tsx'), [
+//     {
+//       mark: `'pages/empty/index'`,
+//       isBefore: true,
+//       content: `"${pagePath}/index",`,
+//       check: (content): boolean => !content.includes(pagePath),
+//     },
+//   ]);
+// }

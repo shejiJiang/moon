@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.less.ejs';
 import { IProps} from './types';
-import actions from './actions/index.ts';
+import actions from './actions';
 
  <% pageInfo.subComps.forEach(subComp=>{ %>
 import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fileName%>"; %>
