@@ -5,16 +5,13 @@ import tradeUtil from "@/util/trade";
 import { Action } from "@/types";
 import { <%=Util.getReducerTsName(pageInfo.pageKey)%> } from "@/pages/<%=pageInfo.pagePath%>/types";
 
-import {<% events.forEach(event=>{ %>
-    <%= event.name.toUpperCase()%>,
-  <% }) %> CLEAN,INIT
-} from "./constant";
+import { Command } from "./constant";
 
 
 export default (dispatch) => {
-  function getData():<%=Util.getReducerTsName(pageInfo.pageKey)%> {
-          return Store.getState().<%=instanceName%>;
-  }
+      function getData():<%=Util.getReducerTsName(pageInfo.pageKey)%> {
+              return Store.getState().<%=instanceName%>;
+      }
 
     const actions = {
 
@@ -22,14 +19,14 @@ export default (dispatch) => {
          * 初始化数据
          */
         async init() {
-            dispatch({ type: INIT,payload:{} } as Action);
+            dispatch({ type: Command.INIT,payload:{} } as Action);
         },
 
         /**
          * 页面注销时还原store状态,
          */
         async clean() {
-            dispatch({ type: CLEAN } as Action);
+            dispatch({ type: Command.CLEAN } as Action);
         },
 
     <% action.methods.forEach(method=>{ %>

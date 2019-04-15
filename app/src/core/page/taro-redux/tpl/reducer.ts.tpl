@@ -1,9 +1,7 @@
-import {<% actor.events.forEach(event=>{ %>
-    <%=event.name.toUpperCase()%>,
-  <% }) %> CLEAN,INIT
-} from "./constant";
+import { Command } from "./constant";
 import { Action } from "@/types";
 import { I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer } from "./types";
+import produce from "immer";
 import _ from "lodash";
 
 const INITIAL_STATE: I<%=className%>Reducer = {
@@ -15,26 +13,33 @@ const INITIAL_STATE: I<%=className%>Reducer = {
 
 export default function <%=Util.toLCamelize(pageInfo.pageKey)%>(state = _.cloneDeep(INITIAL_STATE), action: Action): I<%=Util.toUCamelize(pageInfo.pageKey)%>Reducer {
     const { type, payload } = action;
-    switch (type) {
 
-        case INIT:
-            return {
-                ...state,
-                isReady:true,
-                ... payload
-            };
+    return produce(state, draftState => {
 
-        case CLEAN:
-            return _.cloneDeep(INITIAL_STATE);
+            switch (type) {
+             <% actor.events.forEach(event=>{ %>
+                //<%=event.comment||""%>
+                case Command.<%=event.name.toUpperCase()%>:
+                    return draftState;
+            <% }) %>
+                //初始化
+                case Command.INIT:
 
-     <% actor.events.forEach(event=>{ %>
+                    draftState.isReady=true;
+                    for (let propKey in payload) {
+                        draftState[propKey] =payload[propKey];
+                    }
+                    return draftState;
 
-        //<%=event.comment||""%>
-        case <%=event.name.toUpperCase()%>:
-                   return {
-                       ...state
-                   };
-    <% }) %>
-    }
-    return state;
+                //重置
+                case Command.CLEAN:
+                    for (let propKey in INITIAL_STATE) {
+                        draftState[propKey] =payload[propKey];
+                    }
+                    return draftState;
+            }
+
+
+
+    });
 }

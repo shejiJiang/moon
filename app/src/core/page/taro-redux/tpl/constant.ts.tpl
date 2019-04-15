@@ -1,9 +1,12 @@
 
-const BASE = "<%=Util.toUCamelize(pageInfo.pageKey)%>_"
+const BASE = "<%=Util.toUCamelize(pageInfo.pageKey)%>_";
 
-export const CLEAN=BASE + "CLEAN";
-export const INIT=BASE + "INIT";
+export const enum Command {
+  init = '<%=Util.toUCamelize(pageInfo.pageKey)%>_INIT',
+  clean = '<%=Util.toUCamelize(pageInfo.pageKey)%>_CLEAN',
+  <% events.forEach(event=>{ %>
 
-<% events.forEach(event=>{ %>
-export const <%=event.name.toUpperCase()%> = BASE + "<%=event.name%>";
-<% }) %>
+  //<%=event.comment||""%>
+  <%=event.name%> =  "<%=Util.toUCamelize(pageInfo.pageKey)%>_<%=event.name%>",
+  <% }) %>
+}
