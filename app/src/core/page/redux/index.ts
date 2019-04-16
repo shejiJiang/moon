@@ -66,6 +66,21 @@ let toGenSub1Page = [
             ]);
 
             //TODO 路由添加下呢.
+            await insertFile(join(projectSrc, 'src/pages/App.ts'), [
+              {
+                mark: 'const',
+                isBefore: true,
+                content: `import ${toLCamelize(pageKey)} from "@/${pageFilePath}";`,
+                check: (content): boolean => !content.includes(pageFilePath),
+              },
+              {
+                mark: '</Router>',
+                isBefore: false,
+                content: `<Route path="/${context.pageInfo.pagePath}" component={${toLCamelize(pageKey)}} />`,
+                check: (content, rawContent): boolean =>
+                  !rawContent.includes(pageFilePath),
+              },
+            ]);
 
           }
         },
