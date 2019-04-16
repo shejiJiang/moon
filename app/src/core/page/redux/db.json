@@ -1,5 +1,94 @@
 {
-
+  "trade/info":{
+    "pagePath": "trade/info",
+    "title":"订单详情",
+    "actors": [
+      {
+        "fileName": "main",
+        "datas":[
+          {
+            "name":"info",
+            "value":{
+              "no":"123123",
+              "time":"123123",
+              "name":"123123"
+            }
+          },
+          {
+            "name":"custom",
+            "value":{
+              "name":"123123",
+              "title":"123123",
+              "image":"123123",
+              "tel":"123123",
+              "level":"123123"
+            }
+          },
+          {
+            "name":"goods",
+            "value":[]
+          }
+        ],
+        "events": [
+          {
+            "name": "assignEmployee",
+            "comment": "提成分配给员工",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "main",
+        "methods": [
+          {
+            "name": "modify",
+            "comment":"修改订单",
+            "param": ""
+          },
+          {
+            "name": "print",
+            "comment":"打印订单",
+            "param": ""
+          },
+          {
+            "name": "count",
+            "comment":"收款",
+            "param": ""
+          },
+          {
+            "name": "cancel",
+            "comment":"取消订单",
+            "param": ""
+          },
+          {
+            "name": "assignEmployee",
+            "comment":"分配提成员工",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "trade-info",
+        "methods": []
+      },
+      {
+        "fileName": "custom-info",
+        "methods": []
+      },
+      {
+        "fileName": "shop-info",
+        "methods": []
+      },
+      {
+        "fileName": "goods",
+        "methods": []
+      }
+    ]
+  },
   "balance/bankcard-info":{
     "pagePath": "balance/bankcard-info",
     "title":"银行卡详情",

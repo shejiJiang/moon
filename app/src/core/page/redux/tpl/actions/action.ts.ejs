@@ -12,10 +12,16 @@ import {Dispatch} from "@/typings";
 export default (dispatch:Dispatch) => {
 
   let subAction = {
-    async unlockTest(a:string,b:string):Promise<boolean> {
-      console.log('unlockTest',a,b);
-      return false;
-    }
+
+
+    <% action.methods.forEach(method=>{ %>
+        /**
+         * <%= method.comment||"" %>
+         */
+        async <%=method.name%>() {
+                    //dispatch({ type: INIT, payload: trade });
+         },
+      <% }) %>
   };
   return subAction;
 };

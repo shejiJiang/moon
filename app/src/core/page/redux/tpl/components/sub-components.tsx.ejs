@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { IProps ,I<%=Util.toUCamelize(subComp.fileName)%>State,I<%=Util.toUCamelize(subComp.fileName)%>Props} from '../types';
-import './info.less.ejs';
+import './<%=subComp.fileName%>.less';
 import actions from '../actions/index';
 import { connect } from 'react-redux';
 
@@ -34,5 +34,5 @@ class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<IProps & I
   }
 }
 
-export default (Info as any ) as React.Component<IInfoProps, IInfoState>;
+export default (<%=Util.toUCamelize(subComp.fileName)%> as any ) as React.Component<I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State>;
 // export default Info;

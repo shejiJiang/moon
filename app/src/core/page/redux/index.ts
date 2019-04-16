@@ -14,23 +14,27 @@ import {toLCamelize} from '../../util/string-util';
  * @Date    2019/3/20
  **/
 
-let toGenMainPage = [
-  'balance/bankcard-info'
-];
+import toGenMainPage from  '/Users/dong/wanmi/athena-frontend/page-def/to-gen-page';
 
 let toGenSub1Page = [
   // 'balance/bankcardsTest',
 ];
 
+
+// let toGenMainPage = [
+//   // 'balance/bankcard-info',
+//   'trade/info'
+// ];
 (async () => {
-  let db = await fse.readJSON(join(__dirname, 'db.json'));
+  // let db = await fse.readJSON(join(__dirname, 'db.json'));
+  let db = await fse.readJSON(join('/Users/dong/wanmi/athena-frontend/page-def', 'db.json'));
   //TODO action 关联dispatch 界面化比较好处理些.. 伪代码 是不是可以添加起来了?
   //TODO 命名冲突 的问题 ..  actor名字, props名字会冲突;
   //TODO input 关键字处理..
   //TODO 参数关联一个ts定义的集合..
   //TODO 命令考虑增加一个数据呀.
 
-  let projectPath = '/Users/dong/workbench/qm-card/card-manager/';
+  let projectPath = '/Users/dong/wanmi/athena-frontend';
   let prettiesConfig = {};
   try {
     prettiesConfig = await fse.readJSON(join(projectPath, 'pretties.json'));
@@ -66,7 +70,7 @@ let toGenSub1Page = [
             ]);
 
             //TODO 路由添加下呢.
-            await insertFile(join(projectSrc, 'src/pages/App.ts'), [
+            await insertFile(join(projectSrc, 'src/pages/App.tsx'), [
               {
                 mark: 'const',
                 isBefore: true,
@@ -75,13 +79,12 @@ let toGenSub1Page = [
               },
               {
                 mark: '</Router>',
-                isBefore: false,
+                isBefore: true,
                 content: `<Route path="/${context.pageInfo.pagePath}" component={${toLCamelize(pageKey)}} />`,
                 check: (content, rawContent): boolean =>
                   !rawContent.includes(pageFilePath),
               },
             ]);
-
           }
         },
         prettiesConfig,
