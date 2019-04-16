@@ -78,8 +78,8 @@ let toGenSub1Page = [
                 check: (content): boolean => !content.includes(pageFilePath),
               },
               {
-                mark: '</Router>',
-                isBefore: true,
+                mark: '{/*auto*/}',
+                isBefore: false,
                 content: `<Route path="/${context.pageInfo.pagePath}" component={${toLCamelize(pageKey)}} />`,
                 check: (content, rawContent): boolean =>
                   !rawContent.includes(pageFilePath),
