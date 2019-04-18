@@ -20,7 +20,7 @@ let toGenSub1Page = [
   // 'balance/bankcardsTest',
 ];
 
-
+//
 // let toGenMainPage = [
 //   // 'balance/bankcard-info',
 //   'trade/info'
