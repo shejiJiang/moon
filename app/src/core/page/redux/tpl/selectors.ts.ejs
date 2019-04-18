@@ -7,7 +7,9 @@ export function store2Props({
     <% }) %>
 }: any):IAllReducerProps {
   return {
-    main: tradeInfoMain,
+    <% pageInfo.actors.forEach(actor=>{ %>
+                <%=Util.toLCamelize(actor.fileName)%>  :  <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
+    <% }) %>
   }
 }
 

@@ -96,6 +96,13 @@ export async function generate(context: IContext) {
     return conent;
   });
 
+  await handlePage('selectors.ts.ejs', async (tplConent: string) => {
+    let conent = ejs.render(tplConent, {
+      ...base,
+    });
+    return conent;
+  });
+
   await handlePage('index.less.ejs', async (tplConent: string) => {
     let conent = ejs.render(tplConent, {
       ...base,

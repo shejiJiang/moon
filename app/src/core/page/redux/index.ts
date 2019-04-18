@@ -92,6 +92,12 @@ let toGenSub1Page = [
         pageInfo,
       });
     } else if (toGenSub1Page.includes(_key)) {
+      // <% pageInfo.actors.forEach(actor=>{ %>
+      //   // import <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%> from "./reducers/<%=actor.fileName%>"
+      //   // import {registerReducer} from "@/redux/store";
+      //   // registerReducer({<%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>});
+      //   <% }) %>
+
       await buildPage({
         //动态加载;
       //   import balanceBankcardInfoBankInfo from "./reducers/bank-info"

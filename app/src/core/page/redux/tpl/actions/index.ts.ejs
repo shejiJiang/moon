@@ -6,8 +6,6 @@ import {Dispatch} from "@/typings";
 import <%=Util.toUCamelize(action.fileName) %> from './<%=action.fileName%>'
 <% }) %>
 
-
-
 export default (dispatch:Dispatch) => {
   const actions = {
 
@@ -18,7 +16,11 @@ export default (dispatch:Dispatch) => {
      * 初始化数据
      */
     async init() {
-      dispatch({type: Command.init,payload:{}});
+      dispatch({type: Command.init,payload:{
+            <% pageInfo.actors.forEach(actor=>{ %>
+                         //<%=Util.toLCamelize(actor.fileName)%>  :{},
+              <% }) %>
+      }});
     },
 
     /**

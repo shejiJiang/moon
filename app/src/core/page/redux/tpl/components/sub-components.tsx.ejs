@@ -1,14 +1,17 @@
 import * as React from 'react';
 
-import { IAllReducerProps ,ActionType ,I<%=Util.toUCamelize(subComp.fileName)%>State,I<%=Util.toUCamelize(subComp.fileName)%>Props} from '../types';
+import * as T from '../types';
 import './<%=subComp.fileName%>.less';
 import actions from '../actions/index';
 import { connect } from 'react-redux';
 import {store2Props} from "../selectors";
 
+
+type I<%=Util.toUCamelize(subComp.fileName)%>Props = T.IAllReducerProps & T.ActionType & T.I<%=Util.toUCamelize(subComp.fileName)%>Props;
+
 @connect(store2Props,actions)
-class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<IAllReducerProps & ActionType & I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State> {
-  constructor(props:IProps & I<%=Util.toUCamelize(subComp.fileName)%>Props) {
+class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<I<%=Util.toUCamelize(subComp.fileName)%>Props, T.I<%=Util.toUCamelize(subComp.fileName)%>State> {
+  constructor(props:I<%=Util.toUCamelize(subComp.fileName)%>Props) {
     super(props);
   }
 
@@ -21,5 +24,4 @@ class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<IAllReduce
   }
 }
 
-export default (<%=Util.toUCamelize(subComp.fileName)%> as any ) as React.Component<I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State>;
-// export default Info;
+export default <%=Util.toUCamelize(subComp.fileName)%> as any;

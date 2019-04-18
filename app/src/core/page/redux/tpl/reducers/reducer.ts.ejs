@@ -30,9 +30,9 @@ export default function <%=Util.toLCamelize(actor.fileName)%>(
       case Command.init:
 
         draftState.isReady=true;
-        for (let propKey in payload) {
+        for (let propKey in payload.<%=Util.toLCamelize(actor.fileName)%>) {
           //@ts-ignore 这里处理的不够好.
-          draftState[propKey] =payload[propKey];
+          draftState[propKey] =payload.<%=Util.toLCamelize(actor.fileName)%>[propKey];
         }
         return draftState;
 
@@ -40,7 +40,7 @@ export default function <%=Util.toLCamelize(actor.fileName)%>(
       case Command.clean:
         for (let propKey in INITIAL_STATE) {
           //@ts-ignore 这里处理的不够好.
-          draftState[propKey] =payload[propKey];
+          draftState[propKey] =INITIAL_STATE[propKey];
         }
         return draftState;
 

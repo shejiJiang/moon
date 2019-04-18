@@ -20,7 +20,7 @@ export type IAllReducerProps  = {
 export type IProps = IAllReducerProps & ActionType;
 
  <% pageInfo.subComps.forEach(item=>{ %>
-export type I<%=Util.toUCamelize(item.fileName)%>Props = { } & IProps;
+export type I<%=Util.toUCamelize(item.fileName)%>Props = { };
 export type I<%=Util.toUCamelize(item.fileName)%>State = { };
  <% }) %>
 
