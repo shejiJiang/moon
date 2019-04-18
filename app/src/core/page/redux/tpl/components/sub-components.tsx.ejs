@@ -4,22 +4,9 @@ import { IProps ,I<%=Util.toUCamelize(subComp.fileName)%>State,I<%=Util.toUCamel
 import './<%=subComp.fileName%>.less';
 import actions from '../actions/index';
 import { connect } from 'react-redux';
+import {store2Props} from "../selectors";
 
-@connect(
-  ({
-    <% pageInfo.actors.forEach(actor=>{ %>
-                     <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
-    <% }) %>
-  }:any) =>
-    ({
-    <% pageInfo.actors.forEach(actor=>{ %>
-                <%=Util.toLCamelize(actor.fileName)%>  :  <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
-    <% }) %>
-    }),
-  actions,
-)
-
-
+@connect(store2Props,actions)
 class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<IProps & I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State> {
   constructor(props:IProps & I<%=Util.toUCamelize(subComp.fileName)%>Props) {
     super(props);

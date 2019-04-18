@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './index.less';
 import { IProps} from './types';
 import actions from './actions';
+import {store2Props} from "./selectors";
 
  <% pageInfo.subComps.forEach(subComp=>{ %>
 import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fileName%>"; %>
@@ -16,19 +17,7 @@ import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fil
 <% }) %>
 
 
-@connect(
-  ({
-    <% pageInfo.actors.forEach(actor=>{ %>
-                     <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
-    <% }) %>
-  }:any) =>
-    ({
-    <% pageInfo.actors.forEach(actor=>{ %>
-                <%=Util.toLCamelize(actor.fileName)%>  :  <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>,
-    <% }) %>
-    }),
-  actions,
-)
+@connect(store2Props,actions)
 export default class <%=className%> extends React.Component<IProps, any> {
 
   componentDidMount() {

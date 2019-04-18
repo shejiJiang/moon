@@ -10,14 +10,14 @@ import Actions from './actions';
 <% }) %>
 
 export type ActionType = ReturnType<typeof Actions>;
-
-//默认是全部的属性,可以自定义
-export type IProps = {
+export type IAllReducerProps  = {
     <% pageInfo.actors.forEach(actor=>{ %>
                 <%=Util.toLCamelize(actor.fileName)%>  : <%=Util.getReducerTsName(actor.fileName)%>,
     <% }) %>
-} & ActionType;
+}
 
+//默认是全部的属性,可以自定义
+export type IProps = IAllReducerProps & ActionType;
 
  <% pageInfo.subComps.forEach(item=>{ %>
 export type I<%=Util.toUCamelize(item.fileName)%>Props = { } & IProps;
