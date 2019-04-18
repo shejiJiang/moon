@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { IProps ,I<%=Util.toUCamelize(subComp.fileName)%>State,I<%=Util.toUCamelize(subComp.fileName)%>Props} from '../types';
+import { IAllReducerProps ,ActionType ,I<%=Util.toUCamelize(subComp.fileName)%>State,I<%=Util.toUCamelize(subComp.fileName)%>Props} from '../types';
 import './<%=subComp.fileName%>.less';
 import actions from '../actions/index';
 import { connect } from 'react-redux';
 import {store2Props} from "../selectors";
 
 @connect(store2Props,actions)
-class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<IProps & I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State> {
+class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<IAllReducerProps & ActionType & I<%=Util.toUCamelize(subComp.fileName)%>Props, I<%=Util.toUCamelize(subComp.fileName)%>State> {
   constructor(props:IProps & I<%=Util.toUCamelize(subComp.fileName)%>Props) {
     super(props);
   }

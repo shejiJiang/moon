@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.less';
-import { IProps} from './types';
+import {IAllReducerProps,ActionType} from './types';
 import actions from './actions';
 import {store2Props} from "./selectors";
 
@@ -18,7 +18,7 @@ import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fil
 
 
 @connect(store2Props,actions)
-export default class <%=className%> extends React.Component<IProps, any> {
+export default class <%=className%> extends React.Component<IAllReducerProps & ActionType, any> {
 
   componentDidMount() {
     this.props.init();
