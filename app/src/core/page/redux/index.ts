@@ -3,7 +3,7 @@ import {buildPage} from './redux';
 import * as fse from 'fs-extra';
 import {join} from 'path';
 import {insertContent, insertFile} from '../../util/compile-util';
-import {toLCamelize} from '../../util/string-util';
+import {toLCamelize,toUCamelize} from '../../util/string-util';
 
 /**
  * @desc
@@ -47,6 +47,8 @@ let toGenSub1Page = [
      }
 
     if (toGenMainPage.includes(_key)) {
+      console.log('');
+       console.log('==>> ',_key);
       await buildPage({
         afterSave: async (options, context) => {
           if(options.toSaveFilePath.includes("index.tsx")) {
@@ -77,13 +79,13 @@ let toGenSub1Page = [
               {
                 mark: 'const',
                 isBefore: true,
-                content: `import ${toLCamelize(pageKey)} from "@/${pageFilePath}";`,
+                content: `import ${toUCamelize(pageKey)} from "@/${pageFilePath}";`,
                 check: (content): boolean => !content.includes(pageFilePath),
               },
               {
-                mark: '{/*auto*/}',
+                mark: '{/*mark*/}',
                 isBefore: false,
-                content: `<Route path="/${context.pageInfo.pagePath}" component={${toLCamelize(pageKey)}} />`,
+                content: `<Route path="/${context.pageInfo.pagePath}" render={()=> <${toUCamelize(pageKey)} />}  />`,
                 check: (content, rawContent): boolean =>
                   !rawContent.includes(pageFilePath),
               },
