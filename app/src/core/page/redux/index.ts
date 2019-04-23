@@ -42,6 +42,9 @@ let toGenSub1Page = [
 
   for (let _key in db) {
     let pageInfo: IPageDefined = db[_key];
+     if(!pageInfo.pagePath) {
+       pageInfo.pagePath=_key;
+     }
 
     if (toGenMainPage.includes(_key)) {
       await buildPage({

@@ -13,7 +13,7 @@
     "pagePath": "balance/login",
     "actors": [
       {
-        "fileName": "reducer",
+        "fileName": "main",
         "datas":[{
           "name":"loginType",
           "value":{}
@@ -49,7 +49,7 @@
 ```
 
 
-### 分页问题.
+### 分页查询问题.
 
 actor数据
 ```json
@@ -58,20 +58,35 @@ actor数据
     {
         "name":"request",
         "value":{
+
+                      "q":"",
                       "start":0,
-                      "len":10,
+                      "len":10
                }
+    },
+    {
+        "name":"list",
+        "value":[{
+
+        }]
     }
     ],
    "events": [
           {
             "name": "modifyRequest",
+             "comment":"修改查询条件数据",
+            "param": ""
+          },
+          {
+            "name": "cleanList",
+             "comment":"清空查询结果",
             "param": ""
           },
           {
             "name": "queryResult",
+            "comment":"查询结果注入",
             "param": ""
-          },
+          }
         ]
 }
 ```
@@ -82,14 +97,17 @@ actions:
     "methods":[
               {
                 "name": "modifySearch",
+                "comment":"修改查询条件",
                 "param": ""
               },
               {
                 "name": "nextPage",
+                "comment":"查询下一页",
                 "param": ""
               },
               {
                 "name": "query",
+                "comment":"以当前查询条件查询",
                 "param": ""
               }
             ]
