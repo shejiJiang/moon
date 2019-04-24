@@ -71,7 +71,7 @@ import {join} from 'path';
     // for (let i = 0, iLen = level; i < iLen; i++) {
     //   blank+="-";
     // }
-    console.log(`官网${parentsNames.join('-')}-${node.name}`);
+    console.log(`${parentsNames.join('-')}${node.name}`);
     for (let j = 0, jLen = node.children.length; j < jLen; j++) {
       let subNode = node.children[j];
       printNode(subNode,parentsNames.concat(node.name));
