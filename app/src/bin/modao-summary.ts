@@ -17,6 +17,7 @@ import {join} from 'path';
 
 (async()=>{
 
+  //
   let allNodes:INode[]  = fse.readJSONSync(join(__dirname,"modao.json"));
 
   const searchByName=(names:string[])=>{
@@ -65,16 +66,15 @@ import {join} from 'path';
   let topDb = searchByName(top);
 
 
-  const printNode  = (node:INode, level:number=0)=>{
-    let blank="";
-
-    for (let i = 0, iLen = level; i < iLen; i++) {
-      blank+="---";
-    }
-    console.log(`${blank}${node.name}`);
+  const printNode  = (node:INode, parentsNames=[])=>{
+    //
+    // for (let i = 0, iLen = level; i < iLen; i++) {
+    //   blank+="-";
+    // }
+    console.log(`官网${parentsNames.join('-')}-${node.name}`);
     for (let j = 0, jLen = node.children.length; j < jLen; j++) {
       let subNode = node.children[j];
-      printNode(subNode,level+1);
+      printNode(subNode,parentsNames.concat(node.name));
     }
   }
 

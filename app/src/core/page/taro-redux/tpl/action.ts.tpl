@@ -4,8 +4,8 @@ import Store from "@/store";
 import tradeUtil from "@/util/trade";
 import { Action } from "@/types";
 import { <%=Util.getReducerTsName(pageInfo.pageKey)%> } from "@/pages/<%=pageInfo.pagePath%>/types";
-
 import { Command } from "./constant";
+import {getReducerData} from "@/redux/store";
 
 
 export default (dispatch) => {

@@ -1,14 +1,8 @@
-import {Command} from "@/pages/bankcard-info/constant";
+import {Command} from "../constant";
 import {Dispatch} from "@/typings";
+import {IAllReducerProps} from "../types";
+import {getReducerData} from "@/redux/store";
 
-/**
- * @desc
- *
- * @使用场景
- *
- * @company qianmi.com
- * @Date    2019/4/15
- **/
 export default (dispatch:Dispatch) => {
 
   let subAction = {
@@ -25,3 +19,11 @@ export default (dispatch:Dispatch) => {
   };
   return subAction;
 };
+
+function getData():IAllReducerProps {
+        return {
+                <% pageInfo.actors.forEach(actor=>{ %>
+                            <%=Util.toLCamelize(actor.fileName)%>  : getReducerData('<%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>'),
+                <% }) %>
+         }
+}

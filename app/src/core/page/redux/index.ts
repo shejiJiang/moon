@@ -58,22 +58,28 @@ let toGenSub1Page = [
             let pageKey = context.pageInfo.pageKey;
             let pageFilePath =join('pages', context.pageInfo.pagePath);
 
-            await insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
-              {
-                mark: '//mark1//',
-                isBefore: true,
-                content: `import ${toLCamelize(pageKey)} from "@/${pageFilePath}";`,
-                check: (content): boolean => !content.includes(pageFilePath),
-              },
-              {
-                mark: '//mark2//',
-                isBefore: false,
-                content: toLCamelize(pageKey) + ',',
-                check: (content, rawContent): boolean =>
-                  !rawContent.includes(pageFilePath),
-              },
-            ]);
+            for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
+              let actor = pageInfo.actors[i];
 
+              let reducerKey =  toLCamelize(pageKey+"-"+actor.fileName);
+
+              await insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
+                {
+                  mark: '//mark1//',
+                  isBefore: true,
+                  content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
+                  check: (content): boolean => !content.includes(pageFilePath),
+                },
+                {
+                  mark: '//mark2//',
+                  isBefore: false,
+                  content: reducerKey+ ',',
+                  check: (content, rawContent): boolean =>
+                    !rawContent.includes(pageFilePath),
+                },
+              ]);
+
+            }
             //TODO 路由添加下呢.
             await insertFile(join(projectSrc, 'src/pages/App.tsx'), [
               {

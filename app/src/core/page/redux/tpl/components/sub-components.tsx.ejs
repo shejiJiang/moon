@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import {store2Props} from "../selectors";
 
 
-type I<%=Util.toUCamelize(subComp.fileName)%>Props = T.IAllReducerProps & T.ActionType & T.I<%=Util.toUCamelize(subComp.fileName)%>Props;
+type I<%=Util.toUCamelize(subComp.fileName)%>Props = T.IProps & T.I<%=Util.toUCamelize(subComp.fileName)%>Props;
 
 @connect(store2Props,actions)
 class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<I<%=Util.toUCamelize(subComp.fileName)%>Props, T.I<%=Util.toUCamelize(subComp.fileName)%>State> {

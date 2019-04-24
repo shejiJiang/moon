@@ -10,7 +10,7 @@ import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fil
  <% }) %>
 
 @connect(store2Props,actions)
-class <%=className%> extends React.Component<T.IAllReducerProps & T.ActionType, any> {
+class <%=className%> extends React.Component<T.IProps, any> {
 
   componentDidMount() {
     this.props.init();
