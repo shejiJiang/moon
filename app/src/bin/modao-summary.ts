@@ -67,10 +67,6 @@ import {join} from 'path';
 
 
   const printNode  = (node:INode, parentsNames=[])=>{
-    //
-    // for (let i = 0, iLen = level; i < iLen; i++) {
-    //   blank+="-";
-    // }
     console.log(`${parentsNames.join('-')}${node.name}`);
     for (let j = 0, jLen = node.children.length; j < jLen; j++) {
       let subNode = node.children[j];
