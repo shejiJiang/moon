@@ -20,14 +20,15 @@ let toGenSub1Page = [
   // 'balance/bankcardsTest',
 ];
 
-//
 // let toGenMainPage = [
 //   // 'balance/bankcard-info',
 //   'trade/info'
 // ];
+
+import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
 (async () => {
   // let db = await fse.readJSON(join(__dirname, 'db.json'));
-  let db = await fse.readJSON(join('/Users/dong/wanmi/athena-frontend/page-def', 'db.json'));
+  // let db = await fse.readJSON(join('/Users/dong/wanmi/athena-frontend/page-def', 'db.json'));
   //TODO action 关联dispatch 界面化比较好处理些.. 伪代码 是不是可以添加起来了?
   //TODO 命名冲突 的问题 ..  actor名字, props名字会冲突;
   //TODO input 关键字处理..

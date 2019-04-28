@@ -61,6 +61,9 @@ actor数据
                       "start":0,
                       "len":10,
                }
+    }, {
+        "name":"total",
+        "value":0,
     }
     ],
    "events": [

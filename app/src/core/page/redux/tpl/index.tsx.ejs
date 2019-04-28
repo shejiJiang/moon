@@ -13,14 +13,23 @@ import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fil
 class <%=className%> extends React.Component<T.IProps, any> {
 
   componentDidMount() {
-    this.props.init();
+    this.props.actions.init();
   }
 
   componentWillUnmount() {
-    this.props.clean();
+    this.props.actions.clean();
   }
 
   render() {
+    let {actions:{
+        <% pageInfo.actions.forEach(action=>{ %>
+            <%=Util.toLCamelize(action.fileName) %> ,
+        <% }) %>
+    },<% pageInfo.actors.forEach(actor=>{ %>
+                    <%=Util.toLCamelize(actor.fileName)%> ,
+      <% }) %>
+    } =  this.props;
+
     return (
       <div className="<%=instanceName%>">
         <div/>

@@ -16,6 +16,15 @@ class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<I<%=Util.t
   }
 
   render() {
+    let {actions:{
+        <% pageInfo.actions.forEach(action=>{ %>
+            <%=Util.toLCamelize(action.fileName) %> ,
+        <% }) %>
+    }, <% pageInfo.actors.forEach(actor=>{ %>
+                    <%=Util.toLCamelize(actor.fileName)%> ,
+      <% }) %>
+    } =  this.props;
+
     return (
       <div className="<%=Util.toLCamelize(subComp.fileName)%>">
          <div/>
