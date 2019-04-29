@@ -11,14 +11,15 @@ import * as request from 'request';
 import * as fse from 'fs-extra';
 import {join} from 'path';
 import {
-  buildWebApi,
+  buildWebApi, IJSObjectProps,
   IJsonSchemaRef,
-  IParamShape,
+  IParamShape, IWebApiContext,
   IWebApiDefinded,
   IWebApiGroup,
   SchemaProps
 } from '../../core/web-api/client';
 import {IOptions} from "tslint";
+import {IFileSaveOptions} from "../../core/page/taro-redux/redux-taro";
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
   return new Promise((resolve, reject) => {
@@ -42,39 +43,68 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
 (async () => {
   // let apiJson = await loadJson();
   //   // // console.log(apiJson);
-  //   await fse.writeJSON(join(__dirname, 'api.json'), apiJson);
+  //   await fse.writeJSON(join(__dirname, 'pets-api.json'), apiJson);
   //   // //按分组;
-  // let apiJson= await fse.readJSON(join(__dirname, 'api.json'));
+  let apiJson= await fse.readJSON(join(__dirname, 'pets-api.json'));
   //
   // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
-  // let apiGroups = transfer(apiJson);
+  let apiGroups = transfer(apiJson);
   // //
-  // await fse.writeJSON(join(__dirname,"webapi-defs.json"),apiGroups);
-let apiGroups:IWebApiGroup[] = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
+  await fse.writeJSON(join(__dirname,"pets-webapi-defs.json"),apiGroups);
+// let apiGroups:IWebApiGroup[] = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
 
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
     let webapiGroup:IWebApiGroup = apiGroups[i];
-
-    if(webapiGroup.name!=='customer'){
-      continue;
-    }
 
     console.log('处理webapigrpu',webapiGroup.name);
 
     await buildWebApi({
       webapiGroup,
-      projectPath: join(__dirname, 'out'),
+      projectPath:"/Users/dong/wanmi/athena-frontend/src/webapi/",// join(__dirname, 'out'),
       beforeCompile: (apiItem: IWebApiDefinded) => {
         // apiItem.url =hostPre + apiItem.url;
         return apiItem;
       },
-      // resSchemaModify,
+      resSchemaModify,
+      beforeSave:(options:IFileSaveOptions,context: any)=>{
+        console.log(options.content.substring(0,30));
+        options.content = options.content.replace(`import sdk from "@api/sdk";`,`import * as sdk from '@/webapi/fetch';`)
+          .replace(/result\.data/ig,'result.context');
+        return Promise.resolve(options);
+      }
     });
   }
 
   //还是生成 一个总的 ?
   //转换
 })();
+
+
+function resSchemaModify(schema: IJSObjectProps,context: IWebApiContext){
+
+  console.log('resSchemaModify:: ',schema);
+
+  //api外了一层. 所有内容均把data提取出来即可..
+  if(!schema){
+    return schema;
+  }
+
+  //TODO void怎么表示  ?
+  //@ts-ignore;
+  if(schema['originalRef']==='BaseResponse'){
+    return null;
+
+  }else if (schema['$ref']) {
+    let subSchema  = context.webapiGroup.definitions[schema['originalRef']] as IJSObjectProps;
+    if(subSchema.type==='object' && subSchema.properties && subSchema.properties.context ){
+      return subSchema.properties.context;
+    }else {
+      return schema;
+    }
+  } else {
+    return schema;
+  }
+}
 
 let toDealUrls =[
   '/account/allOfflineAccounts',
@@ -286,45 +316,6 @@ export interface Schema {
   type: string;
   items: Items;
 }
-
-//
-// export interface 2002 {
-//   description: string;
-//   schema: Schema;
-// }
-//
-// export interface 4012 {
-//   description: string;
-// }
-//
-// export interface 4032 {
-//   description: string;
-// }
-//
-// export interface 4042 {
-//   description: string;
-// }
-//
-// export interface Responses {
-//   200: 2002;
-//   401: 4012;
-//   403: 4032;
-//   404: 4042;
-// }
-//
-// export interface Get {
-//   tags: string[];
-//   summary: string;
-//   operationId: string;
-//   produces: string[];
-//   parameters: Parameter[];
-//   responses: Responses;
-//   deprecated: boolean;
-// }
-//
-// export interface RootObject {
-//   get: Get;
-// }
 
 export interface ITag {
   name: string;

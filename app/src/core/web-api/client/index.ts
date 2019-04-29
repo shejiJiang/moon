@@ -9,7 +9,7 @@
 
 import * as ejs from 'ejs';
 import {join} from 'path';
-import {insertFile, getHandleFile} from '../../util/compile-util';
+import {insertFile, getHandleFile, IFileSaveOpt} from '../../util/compile-util';
 import * as stringUtil from '../../util/string-util';
 import {compile, compileFromFile} from 'json-schema-to-typescript';
 import {genTsFromDefines, genTsFromSchema} from '../../util/json-util';
@@ -20,6 +20,17 @@ import {genTsFromDefines, genTsFromSchema} from '../../util/json-util';
 
 const Util = {
   ...stringUtil,
+
+  getMethodName(methodName:string){
+
+    if(!methodName){
+      return 'post';
+    }else if(methodName.toLowerCase()==='delete'){
+      return 'deleteF'
+    }else{
+      return methodName;
+    }
+  },
 
   /**
    * 生成ts interface 名称
@@ -143,11 +154,11 @@ export interface IWebApiGroup {
 //   },{saveFilePath:webapiGroup.name+".ts"});
 // })();
 
-export interface IWebApiContext {
+export interface IWebApiContext  extends IFileSaveOpt{
   webapiGroup: IWebApiGroup;
   projectPath: string;
   //修改返回值的schema信息; 进行调整以生成ts定义; 因为多了api层的修改;
-  resSchemaModify?: (resScheme: SchemaProps) => SchemaProps;
+  resSchemaModify?: (resScheme: SchemaProps,context: IWebApiContext) => SchemaProps;
   beforeCompile?: (
     apiItem: IWebApiDefinded,
   ) => Promise<IWebApiDefinded> | IWebApiDefinded;
@@ -162,6 +173,7 @@ export interface IWebApiContext {
 export async function buildWebApi(context: IWebApiContext) {
   let {webapiGroup, projectPath} = context;
   let fileHandle = getHandleFile({
+    context,
     outDir: context.projectPath,
     tplBase: join(__dirname, 'tpl'),
   });
@@ -219,7 +231,7 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
 
       let _resSchema = apiItem.responseSchema;
       if (resSchemaModify) {
-        _resSchema = await resSchemaModify(apiItem.responseSchema);
+        _resSchema = await resSchemaModify(apiItem.responseSchema,context);
       }
       apiItem.responseSchema = _resSchema;
 

@@ -9,16 +9,26 @@
 import {join, parse} from 'path';
 import * as fse from 'fs-extra';
 import * as prettier from 'prettier';
-import {IContext, IFileSaveOptions} from "../page/taro-redux/redux-taro";
+import {IContext,  IFileSaveOptions} from "../page/taro-redux/redux-taro";
 
 interface IHandlePageParam {
   saveFilePath: string;
 }
 
+
+export interface IFileSaveOpt{
+  beforeSave?: (options:IFileSaveOptions,context: any)=>Promise<IFileSaveOptions>;
+  afterSave?: (options:IFileSaveOptions,context: any)=>Promise<void>;
+}
+
+
+
+
+
 export interface IHandleFile {
   outDir: string;
   tplBase: string;
-  context: IContext;
+  context: IFileSaveOpt;
   prettiesConfig?: object;
 }
 
@@ -84,10 +94,10 @@ export function getHandleFile({
 
     try {
       //TODO 最好的方法是, 判断后缀决定是否格式化;
-      content = prettier.format(content, prettiesConfig);
+      saveOptions.content = prettier.format(saveOptions.content, prettiesConfig);
     } catch (err) {}
     console.log('output filePath: ', saveOptions.toSaveFilePath);
-    await fse.writeFile(saveOptions.toSaveFilePath, content);
+    await fse.writeFile(saveOptions.toSaveFilePath, saveOptions.content);
     if(context.afterSave) {
       await   context.afterSave(saveOptions,context);
     }

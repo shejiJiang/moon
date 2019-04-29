@@ -48,7 +48,7 @@ import {
     }
 
     if(webapiGroup) {
-      fse.writeJson(join(__dirname, 'web-api.json'), webapiGroup);
+      // fse.writeJson(join(__dirname, 'web-api.json'), webapiGroup);
 
       await buildWebApi({
         webapiGroup,

@@ -10,7 +10,7 @@ import * as ejs from 'ejs';
 import {join} from 'path';
 import * as fse from 'fs-extra';
 import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, ISubComp, IType,} from '../generate';
-import {insertFile, getHandleFile} from "../../util/compile-util";
+import {insertFile, getHandleFile, IFileSaveOpt} from "../../util/compile-util";
 import * as stringUitl from  '../../util/string-util';
 import {genTsFromJSON} from "../../util/json-util";
 
@@ -197,12 +197,10 @@ export interface IFileSaveOptions{
  * @param {(tplContent: string) => Promise<string>} dealCal
  * @returns {Promise<void>}
  */
-export interface IContext {
+export interface IContext extends IFileSaveOpt{
   projectPath: string;
   pageInfo: IPageDefined;
   prettiesConfig?: object;
-  beforeSave?: (options:IFileSaveOptions,context: IContext)=>Promise<IFileSaveOptions>;
-  afterSave?: (options:IFileSaveOptions,context: IContext)=>Promise<void>;
 }
 
 export async function buildPage(context: IContext) {
