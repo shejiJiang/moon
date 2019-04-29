@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { <%=Util.getReducerTsName(actor.fileName)%> } from "../types";
 import {Action} from "typings/index";
 import produce from "immer";
+import * as immerUtil from '@/redux/immer-util';
 
 const INITIAL_STATE: <%=Util.getReducerTsName(actor.fileName)%>  = {
   isReady:false,
@@ -19,6 +20,12 @@ export default function <%=Util.toLCamelize(actor.fileName)%>(
 
   return produce<<%=Util.getReducerTsName(actor.fileName)%>>(state, draftState => {
     switch (type) {
+
+      //通用改变数据
+      case Command.commonChange:
+
+        immerUtil.modifyDeep(draftState,payload.paths,payload.value);
+        return draftState;
 
            <% actor.events.forEach(event=>{ %>
                 //<%=event.comment||""%>
