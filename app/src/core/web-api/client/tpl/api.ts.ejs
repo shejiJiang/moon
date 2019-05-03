@@ -1,5 +1,9 @@
 import sdk from "@api/sdk";
 
+import {getHashParam} from "wmkit/url-helper";
+
+let param = getHashParam<{[name:string]:string;}>(location.hash);
+
 <% webapiGroup.apis.forEach(apiItem=>{ %>
 
 /**
@@ -22,7 +26,7 @@ async function <%=apiItem.name%>(
 
   , {
       <% apiItem.requestParam.forEach(paramItem=>{ %>
-       <% if (paramItem.isInPath) { %>
+       <% if (!paramItem.isInPath) { %>
           <%=['string','integer','number','date','file'].includes(paramItem.jsonSchema.type)?"":"..."%><%=paramItem.name%>,
         <% }  %>
 

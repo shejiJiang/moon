@@ -41,11 +41,11 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
 }
 
 (async () => {
-  // let apiJson = await loadJson();
+  let apiJson = await loadJson();
   //   // // console.log(apiJson);
   //   await fse.writeJSON(join(__dirname, 'pets-api.json'), apiJson);
   //   // //按分组;
-  let apiJson= await fse.readJSON(join(__dirname, 'pets-api.json'));
+  // let apiJson= await fse.readJSON(join(__dirname, 'pets-api.json'));
   //
   // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
   let apiGroups = transfer(apiJson);
@@ -112,16 +112,19 @@ let toDealUrls =[
   '/account/confirm',
 ]
 
+
+/**
+ * 转换项目
+ * @param {ISwaggerApisDocs} apiDocs
+ * @returns {IWebApiGroup[]}
+ */
 function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
   //分组;
   let apiGroups: IWebApiGroup[] = [];
+
+  let temp  = {};
   let KeyMap = {};
   for (let url in apiDocs.paths) {
-    // if(!toDealUrls.includes(url)){
-    //   continue;
-    // }
-  // let url  = "/account/allOffline Accounts";
-    //默认都以/开头.
     let apiItem = apiDocs.paths[url];
     let groupKey = url.split('/')[1];
 
@@ -142,6 +145,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
       let apiDefItem:any ={url,method};//IWebApiDefinded
       let methodInfo = apiItem[method];
 
+      temp[url]={url,methodName:methodInfo.operationId,group:groupKey};
 
       apiDefItem.name=methodInfo.operationId;
       apiDefItem.comment= methodInfo.summary;
@@ -171,7 +175,6 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
     for (let i = 0, ilen = definitions.length; i < ilen; i++) {
       let item = definitions[i];
       if(item.title  && !KeyMap[groupKey].definitions[item.title]){
-      // console.log(`向defintions中添加定义definitions${item.title}`);
         KeyMap[groupKey].definitions[item.title]=definitions[i];
       }
     }
@@ -181,6 +184,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
   for(let key in KeyMap){
     apiGroups.push(KeyMap[key]);
   }
+  fse.writeJSONSync(join(__dirname,"old-method-Info.json"),temp);
 
   return apiGroups;
 }
