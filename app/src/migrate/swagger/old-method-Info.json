@@ -1,1 +1,157 @@
-{"/customer/active":{"url":"/customer/active","methodName":"activeUsingPOST","group":"customer"},"/customer/register":{"url":"/customer/register","methodName":"registerUsingPOST","group":"customer"},"/employee/login":{"url":"/employee/login","methodName":"loginUsingPOST","group":"employee"},"/goods/item":{"url":"/goods/item","methodName":"addUsingPOST","group":"goods"},"/goods/item/{itemId}":{"url":"/goods/item/{itemId}","methodName":"deleteUsingDELETE","group":"goods"},"/goods/item/{projectCateId}":{"url":"/goods/item/{projectCateId}","methodName":"listByProjectCateIdUsingGET","group":"goods"},"/goods/project":{"url":"/goods/project","methodName":"modifyUsingPUT_1","group":"goods"},"/goods/project-cate-store":{"url":"/goods/project-cate-store","methodName":"modifyUsingPUT","group":"goods"},"/goods/project-cate-store/display/{projectCateId}":{"url":"/goods/project-cate-store/display/{projectCateId}","methodName":"displayUsingPUT","group":"goods"},"/goods/project-cate-store/hide/{projectCateId}":{"url":"/goods/project-cate-store/hide/{projectCateId}","methodName":"hideUsingPUT","group":"goods"},"/goods/project-cate-store/page":{"url":"/goods/project-cate-store/page","methodName":"pageUsingPOST","group":"goods"},"/goods/project-cate-store/simple-project-cate":{"url":"/goods/project-cate-store/simple-project-cate","methodName":"simpleListUsingPOST","group":"goods"},"/goods/project-cate-store/top/{projectCateId}":{"url":"/goods/project-cate-store/top/{projectCateId}","methodName":"topUsingPUT","group":"goods"},"/goods/project-cate-store/{projectCateId}":{"url":"/goods/project-cate-store/{projectCateId}","methodName":"deleteUsingDELETE_1","group":"goods"},"/goods/project-item-rel/list":{"url":"/goods/project-item-rel/list","methodName":"listByProjectIdsUsingPOST","group":"goods"},"/goods/project-item-rel/{projectId}":{"url":"/goods/project-item-rel/{projectId}","methodName":"listByProjectIdUsingGET","group":"goods"},"/goods/project/added-off/{projectId}":{"url":"/goods/project/added-off/{projectId}","methodName":"addedOffUsingPUT","group":"goods"},"/goods/project/added-on/{projectId}":{"url":"/goods/project/added-on/{projectId}","methodName":"addedOnUsingPUT","group":"goods"},"/goods/project/page":{"url":"/goods/project/page","methodName":"pageUsingPOST_1","group":"goods"},"/goods/project/{projectId}":{"url":"/goods/project/{projectId}","methodName":"deleteUsingDELETE_2","group":"goods"},"/marketing/rechargeable-card":{"url":"/marketing/rechargeable-card","methodName":"modifyUsingPUT_2","group":"marketing"},"/marketing/rechargeable-card/added":{"url":"/marketing/rechargeable-card/added","methodName":"modifyAddedUsingPOST","group":"marketing"},"/marketing/rechargeable-card/page":{"url":"/marketing/rechargeable-card/page","methodName":"pageUsingPOST_2","group":"marketing"},"/marketing/rechargeable-card/{rechargeableCardId}":{"url":"/marketing/rechargeable-card/{rechargeableCardId}","methodName":"deleteUsingDELETE_3","group":"marketing"},"/marketing/timing-card":{"url":"/marketing/timing-card","methodName":"modifyUsingPUT_3","group":"marketing"},"/marketing/timing-card/added":{"url":"/marketing/timing-card/added","methodName":"modifyAddedUsingPOST_1","group":"marketing"},"/marketing/timing-card/page":{"url":"/marketing/timing-card/page","methodName":"pageUsingPOST_3","group":"marketing"},"/marketing/timing-card/{timingCardId}":{"url":"/marketing/timing-card/{timingCardId}","methodName":"deleteUsingDELETE_5","group":"marketing"},"/role/store":{"url":"/role/store","methodName":"deleteUsingDELETE_4","group":"role"},"/role/store/list":{"url":"/role/store/list","methodName":"listUsingGET","group":"role"},"/role/store/{roleId}":{"url":"/role/store/{roleId}","methodName":"getStoreRoleUsingGET","group":"role"}}
+{
+    "/customer/active": {
+        "url": "/customer/active",
+        "methodName": "activeUsingPOST",
+        "group": "SupplierCustomerController"
+    },
+    "/customer/register": {
+        "url": "/customer/register",
+        "methodName": "registerUsingPOST",
+        "group": "SupplierCustomerController"
+    },
+    "/employee/login": {
+        "url": "/employee/login",
+        "methodName": "loginUsingPOST",
+        "group": "LoginController"
+    },
+    "/goods/item": {
+        "url": "/goods/item",
+        "methodName": "addUsingPOST",
+        "group": "ItemController"
+    },
+    "/goods/item/{itemId}": {
+        "url": "/goods/item/{itemId}",
+        "methodName": "deleteUsingDELETE",
+        "group": "ItemController"
+    },
+    "/goods/item/{projectCateId}": {
+        "url": "/goods/item/{projectCateId}",
+        "methodName": "listByProjectCateIdUsingGET",
+        "group": "ItemController"
+    },
+    "/goods/project": {
+        "url": "/goods/project",
+        "methodName": "modifyUsingPUT_1",
+        "group": "ProjectController"
+    },
+    "/goods/project-cate-store": {
+        "url": "/goods/project-cate-store",
+        "methodName": "modifyUsingPUT",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/display/{projectCateId}": {
+        "url": "/goods/project-cate-store/display/{projectCateId}",
+        "methodName": "displayUsingPUT",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/hide/{projectCateId}": {
+        "url": "/goods/project-cate-store/hide/{projectCateId}",
+        "methodName": "hideUsingPUT",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/page": {
+        "url": "/goods/project-cate-store/page",
+        "methodName": "pageUsingPOST",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/simple-project-cate": {
+        "url": "/goods/project-cate-store/simple-project-cate",
+        "methodName": "simpleListUsingPOST",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/top/{projectCateId}": {
+        "url": "/goods/project-cate-store/top/{projectCateId}",
+        "methodName": "topUsingPUT",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/{projectCateId}": {
+        "url": "/goods/project-cate-store/{projectCateId}",
+        "methodName": "deleteUsingDELETE_1",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-item-rel/list": {
+        "url": "/goods/project-item-rel/list",
+        "methodName": "listByProjectIdsUsingPOST",
+        "group": "ProjectItemRelController"
+    },
+    "/goods/project-item-rel/{projectId}": {
+        "url": "/goods/project-item-rel/{projectId}",
+        "methodName": "listByProjectIdUsingGET",
+        "group": "ProjectItemRelController"
+    },
+    "/goods/project/added-off/{projectId}": {
+        "url": "/goods/project/added-off/{projectId}",
+        "methodName": "addedOffUsingPUT",
+        "group": "ProjectController"
+    },
+    "/goods/project/added-on/{projectId}": {
+        "url": "/goods/project/added-on/{projectId}",
+        "methodName": "addedOnUsingPUT",
+        "group": "ProjectController"
+    },
+    "/goods/project/page": {
+        "url": "/goods/project/page",
+        "methodName": "pageUsingPOST_1",
+        "group": "ProjectController"
+    },
+    "/goods/project/{projectId}": {
+        "url": "/goods/project/{projectId}",
+        "methodName": "deleteUsingDELETE_2",
+        "group": "ProjectController"
+    },
+    "/marketing/rechargeable-card": {
+        "url": "/marketing/rechargeable-card",
+        "methodName": "modifyUsingPUT_2",
+        "group": "RechargeableCardController"
+    },
+    "/marketing/rechargeable-card/added": {
+        "url": "/marketing/rechargeable-card/added",
+        "methodName": "modifyAddedUsingPOST",
+        "group": "RechargeableCardController"
+    },
+    "/marketing/rechargeable-card/page": {
+        "url": "/marketing/rechargeable-card/page",
+        "methodName": "pageUsingPOST_2",
+        "group": "RechargeableCardController"
+    },
+    "/marketing/rechargeable-card/{rechargeableCardId}": {
+        "url": "/marketing/rechargeable-card/{rechargeableCardId}",
+        "methodName": "deleteUsingDELETE_3",
+        "group": "RechargeableCardController"
+    },
+    "/marketing/timing-card": {
+        "url": "/marketing/timing-card",
+        "methodName": "modifyUsingPUT_3",
+        "group": "TimingCardController"
+    },
+    "/marketing/timing-card/added": {
+        "url": "/marketing/timing-card/added",
+        "methodName": "modifyAddedUsingPOST_1",
+        "group": "TimingCardController"
+    },
+    "/marketing/timing-card/page": {
+        "url": "/marketing/timing-card/page",
+        "methodName": "pageUsingPOST_3",
+        "group": "TimingCardController"
+    },
+    "/marketing/timing-card/{timingCardId}": {
+        "url": "/marketing/timing-card/{timingCardId}",
+        "methodName": "deleteUsingDELETE_5",
+        "group": "TimingCardController"
+    },
+    "/role/store": {
+        "url": "/role/store",
+        "methodName": "deleteUsingDELETE_4",
+        "group": "RoleInfoController"
+    },
+    "/role/store/list": {
+        "url": "/role/store/list",
+        "methodName": "listUsingGET",
+        "group": "RoleInfoController"
+    },
+    "/role/store/{roleId}": {
+        "url": "/role/store/{roleId}",
+        "methodName": "getStoreRoleUsingGET",
+        "group": "RoleInfoController"
+    }
+}
