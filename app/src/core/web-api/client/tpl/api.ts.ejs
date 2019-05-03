@@ -1,9 +1,5 @@
 import sdk from "@api/sdk";
 
-import {getHashParam} from "wmkit/url-helper";
-
-let param = getHashParam<{[name:string]:string;}>(location.hash);
-
 <% webapiGroup.apis.forEach(apiItem=>{ %>
 
 /**
