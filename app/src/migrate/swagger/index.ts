@@ -20,6 +20,7 @@ import {
 } from '../../core/web-api/client';
 import {IOptions} from "tslint";
 import {IFileSaveOptions} from "../../core/page/taro-redux/redux-taro";
+import {toLCamelize} from "../../core/util/string-util";
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
   return new Promise((resolve, reject) => {
@@ -126,28 +127,36 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
   let KeyMap = {};
   for (let url in apiDocs.paths) {
     let apiItem = apiDocs.paths[url];
-    let groupKey = url.split('/')[1];
-
-
-    if (!KeyMap[groupKey]) {
-      KeyMap[groupKey] = {
-        name: groupKey,
-        apis: [],
-        definitions: {},
-      };
-    }
 
     let definitions = [];
+    let groupKey="";
 
     //TODO 会不会有两个及三个方法呢 ? 会 account/invoiceProject/{projectId}
     for(let method in apiItem) {
       // console.log(url,method);
       let apiDefItem:any ={url,method};//IWebApiDefinded
-      let methodInfo = apiItem[method];
+      let methodInfo:IMethodDefinded = apiItem[method];
+
+      // let groupKey = url.split('/')[1];
+       groupKey = methodInfo.tags[0];//controller
+
+      if (!KeyMap[groupKey]) {
+        KeyMap[groupKey] = {
+          name: groupKey,
+          apis: [],
+          definitions: {},
+        };
+      }
+
 
       temp[url]={url,methodName:methodInfo.operationId,group:groupKey};
 
-      apiDefItem.name=methodInfo.operationId;
+      apiDefItem.name=toLCamelize(methodInfo.operationId)
+        .replace("UsingPOST","_P")
+        .replace("UsingPUT","_Put")
+        .replace("UsingGET","_G")
+        .replace("UsingDELETE","_D")
+      ;
       apiDefItem.comment= methodInfo.summary;
       //in  = body header path
 
