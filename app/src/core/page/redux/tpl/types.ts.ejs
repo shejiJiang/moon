@@ -3,6 +3,7 @@ import Actions from './actions';
 <% pageInfo.actors.forEach(actor=>{ %>
         export interface <%=Util.getReducerTsName(actor.fileName)%> {
             isReady:boolean;
+            isLoading?:boolean;
             <% actor.datas.forEach(dataItem=>{ %>
                          <%=dataItem.name%>:<%=dataItem.typeName%>;
             <% }) %>

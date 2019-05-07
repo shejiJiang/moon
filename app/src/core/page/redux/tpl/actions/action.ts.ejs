@@ -2,11 +2,16 @@ import {Command} from "../constant";
 import {Dispatch} from "@/typings";
 import {IAllReducerProps} from "../types";
 import {getReducerData} from "@/redux/store";
+import api from "@/webapi";
+import {extraPathsValue} from "@/redux/util";
+
 
 export default (dispatch:Dispatch) => {
 
-  let subAction = {
-
+  let action = {
+    commonChange(...param:any) {
+      dispatch({ type: Command.commonChange, payload: extraPathsValue(...arguments) });
+    },
 
     <% action.methods.forEach(method=>{ %>
         /**
@@ -17,7 +22,7 @@ export default (dispatch:Dispatch) => {
          },
       <% }) %>
   };
-  return subAction;
+  return action;
 };
 
 function getData():IAllReducerProps {

@@ -152,11 +152,10 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
       temp[url]={url,methodName:methodInfo.operationId,group:groupKey};
 
       apiDefItem.name=toLCamelize(methodInfo.operationId)
-        .replace("UsingPOST","_P")
-        .replace("UsingPUT","_Put")
-        .replace("UsingGET","_G")
-        .replace("UsingDELETE","_D")
-      ;
+        .replace(/UsingPOST.*/ig,"")
+        .replace(/UsingPUT.*/ig,"")
+        .replace(/UsingGET.*/ig,"")
+        .replace(/UsingDELETE.*/ig,"_");
       apiDefItem.comment= methodInfo.summary;
       //in  = body header path
 
