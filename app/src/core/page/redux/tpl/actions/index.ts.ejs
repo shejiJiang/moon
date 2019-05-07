@@ -1,6 +1,8 @@
 import Store from '@/redux/store';
 import {Command} from '../constant';
 import {Dispatch} from "@/typings";
+import {getActionProxy} from "@/redux/action-util";
+
 
 <% pageInfo.actions.forEach(action=>{ %>
 import <%=Util.toUCamelize(action.fileName) %> from './<%=action.fileName%>'
@@ -9,15 +11,8 @@ import <%=Util.toUCamelize(action.fileName) %> from './<%=action.fileName%>'
 export default (dispatch:Dispatch) => {
   const actions = {
 
-    async commonChange(paths:(string|number)[]|string,value:any) {
-      if( typeof paths ==='string') {
-        paths = paths.split(",")
-      }
-      dispatch({ type: Command.commonChange, payload: {paths,value} });
-    },
-
     <% pageInfo.actions.forEach(action=>{ %>
-        <%=Util.toLCamelize(action.fileName) %> :<%=Util.toUCamelize(action.fileName) %> (dispatch),
+        <%=Util.toLCamelize(action.fileName) %> :getActionProxy(<%=Util.toUCamelize(action.fileName) %>)(dispatch),
     <% }) %>
     /**
      * 初始化数据
