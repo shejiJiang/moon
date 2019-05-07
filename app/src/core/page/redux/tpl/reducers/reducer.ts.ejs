@@ -23,15 +23,13 @@ export default function <%=Util.toLCamelize(actor.fileName)%>(
 
       //通用改变数据
       case Command.commonChange:
-        if(payload.paths[0]==="<%=Util.toLCamelize(actor.fileName)%>"){
-            immerUtil.modifyDeep(draftState,payload.paths.splice(1),payload.value);
-        }
-        return draftState;
+        return immerUtil.commonChange(draftState,{...payload,key:"<%=Util.toLCamelize(actor.fileName)%>"});
            <% actor.events.forEach(event=>{ %>
                 //<%=event.comment||""%>
                 case Command.<%=event.name%>:
                     return draftState;
           <% }) %>
+
 
       //初始化
       case Command.init:
