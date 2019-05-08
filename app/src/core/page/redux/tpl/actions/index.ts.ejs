@@ -3,7 +3,6 @@ import {Command} from '../constant';
 import {Dispatch} from "@/typings";
 import {getActionProxy} from "@/redux/action-util";
 
-
 <% pageInfo.actions.forEach(action=>{ %>
 import <%=Util.toUCamelize(action.fileName) %> from './<%=action.fileName%>'
 <% }) %>

@@ -15,6 +15,7 @@ export type IAllReducerProps  = {
     <% pageInfo.actors.forEach(actor=>{ %>
                 <%=Util.toLCamelize(actor.fileName)%>  : <%=Util.getReducerTsName(actor.fileName)%>,
     <% }) %>
+  [name:string]:any;
 }
 
 //默认是全部的属性,可以自定义
