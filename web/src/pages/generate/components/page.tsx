@@ -102,7 +102,7 @@ export default class Page extends React.Component<IProps, any> {
             {subComps}
             <Button type="primary" onClick={this._addComp}>添加子组件定义</Button>
           </TabPane>
-        </Tabs>,
+        </Tabs>
       </div>
     );
   }
