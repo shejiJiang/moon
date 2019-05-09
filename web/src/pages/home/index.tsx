@@ -26,7 +26,7 @@ export default class HelloApp extends React.Component<any, any> {
         {/*<Header {...this.props} />*/}
         <div className="page-content">
           {/*<Route path="/" exact component={Generate} />*/}
-          <Route path="/" exact component={Layout} />
+          <Route path="/" exact component={Generate} />
         </div>
       </div>
     );

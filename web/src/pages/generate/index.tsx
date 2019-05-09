@@ -25,7 +25,7 @@ export default class ListApp extends React.Component<any, any> {
   render() {
     return (
       <div className="list-data-base">
-        {/*<Page></Page>*/}
+        <Page></Page>
       </div>
     );
   }
