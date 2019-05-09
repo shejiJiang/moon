@@ -32,7 +32,7 @@ export interface IHandleFile {
   prettiesConfig?: object;
 }
 
-interface IInsertOption {
+export interface IInsertOption {
   mark: string;
   isBefore: boolean;
   content: string;

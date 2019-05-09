@@ -20,11 +20,12 @@ import {
 } from '../../core/web-api/client';
 import {IOptions} from "tslint";
 import {IFileSaveOptions} from "../../core/page/taro-redux/redux-taro";
-import {toLCamelize} from "../../core/util/string-util";
+import {toLCamelize, toUCamelize} from "../../core/util/string-util";
+import {IInsertOption, insertContent, insertFile} from "../../core/util/compile-util";
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
   return new Promise((resolve, reject) => {
-    request('http://118.31.238.229:8390/v2/api-docs', function(
+    request('http://172.19.26.161:8390/v2/api-docs', function(
       error,
       response,
       body,
@@ -34,9 +35,6 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
       } else {
         resolve(JSON.parse(body));
       }
-      // console.log('error:', error); // Print the error if one occurred
-      // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      // console.log('body:', body); // Print the HTML for the Google homepage.
     });
   });
 }
@@ -54,6 +52,9 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
   await fse.writeJSON(join(__dirname,"pets-webapi-defs.json"),apiGroups);
 // let apiGroups:IWebApiGroup[] = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
 
+  let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
+
+  let inserts:IInsertOption[] =[];
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
     let webapiGroup:IWebApiGroup = apiGroups[i];
 
@@ -61,7 +62,7 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
 
     await buildWebApi({
       webapiGroup,
-      projectPath:"/Users/dong/wanmi/athena-frontend/src/webapi/",// join(__dirname, 'out'),
+      projectPath:basePath,// join(__dirname, 'out'),
       beforeCompile: (apiItem: IWebApiDefinded) => {
         // apiItem.url =hostPre + apiItem.url;
         return apiItem;
@@ -74,16 +75,32 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
         return Promise.resolve(options);
       }
     });
+
+     let controllerName= toLCamelize(webapiGroup.name);
+     let filePath =`./${webapiGroup.name}`;
+
+    inserts.push({
+      mark:"'whatwg-fetch';",
+      isBefore:false,
+      content:`import  ${controllerName} from '${filePath}';`,
+      check:(content:string)=>!content.includes(filePath)
+    });
+
+    inserts.push({
+      mark:"default {",
+      isBefore:false,
+      content:`${controllerName},`,
+      check:(_,raw)=>!raw.includes(filePath)
+    });
   }
 
+  await insertFile(join(basePath,"index.ts"),inserts);
   //还是生成 一个总的 ?
   //转换
 })();
 
 
-function resSchemaModify(schema: IJSObjectProps,context: IWebApiContext){
-
-  console.log('resSchemaModify:: ',schema);
+function resSchemaModify(schema: IJSObjectProps,context: IWebApiContext) {
 
   //api外了一层. 所有内容均把data提取出来即可..
   if(!schema){
@@ -94,11 +111,15 @@ function resSchemaModify(schema: IJSObjectProps,context: IWebApiContext){
   //@ts-ignore;
   if(schema['originalRef']==='BaseResponse'){
     return null;
-
   }else if (schema['$ref']) {
     let subSchema  = context.webapiGroup.definitions[schema['originalRef']] as IJSObjectProps;
     if(subSchema.type==='object' && subSchema.properties && subSchema.properties.context ){
-      return subSchema.properties.context;
+
+      if(subSchema.properties.context["$ref"]){
+        return  context.webapiGroup.definitions[subSchema.properties.context["originalRef"]];
+      } else {
+        return subSchema.properties.context;
+      }
     }else {
       return schema;
     }
