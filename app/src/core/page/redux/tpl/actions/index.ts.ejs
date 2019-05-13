@@ -11,7 +11,7 @@ export default (dispatch:Dispatch) => {
   const actions = {
 
     <% pageInfo.actions.forEach(action=>{ %>
-        <%=Util.toLCamelize(action.fileName) %> :getActionProxy(<%=Util.toUCamelize(action.fileName) %>)(dispatch),
+        <%=Util.toLCamelize(action.fileName) %> :getActionProxy<typeof <%=Util.toUCamelize(action.fileName) %>>(<%=Util.toUCamelize(action.fileName) %>)(dispatch),
     <% }) %>
     /**
      * 初始化数据

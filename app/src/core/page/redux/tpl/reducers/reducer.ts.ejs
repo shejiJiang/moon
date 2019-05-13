@@ -27,6 +27,7 @@ export default function <%=Util.toLCamelize(actor.fileName)%>(
            <% actor.events.forEach(event=>{ %>
                 //<%=event.comment||""%>
                 case Command.<%=event.name%>:
+                     <%=event.content%>
                     return draftState;
           <% }) %>
 
