@@ -185,7 +185,6 @@ export async function generate(context: IContext) {
     }
   );
   //子组件生成;
-
   pageInfo.subComps.forEach(async (subComp: ISubComp, index: number) => {
     await handlePage(
       'components/sub-components.tsx.ejs',

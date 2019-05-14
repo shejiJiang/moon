@@ -25,6 +25,11 @@ class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<I<%=Util.t
       <% }) %>
     } =  this.props;
 
+
+/*
+<%-(subComp.methods.(item=>item.name==="render")[0]|{}).content%>
+*/
+
     return (
       <div className="<%=Util.toLCamelize(subComp.fileName)%>">
          <div/>
@@ -32,12 +37,12 @@ class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<I<%=Util.t
     );
   }
 
-   <% subComp.methods.forEach(method=>{ %>
+   <% subComp.methods.filter(item=>item.name!=="render").forEach(method=>{ %>
           /**
            * <%= method.comment||"" %>
            */
           async <%=method.name%>() {
-              <%=method.content%>
+              <%-method.content%>
            },
         <% }) %>
 }
