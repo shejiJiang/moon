@@ -31,6 +31,15 @@ class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<I<%=Util.t
       </div>
     );
   }
+
+   <% subComp.methods.forEach(method=>{ %>
+          /**
+           * <%= method.comment||"" %>
+           */
+          async <%=method.name%>() {
+              <%=method.content%>
+           },
+        <% }) %>
 }
 
 export default <%=Util.toUCamelize(subComp.fileName)%> as any;
