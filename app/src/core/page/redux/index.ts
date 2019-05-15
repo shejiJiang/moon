@@ -86,13 +86,13 @@ import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
               {
                 mark: 'const',
                 isBefore: true,
-                content: `import ${toUCamelize(pageKey)} from "@/${pageFilePath}";`,
+                content: `const ${toUCamelize(pageKey)} = loadable(() => import('@/${pageFilePath}'));`,
                 check: (content): boolean => !content.includes(pageFilePath),
               },
               {
                 mark: '{/*mark*/}',
                 isBefore: false,
-                content: `<Route path="/${context.pageInfo.pagePath}" render={()=> <${toUCamelize(pageKey)} />}  />`,
+                content: `<Route path="/${context.pageInfo.pagePath}" component={${toUCamelize(pageKey)}} />}  />`,
                 check: (content, rawContent): boolean =>
                   !rawContent.includes(pageFilePath),
               },
