@@ -25,7 +25,7 @@ import {IInsertOption, insertContent, insertFile} from "../../core/util/compile-
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
   return new Promise((resolve, reject) => {
-    // request('http://118.31.238.229:8390/v2/api-docs', function(
+    // request('http://172.19.26.161:8390/v2/api-docs', function(
     request('http://118.31.238.229:8390/v2/api-docs', function(
       error,
       response,

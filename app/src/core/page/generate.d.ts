@@ -63,6 +63,8 @@ export interface IAction {
 export interface IActionItem {
   name: string;
   param: any;
+  content?:string;
+  comment?:string;
 }
 
 export interface ISubComp {
