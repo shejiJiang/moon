@@ -17,7 +17,12 @@ export default (dispatch:Dispatch) => {
     /**
      * 初始化数据
      */
-    async init() {
+    async init(<%- pageInfo.lifeCycles && pageInfo.lifeCycles.param%>) {
+
+    <% if (pageInfo.lifeCycles && pageInfo.lifeCycles.content) { %>
+      <%-pageInfo.lifeCycles.content %>
+    <% } %>
+
       dispatch({type: Command.init,payload:{
             <% pageInfo.actors.forEach(actor=>{ %>
                          //<%=Util.toLCamelize(actor.fileName)%>  :{},

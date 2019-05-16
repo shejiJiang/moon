@@ -26,6 +26,19 @@ export interface IPageDefined{
   pagePath:string;
   //通过filepath计算出来
   pageKey?:string;
+  lifeCycles:{
+    init:{
+      param:string;
+      content:string;
+    },
+    clean:{
+      param:string;
+      content:string;
+    },
+  },
+  mainComp:{
+    methods:IActionItem[];
+  }
 
   actors:IActorItem[];
   actions:IAction[];
