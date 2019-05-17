@@ -92,7 +92,7 @@ import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
               {
                 mark: '{/*mark*/}',
                 isBefore: false,
-                content: `<Route path="/${context.pageInfo.pagePath}" component={${toUCamelize(pageKey)}} />}  />`,
+                content: `<Route path="/${context.pageInfo.pagePath}" component={${toUCamelize(pageKey)}} />`,
                 check: (content, rawContent): boolean =>
                   !rawContent.includes(pageFilePath),
               },

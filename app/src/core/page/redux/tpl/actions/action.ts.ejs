@@ -15,10 +15,10 @@ export default (dispatch:Dispatch) => {
 
     <% action.methods.forEach(method=>{ %>
         /**
-         * <%= method.comment||"" %>
+         * <%- method.comment||"" %>
          */
-        async <%=method.name%>() {
-            <%-method.content%>
+        async <%=method.name%>(<%-method.param%>) {
+            <%-method.content %>
          },
       <% }) %>
   };
