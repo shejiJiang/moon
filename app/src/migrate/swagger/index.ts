@@ -25,8 +25,8 @@ import {IInsertOption, insertContent, insertFile} from "../../core/util/compile-
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
   return new Promise((resolve, reject) => {
-    // request('http://172.19.26.161:8390/v2/api-docs', function(
-    request('http://118.31.238.229:8390/v2/api-docs', function(
+    request('http://172.19.26.161:8390/v2/api-docs', function(
+    // request('http://118.31.238.229:8390/v2/api-docs', function(
       error,
       response,
       body,
@@ -51,7 +51,6 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
   let apiGroups = transfer(apiJson);
   // //
   await fse.writeJSON(join(__dirname,"pets-webapi-defs.json"),apiGroups);
-// let apiGroups:IWebApiGroup[] = await fse.readJSON(join(__dirname, 'webapi-defs.json'));
 
   let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
 
@@ -223,8 +222,6 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
 function  findAllRefType(definitions: {
   [defName: string]: SchemaProps;
 },obj:any,refs:string[]=[]):SchemaProps[] {
-// console.log(`findAllRefType obj:${JSON.stringify(obj)}, refs:${refs}`);
-  // let initLen  = refs.length;
   if(!obj){
     return [];
   }
@@ -232,7 +229,6 @@ function  findAllRefType(definitions: {
   let refLeng =refs.length;
    traverseObj(obj,refs);
 
-  // console.log("findAllRefType:",refs);
   //TODO 这里要不要把名字改了呢 ?
   let results  = [];
 
