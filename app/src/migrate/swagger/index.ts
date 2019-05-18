@@ -25,8 +25,8 @@ import {IInsertOption, insertContent, insertFile} from "../../core/util/compile-
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
   return new Promise((resolve, reject) => {
-    request('http://172.19.26.161:8390/v2/api-docs', function(
-    // request('http://118.31.238.229:8390/v2/api-docs', function(
+    // request('http://172.19.26.161:8390/v2/api-docs', function(
+    request('http://118.31.238.229:8390/v2/api-docs', function(
       error,
       response,
       body,
@@ -50,7 +50,7 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
   // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
   let apiGroups = transfer(apiJson);
   // //
-  await fse.writeJSON(join(__dirname,"pets-webapi-defs.json"),apiGroups);
+  // await fse.writeJSON(join(__dirname,"pets-webapi-defs.json"),apiGroups);
 
   let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
 
@@ -113,10 +113,14 @@ function resSchemaModify(schema: IJSObjectProps,context: IWebApiContext) {
     return null;
   }else if (schema['$ref']) {
     let subSchema  = context.webapiGroup.definitions[schema['originalRef']] as IJSObjectProps;
-    if(subSchema.type==='object' && subSchema.properties && subSchema.properties.context ){
-
-      if(subSchema.properties.context["$ref"]){
+    if(subSchema.type==='object' && subSchema.properties && subSchema.properties.context ) {
+      if(subSchema.properties.context["$ref"]) {
         return  context.webapiGroup.definitions[subSchema.properties.context["originalRef"]];
+      } else if(subSchema.properties.context['type'] ==='array') {
+        let arrayAschema =  subSchema.properties.context;
+        //@ts-ignore
+        arrayAschema.title=subSchema.properties.context.items.originalRef+"Array";
+        return arrayAschema;
       } else {
         return subSchema.properties.context;
       }
@@ -213,7 +217,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
   for(let key in KeyMap){
     apiGroups.push(KeyMap[key]);
   }
-  fse.writeJSONSync(join(__dirname,"old-method-Info.json"),temp);
+  // fse.writeJSONSync(join(__dirname,"old-method-Info.json"),temp);
 
   return apiGroups;
 }

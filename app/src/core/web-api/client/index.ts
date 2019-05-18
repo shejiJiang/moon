@@ -39,6 +39,26 @@ const Util = {
   genInterfaceName(...names) {
     return `I${stringUtil.toUCamelize(names.join('-'))}`;
   },
+
+  /**
+   * 从jsonSchema中获取类型的名称;
+   * @param schema
+   */
+  getTypeNameFromSchema(schema){
+    if(!schema){
+      return 'unknown';
+    }
+    if(schema.title==='BaseResponse«List«StoreTypeVO»»'){
+      console.log(schema);
+    }
+
+
+    if(schema.title){
+      return schema.title.replace(/(«|»)/ig,"");
+    }else{
+      return 'unknown';
+    }
+  }
 };
 
 /**
@@ -236,8 +256,6 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
       apiItem.responseSchema = _resSchema;
 
       if (_resSchema) {
-        //@ts-ignore
-        _resSchema.title=Util.genInterfaceName(apiItem.name, 'res');
         param2RespTypes.push(_resSchema);
         // let {tsContent} = await genTsFromSchema(
         //   Util.genInterfaceName(apiItem.name, 'res'),
