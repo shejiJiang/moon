@@ -106,7 +106,7 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
     apiSuffix:"Controller",
   });
 
-  fse.writeJsonSync("/Users/dong/wanmi/athena-frontend/src/webapi/.apiInfo.json",indexInfo);
+  fse.writeJsonSync("/Users/dong/wanmi/athena-frontend/src/webapi/_api-info.json",indexInfo);
 })();
 
 
