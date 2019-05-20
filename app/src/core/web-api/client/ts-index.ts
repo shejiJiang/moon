@@ -73,9 +73,6 @@ export function genApiTsIndex({
       let statement = fileController.getStructure().statements[i];
 
       if (statement.kind === StructureKind.Function) {
-        //function defined
-        // console.log(statement.name);
-        // console.log(statement.returnType);
 
         let responseTs = statement.returnType
           ? getAllTsNameRef(
@@ -160,7 +157,6 @@ function getAllTsNameRef(
     results.push(name);
   }
 
-  // console.log(interfaces,'getAllTsNameRef::>',name,results);
   return results;
 }
 

@@ -54,9 +54,23 @@ export interface IActorItem {
 
 export type DataType ="any"|"string"|"object"|'string[]'|'number';
 
+
+/**
+ * //分别对应 controller methods response ...
+ * import {} from 'webapi/controller'
+ */
+export interface ImportInfo {
+  apiFile:string;
+  methodName:string;
+  interfaceName:string;
+  isArray:boolean;
+}
 export interface IType {
   name:string;
   value:any;//从初始值里直接生成ts的定义
+
+  schemaType:"internal"|"import"|"fromValue"
+  importInfo?:ImportInfo;
   typeName:string;//生成ts类型的名称;  在生成ts时定义出来
   schema:SchemaProps;//ts类型schema  这个可以用户指定或自动生成来做了.
 }

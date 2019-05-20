@@ -146,10 +146,19 @@ export async function generate(context: IContext) {
       for (let j = 0, jlen = actor.datas.length; j < jlen; j++) {
         let dataItem = actor.datas[j];
         //TODO 也可以外部指定 schema
-        let jsonDefied  =  await genTsFromJSON(Util.getPropsTsName(actor.fileName,dataItem.name,dataItem),dataItem.value);
-        dataItem.schema=jsonDefied.schema;
-        dataItem.typeName=jsonDefied.typeName;
-        valueTsDefinds.push(jsonDefied.tsContent)
+        if(dataItem.value && dataItem.schemaType==="fromValue") {
+          let jsonDefied  =  await genTsFromJSON(Util.getPropsTsName(actor.fileName,dataItem.name,dataItem),dataItem.value);
+          dataItem.schema=jsonDefied.schema;
+          dataItem.typeName=jsonDefied.typeName;
+          valueTsDefinds.push(jsonDefied.tsContent)
+        } else if (dataItem.schemaType==="internal") {
+          //TODO
+
+
+        } else if (dataItem.schemaType==="import") {
+          dataItem.typeName=dataItem.importInfo.interfaceName
+          +(dataItem.importInfo.isArray?"[]":"");
+        }
       }
     }
 
