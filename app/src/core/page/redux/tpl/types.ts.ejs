@@ -1,4 +1,5 @@
 import Actions from './actions';
+<%-getImport()%>
 
 <% pageInfo.actors.forEach(actor=>{ %>
         export interface <%=Util.getReducerTsName(actor.fileName)%> {

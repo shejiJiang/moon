@@ -9,7 +9,7 @@
 import * as ejs from 'ejs';
 import {join} from 'path';
 import * as fse from 'fs-extra';
-import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, ISubComp, IType,} from '../generate';
+import {DataType, IAction, IActorEvent, IActorItem, ImportInfo, IPageDefined, ISubComp, IType,} from '../generate';
 import {insertFile, getHandleFile} from "../../util/compile-util";
 import * as stringUitl from  '../../util/string-util';
 import {genTsFromJSON} from "../../util/json-util";
@@ -139,6 +139,7 @@ export async function generate(context: IContext) {
   await handlePage('types.ts.ejs', async (tplConent: string) => {
 
     let valueTsDefinds  =[];
+    let toImportInfo:ImportInfo[]  = [];
 
     for (let i = 0, ilen = pageInfo.actors.length; i < ilen; i++) {
       let actor = pageInfo.actors[i];
@@ -146,24 +147,28 @@ export async function generate(context: IContext) {
       for (let j = 0, jlen = actor.datas.length; j < jlen; j++) {
         let dataItem = actor.datas[j];
         //TODO 也可以外部指定 schema
-        if(dataItem.value && dataItem.schemaType==="fromValue") {
+        if (dataItem.schemaType==="internal") {
+          //TODO
+
+        } else if (dataItem.schemaType==="import") {
+          toImportInfo.push(dataItem.importInfo);
+          dataItem.typeName=dataItem.importInfo.interfaceName
+          +(dataItem.importInfo.isArray?"[]":"");
+        }else{
           let jsonDefied  =  await genTsFromJSON(Util.getPropsTsName(actor.fileName,dataItem.name,dataItem),dataItem.value);
           dataItem.schema=jsonDefied.schema;
           dataItem.typeName=jsonDefied.typeName;
           valueTsDefinds.push(jsonDefied.tsContent)
-        } else if (dataItem.schemaType==="internal") {
-          //TODO
 
-
-        } else if (dataItem.schemaType==="import") {
-          dataItem.typeName=dataItem.importInfo.interfaceName
-          +(dataItem.importInfo.isArray?"[]":"");
         }
       }
     }
 
     let conent = ejs.render(tplConent, {
       ...base,
+      getImport:():string=>{
+       return  toImportInfo.map((item:ImportInfo)=>`import {${item.interfaceName}} from 'webapi/${item.apiFile}';`).join('\n');
+      },
       valueTsDefinds: valueTsDefinds.join(""),
     });
     return conent;
