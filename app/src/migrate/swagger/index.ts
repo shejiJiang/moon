@@ -22,6 +22,7 @@ import {IOptions} from "tslint";
 import {IFileSaveOptions} from "../../core/page/taro-redux/redux-taro";
 import {toLCamelize, toUCamelize} from "../../core/util/string-util";
 import {IInsertOption, insertContent, insertFile} from "../../core/util/compile-util";
+import {genApiTsIndex} from "../../core/web-api/client/ts-index";
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
   return new Promise((resolve, reject) => {
@@ -97,6 +98,15 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
   await insertFile(join(basePath,"index.ts"),inserts);
   //还是生成 一个总的 ?
   //转换
+
+  //生成api索引文件::
+  let indexInfo  = genApiTsIndex({
+    tsConfig: '/Users/dong/wanmi/athena-frontend/tsconfig.json',
+    apiDir:"/Users/dong/wanmi/athena-frontend/src/webapi",
+    apiSuffix:"Controller",
+  });
+
+  fse.writeJsonSync("/Users/dong/wanmi/athena-frontend/src/webapi/.apiInfo.json",indexInfo);
 })();
 
 
