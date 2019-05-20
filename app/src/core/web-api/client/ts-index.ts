@@ -109,8 +109,10 @@ function getAllTsNameRef(
   results: string[] = [],
 ): string[] {
   if (name.endsWith('[]') && !results.includes(name)) {
-    results.push(name);
     name = name.replace('[]', '');
+    if(isRefTs(name) ) {
+      results.push(name+"[]");
+    }
   }
 
   for (let i = 0, iLen = interfaces.length; i < iLen; i++) {
@@ -154,7 +156,7 @@ function getAllTsNameRef(
     }
   }
 
-  if (!results.includes(name)) {
+  if (!results.includes(name) && isRefTs(name)) {
     results.push(name);
   }
 
