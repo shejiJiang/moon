@@ -48,63 +48,59 @@ let toGenMainPage = [
           if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
             options.content  = options.content
               .replace("import {connect} from 'react-redux'","import { connect } from '@tarojs/redux'")
+              .replace("import * as React from 'react';","")
+              .replace("React.Component","Component")
               .replace(/<div/ig,"<View")
               .replace(/<\/div>/ig,"</View>")
             ;
 
             options.content = `import { View, Button, Text } from '@tarojs/components';
+            import Taro, { Component, Config } from '@tarojs/taro'
             ${options.content}`
           }
 
           return options;
         },
         afterSave: async (options, context) => {
-          // if(options.toSaveFilePath.includes("index.tsx")) {
-          //
-          //   console.log('应该只打印一遍的. ');
-          //   let projectSrc  = projectPath;
-          //   let pageKey = context.pageInfo.pageKey;
-          //   let pageFilePath =join('pages', context.pageInfo.pagePath);
-          //
-          //   for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
-          //     let actor = pageInfo.actors[i];
-          //
-          //     let reducerKey =  toLCamelize(pageKey+"-"+actor.fileName);
-          //
-          //     await insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
-          //       {
-          //         mark: '//mark1//',
-          //         isBefore: true,
-          //         content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
-          //         check: (content): boolean => !content.includes(pageFilePath),
-          //       },
-          //       {
-          //         mark: '//mark2//',
-          //         isBefore: false,
-          //         content: reducerKey+ ',',
-          //         check: (content, rawContent): boolean =>
-          //           !rawContent.includes(pageFilePath),
-          //       },
-          //     ]);
-          //
-          //   }
-          //   //TODO 路由添加下呢.
-          //   await insertFile(join(projectSrc, 'src/pages/App.tsx'), [
-          //     {
-          //       mark: 'const',
-          //       isBefore: true,
-          //       content: `const ${toUCamelize(pageKey)} = loadable(() => import('@/${pageFilePath}'));`,
-          //       check: (content): boolean => !content.includes(pageFilePath),
-          //     },
-          //     {
-          //       mark: '{/*mark*/}',
-          //       isBefore: false,
-          //       content: `<Route path="/${context.pageInfo.pagePath}" component={${toUCamelize(pageKey)}} />`,
-          //       check: (content, rawContent): boolean =>
-          //         !rawContent.includes(pageFilePath),
-          //     },
-          //   ]);
-          // }
+          if(options.toSaveFilePath.includes("index.tsx")) {
+
+            console.log('应该只打印一遍的. ');
+            let projectSrc  = projectPath;
+            let pageKey = context.pageInfo.pageKey;
+            let pageFilePath =join('pages', context.pageInfo.pagePath);
+
+            for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
+              let actor = pageInfo.actors[i];
+
+              let reducerKey =  toLCamelize(pageKey+"-"+actor.fileName);
+
+              await insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
+                {
+                  mark: '//mark1//',
+                  isBefore: true,
+                  content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
+                  check: (content): boolean => !content.includes(pageFilePath),
+                },
+                {
+                  mark: '//mark2//',
+                  isBefore: false,
+                  content: reducerKey+ ',',
+                  check: (content, rawContent): boolean =>
+                    !rawContent.includes(pageFilePath),
+                },
+              ]);
+            }
+
+            //TODO 路由添加下呢.
+            await insertFile(join(projectSrc, 'src/app.tsx'), [
+              {
+                mark: '//pagePath//',
+                isBefore: true,
+                content: `'${pageFilePath}',`,
+                check: (content): boolean => !content.includes(pageFilePath),
+              }
+            ]);
+          }
         },
       });
     } else if (toGenSub1Page.includes(_key)) {
