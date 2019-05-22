@@ -14,22 +14,18 @@ import {toLCamelize,toUCamelize} from '../../util/string-util';
  * @Date    2019/3/20
  **/
 
-import toGenMainPage from  '/Users/dong/wanmi/athena-frontend/page-def/to-gen-page';
-
 let toGenSub1Page = [
   // 'balance/bankcardsTest',
 ];
 
-// let toGenMainPage = [
-//   // 'balance/bankcard-info',
-//   'trade/info'
-// ];
+let toGenMainPage = [
+  'goods/info'
+];
 
-import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
+// import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
 (async () => {
-  // let db = await fse.readJSON(join(__dirname, 'db.json'));
-  // let db = await fse.readJSON(join('/Users/dong/wanmi/athena-frontend/page-def', 'db.json'));
-  let projectPath = '/Users/dong/wanmi/athena-frontend';
+  let db = await fse.readJSON(join(__dirname, 'db.json'));
+  let projectPath = '/Users/dong/Falcon/skeleton/skeleton-taro/taroDemo';
   let prettiesConfig = {};
   try {
     prettiesConfig = await fse.readJSON(join(projectPath, 'pretties.json'));
@@ -42,67 +38,76 @@ import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
      }
 
     if (toGenMainPage.includes(_key)) {
-      console.log('');
        console.log('==>> ',_key);
       await buildPage({
-        afterSave: async (options, context) => {
-          if(options.toSaveFilePath.includes("index.tsx")) {
-
-            console.log('应该只打印一遍的. ');
-            let projectSrc  = projectPath;
-            let pageKey = context.pageInfo.pageKey;
-            let pageFilePath =join('pages', context.pageInfo.pagePath);
-
-            for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
-              let actor = pageInfo.actors[i];
-
-              let reducerKey =  toLCamelize(pageKey+"-"+actor.fileName);
-
-              await insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
-                {
-                  mark: '//mark1//',
-                  isBefore: true,
-                  content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
-                  check: (content): boolean => !content.includes(pageFilePath),
-                },
-                {
-                  mark: '//mark2//',
-                  isBefore: false,
-                  content: reducerKey+ ',',
-                  check: (content, rawContent): boolean =>
-                    !rawContent.includes(pageFilePath),
-                },
-              ]);
-
-            }
-            //TODO 路由添加下呢.
-            await insertFile(join(projectSrc, 'src/pages/App.tsx'), [
-              {
-                mark: 'const',
-                isBefore: true,
-                content: `const ${toUCamelize(pageKey)} = loadable(() => import('@/${pageFilePath}'));`,
-                check: (content): boolean => !content.includes(pageFilePath),
-              },
-              {
-                mark: '{/*mark*/}',
-                isBefore: false,
-                content: `<Route path="/${context.pageInfo.pagePath}" component={${toUCamelize(pageKey)}} />`,
-                check: (content, rawContent): boolean =>
-                  !rawContent.includes(pageFilePath),
-              },
-            ]);
-          }
-        },
         prettiesConfig,
         projectPath,
         pageInfo,
+        beforeSave:async(options,context)=>{
+
+          if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
+            options.content  = options.content
+              .replace("import {connect} from 'react-redux'","import { connect } from '@tarojs/redux'")
+              .replace(/<div/ig,"<View")
+              .replace(/<\/div>/ig,"</View>")
+            ;
+
+            options.content = `import { View, Button, Text } from '@tarojs/components';
+            ${options.content}`
+          }
+
+          return options;
+        },
+        afterSave: async (options, context) => {
+          // if(options.toSaveFilePath.includes("index.tsx")) {
+          //
+          //   console.log('应该只打印一遍的. ');
+          //   let projectSrc  = projectPath;
+          //   let pageKey = context.pageInfo.pageKey;
+          //   let pageFilePath =join('pages', context.pageInfo.pagePath);
+          //
+          //   for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
+          //     let actor = pageInfo.actors[i];
+          //
+          //     let reducerKey =  toLCamelize(pageKey+"-"+actor.fileName);
+          //
+          //     await insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
+          //       {
+          //         mark: '//mark1//',
+          //         isBefore: true,
+          //         content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
+          //         check: (content): boolean => !content.includes(pageFilePath),
+          //       },
+          //       {
+          //         mark: '//mark2//',
+          //         isBefore: false,
+          //         content: reducerKey+ ',',
+          //         check: (content, rawContent): boolean =>
+          //           !rawContent.includes(pageFilePath),
+          //       },
+          //     ]);
+          //
+          //   }
+          //   //TODO 路由添加下呢.
+          //   await insertFile(join(projectSrc, 'src/pages/App.tsx'), [
+          //     {
+          //       mark: 'const',
+          //       isBefore: true,
+          //       content: `const ${toUCamelize(pageKey)} = loadable(() => import('@/${pageFilePath}'));`,
+          //       check: (content): boolean => !content.includes(pageFilePath),
+          //     },
+          //     {
+          //       mark: '{/*mark*/}',
+          //       isBefore: false,
+          //       content: `<Route path="/${context.pageInfo.pagePath}" component={${toUCamelize(pageKey)}} />`,
+          //       check: (content, rawContent): boolean =>
+          //         !rawContent.includes(pageFilePath),
+          //     },
+          //   ]);
+          // }
+        },
       });
     } else if (toGenSub1Page.includes(_key)) {
-      // <% pageInfo.actors.forEach(actor=>{ %>
-      //   // import <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%> from "./reducers/<%=actor.fileName%>"
-      //   // import {registerReducer} from "@/redux/store";
-      //   // registerReducer({<%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>});
-      //   <% }) %>
 
       await buildPage({
         //动态加载;
@@ -153,7 +158,8 @@ import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
     }
   }
 })();
-//
+
+
 // async function mainAfterSave(
 //   projectPath: string,
 //   pagePath: string,

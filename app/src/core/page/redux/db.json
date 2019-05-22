@@ -1,7 +1,6 @@
 {
-  "trade/info":{
-    "pagePath": "trade/info",
-    "title":"订单详情",
+  "goods/info":{
+    "title":"商品详情",
     "actors": [
       {
         "fileName": "main",
@@ -13,34 +12,15 @@
               "time":"123123",
               "name":"123123"
             }
-          },
-          {
-            "name":"custom",
-            "value":{
-              "name":"123123",
-              "title":"123123",
-              "image":"123123",
-              "tel":"123123",
-              "level":"123123"
-            }
-          },
-          {
-            "name":"goods",
-            "value":[]
           }
         ],
         "events": [
-          {
-            "name": "assignEmployee",
-            "comment": "提成分配给员工",
-            "param": ""
-          }
         ]
       }
     ],
     "actions": [
       {
-        "fileName": "main",
+        "fileName": "action",
         "methods": [
           {
             "name": "modify",

@@ -51,7 +51,6 @@ import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
         afterSave: async (options, context) => {
           if(options.toSaveFilePath.includes("index.tsx")) {
 
-            console.log('应该只打印一遍的. ');
             let projectSrc  = projectPath;
             let pageKey = context.pageInfo.pageKey;
             let pageFilePath =join('pages', context.pageInfo.pagePath);

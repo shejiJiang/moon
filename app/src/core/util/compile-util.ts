@@ -82,9 +82,17 @@ export function getHandleFile({
 
     let saveOptions:IFileSaveOptions = {
       projectOutDir:"",
+      tplPath,
       toSaveFilePath:join(outDir, _param.saveFilePath),
       content
     };
+
+
+    //自定义前后都格式化下.避免多种判断问题...
+    try {
+      saveOptions.content = prettier.format(saveOptions.content, prettiesConfig);
+    } catch (err) {}
+
 
     if(context.beforeSave) {
       saveOptions= await context.beforeSave(saveOptions,context);
@@ -93,7 +101,6 @@ export function getHandleFile({
     await fse.ensureDir(parse(saveOptions.toSaveFilePath).dir);
 
     try {
-      //TODO 最好的方法是, 判断后缀决定是否格式化;
       saveOptions.content = prettier.format(saveOptions.content, prettiesConfig);
     } catch (err) {}
     console.log('output filePath: ', saveOptions.toSaveFilePath);

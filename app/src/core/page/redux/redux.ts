@@ -229,6 +229,7 @@ export async function generate(context: IContext) {
 
 export interface IFileSaveOptions{
   projectOutDir:string;
+  tplPath:string;
   toSaveFilePath:string;
   content:string;
 }
