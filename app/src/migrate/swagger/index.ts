@@ -26,7 +26,7 @@ import {genApiTsIndex} from "../../core/web-api/client/ts-index";
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
   return new Promise((resolve, reject) => {
-    request('http://172.19.26.161:8390/v2/api-docs', function(
+    request('http://114.67.93.106:8390/v2/api-docs', function(
     // request('http://118.31.238.229:8390/v2/api-docs', function(
       error,
       response,
