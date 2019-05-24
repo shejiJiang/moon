@@ -48,9 +48,6 @@ const Util = {
     if(!schema){
       return 'unknown';
     }
-    if(schema.title==='BaseResponse«List«StoreTypeVO»»'){
-      console.log(schema);
-    }
 
 
     if(schema.title){
@@ -156,7 +153,7 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
       // results.push(tsContent);
     }
 
-    if (apiItem.responseSchema && apiItem.responseSchema) {
+    if (apiItem.responseSchema) {
 
       let _resSchema = apiItem.responseSchema;
       if (resSchemaModify) {
@@ -177,8 +174,6 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
   }
 
 
-  console.log("genTsFromDefines");
-
   for (let i = 0, ilen = param2RespTypes.length; i < ilen; i++) {
     let item = param2RespTypes[i];
     context.webapiGroup.definitions[item.title]=item;
@@ -193,6 +188,7 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
 
 interface IJsonSchemaProps {
   description?: string;
+  title?: string;
 }
 
 //https://json-schema.org/latest/json-schema-validation.html#numeric

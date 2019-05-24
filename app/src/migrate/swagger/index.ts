@@ -44,55 +44,64 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
 (async () => {
   let apiJson = await loadJson();
   //   // // console.log(apiJson);
-  //   await fse.writeJSON(join(__dirname, 'pets-api.json'), apiJson);
+  //   await fse.writeJSON(join(__dirname, 'swagger-api.json'), apiJson);
   //   // //按分组;
   // let apiJson= await fse.readJSON(join(__dirname, 'pets-api.json'));
   //
   // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
   let apiGroups = transfer(apiJson);
   // //
-  // await fse.writeJSON(join(__dirname,"pets-webapi-defs.json"),apiGroups);
+  await fse.writeJSON(join(__dirname,"webapi-def.json"),apiGroups);
 
-  let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
+  // let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
+  let basePath = "/Users/dong/wanmi/sbc/sbc-supplier/web_modules/api";
 
   let inserts:IInsertOption[] =[];
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
-    let webapiGroup:IWebApiGroup = apiGroups[i];
+    try {
+      let webapiGroup:IWebApiGroup = apiGroups[i];
 
-    console.log('处理webapigrpu',webapiGroup.name);
+      console.log('处理webapigrpu',webapiGroup.name);
 
-    await buildWebApi({
-      webapiGroup,
-      projectPath:basePath,// join(__dirname, 'out'),
-      beforeCompile: (apiItem: IWebApiDefinded) => {
-        // apiItem.url =hostPre + apiItem.url;
-        return apiItem;
-      },
-      resSchemaModify,
-      beforeSave:(options:IFileSaveOptions,context: any)=>{
-        console.log(options.content.substring(0,30));
-        options.content = options.content.replace(`import sdk from "@api/sdk";`,`import * as sdk from '@/webapi/fetch';`)
-          .replace(/result\.data/ig,'result.context');
-        return Promise.resolve(options);
-      }
-    });
+      await buildWebApi({
+        webapiGroup,
+        projectPath:basePath,// join(__dirname, 'out'),
+        beforeCompile: (apiItem: IWebApiDefinded) => {
+          // apiItem.url =hostPre + apiItem.url;
+          return apiItem;
+        },
+        resSchemaModify,
+        beforeSave:(options:IFileSaveOptions,context: any)=>{
+          console.log(options.content.substring(0,30));
+          options.content = options.content
+            .replace(`import sdk from "@api/sdk";`,`import * as sdk from '@/webapi/fetch';`)
+            .replace(`import sdk from '@api/sdk';`,`import * as sdk from '@/webapi/fetch';`)
+            .replace(/result\.data/ig,'result.context');
+          return Promise.resolve(options);
+        }
+      });
 
-     let controllerName= toLCamelize(webapiGroup.name);
-     let filePath =`./${webapiGroup.name}`;
+       let controllerName= toLCamelize(webapiGroup.name);
+       let filePath =`./${webapiGroup.name}`;
 
-    inserts.push({
-      mark:"'whatwg-fetch';",
-      isBefore:false,
-      content:`import  ${controllerName} from '${filePath}';`,
-      check:(content:string)=>!content.includes(filePath)
-    });
+      inserts.push({
+        mark:"'whatwg-fetch';",
+        isBefore:false,
+        content:`import  ${controllerName} from '${filePath}';`,
+        check:(content:string)=>!content.includes(filePath)
+      });
 
-    inserts.push({
-      mark:"default {",
-      isBefore:false,
-      content:`${controllerName},`,
-      check:(_,raw)=>!raw.includes(filePath)
-    });
+      inserts.push({
+        mark:"default {",
+        isBefore:false,
+        content:`${controllerName},`,
+        check:(_,raw)=>!raw.includes(filePath)
+      });
+
+    } catch (err) {
+      console.error(err);
+
+    }
   }
 
   await insertFile(join(basePath,"index.ts"),inserts);
@@ -122,7 +131,13 @@ function resSchemaModify(schema: IJSObjectProps,context: IWebApiContext) {
   if(schema['originalRef']==='BaseResponse'){
     return null;
   }else if (schema['$ref']) {
+    console.log('schema[\'$ref\']',schema);
     let subSchema  = context.webapiGroup.definitions[schema['originalRef']] as IJSObjectProps;
+
+    if(!subSchema) {
+      return null;
+    }
+   console.log('hema[\'originalRef\']===\'BaseResponse\'',subSchema);
     if(subSchema.type==='object' && subSchema.properties && subSchema.properties.context ) {
       if(subSchema.properties.context["$ref"]) {
         return  context.webapiGroup.definitions[subSchema.properties.context["originalRef"]];
@@ -163,13 +178,11 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
   for (let url in apiDocs.paths) {
     let apiItem = apiDocs.paths[url];
 
-    let definitions = [];
     let groupKey="";
 
     //TODO 会不会有两个及三个方法呢 ? 会 account/invoiceProject/{projectId}
     for(let method in apiItem) {
-      // console.log(url,method);
-      let apiDefItem:any ={url,method};//IWebApiDefinded
+      let apiDefItem:any ={url,method};
       let methodInfo:IMethodDefinded = apiItem[method];
 
       // let groupKey = url.split('/')[1];
@@ -198,7 +211,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
         item.in!='header'
       ).map(item=>{
         if(item.schema){
-          definitions=definitions.concat(findAllRefType(apiDocs.definitions,item.schema));
+          addDef2List(KeyMap[groupKey].definitions,findAllRefType(apiDocs.definitions,item.schema));
         }
 
         return {
@@ -209,17 +222,8 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
         }
       });
       apiDefItem.responseSchema=methodInfo.responses['200'].schema;
-
-      definitions=definitions.concat(findAllRefType(apiDocs.definitions,apiDefItem.responseSchema));
+      addDef2List(KeyMap[groupKey].definitions,findAllRefType(apiDocs.definitions,apiDefItem.responseSchema));
       KeyMap[groupKey].apis.push(apiDefItem);
-    }
-
-
-    for (let i = 0, ilen = definitions.length; i < ilen; i++) {
-      let item = definitions[i];
-      if(item.title  && !KeyMap[groupKey].definitions[item.title]){
-        KeyMap[groupKey].definitions[item.title]=definitions[i];
-      }
     }
   }
 
@@ -227,9 +231,28 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
   for(let key in KeyMap){
     apiGroups.push(KeyMap[key]);
   }
-  // fse.writeJSONSync(join(__dirname,"old-method-Info.json"),temp);
-
   return apiGroups;
+}
+
+function addDef2List(definitions: {
+  [defName: string]: SchemaProps;
+},schema:SchemaProps|SchemaProps[]){
+
+  if ( schema instanceof Array) {
+    for (let i = 0, iLen = schema.length; i < iLen; i++) {
+      let schemaItem = schema[i];
+
+      if(!definitions[schemaItem.title]){
+        definitions[schemaItem.title]=schemaItem;
+      }
+    }
+
+  } else {
+    if(!definitions[schema.title]){
+      definitions[schema.title]=schema;
+    }
+  }
+
 }
 
 //TODO 枚举类型的控制.
