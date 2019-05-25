@@ -26,7 +26,7 @@ import {genApiTsIndex} from "../../core/web-api/client/ts-index";
 
 async function loadJson(): Promise<ISwaggerApisDocs> {
   return new Promise((resolve, reject) => {
-    request('http://114.67.93.106:8390/v2/api-docs', function(
+    request('http://172.19.26.161:8490/v2/api-docs', function(
     // request('http://118.31.238.229:8390/v2/api-docs', function(
       error,
       response,
@@ -74,8 +74,8 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
         beforeSave:(options:IFileSaveOptions,context: any)=>{
           console.log(options.content.substring(0,30));
           options.content = options.content
-            .replace(`import sdk from "@api/sdk";`,`import * as sdk from '@/webapi/fetch';`)
-            .replace(`import sdk from '@api/sdk';`,`import * as sdk from '@/webapi/fetch';`)
+            .replace(`import sdk from "@api/sdk";`,`import * as sdk from './fetch';`)
+            .replace(`import sdk from '@api/sdk';`,`import * as sdk from './fetch';`)
             .replace(/result\.data/ig,'result.context');
           return Promise.resolve(options);
         }

@@ -7,7 +7,7 @@ import sdk from "@api/sdk";
  * <%=apiItem.comment%>
  *
  */
-async function <%=apiItem.name%>(
+async function <%=Util.getMethodName(apiItem.name)%>(
     <% apiItem.requestParam.forEach(paramItem=>{ %>
         <%=paramItem.name%>:<%=Util.genInterfaceName(apiItem.name,paramItem.name,"req")%>,
     <% }) %>
@@ -16,7 +16,7 @@ async function <%=apiItem.name%>(
   "<%=apiItem.url%>"
     <% apiItem.requestParam.forEach(paramItem=>{ %>
            <% if (paramItem.isInPath) { %>
-           .replace("{<%-paramItem.name %>}",<%-paramItem.name %>)
+           .replace("{<%-paramItem.name %>}",<%-paramItem.name %>+"")
             <% }  %>
     <% }) %>
 
@@ -35,7 +35,7 @@ async function <%=apiItem.name%>(
 
 export default {
 <% webapiGroup.apis.forEach(apiItem=>{ %>
-    <%=apiItem.name%>,
+    <%=Util.getMethodName(apiItem.name)%>,
 <% }) %>
 };
 
