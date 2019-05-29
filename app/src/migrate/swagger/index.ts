@@ -11,20 +11,19 @@ import * as request from 'request';
 import * as fse from 'fs-extra';
 import {join} from 'path';
 import {
-  buildWebApi, IJSObjectProps,
-  IJsonSchemaRef,
-  IParamShape, IWebApiContext,
+  buildWebApi,
+  IJSObjectProps,
+  IWebApiContext,
   IWebApiDefinded,
   IWebApiGroup,
   SchemaProps
 } from '../../core/web-api/client';
-import {IOptions} from "tslint";
 import {IFileSaveOptions} from "../../core/page/taro-redux/redux-taro";
 import {toLCamelize, toUCamelize} from "../../core/util/string-util";
 import {IInsertOption, insertContent, insertFile} from "../../core/util/compile-util";
 import {genApiTsIndex} from "../../core/web-api/client/ts-index";
 
-async function loadJson(): Promise<ISwaggerApisDocs> {
+async function loadJson(): Promise<any> {
   return new Promise((resolve, reject) => {
     request('http://172.19.26.161:8490/v2/api-docs', function(
     // request('http://118.31.238.229:8390/v2/api-docs', function(
@@ -40,6 +39,26 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
     });
   });
 }
+let defaulltMoonConfig = {
+  api:{
+    exclude:[]
+  }
+};
+
+try {
+  let configFilePath = '/Users/dong/wanmi/sbc/sbc-supplier/.moon.json';
+  console.log('读取配置文件',configFilePath);
+  if(fse.pathExistsSync(configFilePath)){
+    defaulltMoonConfig =  fse.readJSONSync(configFilePath);
+  }else{
+    console.log('读取默认配置');
+  }
+} catch (err) {
+
+}
+
+
+
 
 (async () => {
   let apiJson = await loadJson();
@@ -50,7 +69,6 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
   //
   // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
   let apiGroups = transfer(apiJson);
-  // //
   await fse.writeJSON(join(__dirname,"webapi-def.json"),apiGroups);
 
   // let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
@@ -61,7 +79,11 @@ async function loadJson(): Promise<ISwaggerApisDocs> {
     try {
       let webapiGroup:IWebApiGroup = apiGroups[i];
 
-      console.log('处理webapigrpu',webapiGroup.name);
+      console.log(defaulltMoonConfig.api.exclude,webapiGroup.name);
+      if(defaulltMoonConfig.api.exclude.includes(webapiGroup.name)){
+        console.log("ignore webapiGroup:",webapiGroup.name,"due to MoonConfig.api.exclude");
+        continue;
+      }
 
       await buildWebApi({
         webapiGroup,
@@ -131,13 +153,13 @@ function resSchemaModify(schema: IJSObjectProps,context: IWebApiContext) {
   if(schema['originalRef']==='BaseResponse'){
     return null;
   }else if (schema['$ref']) {
-    console.log('schema[\'$ref\']',schema);
+    // console.log('schema[\'$ref\']',schema);
     let subSchema  = context.webapiGroup.definitions[schema['originalRef']] as IJSObjectProps;
 
     if(!subSchema) {
       return null;
     }
-   console.log('hema[\'originalRef\']===\'BaseResponse\'',subSchema);
+   // console.log('hema[\'originalRef\']===\'BaseResponse\'',subSchema);
     if(subSchema.type==='object' && subSchema.properties && subSchema.properties.context ) {
       if(subSchema.properties.context["$ref"]) {
         return  context.webapiGroup.definitions[subSchema.properties.context["originalRef"]];
@@ -156,13 +178,6 @@ function resSchemaModify(schema: IJSObjectProps,context: IWebApiContext) {
     return schema;
   }
 }
-
-let toDealUrls =[
-  '/account/allOfflineAccounts',
-  '/account/base/bank',
-  '/account/confirm',
-]
-
 
 /**
  * 转换项目
