@@ -78,8 +78,6 @@ try {
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
     try {
       let webapiGroup:IWebApiGroup = apiGroups[i];
-
-      console.log(defaulltMoonConfig.api.exclude,webapiGroup.name);
       if(defaulltMoonConfig.api.exclude.includes(webapiGroup.name)){
         console.log("ignore webapiGroup:",webapiGroup.name,"due to MoonConfig.api.exclude");
         continue;

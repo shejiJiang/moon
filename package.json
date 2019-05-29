@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean"
+  },
+  "dependencies": {
+    "lerna": "^3.14.1"
+  },
+  "name": "moon"
+}
