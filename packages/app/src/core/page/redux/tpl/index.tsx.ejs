@@ -14,9 +14,8 @@ class <%=className%> extends React.Component<T.IProps, any> {
 
   componentDidMount() {
 
-/*
 <%-(pageInfo.mainComp&&pageInfo.mainComp.methods.filter(item=>item.name =="componentDidMount")[0]||{}).content%>
-*/
+
     this.props.actions.init();
   }
 

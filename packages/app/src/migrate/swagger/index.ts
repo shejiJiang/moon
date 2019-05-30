@@ -61,81 +61,84 @@ try {
 
 
 (async () => {
-  let apiJson = await loadJson();
-  //   // // console.log(apiJson);
-  //   await fse.writeJSON(join(__dirname, 'swagger-api.json'), apiJson);
-  //   // //按分组;
-  // let apiJson= await fse.readJSON(join(__dirname, 'pets-api.json'));
+  let workBase = "/Users/dong/wanmi/sbc/sbc-supplier/";
+  // let apiJson = await loadJson();
+  // //   // // console.log(apiJson);
+  // //   await fse.writeJSON(join(__dirname, 'swagger-api.json'), apiJson);
+  // //   // //按分组;
+  // // let apiJson= await fse.readJSON(join(__dirname, 'pets-api.json'));
+  // //
+  // // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
+  // let apiGroups = transfer(apiJson);
+  // await fse.writeJSON(join(__dirname,"webapi-def.json"),apiGroups);
   //
-  // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
-  let apiGroups = transfer(apiJson);
-  await fse.writeJSON(join(__dirname,"webapi-def.json"),apiGroups);
-
-  // let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
-  let basePath = "/Users/dong/wanmi/sbc/sbc-supplier/web_modules/api";
-
-  let inserts:IInsertOption[] =[];
-  for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
-    try {
-      let webapiGroup:IWebApiGroup = apiGroups[i];
-      if(defaulltMoonConfig.api.exclude.includes(webapiGroup.name)){
-        console.log("ignore webapiGroup:",webapiGroup.name,"due to MoonConfig.api.exclude");
-        continue;
-      }
-
-      await buildWebApi({
-        webapiGroup,
-        projectPath:basePath,// join(__dirname, 'out'),
-        beforeCompile: (apiItem: IWebApiDefinded) => {
-          // apiItem.url =hostPre + apiItem.url;
-          return apiItem;
-        },
-        resSchemaModify,
-        beforeSave:(options:IFileSaveOptions,context: any)=>{
-          console.log(options.content.substring(0,30));
-          options.content = options.content
-            .replace(`import sdk from "@api/sdk";`,`import * as sdk from './fetch';`)
-            .replace(`import sdk from '@api/sdk';`,`import * as sdk from './fetch';`)
-            .replace(/result\.data/ig,'result.context');
-          return Promise.resolve(options);
-        }
-      });
-
-       let controllerName= toLCamelize(webapiGroup.name);
-       let filePath =`./${webapiGroup.name}`;
-
-      inserts.push({
-        mark:"'whatwg-fetch';",
-        isBefore:false,
-        content:`import  ${controllerName} from '${filePath}';`,
-        check:(content:string)=>!content.includes(filePath)
-      });
-
-      inserts.push({
-        mark:"default {",
-        isBefore:false,
-        content:`${controllerName},`,
-        check:(_,raw)=>!raw.includes(filePath)
-      });
-
-    } catch (err) {
-      console.error(err);
-
-    }
-  }
-
-  await insertFile(join(basePath,"index.ts"),inserts);
-  //还是生成 一个总的 ?
-  //转换
+  // // let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
+  // let basePath = workBase+"web_modules/api";
+  //
+  // let inserts:IInsertOption[] =[];
+  // for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
+  //   try {
+  //     let webapiGroup:IWebApiGroup = apiGroups[i];
+  //     if(defaulltMoonConfig.api.exclude.includes(webapiGroup.name)){
+  //       console.log("ignore webapiGroup:",webapiGroup.name,"due to MoonConfig.api.exclude");
+  //       continue;
+  //     }else{
+  //       console.log("current webapiGroup:",webapiGroup.name);
+  //     }
+  //
+  //     await buildWebApi({
+  //       webapiGroup,
+  //       projectPath:basePath,// join(__dirname, 'out'),
+  //       beforeCompile: (apiItem: IWebApiDefinded) => {
+  //         // apiItem.url =hostPre + apiItem.url;
+  //         return apiItem;
+  //       },
+  //       resSchemaModify,
+  //       beforeSave:(options:IFileSaveOptions,context: any)=>{
+  //         console.log(options.content.substring(0,30));
+  //         options.content = options.content
+  //           .replace(`import sdk from "@api/sdk";`,`import * as sdk from './fetch';`)
+  //           .replace(`import sdk from '@api/sdk';`,`import * as sdk from './fetch';`)
+  //           .replace(/result\.data/ig,'result.context');
+  //         return Promise.resolve(options);
+  //       }
+  //     });
+  //
+  //      let controllerName= toLCamelize(webapiGroup.name);
+  //      let filePath =`./${webapiGroup.name}`;
+  //
+  //     inserts.push({
+  //       mark:"'whatwg-fetch';",
+  //       isBefore:false,
+  //       content:`import  ${controllerName} from '${filePath}';`,
+  //       check:(content:string)=>!content.includes(filePath)
+  //     });
+  //
+  //     inserts.push({
+  //       mark:"default {",
+  //       isBefore:false,
+  //       content:`${controllerName},`,
+  //       check:(_,raw)=>!raw.includes(filePath)
+  //     });
+  //
+  //   } catch (err) {
+  //     console.error(err);
+  //
+  //   }
+  // }
+  //
+  // await insertFile(join(basePath,"index.ts"),inserts);
+  // //还是生成 一个总的 ?
+  // //转换
 
   //生成api索引文件::
   let indexInfo  = genApiTsIndex({
-    tsConfig: '/Users/dong/wanmi/athena-frontend/tsconfig.json',
-    apiDir:"/Users/dong/wanmi/athena-frontend/src/webapi",
+    tsConfig: workBase+'tsconfig.json',
+    apiDir:workBase+"web_modules/api",
     apiSuffix:"Controller",
   });
 
-  fse.writeJsonSync("/Users/dong/wanmi/athena-frontend/src/webapi/_api-info.json",indexInfo);
+  fse.writeJsonSync(workBase+"web_modules/api/_api-info.json",indexInfo);
 })();
 
 

@@ -25,9 +25,8 @@ class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<I<%=Util.t
       <% }) %>
     } =  this.props;
 
-/*
-<%-(subComp.methods.filter(item=>item.name =="render")[0]||{}).content%>
-*/
+    <%-(subComp.methods.filter(item=>item.name =="render")[0]||{}).content%>
+
     return (
       <div className="<%=Util.toLCamelize(subComp.fileName)%>">
          <div/>

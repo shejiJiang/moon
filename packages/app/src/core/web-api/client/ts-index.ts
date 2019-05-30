@@ -10,8 +10,8 @@
  **/
 import {Project, InterfaceDeclarationStructure, StructureKind} from 'ts-morph';
 
-const baseType = ['number', 'string'];
-const numberReg = /^[0-9]$/gi;
+const baseType = ['number', 'string','unknown','boolean'];
+const numberReg = /^[0-9]+$/;
 
 export interface Controller{
   fileName:"",
@@ -118,6 +118,7 @@ function getAllTsNameRef(
       // @ts-ignore
       // console.log(interfaces.properties);
       //遍历获取子依赖..
+      results.push(name);
       if (interfaceItem.properties) {
         // @ts-ignore
         for (let j = 0, jLen = interfaceItem.properties.length; j < jLen; j++) {
@@ -160,13 +161,18 @@ function getAllTsNameRef(
   return results;
 }
 
+/**
+ * 判断是否是引用类型.
+ * @param {string} refInfo
+ * @returns {boolean}
+ */
 function isRefTs(refInfo: string): boolean {
   if (baseType.includes(refInfo)) {
     return false;
-  } else if (numberReg.test(refInfo)) {
+  } else if (numberReg.test(refInfo.trim())) {
     return false;
   }
-
+  console.warn(`判断是否是引用类型;${numberReg.test('1')} -${refInfo}- VS -${refInfo.trim()}-` ,numberReg.test(refInfo+""), typeof refInfo);
   return true;
 }
 

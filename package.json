@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "install": "lerna bootstrap",
     "clean": "lerna clean"
   },
+  "packages": ["packages/*"],
   "dependencies": {
     "lerna": "^3.14.1"
   },
