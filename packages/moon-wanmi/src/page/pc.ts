@@ -2,8 +2,6 @@ import MoonCore from  'moon-core';
 import * as fse from 'fs-extra';
 import {join} from 'path';
 import {IPageDefined} from "moon-core/declarations/typings/page";
-import toGenMainPage from  '/Users/dong/wanmi/sbc/sbc-supplier/page-def/to-gen-page';
-
 let toGenSub1Page = [
   // 'balance/bankcardsTest',
 ];
@@ -21,6 +19,7 @@ let toGenSub1Page = [
     prettiesConfig = await fse.readJSON(join(projectPath, 'pretties.json'));
   } catch (err) {}
   let db  =  require(join(projectPath,"page-def/db"));
+  let toGenMainPage  = require(join(projectPath,"page-def/to-gen-page"));
   for (let _key in db) {
     let pageInfo: IPageDefined = db[_key];
      if(!pageInfo.pagePath) {

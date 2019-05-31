@@ -1,10 +1,8 @@
-import {IPageDefined} from '../../../core/src/typings/page';
-import {buildPage} from '../../../core/src/page/redux/redux';
+import {IPageDefined} from "moon-core/declarations/typings/page";
+import MoonCore from  'moon-core';
+
 import * as fse from 'fs-extra';
 import {join} from 'path';
-import {insertContent, insertFile} from '../../../core/src/util/compile-util';
-import {toLCamelize,toUCamelize} from '../../../core/src/util/string-util';
-
 /**
  * @desc
  *
@@ -39,7 +37,7 @@ let toGenMainPage = [
 
     if (toGenMainPage.includes(_key)) {
        console.log('==>> ',_key);
-      await buildPage({
+      await MoonCore.ReduxGen.buildPage({
         prettiesConfig,
         projectPath,
         pageInfo,
@@ -72,9 +70,9 @@ let toGenMainPage = [
             for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
               let actor = pageInfo.actors[i];
 
-              let reducerKey =  toLCamelize(pageKey+"-"+actor.fileName);
+              let reducerKey =  MoonCore.StringUtil.toLCamelize(pageKey+"-"+actor.fileName);
 
-              await insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
+              await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
                 {
                   mark: '//mark1//',
                   isBefore: true,
@@ -92,7 +90,7 @@ let toGenMainPage = [
             }
 
             //TODO 路由添加下呢.
-            await insertFile(join(projectSrc, 'src/app.tsx'), [
+            await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/app.tsx'), [
               {
                 mark: '//pagePath//',
                 isBefore: true,
@@ -105,7 +103,7 @@ let toGenMainPage = [
       });
     } else if (toGenSub1Page.includes(_key)) {
 
-      await buildPage({
+      await MoonCore.ReduxGen.buildPage({
         //动态加载;
       //   import balanceBankcardInfoBankInfo from "./reducers/bank-info"
       //   import {registerReducer} from "@/redux/store";
