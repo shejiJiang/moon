@@ -5,6 +5,7 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "outDir": "./lib",
+    "declarationDir":"./declarations",
     "declaration": true
   },
   "include": ["src"],

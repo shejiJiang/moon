@@ -12,19 +12,16 @@ import * as fse from 'fs-extra';
 import {join} from 'path';
 import MoonCore from 'moon-core';
 
-
-
-
 import {
   IJSObjectProps,
   IWebApiContext,
   IWebApiDefinded,
   IWebApiGroup,
   SchemaProps
-} from 'moon-core';
+} from 'moon-core/declarations/typings/api';
 
-import {IFileSaveOptions} from "../../core/page/taro-redux/redux-taro";
-import {IInsertOption, insertContent, insertFile} from "../../core/util/compile-util";
+import {IFileSaveOptions} from "moon-core/declarations/typings/page";
+import {IInsertOption,  insertFile} from "moon-core/declarations/typings/util";
 
 
 async function loadJson(): Promise<any> {
@@ -131,7 +128,7 @@ try {
     }
   }
 
-  await insertFile(join(basePath,"index.ts"),inserts);
+  await MoonCore.CompileUtil.insertFile(join(basePath,"index.ts"),inserts);
   //还是生成 一个总的 ?
   //转换
 
