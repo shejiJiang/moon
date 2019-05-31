@@ -26,7 +26,8 @@ import {IInsertOption} from "moon-core/declarations/typings/util";
 
 async function loadJson(): Promise<any> {
   return new Promise((resolve, reject) => {
-    request('http://172.19.26.161:8490/v2/api-docs', function(
+
+    request(defaulltMoonConfig.swaggerApi, function(
     // request('http://118.31.238.229:8390/v2/api-docs', function(
       error,
       response,
@@ -40,24 +41,27 @@ async function loadJson(): Promise<any> {
     });
   });
 }
-let defaulltMoonConfig = {
+let defaulltMoonConfig : {
+  swaggerApi:string;
   api:{
-    exclude:[]
+    exclude:string[];
   }
 };
 
+
+let projectPath = process.cwd();
+let configFilePath = join(projectPath,'.moon.json');
 try {
-  let configFilePath = '/Users/dong/wanmi/sbc/sbc-supplier/.moon.json';
   console.log('读取配置文件',configFilePath);
   if(fse.pathExistsSync(configFilePath)){
     defaulltMoonConfig =  fse.readJSONSync(configFilePath);
   }else{
-    console.log('读取默认配置');
+    throw new Error('配置不存在:'+configFilePath);
   }
 } catch (err) {
 
+  throw new Error('配置读取失败:'+configFilePath);
 }
-
 
 
 
@@ -74,7 +78,7 @@ try {
   await fse.writeJSON(join(__dirname,"webapi-def.json"),apiGroups);
 
   // let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
-  let basePath = workBase+"web_modules/api";
+  let basePath = join(workBase,"web_modules/api");
 
   let inserts:IInsertOption[] =[];
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
@@ -134,12 +138,11 @@ try {
 
   //生成api索引文件::
   let indexInfo  = MoonCore.TsIndex.genApiTsIndex({
-    tsConfig: workBase+'tsconfig.json',
-    apiDir:workBase+"web_modules/api",
+    tsConfig: join(workBase,"tsconfig.json") ,
+    apiDir:join(workBase,"web_modules/api"),
     apiSuffix:"Controller",
   });
-
-  fse.writeJsonSync(workBase+"web_modules/api/_api-info.json",indexInfo);
+  fse.writeJsonSync( join(workBase , "web_modules/api/_api-info.json")  ,indexInfo);
 })();
 
 
