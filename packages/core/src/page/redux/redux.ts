@@ -167,7 +167,7 @@ export async function generate(context: IContext) {
     let conent = ejs.render(tplConent, {
       ...base,
       getImport:():string=>{
-       return  toImportInfo.map((item:ImportInfo)=>`import {${item.interfaceName}} from 'webapi/${item.apiFile}';`).join('\n');
+       return  toImportInfo.map((item:ImportInfo)=>`import {${item.interfaceName}} from 'api/${item.apiFile}';`).join('\n');
       },
       valueTsDefinds: valueTsDefinds.join(""),
     });
