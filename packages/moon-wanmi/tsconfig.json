@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "outDir": "./lib",
@@ -10,6 +9,6 @@
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/**/*", "temp/**",
-    "../moon-wanmi/src/demo/**"
+    "src/demo/**"
   ]
 }

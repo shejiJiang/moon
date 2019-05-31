@@ -1,9 +1,9 @@
-import {IPageDefined} from '../src/typings/page';
-import {buildPage} from '../src/page/redux/redux';
+import {IPageDefined} from '../../../core/src/typings/page';
+import {buildPage} from '../../../core/src/page/redux/redux';
 import * as fse from 'fs-extra';
 import {join} from 'path';
-import {insertContent, insertFile} from '../src/util/compile-util';
-import {toLCamelize,toUCamelize} from '../src/util/string-util';
+import {insertContent, insertFile} from '../../../core/src/util/compile-util';
+import {toLCamelize,toUCamelize} from '../../../core/src/util/string-util';
 
 /**
  * @desc
@@ -14,28 +14,18 @@ import {toLCamelize,toUCamelize} from '../src/util/string-util';
  * @Date    2019/3/20
  **/
 
-import toGenMainPage from  '/Users/dong/wanmi/sbc/sbc-supplier/page-def/to-gen-page';
-
 let toGenSub1Page = [
   // 'balance/bankcardsTest',
 ];
 
-// let toGenMainPage = [
-//   // 'balance/bankcard-info',
-//   'trade/info'
-// ];
+let toGenMainPage = [
+  'goods/info'
+];
 
-const baseWorkBench = "/Users/dong/wanmi/sbc/sbc-supplier";
-
-import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
+// import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
 (async () => {
-  // let db = await fse.readJSON(join(__dirname, 'db.json'));
-  // let db = await fse.readJSON(join('/Users/dong/wanmi/athena-frontend/page-def', 'db.json'));
-  //TODO action 关联dispatch 界面化比较好处理些.. 伪代码 是不是可以添加起来了?
-  //TODO 命名冲突 的问题 ..  actor名字, props名字会冲突;
-  //TODO input 关键字处理..
-  // let projectPath = '/Users/dong/wanmi/athena-frontend';
-  let projectPath = '/Users/dong/wanmi/sbc/sbc-supplier';
+  let db = await fse.readJSON(join(__dirname, 'db.json'));
+  let projectPath = '/Users/dong/Falcon/skeleton/skeleton-taro/taroDemo';
   let prettiesConfig = {};
   try {
     prettiesConfig = await fse.readJSON(join(projectPath, 'pretties.json'));
@@ -48,12 +38,33 @@ import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
      }
 
     if (toGenMainPage.includes(_key)) {
-      console.log('');
        console.log('==>> ',_key);
       await buildPage({
+        prettiesConfig,
+        projectPath,
+        pageInfo,
+        beforeSave:async(options,context)=>{
+
+          if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
+            options.content  = options.content
+              .replace("import {connect} from 'react-redux'","import { connect } from '@tarojs/redux'")
+              .replace("import * as React from 'react';","")
+              .replace("React.Component","Component")
+              .replace(/<div/ig,"<View")
+              .replace(/<\/div>/ig,"</View>")
+            ;
+
+            options.content = `import { View, Button, Text } from '@tarojs/components';
+            import Taro, { Component, Config } from '@tarojs/taro'
+            ${options.content}`
+          }
+
+          return options;
+        },
         afterSave: async (options, context) => {
           if(options.toSaveFilePath.includes("index.tsx")) {
 
+            console.log('应该只打印一遍的. ');
             let projectSrc  = projectPath;
             let pageKey = context.pageInfo.pageKey;
             let pageFilePath =join('pages', context.pageInfo.pagePath);
@@ -78,36 +89,21 @@ import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
                     !rawContent.includes(pageFilePath),
                 },
               ]);
-
             }
-            // //TODO 路由添加下呢.
-            // await insertFile(join(projectSrc, 'src/pages/App.tsx'), [
-            //   {
-            //     mark: 'const',
-            //     isBefore: true,
-            //     content: `const ${toUCamelize(pageKey)} = loadable(() => import('@/${pageFilePath}'));`,
-            //     check: (content): boolean => !content.includes(pageFilePath),
-            //   },
-            //   {
-            //     mark: '{/*mark*/}',
-            //     isBefore: false,
-            //     content: `<Route path="/${context.pageInfo.pagePath}" component={${toUCamelize(pageKey)}} />`,
-            //     check: (content, rawContent): boolean =>
-            //       !rawContent.includes(pageFilePath),
-            //   },
-            // ]);
+
+            //TODO 路由添加下呢.
+            await insertFile(join(projectSrc, 'src/app.tsx'), [
+              {
+                mark: '//pagePath//',
+                isBefore: true,
+                content: `'${pageFilePath}',`,
+                check: (content): boolean => !content.includes(pageFilePath),
+              }
+            ]);
           }
         },
-        prettiesConfig,
-        projectPath,
-        pageInfo,
       });
     } else if (toGenSub1Page.includes(_key)) {
-      // <% pageInfo.actors.forEach(actor=>{ %>
-      //   // import <%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%> from "./reducers/<%=actor.fileName%>"
-      //   // import {registerReducer} from "@/redux/store";
-      //   // registerReducer({<%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>});
-      //   <% }) %>
 
       await buildPage({
         //动态加载;
@@ -158,7 +154,8 @@ import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
     }
   }
 })();
-//
+
+
 // async function mainAfterSave(
 //   projectPath: string,
 //   pagePath: string,
