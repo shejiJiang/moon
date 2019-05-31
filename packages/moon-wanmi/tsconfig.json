@@ -3,12 +3,10 @@
   "compilerOptions": {
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
+    "rootDir": ".",
     "outDir": "./lib",
     "declarationDir":"./declarations",
     "declaration": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/**/*", "temp/**",
-    "src/demo/**"
-  ]
+  "include": ["./src"]
 }

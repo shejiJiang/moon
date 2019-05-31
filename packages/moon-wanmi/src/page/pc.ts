@@ -8,24 +8,19 @@ let toGenSub1Page = [
   // 'balance/bankcardsTest',
 ];
 
-// let toGenMainPage = [
-//   // 'balance/bankcard-info',
-//   'trade/info'
-// ];
-
-import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
 (async () => {
   // let db = await fse.readJSON(join(__dirname, 'db.json'));
   // let db = await fse.readJSON(join('/Users/dong/wanmi/athena-frontend/page-def', 'db.json'));
   //TODO 命名冲突 的问题 ..  actor名字, props名字会冲突;
   //TODO input 关键字处理..
   // let projectPath = '/Users/dong/wanmi/athena-frontend';
-  let projectPath = '/Users/dong/wanmi/sbc/sbc-supplier';
+
+  let projectPath = process.cwd();
   let prettiesConfig = {};
   try {
     prettiesConfig = await fse.readJSON(join(projectPath, 'pretties.json'));
   } catch (err) {}
-
+  let db  =  require(join(projectPath,"page-def/db"));
   for (let _key in db) {
     let pageInfo: IPageDefined = db[_key];
      if(!pageInfo.pagePath) {
@@ -33,20 +28,17 @@ import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
      }
 
     if (toGenMainPage.includes(_key)) {
-      console.log('');
        console.log('==>> ',_key);
       await MoonCore.ReduxGen.buildPage({
         afterSave: async (options, context) => {
           if(options.toSaveFilePath.includes("index.tsx")) {
-
-            let projectSrc  = projectPath;
             let pageKey = context.pageInfo.pageKey;
             let pageFilePath =join('pages', context.pageInfo.pagePath);
 
             for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
               let actor = pageInfo.actors[i];
               let reducerKey =  MoonCore.StringUtil.toLCamelize(pageKey+"-"+actor.fileName);
-              await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
+              await MoonCore.CompileUtil.insertFile(join(projectPath, 'src/redux/reducers/index.ts'), [
                 {
                   mark: '//mark1//',
                   isBefore: true,
@@ -82,7 +74,7 @@ import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
           }
         },
         prettiesConfig,
-        projectPath,
+        projectPath:projectPath,
         pageInfo,
       });
     } else if (toGenSub1Page.includes(_key)) {
