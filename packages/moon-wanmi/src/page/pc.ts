@@ -1,19 +1,7 @@
-import {IPageDefined} from '../../../core/src/typings/page';
-import {buildPage} from '../../../core/src/page/redux/redux';
+import MoonCore from  'moon-core';
 import * as fse from 'fs-extra';
 import {join} from 'path';
-import {insertContent, insertFile} from '../../../core/src/util/compile-util';
-import {toLCamelize,toUCamelize} from '../../../core/src/util/string-util';
-
-/**
- * @desc
- *
- * @使用场景
- *
- * @company qianmi.com
- * @Date    2019/3/20
- **/
-
+import {IPageDefined} from "moon-core/declarations/typings/page";
 import toGenMainPage from  '/Users/dong/wanmi/sbc/sbc-supplier/page-def/to-gen-page';
 
 let toGenSub1Page = [
@@ -25,13 +13,10 @@ let toGenSub1Page = [
 //   'trade/info'
 // ];
 
-const baseWorkBench = "/Users/dong/wanmi/sbc/sbc-supplier";
-
 import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
 (async () => {
   // let db = await fse.readJSON(join(__dirname, 'db.json'));
   // let db = await fse.readJSON(join('/Users/dong/wanmi/athena-frontend/page-def', 'db.json'));
-  //TODO action 关联dispatch 界面化比较好处理些.. 伪代码 是不是可以添加起来了?
   //TODO 命名冲突 的问题 ..  actor名字, props名字会冲突;
   //TODO input 关键字处理..
   // let projectPath = '/Users/dong/wanmi/athena-frontend';
@@ -50,7 +35,7 @@ import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
     if (toGenMainPage.includes(_key)) {
       console.log('');
        console.log('==>> ',_key);
-      await buildPage({
+      await MoonCore.ReduxGen.buildPage({
         afterSave: async (options, context) => {
           if(options.toSaveFilePath.includes("index.tsx")) {
 
@@ -60,10 +45,8 @@ import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
 
             for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
               let actor = pageInfo.actors[i];
-
-              let reducerKey =  toLCamelize(pageKey+"-"+actor.fileName);
-
-              await insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
+              let reducerKey =  MoonCore.StringUtil.toLCamelize(pageKey+"-"+actor.fileName);
+              await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
                 {
                   mark: '//mark1//',
                   isBefore: true,
@@ -109,7 +92,7 @@ import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
       //   // registerReducer({<%=Util.getReducerUniqName(pageInfo.pageKey , actor.fileName)%>});
       //   <% }) %>
 
-      await buildPage({
+      await MoonCore.ReduxGen.buildPage({
         //动态加载;
       //   import balanceBankcardInfoBankInfo from "./reducers/bank-info"
       //   import {registerReducer} from "@/redux/store";

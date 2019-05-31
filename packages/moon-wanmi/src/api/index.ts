@@ -21,7 +21,7 @@ import {
 } from 'moon-core/declarations/typings/api';
 
 import {IFileSaveOptions} from "moon-core/declarations/typings/page";
-import {IInsertOption,  insertFile} from "moon-core/declarations/typings/util";
+import {IInsertOption} from "moon-core/declarations/typings/util";
 
 
 async function loadJson(): Promise<any> {
