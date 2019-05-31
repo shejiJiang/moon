@@ -1,6 +1,8 @@
 # moon
 代号月球, 做一些辅助工作,  (月球)
 
+## 发布
+lerna publish
 
 ## TODO
 
