@@ -1,6 +1,6 @@
 {
   "name": "moon-wanmi",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "registory": "http://registory.npmjs.org"
   },
   "dependencies": {
-    "moon-core": "^0.0.4"
+    "moon-core": "^0.0.5"
   },
   "author": "",
   "license": "ISC",

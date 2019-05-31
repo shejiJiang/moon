@@ -1,6 +1,6 @@
 {
   "name": "moon-core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "lib/index.js",
   "typings": "declarations/index.d.ts",
@@ -8,7 +8,7 @@
     "registory": "http://registory.npmjs.org"
   },
   "scripts": {
-    "tt":"tsc && mkdir lib/page/redux/tpl &&  cp -r src/page/redux/tpl/* lib/page/redux/tpl && mkdir lib/web-api/client/tpl && cp -r src/web-api/client/tpl/*  lib/web-api/client/tpl ",
+    "tt": "tsc && mkdir lib/page/redux/tpl &&  cp -r src/page/redux/tpl/* lib/page/redux/tpl && mkdir lib/web-api/client/tpl && cp -r src/web-api/client/tpl/*  lib/web-api/client/tpl ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
