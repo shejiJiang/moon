@@ -2,7 +2,6 @@
   "name": "moon-core",
   "version": "0.0.2",
   "description": "",
-  "private": true,
   "main": "lib/index.js",
   "typings": "declarations/index.d.ts",
   "publishConfig": {
