@@ -8,7 +8,6 @@
     "registory": "http://registory.npmjs.org"
   },
   "scripts": {
-    "publish": "npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -22,5 +21,6 @@
     "request": "^2.88.0"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "fbc37e827d15c23480e20c0e32985e1aa3951a62"
 }

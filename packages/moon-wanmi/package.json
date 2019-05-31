@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "publish": "npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {
@@ -14,5 +13,6 @@
     "moon-core": "^0.0.3"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "fbc37e827d15c23480e20c0e32985e1aa3951a62"
 }
