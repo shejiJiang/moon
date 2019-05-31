@@ -1,0 +1,42 @@
+import Store from '@/redux/store';
+import {Command} from '../constant';
+import {Dispatch} from "@/typings";
+import {getActionProxy} from "@/redux/action-util";
+import api from '@/webapi';
+
+<% pageInfo.actions.forEach(action=>{ %>
+import <%=Util.toUCamelize(action.fileName) %> from './<%=action.fileName%>'
+<% }) %>
+
+export default (dispatch:Dispatch) => {
+  const actions = {
+
+    <% pageInfo.actions.forEach(action=>{ %>
+        <%=Util.toLCamelize(action.fileName) %> :getActionProxy<typeof <%=Util.toUCamelize(action.fileName) %>>(<%=Util.toUCamelize(action.fileName) %>)(dispatch),
+    <% }) %>
+    /**
+     * 初始化数据
+     */
+    async init(<%- pageInfo.lifeCycles && pageInfo.lifeCycles.param%>) {
+
+    <% if (pageInfo.lifeCycles && pageInfo.lifeCycles.content) { %>
+      <%-pageInfo.lifeCycles.content %>
+    <% } %>
+
+      dispatch({type: Command.init,payload:{
+            <% pageInfo.actors.forEach(actor=>{ %>
+                         //<%=Util.toLCamelize(actor.fileName)%>  :{},
+              <% }) %>
+      }});
+    },
+
+    /**
+     * 重置
+     */
+    async clean() {
+      dispatch({type: Command.clean});
+    },
+  };
+
+  return {actions};
+};

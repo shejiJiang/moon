@@ -1,0 +1,1501 @@
+{
+  "balance/bankcardsTest":{
+    "title":"客户",
+    "pagePath": "balance/bankcardsTest",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+          "name":"bankcards",
+          "value":[{
+            "id":"sdf",
+            "name":"123132"
+          }]
+        },{
+          "name":"totalCount",
+          "value":0
+        },{
+          "name":"actCount",
+          "value":0
+        },{
+          "name":"sleepCount",
+          "value":0
+        }],
+        "events": [
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "list",
+        "methods": []
+      },
+      {
+        "fileName": "card",
+        "methods": []
+      }
+    ]
+  },
+  "custom":{
+    "title":"客户",
+    "pagePath": "custom",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"newCount",
+          "value":0
+        },{
+          "name":"totalCount",
+          "value":0
+        },{
+          "name":"actCount",
+          "value":0
+        },{
+          "name":"sleepCount",
+          "value":0
+        }],
+        "events": [
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "top",
+        "methods": []
+      }
+    ]
+  },
+  "after-sales-desc":{
+    "title":"售后细则",
+    "pagePath": "after-sales-descs",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[],
+        "events": [
+        ]
+      }
+    ],
+    "actions": [{
+      "fileName": "action",
+      "methods": [
+      ]
+    }
+    ],
+    "subComps": [
+    ]
+  },
+
+  "balance/wallet-pay-findpass":{
+    "title":"找回支付密码",
+    "pagePath": "balance/wallet-pay-findpass",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"idCard",
+          "value":""
+        },{
+          "name":"mobile",
+          "value":""
+        },{
+          "name":"smsCode",
+          "value":""
+        },
+          {
+            "name":"newPwd",
+            "value":""
+          },
+          {
+            "name":"step",
+            "value":1
+          }
+        ],
+        "events": [
+          {
+            "name": "changeInfo",
+            "param": ""
+          },
+          {
+            "name": "nextStep",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "type",
+            "param": ""
+          },
+          {
+            "name": "sendSms",
+            "param": ""
+          },
+          {
+            "name": "confirm",
+            "param": ""
+          },{
+            "name": "typePwd",
+            "param": ""
+          },{
+            "name": "confirm",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "header",
+        "methods": []
+      },
+      {
+        "fileName": "input",
+        "methods": []
+      },
+      {
+        "fileName": "pwd-input",
+        "methods": []
+      },
+      {
+        "fileName": "pwd-confirm",
+        "methods": []
+      }
+    ]
+  },
+
+
+  "balance/withdraw-list":{
+    "title":"提现管理",
+    "pagePath": "balance/withdraw-list",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"dataList",
+          "value":[{},{},{}]
+        },
+        {
+          "name":"request",
+          "value":{
+            "from":0,
+            "len":10,
+            "type":""
+          }
+        }
+        ],
+        "events": [
+          {
+            "name": "changeReq",
+            "param": ""
+          },
+          {
+            "name": "addDatas",
+            "param": ""
+          },
+          {
+            "name": "reQuery",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "changeType",
+            "param": ""
+          },
+          {
+            "name": "query",
+            "param": ""
+          },
+          {
+            "name": "nextPage",
+            "param": ""
+          },
+          {
+            "name": "toDetail",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "list",
+        "methods": []
+      }
+    ]
+  },
+  "balance/bankcards":{
+    "title":"我的银行卡",
+    "pagePath": "balance/bankcards",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"cards",
+          "value":[{
+            "cardNo":"2312312312",
+            "name":"浙江农商银行",
+            "cardImg":"",
+            "type":"储蓄卡"
+          }]
+        }],
+        "events": [
+          {
+            "name": "del",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "cards",
+        "methods": []
+      }
+    ]
+  },
+  "balance/withdraw-success":{
+    "title":"提现结果",
+    "pagePath": "balance/withdraw-success",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"info",
+          "value":{
+            "status":true,
+            "count":1000,
+            "cardName":"浙江农商银行储蓄卡",
+            "cardNo":"XXXXX1100"
+          }
+        }],
+        "events": [
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+        ]
+      }
+    ],
+    "subComps": [
+    ]
+  },
+  "balance/withdraw":{
+    "title":"余额提现",
+    "pagePath": "balance/withdraw",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"info",
+          "value":{
+            "totalCount":1000
+          }
+        },{
+          "name":"withdrawCount",
+          "value":0
+        },{
+          "name":"bandIndex",
+          "value":0
+        },{
+          "name":"banks",
+          "value":[
+            {
+              "name":"浙江农商银行储蓄卡",
+              "cardNo":"12312312100"
+            }
+          ]
+        },{
+          "name":"pwd",
+          "value":""
+        },{
+          "name":"isShowPwdInput",
+          "value":false
+        },{
+          "name":"isShowBanksChoose",
+          "value":false
+        }],
+        "events": [
+          {
+            "name": "input",
+            "param": ""
+          },  {
+            "name": "inputPwd",
+            "param": ""
+          },
+          {
+            "name": "toggleShowPwd",
+            "param": ""
+          },
+          {
+            "name": "toggleShowBanksChoose",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "showChooseBanks",
+            "param": ""
+          },
+          {
+            "name": "chooseBanks",
+            "param": ""
+          },
+          {
+            "name": "input",
+            "param": ""
+          },
+          {
+            "name": "inputPwd",
+            "param": ""
+          },
+          {
+            "name": "drawAll",
+            "param": ""
+          },
+          {
+            "name": "submit",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "dialog",
+        "methods": []
+      },
+      {
+        "fileName": "form.input",
+        "methods": []
+      }
+    ]
+  },
+  "balance/scan-pay":{
+    "title":"扫码付",
+    "pagePath": "balance/scan-pay",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"toAccount",
+          "value":{
+            "id":"1231",
+            "name":"张小三的水果店铺",
+            "tag":"商家账户"
+          }
+        },{
+          "name":"account",
+          "value":{
+            "id":"1231",
+            "name":"张小三",
+            "tag":"个人账户"
+          }
+        },{
+          "name":"count",
+          "value":""
+        },{
+          "name":"pwd",
+          "value":""
+        },{
+          "name":"isShowPwd",
+          "value":false
+        },{
+          "name":"isShowSucess",
+          "value":false
+        }],
+        "events": [
+          {
+            "name": "input",
+            "param": ""
+          },
+          {
+            "name": "inputPwd",
+            "param": ""
+          },
+          {
+            "name": "toggleShowPwd",
+            "param": ""
+          },
+          {
+            "name": "toggleShowSucess",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "input",
+            "param": ""
+          },
+          {
+            "name": "submit",
+            "param": ""
+          },
+          {
+            "name": "pay",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "dialog",
+        "methods": []
+      },
+      {
+        "fileName": "input",
+        "methods": []
+      },
+      {
+        "fileName": "sucess",
+        "methods": []
+      }
+    ]
+  },
+  "balance/wallet-qrcode":{
+    "pagePath": "balance/wallet-qrcode",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"shopName",
+          "value":"张三三的水果铺子"
+        },{
+          "name":"userName",
+          "value":"张三"
+        },{
+          "name":"qrUrl",
+          "value":"www.baidu.com"
+        }],
+        "events": [
+          {
+            "name": "changeAmount",
+            "param": ""
+          },
+          {
+            "name": "changeChanel",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+        ]
+      }
+    ],
+    "subComps": [
+    ]
+  },
+
+  "balance/wallet-charge":{
+    "pagePath": "balance/wallet-charge",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "name":"amount",
+          "value":100
+        },{
+          "name":"isCustom",
+          "value":false
+        },{
+          "name":"chargeChanel",
+          "value":"wechat"
+        }],
+        "events": [
+          {
+            "name": "changeAmount",
+            "param": ""
+          },
+          {
+            "name": "changeChanel",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "chooseAmount",
+            "param": ""
+          },
+          {
+            "name": "modifyAmount",
+            "param": ""
+          },
+          {
+            "name": "modifyChanel",
+            "param": ""
+          },
+          {
+            "name": "charge",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+    ]
+  },
+
+  "balance/bankcard-info":{
+    "pagePath": "balance/bankcard-info",
+    "title":"银行卡详情",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"bankInfo",
+            "value":{
+              "id":""
+            }
+          }
+        ],
+        "events": [
+          {
+            "name": "bankInfo",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "unlock",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "info",
+        "methods": []
+      }
+    ]
+  },
+
+  "balance/personal-check":{
+    "pagePath": "balance/personal-check",
+    "title":"验证身份",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"info",
+            "value":{
+              "name":"",
+              "idNo":"",
+              "idImg":"",
+              "mobile":"",
+              "idPic":""
+            }
+          },
+          {
+            "name":"smsCode",
+            "value":""
+          }
+        ],
+        "events": [
+          {
+            "name": "updateInfo",
+            "param": ""
+          },
+          {
+            "name": "setSmsCode",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "updateInfo",
+            "param": ""
+          },
+          {
+            "name": "sendSmsCode",
+            "param": ""
+          },
+          {
+            "name": "uploadIdImg",
+            "param": ""
+          },
+          {
+            "name": "submit",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "info",
+        "methods": []
+      }
+    ]
+  },
+  "balance/pay-password":{
+    "pagePath": "balance/pay-password",
+    "title":"设置支付密码",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"password",
+            "value":""
+          },
+          {
+            "name":"isConfirm",
+            "value":false
+          }
+        ],
+        "events": [
+          {
+            "name": "setPassword",
+            "param": ""
+          },
+          {
+            "name": "confirm",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "updatePassword",
+            "param": ""
+          },
+          {
+            "name": "confirmPassword",
+            "param": ""
+          },
+          {
+            "name": "submit",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "set",
+        "methods": []
+      },
+      {
+        "fileName": "confirm",
+        "methods": []
+      }
+    ]
+  },
+
+  "balance/bankcard-add":{
+    "pagePath": "balance/bankcard-add",
+    "title":"添加银行卡",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"cardInfo",
+            "value":{
+              "accountId":"",
+              "bankType":""
+            }
+          }],
+        "events": [
+          {
+            "name": "cardInfo",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "updateCardInfo",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "card-info",
+        "methods": []
+      }
+    ]
+  },
+  "balance/bankcard-list":{
+    "title":"我的银行卡",
+    "pagePath": "balance/bankcard-list",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+         {
+           "name":"banks",
+           "value":[]
+          }],
+        "events": [
+          {
+            "name": "banks",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "banks",
+        "methods": []
+      }
+    ]
+  },
+  "balance/wallet-withdraw":{
+    "title":"余额提现",
+    "pagePath": "balance/wallet-withdraw",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"banks",
+            "value":[]
+         },{
+            "name":"accountInfo",
+            "value":{
+              "totalMoney":0
+            }
+          },
+         {
+           "name":"choosedBankIndex",
+           "value":0
+          },
+          {
+          "name":"count",
+          "value":0
+        },{
+          "name":"pwd",
+          "value":""
+        }],
+        "events": [
+          {
+            "name": "accountInfoInit",
+            "param": ""
+          },
+          {
+            "name": "banksInit",
+            "param": ""
+          },
+          {
+            "name": "updateCount",
+            "param": ""
+          },
+          {
+            "name": "chooseBankIndex",
+            "param": ""
+          },
+          {
+            "name": "updatePwd",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "submit",
+            "param": ""
+          },
+          {
+            "name": "updateCount",
+            "param": ""
+          },
+          {
+            "name": "updatePwd",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "dialog",
+        "methods": []
+      },
+      {
+        "fileName": "input",
+        "methods": []
+      },
+      {
+        "fileName": "success",
+        "methods": []
+      }
+    ]
+  },
+
+  "balance/wallet-balance-list":{
+    "title":"余额明细",
+    "pagePath": "balance/wallet-balance-list",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"dataList",
+            "value":[]
+          },
+          {
+            "name":"request",
+            "value":{
+              "start":0,
+              "len":10,
+              "type":-1
+            }
+          }],
+        "events": [
+          {
+            "name": "modifyRequest",
+            "param": ""
+          },
+          {
+            "name": "queryResult",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "modifySearch",
+            "param": ""
+          },
+          {
+            "name": "nextPage",
+            "param": ""
+          },
+          {
+            "name": "query",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "list",
+        "methods": []
+      }
+    ]
+  },
+  "login":{
+    "pagePath": "login",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "type":"any",
+          "name":"loginType"
+        },{
+          "type":"any",
+          "name":"mobileInfo",
+          "value":{
+            "type":"pwd",
+            "mobile":"",
+            "smsCode":"",
+            "pwd":""
+          }
+        }],
+        "events": [
+          {
+            "name": "chageLoginType",
+            "param": ""
+          },
+          {
+            "name": "chageMobileType",
+            "param": ""
+          },
+          {
+            "name": "updateMobileInfo",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "chageLoginType",
+            "param": ""
+          },
+          {
+            "name": "updateMobileInfo",
+            "param": ""
+          },
+          {
+            "name": "sendSmsCode",
+            "param": ""
+          },
+          {
+            "name": "loginSys",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "header",
+        "methods": []
+      },
+      {
+        "fileName": "login-type",
+        "methods": []
+      },
+      {
+        "fileName": "login-mobile",
+        "methods": []
+      }
+    ]
+  },
+  "register":{
+    "pagePath": "register",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "type":"any",
+          "name":"mobileInfo",
+          "value":{
+            "type":"pwd",
+            "mobile":"",
+            "smsCode":"",
+            "pwd":""
+          }
+        }],
+        "events": [
+          {
+            "name": "updateMobileInfo",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "register",
+            "param": ""
+          },
+          {
+            "name": "sendSmsCode",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "header",
+        "methods": []
+      },
+      {
+        "fileName": "mobile",
+        "methods": []
+      }
+    ]
+  },
+  "shop-set/shop-position":{
+    "title":"店铺位置",
+    "pagePath": "shop-set/shop-position",
+    "subComps": [
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "changeAddress",
+          "param": ""
+        },{
+          "name": "chooseMap",
+          "param": ""
+        },{
+          "name": "save",
+          "param": ""
+        }
+        ]
+      }
+    ],
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"company",
+            "value":{}
+          },
+          {
+            "name":"areas",
+            "value":null,
+            "type":"any"
+          }, {
+            "name":"info",
+            "value":null,
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "infoChange",
+            "param": ""
+          }
+        ]
+      }
+    ]
+  },"shop-set/shop-setting":{
+    "title":"店铺设置",
+    "pagePath": "shop-set/shop-setting",
+  "actors": [
+    {
+      "fileName": "reducer",
+      "datas":[
+        {
+          "name":"company",
+          "value":{}
+        }
+      ],
+      "events": [
+        {
+          "name": "infoChange",
+          "param": ""
+        }
+      ]
+    }
+  ],
+    "subComps": [
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "changeIcon",
+          "param": ""
+        },{
+          "name": "changeInfo",
+          "param": ""
+        },{
+          "name": "save",
+          "param": ""
+        }
+        ]
+      }
+    ]
+  },
+  "oms/info":{
+    "pagePath": "oms/info",
+    "subComps": [
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "init",
+          "param": ""
+        }, {
+          "name": "clean",
+          "param": ""
+        }
+        ]
+      }
+    ],
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"info",
+            "value":null,
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "info",
+            "param": ""
+          }
+        ]
+      }
+    ]
+  },
+  "oms/comment":{
+    "pagePath": "oms/comment",
+    "subComps": [
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "init",
+          "param": ""
+        }, {
+          "name": "clean",
+          "param": ""
+        }, {
+          "name": "updateComment",
+          "param": ""
+        }
+        ]
+      }
+    ],
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"info",
+            "value":{},
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "init",
+            "param": ""
+          }
+        ]
+      }
+    ]
+  },
+  "oms/logistics":{
+    "pagePath": "oms/logistics",
+    "subComps": [
+      {
+        "fileName": "status",
+        "methods": []
+      },
+      {
+        "fileName": "list",
+        "methods": []
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [{
+          "name": "init",
+          "param": ""
+        }, {
+          "name": "clean",
+          "param": ""
+        }
+        ]
+      }
+    ],
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"logistics",
+            "value":{},
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "init",
+            "param": ""
+          }
+        ]
+      }
+    ]
+  },
+  "oms/list":{
+    "pagePath": "oms/list",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[
+          {
+            "name":"request",
+            "value":{
+              "key":"",
+              "type":"",
+              "ctype":"",
+              "len":10,
+              "start":0
+            },
+            "type":"any"
+          }, {
+            "name":"dataList",
+            "value":[],
+            "type":"any"
+          }
+        ],
+        "events": [
+          {
+            "name": "page",
+            "param": ""
+          },
+          {
+            "name": "page_next",
+            "param": ""
+          },
+          {
+            "name": "change",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [ {
+          "name": "init",
+          "param": ""
+        }, {
+          "name": "clean",
+          "param": ""
+        },
+          {
+            "name": "page",
+            "param": ""
+          },
+          {
+            "name": "delete",
+            "param": ""
+          },
+          {
+            "name": "change",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "lists",
+        "methods": []
+      }
+    ]
+  },
+  "order":{
+    "pagePath": "order",
+    "actors": [
+      {
+        "fileName": "reducer",
+        "datas":[{
+          "type":"any",
+          "name":"info"
+        }],
+        "events": [
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          },
+          {
+            "name": "update",
+            "param": ""
+          },
+          {
+            "name": "query",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "action",
+        "methods": [
+          {
+            "name": "init",
+            "param": ""
+          },
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "update",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "header",
+        "methods": []
+      },
+      {
+        "fileName": "list",
+        "methods": []
+      },
+      {
+        "fileName": "foot",
+        "methods": []
+      }
+    ]
+  },
+"shop-set/print":{
+  "pagePath": "shop-set/print",
+  "actors": [
+    {
+      "fileName": "reducer",
+      "datas":[],
+      "events": [
+        {
+          "name": "modify",
+          "param": ""
+        },
+        {
+          "name": "toggle",
+          "param": ""
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "fileName": "action",
+      "methods": [
+        {
+          "name": "init",
+          "param": ""
+        },
+        {
+          "name": "clean",
+          "param": ""
+        },
+        {
+          "name": "modify",
+          "param": ""
+        },
+        {
+          "name": "toggle",
+          "param": ""
+        },
+        {
+          "name": "save",
+          "param": ""
+        }
+      ]
+    }
+  ],
+  "subComps": [
+  ]
+}
+}

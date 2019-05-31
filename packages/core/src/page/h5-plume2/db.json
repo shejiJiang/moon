@@ -1,0 +1,118 @@
+{
+  "layout":{
+    "title":"布局",
+    "pagePath": "layout",
+    "actors": [
+      {
+        "fileName": "ui-manager",
+        "datas":[
+          {
+            "name":"uiInfo",
+            "value":{}
+          }],
+        "events": [
+          {
+            "name": "ui:manger:update",
+            "comment": "",
+            "param": ""
+          }
+        ]
+      },
+      {
+        "fileName": "comp-def",
+        "datas":[
+          {
+          "name":"compInfo",
+          "value":[{
+            "key":"",
+            "style":{},
+            "props":{},
+            "children":[
+            ]
+          }]
+        },{
+          "name":"context",
+          "value":{
+            "platform":""
+          }
+        }],
+        "events": [
+          {
+            "name": "comp:add",
+            "comment": "添加组件",
+            "param": ""
+          },
+          {
+            "name": "comp:del",
+            "comment": "删除组件",
+            "param": ""
+          },
+          {
+            "name": "comp:update",
+            "comment": "更新组件属性",
+            "param": ""
+          },
+          {
+            "name": "context:update",
+            "comment": "更新组件上下文信息",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "fileName": "ui-manager",
+        "methods": [
+          {
+            "name": "change",
+            "param": ""
+          }
+        ]
+      },
+      {
+        "fileName": "comp-define",
+        "methods": [
+          {
+            "name": "add",
+            "param": ""
+          },
+          {
+            "name": "del",
+            "param": ""
+          },
+          {
+            "name": "update",
+            "param": ""
+          },
+          {
+            "name": "changeContext",
+            "param": ""
+          }
+        ]
+      }
+    ],
+    "subComps": [
+      {
+        "fileName": "outline",
+        "methods": []
+      },
+      {
+        "fileName": "properties",
+        "methods": []
+      },
+      {
+        "fileName": "stage",
+        "methods": []
+      },
+      {
+        "fileName": "toolbar",
+        "methods": []
+      },
+      {
+        "fileName": "weapon",
+        "methods": []
+      }
+    ]
+  }
+}
