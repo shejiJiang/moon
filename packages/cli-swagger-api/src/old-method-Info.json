@@ -1,0 +1,427 @@
+{
+    "/authority/common/store/menus": {
+        "url": "/authority/common/store/menus",
+        "methodName": "storeMenusUsingGET",
+        "group": "AuthorityCommonController"
+    },
+    "/authority/store/chosen-menus/{roleId}": {
+        "url": "/authority/store/chosen-menus/{roleId}",
+        "methodName": "storeChosenMenusUsingGET",
+        "group": "AuthorityController"
+    },
+    "/authority/store/menus-for-login/{roleId}": {
+        "url": "/authority/store/menus-for-login/{roleId}",
+        "methodName": "menusForLoginUsingGET",
+        "group": "AuthorityController"
+    },
+    "/customer": {
+        "url": "/customer",
+        "methodName": "addUsingPUT",
+        "group": "SupplierCustomerController"
+    },
+    "/customer/employee-royalty-setting": {
+        "url": "/customer/employee-royalty-setting",
+        "methodName": "modifyUsingPUT_1",
+        "group": "EmployeeRoyaltySettingController"
+    },
+    "/customer/page": {
+        "url": "/customer/page",
+        "methodName": "pageUsingPOST_6",
+        "group": "SupplierCustomerController"
+    },
+    "/employee-rela": {
+        "url": "/employee-rela",
+        "methodName": "modifyUsingPUT",
+        "group": "EmployeeRelaController"
+    },
+    "/employee-rela/disable": {
+        "url": "/employee-rela/disable",
+        "methodName": "disableUsingPOST",
+        "group": "EmployeeRelaController"
+    },
+    "/employee-rela/enable": {
+        "url": "/employee-rela/enable",
+        "methodName": "enableUsingPOST",
+        "group": "EmployeeRelaController"
+    },
+    "/employee-rela/page": {
+        "url": "/employee-rela/page",
+        "methodName": "pageUsingPOST",
+        "group": "EmployeeRelaController"
+    },
+    "/employee-rela/{id}": {
+        "url": "/employee-rela/{id}",
+        "methodName": "findOneUsingGET",
+        "group": "EmployeeRelaController"
+    },
+    "/employee/active": {
+        "url": "/employee/active",
+        "methodName": "activeUsingPOST",
+        "group": "SupplierEmployeeController"
+    },
+    "/employee/employeeDetail": {
+        "url": "/employee/employeeDetail",
+        "methodName": "employeeDetailUsingGET",
+        "group": "SupplierEmployeeController"
+    },
+    "/employee/forgetPassword": {
+        "url": "/employee/forgetPassword",
+        "methodName": "forgetPasswordUsingPOST",
+        "group": "SupplierEmployeeController"
+    },
+    "/employee/login": {
+        "url": "/employee/login",
+        "methodName": "loginUsingPOST",
+        "group": "LoginController"
+    },
+    "/employee/modifyHead": {
+        "url": "/employee/modifyHead",
+        "methodName": "modifyHeadUsingPOST",
+        "group": "SupplierEmployeeController"
+    },
+    "/employee/modifyNickName": {
+        "url": "/employee/modifyNickName",
+        "methodName": "modifyNickNameUsingPOST",
+        "group": "SupplierEmployeeController"
+    },
+    "/employee/modifyPhone": {
+        "url": "/employee/modifyPhone",
+        "methodName": "modifyPhoneUsingPOST",
+        "group": "SupplierEmployeeController"
+    },
+    "/employee/register": {
+        "url": "/employee/register",
+        "methodName": "registerUsingPOST",
+        "group": "SupplierEmployeeController"
+    },
+    "/employee/verify-code-forgetPassword/{phone}": {
+        "url": "/employee/verify-code-forgetPassword/{phone}",
+        "methodName": "sendVerifyCodeForgotPasswordUsingPOST",
+        "group": "SupplierEmployeeController"
+    },
+    "/employee/verify-code-modifyphone/{phone}": {
+        "url": "/employee/verify-code-modifyphone/{phone}",
+        "methodName": "sendVerifyCodeModifyPhoneUsingPOST",
+        "group": "SupplierEmployeeController"
+    },
+    "/employee/verify-code-register/{phone}": {
+        "url": "/employee/verify-code-register/{phone}",
+        "methodName": "sendVerifyCodeUsingPOST",
+        "group": "SupplierEmployeeController"
+    },
+    "/file/upload/image": {
+        "url": "/file/upload/image",
+        "methodName": "uploadFileUsingPOST",
+        "group": "FileController"
+    },
+    "/file/upload/images": {
+        "url": "/file/upload/images",
+        "methodName": "uploadMultiFileUsingPOST",
+        "group": "FileController"
+    },
+    "/goods/goods-cate-store": {
+        "url": "/goods/goods-cate-store",
+        "methodName": "modifyUsingPUT_2",
+        "group": "GoodsCateStoreController"
+    },
+    "/goods/goods-cate-store/batch-sort-no": {
+        "url": "/goods/goods-cate-store/batch-sort-no",
+        "methodName": "batchModifySortNoUsingPUT",
+        "group": "GoodsCateStoreController"
+    },
+    "/goods/goods-cate-store/display/{goodsCateId}": {
+        "url": "/goods/goods-cate-store/display/{goodsCateId}",
+        "methodName": "displayUsingPUT",
+        "group": "GoodsCateStoreController"
+    },
+    "/goods/goods-cate-store/hide/{goodsCateId}": {
+        "url": "/goods/goods-cate-store/hide/{goodsCateId}",
+        "methodName": "hideUsingPUT",
+        "group": "GoodsCateStoreController"
+    },
+    "/goods/goods-cate-store/page": {
+        "url": "/goods/goods-cate-store/page",
+        "methodName": "pageUsingPOST_1",
+        "group": "GoodsCateStoreController"
+    },
+    "/goods/goods-cate-store/simple-goods-cate": {
+        "url": "/goods/goods-cate-store/simple-goods-cate",
+        "methodName": "simpleListUsingPOST",
+        "group": "GoodsCateStoreController"
+    },
+    "/goods/goods-cate-store/top/{goodsCateId}": {
+        "url": "/goods/goods-cate-store/top/{goodsCateId}",
+        "methodName": "topUsingPUT",
+        "group": "GoodsCateStoreController"
+    },
+    "/goods/goods-cate-store/{goodsCateId}": {
+        "url": "/goods/goods-cate-store/{goodsCateId}",
+        "methodName": "deleteUsingDELETE",
+        "group": "GoodsCateStoreController"
+    },
+    "/goods/item": {
+        "url": "/goods/item",
+        "methodName": "addUsingPOST_2",
+        "group": "ItemController"
+    },
+    "/goods/item/{itemId}": {
+        "url": "/goods/item/{itemId}",
+        "methodName": "deleteUsingDELETE_1",
+        "group": "ItemController"
+    },
+    "/goods/item/{projectCateId}": {
+        "url": "/goods/item/{projectCateId}",
+        "methodName": "listByProjectCateIdUsingGET",
+        "group": "ItemController"
+    },
+    "/goods/project": {
+        "url": "/goods/project",
+        "methodName": "modifyUsingPUT_4",
+        "group": "ProjectController"
+    },
+    "/goods/project-cate-store": {
+        "url": "/goods/project-cate-store",
+        "methodName": "modifyUsingPUT_3",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/batch-sort-no": {
+        "url": "/goods/project-cate-store/batch-sort-no",
+        "methodName": "batchModifySortNoUsingPUT_1",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/display/{projectCateId}": {
+        "url": "/goods/project-cate-store/display/{projectCateId}",
+        "methodName": "displayUsingPUT_1",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/hide/{projectCateId}": {
+        "url": "/goods/project-cate-store/hide/{projectCateId}",
+        "methodName": "hideUsingPUT_1",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/page": {
+        "url": "/goods/project-cate-store/page",
+        "methodName": "pageUsingPOST_2",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/simple-project-cate": {
+        "url": "/goods/project-cate-store/simple-project-cate",
+        "methodName": "simpleListUsingPOST_1",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/top/{projectCateId}": {
+        "url": "/goods/project-cate-store/top/{projectCateId}",
+        "methodName": "topUsingPUT_1",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-cate-store/{projectCateId}": {
+        "url": "/goods/project-cate-store/{projectCateId}",
+        "methodName": "deleteUsingDELETE_2",
+        "group": "ProjectCateStoreController"
+    },
+    "/goods/project-item-rel/list": {
+        "url": "/goods/project-item-rel/list",
+        "methodName": "listByProjectIdsUsingPOST",
+        "group": "ProjectItemRelController"
+    },
+    "/goods/project-item-rel/price-section": {
+        "url": "/goods/project-item-rel/price-section",
+        "methodName": "priceSectionUsingPOST",
+        "group": "ProjectItemRelController"
+    },
+    "/goods/project-item-rel/{projectId}": {
+        "url": "/goods/project-item-rel/{projectId}",
+        "methodName": "listByProjectIdUsingGET",
+        "group": "ProjectItemRelController"
+    },
+    "/goods/project/added-off/{projectId}": {
+        "url": "/goods/project/added-off/{projectId}",
+        "methodName": "addedOffUsingPUT",
+        "group": "ProjectController"
+    },
+    "/goods/project/added-on/{projectId}": {
+        "url": "/goods/project/added-on/{projectId}",
+        "methodName": "addedOnUsingPUT",
+        "group": "ProjectController"
+    },
+    "/goods/project/bar-code": {
+        "url": "/goods/project/bar-code",
+        "methodName": "barCodeUsingPOST",
+        "group": "ProjectController"
+    },
+    "/goods/project/page": {
+        "url": "/goods/project/page",
+        "methodName": "pageUsingPOST_3",
+        "group": "ProjectController"
+    },
+    "/goods/project/{projectId}": {
+        "url": "/goods/project/{projectId}",
+        "methodName": "deleteUsingDELETE_3",
+        "group": "ProjectController"
+    },
+    "/goods/spu": {
+        "url": "/goods/spu",
+        "methodName": "modifyUsingPUT_7",
+        "group": "SpuController"
+    },
+    "/goods/spu/added-off/{spuId}": {
+        "url": "/goods/spu/added-off/{spuId}",
+        "methodName": "addedOffUsingPUT_1",
+        "group": "SpuController"
+    },
+    "/goods/spu/added-on/{spuId}": {
+        "url": "/goods/spu/added-on/{spuId}",
+        "methodName": "addedOnUsingPUT_1",
+        "group": "SpuController"
+    },
+    "/goods/spu/bar-code": {
+        "url": "/goods/spu/bar-code",
+        "methodName": "barCodeUsingPOST_1",
+        "group": "SpuController"
+    },
+    "/goods/spu/page": {
+        "url": "/goods/spu/page",
+        "methodName": "pageUsingPOST_5",
+        "group": "SpuController"
+    },
+    "/goods/spu/{spuId}": {
+        "url": "/goods/spu/{spuId}",
+        "methodName": "deleteUsingDELETE_6",
+        "group": "SpuController"
+    },
+    "/marketing/rechargeable-card": {
+        "url": "/marketing/rechargeable-card",
+        "methodName": "modifyUsingPUT_5",
+        "group": "RechargeableCardController"
+    },
+    "/marketing/rechargeable-card/added": {
+        "url": "/marketing/rechargeable-card/added",
+        "methodName": "modifyAddedUsingPOST",
+        "group": "RechargeableCardController"
+    },
+    "/marketing/rechargeable-card/page": {
+        "url": "/marketing/rechargeable-card/page",
+        "methodName": "pageUsingPOST_4",
+        "group": "RechargeableCardController"
+    },
+    "/marketing/rechargeable-card/{rechargeableCardId}": {
+        "url": "/marketing/rechargeable-card/{rechargeableCardId}",
+        "methodName": "deleteUsingDELETE_4",
+        "group": "RechargeableCardController"
+    },
+    "/marketing/timing-card": {
+        "url": "/marketing/timing-card",
+        "methodName": "modifyUsingPUT_8",
+        "group": "TimingCardController"
+    },
+    "/marketing/timing-card/added": {
+        "url": "/marketing/timing-card/added",
+        "methodName": "modifyAddedUsingPOST_1",
+        "group": "TimingCardController"
+    },
+    "/marketing/timing-card/page": {
+        "url": "/marketing/timing-card/page",
+        "methodName": "pageUsingPOST_7",
+        "group": "TimingCardController"
+    },
+    "/marketing/timing-card/{timingCardId}": {
+        "url": "/marketing/timing-card/{timingCardId}",
+        "methodName": "deleteUsingDELETE_7",
+        "group": "TimingCardController"
+    },
+    "/role/store": {
+        "url": "/role/store",
+        "methodName": "deleteUsingDELETE_5",
+        "group": "RoleInfoController"
+    },
+    "/role/store/admin/{roleId}": {
+        "url": "/role/store/admin/{roleId}",
+        "methodName": "getStoreAdminRoleUsingGET",
+        "group": "RoleInfoController"
+    },
+    "/role/store/list": {
+        "url": "/role/store/list",
+        "methodName": "listUsingGET",
+        "group": "RoleInfoController"
+    },
+    "/role/store/list-for-choose": {
+        "url": "/role/store/list-for-choose",
+        "methodName": "listForChooseUsingGET",
+        "group": "RoleInfoController"
+    },
+    "/role/store/{roleId}": {
+        "url": "/role/store/{roleId}",
+        "methodName": "getStoreRoleUsingGET",
+        "group": "RoleInfoController"
+    },
+    "/setting/royalty-config": {
+        "url": "/setting/royalty-config",
+        "methodName": "modifyUsingPUT_6",
+        "group": "RoyaltyConfigController"
+    },
+    "/setting/royalty-config/": {
+        "url": "/setting/royalty-config/",
+        "methodName": "detailUsingPOST_1",
+        "group": "RoyaltyConfigController"
+    },
+    "/setting/royalty-setting": {
+        "url": "/setting/royalty-setting",
+        "methodName": "batchModifyUsingPUT",
+        "group": "RoyaltySettingController"
+    },
+    "/setting/royalty-setting/list": {
+        "url": "/setting/royalty-setting/list",
+        "methodName": "listUsingPOST",
+        "group": "RoyaltySettingController"
+    },
+    "/store": {
+        "url": "/store",
+        "methodName": "storeUsingGET",
+        "group": "SupplierStoreController"
+    },
+    "/store/address": {
+        "url": "/store/address",
+        "methodName": "modifyStoreAddressUsingPOST",
+        "group": "SupplierStoreController"
+    },
+    "/store/create": {
+        "url": "/store/create",
+        "methodName": "createUsingPOST",
+        "group": "SupplierStoreController"
+    },
+    "/store/introduction": {
+        "url": "/store/introduction",
+        "methodName": "modifyStoreIntroductionUsingPOST",
+        "group": "SupplierStoreController"
+    },
+    "/store/num": {
+        "url": "/store/num",
+        "methodName": "modifyStoreNumUsingPOST",
+        "group": "SupplierStoreController"
+    },
+    "/store/storeName": {
+        "url": "/store/storeName",
+        "methodName": "modifyStoreNameUsingPOST",
+        "group": "SupplierStoreController"
+    },
+    "/store/storeTypes": {
+        "url": "/store/storeTypes",
+        "methodName": "getAllStoreTypesUsingGET",
+        "group": "SupplierStoreController"
+    },
+    "/store/storesByEmployeeId": {
+        "url": "/store/storesByEmployeeId",
+        "methodName": "listByEmployeeIdUsingGET",
+        "group": "SupplierStoreController"
+    },
+    "/store/switch": {
+        "url": "/store/switch",
+        "methodName": "switchStoreUsingPOST",
+        "group": "SupplierStoreController"
+    },
+    "/store/type": {
+        "url": "/store/type",
+        "methodName": "modifyStoreTypeUsingPOST",
+        "group": "SupplierStoreController"
+    }
+}

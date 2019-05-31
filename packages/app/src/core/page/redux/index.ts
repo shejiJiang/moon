@@ -14,7 +14,7 @@ import {toLCamelize,toUCamelize} from '../../util/string-util';
  * @Date    2019/3/20
  **/
 
-import toGenMainPage from  '/Users/dong/wanmi/athena-frontend/page-def/to-gen-page';
+import toGenMainPage from  '/Users/dong/wanmi/sbc/sbc-supplier/page-def/to-gen-page';
 
 let toGenSub1Page = [
   // 'balance/bankcardsTest',
@@ -25,14 +25,17 @@ let toGenSub1Page = [
 //   'trade/info'
 // ];
 
-import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
+const baseWorkBench = "/Users/dong/wanmi/sbc/sbc-supplier";
+
+import db  from '/Users/dong/wanmi/sbc/sbc-supplier/page-def/db';
 (async () => {
   // let db = await fse.readJSON(join(__dirname, 'db.json'));
   // let db = await fse.readJSON(join('/Users/dong/wanmi/athena-frontend/page-def', 'db.json'));
   //TODO action 关联dispatch 界面化比较好处理些.. 伪代码 是不是可以添加起来了?
   //TODO 命名冲突 的问题 ..  actor名字, props名字会冲突;
   //TODO input 关键字处理..
-  let projectPath = '/Users/dong/wanmi/athena-frontend';
+  // let projectPath = '/Users/dong/wanmi/athena-frontend';
+  let projectPath = '/Users/dong/wanmi/sbc/sbc-supplier';
   let prettiesConfig = {};
   try {
     prettiesConfig = await fse.readJSON(join(projectPath, 'pretties.json'));
@@ -77,22 +80,22 @@ import db  from '/Users/dong/wanmi/athena-frontend/page-def/db';
               ]);
 
             }
-            //TODO 路由添加下呢.
-            await insertFile(join(projectSrc, 'src/pages/App.tsx'), [
-              {
-                mark: 'const',
-                isBefore: true,
-                content: `const ${toUCamelize(pageKey)} = loadable(() => import('@/${pageFilePath}'));`,
-                check: (content): boolean => !content.includes(pageFilePath),
-              },
-              {
-                mark: '{/*mark*/}',
-                isBefore: false,
-                content: `<Route path="/${context.pageInfo.pagePath}" component={${toUCamelize(pageKey)}} />`,
-                check: (content, rawContent): boolean =>
-                  !rawContent.includes(pageFilePath),
-              },
-            ]);
+            // //TODO 路由添加下呢.
+            // await insertFile(join(projectSrc, 'src/pages/App.tsx'), [
+            //   {
+            //     mark: 'const',
+            //     isBefore: true,
+            //     content: `const ${toUCamelize(pageKey)} = loadable(() => import('@/${pageFilePath}'));`,
+            //     check: (content): boolean => !content.includes(pageFilePath),
+            //   },
+            //   {
+            //     mark: '{/*mark*/}',
+            //     isBefore: false,
+            //     content: `<Route path="/${context.pageInfo.pagePath}" component={${toUCamelize(pageKey)}} />`,
+            //     check: (content, rawContent): boolean =>
+            //       !rawContent.includes(pageFilePath),
+            //   },
+            // ]);
           }
         },
         prettiesConfig,
