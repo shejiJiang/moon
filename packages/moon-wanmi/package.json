@@ -1,17 +1,17 @@
 {
   "name": "moon-wanmi",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "publish":"npm publish",
+    "publish": "npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {
-    "registory":"http://registory.npmjs.org"
+    "registory": "http://registory.npmjs.org"
   },
   "dependencies": {
-    "moon-core": "0.0.2"
+    "moon-core": "^0.0.3"
   },
   "author": "",
   "license": "ISC"

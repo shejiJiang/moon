@@ -1,14 +1,14 @@
 {
   "name": "moon-core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "lib/index.js",
   "typings": "declarations/index.d.ts",
   "publishConfig": {
-    "registory":"http://registory.npmjs.org"
+    "registory": "http://registory.npmjs.org"
   },
   "scripts": {
-    "publish":"npm publish",
+    "publish": "npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -21,7 +21,6 @@
     "klaw": "^3.0.0",
     "request": "^2.88.0"
   },
-
   "author": "",
   "license": "ISC"
 }

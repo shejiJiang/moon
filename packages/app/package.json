@@ -1,6 +1,6 @@
 {
   "name": "electron-quick-start-typescript",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "private": true,
   "description": "A minimal Electron application written with Typescript",
   "scripts": {
