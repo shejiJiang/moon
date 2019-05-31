@@ -2,12 +2,11 @@
   "name": "moon-core",
   "version": "0.0.1",
   "description": "",
-  "main": "index.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
-
   "dependencies": {
     "@types/request": "^2.48.1",
     "ejs": "^2.6.1",

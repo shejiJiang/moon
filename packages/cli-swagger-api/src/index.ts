@@ -10,18 +10,22 @@
 import * as request from 'request';
 import * as fse from 'fs-extra';
 import {join} from 'path';
+import MoonCore from 'moon-core';
+
+
+
+
 import {
-  buildWebApi,
   IJSObjectProps,
   IWebApiContext,
   IWebApiDefinded,
   IWebApiGroup,
   SchemaProps
-} from '../../core/web-api/client';
+} from 'moon-core';
+
 import {IFileSaveOptions} from "../../core/page/taro-redux/redux-taro";
-import {toLCamelize, toUCamelize} from "../../core/util/string-util";
 import {IInsertOption, insertContent, insertFile} from "../../core/util/compile-util";
-import {genApiTsIndex} from "../../core/web-api/client/ts-index";
+
 
 async function loadJson(): Promise<any> {
   return new Promise((resolve, reject) => {
@@ -86,7 +90,7 @@ try {
         console.log("current webapiGroup:",webapiGroup.name);
       }
 
-      await buildWebApi({
+      await MoonCore.WebApiGen.buildWebApi({
         webapiGroup,
         projectPath:basePath,// join(__dirname, 'out'),
         beforeCompile: (apiItem: IWebApiDefinded) => {
@@ -104,7 +108,7 @@ try {
         }
       });
 
-       let controllerName= toLCamelize(webapiGroup.name);
+       let controllerName= MoonCore.StringUtil.toLCamelize(webapiGroup.name);
        let filePath =`./${webapiGroup.name}`;
 
       inserts.push({
@@ -132,7 +136,7 @@ try {
   //转换
 
   //生成api索引文件::
-  let indexInfo  = genApiTsIndex({
+  let indexInfo  = MoonCore.TsIndex.genApiTsIndex({
     tsConfig: workBase+'tsconfig.json',
     apiDir:workBase+"web_modules/api",
     apiSuffix:"Controller",
@@ -215,7 +219,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
 
       temp[url]={url,methodName:methodInfo.operationId,group:groupKey};
 
-      apiDefItem.name=toLCamelize(methodInfo.operationId)
+      apiDefItem.name=MoonCore.StringUtil.toLCamelize(methodInfo.operationId)
         .replace(/UsingPOST.*/ig,"")
         .replace(/UsingPUT.*/ig,"")
         .replace(/UsingGET.*/ig,"")

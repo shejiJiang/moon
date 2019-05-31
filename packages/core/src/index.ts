@@ -12,6 +12,7 @@ import * as JsonUtil from  './util/json-util';
 import * as StringUtil from './util/string-util';
 import * as CompileUtil from './util/compile-util';
 import * as WebApiGen from './web-api/client';
+import * as TsIndex from './web-api/client/ts-index';
 
 
 
@@ -20,5 +21,6 @@ export default {
   JsonUtil,
   StringUtil,
   CompileUtil,
-  WebApiGen
+  WebApiGen,
+  TsIndex
 }

@@ -9,40 +9,9 @@
 import {join, parse} from 'path';
 import * as fse from 'fs-extra';
 import * as prettier from 'prettier';
-import {IContext,  IFileSaveOptions} from "../page/taro-redux/redux-taro";
+import {IFileSaveOptions} from "../page/old/taro-redux/redux-taro";
+import {IHandleFile, IHandlePageParam, IInsertOption} from "../typings/util";
 
-interface IHandlePageParam {
-  saveFilePath: string;
-}
-
-
-export interface IFileSaveOpt{
-  beforeSave?: (options:IFileSaveOptions,context: any)=>Promise<IFileSaveOptions>;
-  afterSave?: (options:IFileSaveOptions,context: any)=>Promise<void>;
-}
-
-
-
-
-
-export interface IHandleFile {
-  outDir: string;
-  tplBase: string;
-  context: IFileSaveOpt;
-  prettiesConfig?: object;
-}
-
-export interface IInsertOption {
-  mark: string;
-  isBefore: boolean;
-  content: string;
-  /**
-   *
-   * @param content
-   * @returns {boolean}   验证是否需要做 true  继续,false 中断
-   */
-  check: (content, rawContent) => boolean;
-}
 
 /**
  * 获取处理页面内容;;

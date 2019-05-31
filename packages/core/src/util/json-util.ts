@@ -8,9 +8,10 @@
  **/
 
 
-import  * as  generateSchema  from  'generate-schema';
-import {compile, compileFromFile} from 'json-schema-to-typescript';
-import {IWebApiContext, SchemaProps} from "../web-api/client";
+import * as  generateSchema from 'generate-schema';
+import {compile} from 'json-schema-to-typescript';
+import {IWebApiContext} from "../typings/api";
+import {IJsonTsGenResult, ITsGenResult} from "../typings/util";
 
 /**
  * 将json转换为ts定义
@@ -24,17 +25,6 @@ export async function genTsFromJSON(name:string,value:any,context?: IWebApiConte
   return {...tsResult, schema};
 }
 
-
-interface IJsonTsGenResult extends ITsGenResult{
-  typeName:string;
-  tsContent:string;
-  schema:SchemaProps;
-}
-
-interface ITsGenResult{
-  typeName:string;
-  tsContent:string
-}
 
 //考虑使用z隐式传参呢..
 

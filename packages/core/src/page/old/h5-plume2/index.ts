@@ -10,11 +10,12 @@
 import * as fse from 'fs-extra';
 import * as ejs from 'ejs';
 import {join} from 'path';
-import {getHandleFile, insertContent, insertFile} from '../../util/compile-util';
-import {toLCamelize} from '../../util/string-util';
-import {IAction, IActorEvent, IActorItem, IPageDefined, ISubComp} from "../generate";
+import {getHandleFile, insertContent, insertFile} from '../../../util/compile-util';
+import {toLCamelize} from '../../../util/string-util';
+import {ISubComp} from "../../../typings/page";
 import {IFileSaveOptions} from "../taro-redux/redux-taro";
-import * as stringUitl from "../../util/string-util";
+import * as stringUitl from "../../../util/string-util";
+import {IAction, IActorEvent, IActorItem, IPageDefined} from "../../../typings/page";
 
 let toGenePages=[
   'layout'

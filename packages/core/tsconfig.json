@@ -5,7 +5,8 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "outDir": "./lib",
-    "declaration": false
+    "declaration": true
   },
+  "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/**/*", "temp/**", "demo/**"]
 }

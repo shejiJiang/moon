@@ -8,11 +8,11 @@
  **/
 import * as ejs from 'ejs';
 import {join} from 'path';
-import * as fse from 'fs-extra';
-import {DataType, IAction, IActorEvent, IActorItem, ImportInfo, IPageDefined, ISubComp, IType,} from '../generate';
-import {insertFile, getHandleFile} from "../../util/compile-util";
-import * as stringUitl from  '../../util/string-util';
+import {ISubComp, } from '../../typings/page';
+import {getHandleFile} from "../../util/compile-util";
+import * as stringUitl from '../../util/string-util';
 import {genTsFromJSON} from "../../util/json-util";
+import {DataType, IAction, IActorEvent, IActorItem, IContext, ImportInfo, IType} from "../../typings/page";
 
 const Util = {
   ... stringUitl,
@@ -226,28 +226,6 @@ export async function generate(context: IContext) {
   });
 }
 
-
-export interface IFileSaveOptions{
-  projectOutDir:string;
-  tplPath:string;
-  toSaveFilePath:string;
-  content:string;
-}
-
-
-/**
- *
- * @param {string} filePath
- * @param {(tplContent: string) => Promise<string>} dealCal
- * @returns {Promise<void>}
- */
-export interface IContext {
-  projectPath: string;
-  pageInfo: IPageDefined;
-  prettiesConfig?: object;
-  beforeSave?: (options:IFileSaveOptions,context: IContext)=>Promise<IFileSaveOptions>;
-  afterSave?: (options:IFileSaveOptions,context: IContext)=>Promise<void>;
-}
 
 export async function buildPage(context: IContext) {
   //在项目中生成相关文件

@@ -1,4 +1,4 @@
-import {IPageDefined} from '../src/page/generate';
+import {IPageDefined} from '../src/typings/page';
 import {buildPage} from '../src/page/redux/redux';
 import * as fse from 'fs-extra';
 import {join} from 'path';

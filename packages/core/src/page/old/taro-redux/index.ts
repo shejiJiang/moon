@@ -1,9 +1,9 @@
-import {IPageDefined} from '../generate';
+import {IPageDefined} from '../../../typings/page';
 import {buildPage} from './redux-taro';
 import * as fse from 'fs-extra';
 import {join} from 'path';
-import {insertContent, insertFile} from '../../util/compile-util';
-import {toLCamelize} from '../../util/string-util';
+import {insertContent, insertFile} from '../../../util/compile-util';
+import {toLCamelize} from '../../../util/string-util';
 
 /**
  * @desc
