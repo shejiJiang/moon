@@ -102,21 +102,3 @@ export async function genTsFromDefines(definitions:{
   return tsContent;
 }
 
-
-
-
-// (async()=>{
-//
-//   let value=[ { cardNo: '2312312312', name: '浙江农商银行', cardImg: '', type: '储蓄卡' } ];
-//   console.log(generateSchema.json("cards",value))
-//   // console.log(await genTsFromSchema("",value ));
-// })()
-
-
-
-// (async()=>{
-//   let resultl  = await genTsFromJSON('tyer',12);
-//   console.log(resultl);
-// })()
-
-
