@@ -23,7 +23,6 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "@types/electron": "^1.6.10",
     "@types/fs-extra": "^5.0.5",
     "@types/klaw": "^3.0.0",
     "jest": "^24.7.1",

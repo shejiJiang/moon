@@ -1,4 +1,5 @@
-import { app, BrowserWindow,ipcMain } from "electron";
+import { app, BrowserWindow,ipcMain,session } from "electron";
+import OnResponseStartedDetails = Electron.OnResponseStartedDetails;
 
 let mainWindow: Electron.BrowserWindow;
 
@@ -14,29 +15,48 @@ ipcMain.on('synchronous-message', (event, arg) => {
 })
 
 
+
+// Modify the user agent for all requests to the following urls.
+const filter = {
+  urls: [
+    // 'https://*.github.com/*',
+    // '*://electron.github.io',
+    '*/employee/login*']
+}
+
+// session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
+//   details.requestHeaders['User-Agent'] = 'MyAgent'
+//   callback({ requestHeaders: details.requestHeaders })
+// })
+
+
+
+
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
+    fullscreen:true,
+    // height: 600,
+    // width: 800,
   });
+
+
+  //TODO 过滤器怎么不起作用呢 ?
+  session.defaultSession.webRequest.onResponseStarted(filter,(details:OnResponseStartedDetails) => {
+
+    if(details.url.includes("employee/login") && details.method==='POST'){
+      console.log('返回值为: ',details);
+      setTimeout(()=>{
+        mainWindow.loadURL('http://localhost:3002/pages/moon/page');
+      },1000);
+    }
+  })
 
   // and load the index.html of the app.
   // mainWindow.loadFile(path.join(__dirname, "../index.html"));
-  // mainWindow.loadURL("http://localhost:3000");
-  mainWindow.loadURL("http://qm.1000.com/#/");
-  // setTimeout(()=>{
-  //   mainWindow.reload();
-  // },15000);
-  // mainWindow.on('ready-to-show')
-  // Open the DevTools.
-  // setTimeout(() => {
-  //   mainWindow.loadURL("http://qm.1000.com/#/");
-  //   mainWindow.webContents.openDevTools();
-  //
-  // }, 3000)
-  // mainWindow.webContents.executeJavaScript('')
-  // Emitted when the window is closed.
+  mainWindow.loadURL("http://localhost:3002/");
+  mainWindow.webContents.openDevTools();
+
   mainWindow.on("closed", () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
