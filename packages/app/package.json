@@ -26,7 +26,6 @@
     "@types/electron": "^1.6.10",
     "@types/fs-extra": "^5.0.5",
     "@types/klaw": "^3.0.0",
-    "electron": "^2.0.2",
     "jest": "^24.7.1",
     "prettier": "1.16.4",
     "tslint": "^5.10.0"
@@ -34,6 +33,7 @@
   "dependencies": {
     "@types/request": "^2.48.1",
     "ejs": "^2.6.1",
+    "electron": "^5.0.2",
     "fs-extra": "^7.0.1",
     "generate-schema": "^2.6.0",
     "json-schema-to-typescript": "^6.1.3",
