@@ -1,19 +1,17 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow,ipcMain } from "electron";
 
 let mainWindow: Electron.BrowserWindow;
 
+// In main process.
+ipcMain.on('asynchronous-message', (event, arg) => {
+  console.log(arg)  // prints "ping"
+  event.sender.send('asynchronous-reply', 'pong')
+})
 
-// // In main process.
-// const {ipcMain} = require('electron')
-// ipcMain.on('asynchronous-message', (event, arg) => {
-//   console.log(arg)  // prints "ping"
-//   event.sender.send('asynchronous-reply', 'pong')
-// })
-//
-// ipcMain.on('synchronous-message', (event, arg) => {
-//   console.log(arg)  // prints "ping"
-//   event.returnValue = 'pong'
-// })
+ipcMain.on('synchronous-message', (event, arg) => {
+  console.log(arg)  // prints "ping"
+  event.returnValue = 'pong'
+})
 
 
 function createWindow() {
@@ -44,7 +42,6 @@ function createWindow() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
-
   });
 }
 
