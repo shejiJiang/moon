@@ -1,3 +1,4 @@
+import {join} from 'path';
 import { app, BrowserWindow,ipcMain,session } from "electron";
 import OnResponseStartedDetails = Electron.OnResponseStartedDetails;
 
@@ -37,8 +38,16 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     fullscreen:true,
     // height: 600,
+    webPreferences: {
+      contextIsolation: false,
+      preload: join(__dirname,'./preload.js'),
+      nodeIntegration: true,
+      // webSecurity: false
+    }
     // width: 800,
   });
+
+
 
 
   //TODO 过滤器怎么不起作用呢 ?
@@ -51,6 +60,9 @@ function createWindow() {
       },1000);
     }
   })
+
+  //@ts-ignore
+  // mainWindow.webContents.session.setPreloads(join(__dirname,'./preload.js'));
 
   // and load the index.html of the app.
   // mainWindow.loadFile(path.join(__dirname, "../index.html"));
