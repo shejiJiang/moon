@@ -2,6 +2,7 @@ import {join} from 'path';
 import { app, BrowserWindow,ipcMain,session } from "electron";
 import OnResponseStartedDetails = Electron.OnResponseStartedDetails;
 
+
 let mainWindow: Electron.BrowserWindow;
 
 // In main process.
