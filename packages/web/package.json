@@ -1,6 +1,6 @@
 {
   "name": "@qianmi/card_pc",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": true,
   "publishConfig": {
     "registry": "http://registry.npm.qianmi.com"
