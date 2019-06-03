@@ -66,7 +66,7 @@ try {
 
 
 (async () => {
-  let workBase = "/Users/dong/wanmi/sbc/sbc-supplier/";
+  let workBase = projectPath;
   let apiJson = await loadJson();
   //   // // console.log(apiJson);
   //   await fse.writeJSON(join(__dirname, 'swagger-api.json'), apiJson);
