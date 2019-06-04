@@ -38,13 +38,29 @@ window.readConfig = function () {
 
 //@ts-ignore
 window.moon = {
-  generate:async (projectPath:string,pageInfo:IPageDefined)=>{
+  /**
+   * 仅保存数据定义;
+   *
+   * @param {string} projectPath
+   * @param {IPageDefined} pageInfo
+   * @returns {Promise<void>}
+   */
+  savePageInfo:async(projectPath:string,pageInfo:IPageDefined)=>{
     let _path = join(projectPath,'page-def/db.json');
     let db  = fse.readJSONSync(_path);
     db[pageInfo.pagePath] = pageInfo;
     fse.writeJsonSync(_path,db);
-    //将信息保存在列表中
-    //把json 保存起来;
+  },
+  /**
+   * 生成页面, 并保存显示定义;
+   *
+   * @param {string} projectPath
+   * @param {IPageDefined} pageInfo
+   * @returns {Promise<void>}
+   */
+  generate:async (projectPath:string,pageInfo:IPageDefined)=>{
+    //@ts-ignore
+    await window.moon.savePageInfo(projectPath,pageInfo);
     genPage({pageInfo,projectPath});
   }
 }
