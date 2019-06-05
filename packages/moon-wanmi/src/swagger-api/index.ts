@@ -250,7 +250,7 @@ function isNewMethod(controller:string,method:string):boolean{
   //转换
 
   //生成api索引文件::
-  log('生成api索引文件');
+  console.log("开始生成api索引文件,时间稍长,耐心等待");
   let indexInfo = MoonCore.TsIndex.genApiTsIndex({
     tsConfig: join(workBase, 'tsconfig.json'),
     apiDir: join(workBase, 'web_modules/api'),
