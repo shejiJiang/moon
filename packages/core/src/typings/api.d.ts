@@ -33,7 +33,7 @@ export interface IWebApiContext extends IFileSaveOpt {
   webapiGroup: IWebApiGroup;
   projectPath: string;
   //修改返回值的schema信息; 进行调整以生成ts定义; 因为多了api层的修改;
-  resSchemaModify?: (resScheme: SchemaProps, context: IWebApiContext) => SchemaProps;
+  resSchemaModify?: (resScheme: SchemaProps,apiItem: IWebApiDefinded , context: IWebApiContext) => Prommise<SchemaProps>;
   beforeCompile?: (
     apiItem: IWebApiDefinded,
   ) => Promise<IWebApiDefinded> | IWebApiDefinded;

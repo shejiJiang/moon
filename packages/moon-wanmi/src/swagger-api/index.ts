@@ -11,24 +11,23 @@ import * as request from 'request';
 import * as fse from 'fs-extra';
 import {join} from 'path';
 import MoonCore from 'moon-core';
-
+import debug from 'debug';
 import {
   IJSObjectProps,
   IWebApiContext,
   IWebApiDefinded,
   IWebApiGroup,
-  SchemaProps
+  SchemaProps,
 } from 'moon-core/declarations/typings/api';
 
-import {IFileSaveOptions} from "moon-core/declarations/typings/page";
-import {IInsertOption} from "moon-core/declarations/typings/util";
+import {IFileSaveOptions} from 'moon-core/declarations/typings/page';
+import {IInsertOption} from 'moon-core/declarations/typings/util';
 
-
+const log = debug('j2t:cli');
 async function loadJson(): Promise<any> {
   return new Promise((resolve, reject) => {
-
+    console.log(`从${defaulltMoonConfig.swaggerApi}中加载api doc信息`);
     request(defaulltMoonConfig.swaggerApi, function(
-    // request('http://118.31.238.229:8390/v2/api-docs', function(
       error,
       response,
       body,
@@ -41,32 +40,65 @@ async function loadJson(): Promise<any> {
     });
   });
 }
-let defaulltMoonConfig : {
-  swaggerApi:string;
-  api:{
-    exclude:string[];
-  }
+
+let defaulltMoonConfig: {
+  swaggerApi: string;
+  api: {
+    exclude: string[];
+    mockApi:{
+      [controller:string]:string[]
+    }
+  };
 };
 
-
 let projectPath = process.cwd();
-let configFilePath = join(projectPath,'.moon.json');
+let configFilePath = join(projectPath, '.moon.json');
 try {
-  console.log('读取配置文件',configFilePath);
-  if(fse.pathExistsSync(configFilePath)){
-    defaulltMoonConfig =  fse.readJSONSync(configFilePath);
-  }else{
-    throw new Error('配置不存在:'+configFilePath);
+  console.log('读取配置文件', configFilePath);
+  if (fse.pathExistsSync(configFilePath)) {
+    defaulltMoonConfig = fse.readJSONSync(configFilePath);
+  } else {
+    throw new Error('配置不存在:' + configFilePath);
   }
 } catch (err) {
-
-  throw new Error('配置读取失败:'+configFilePath);
+  throw new Error('配置读取失败:' + configFilePath);
 }
 
+
+interface IApiIndex{
+  [controllerName:string]:{
+    fileName:string;
+    methods:{
+      [methodName:string]:{
+        responseTs:string[];
+      }
+    }
+  }
+}
+let oldApiIndex:IApiIndex = {};
+
+/**
+ * 判断是否是新添加的方法,如果是新方法, 默认在开发时走mock流程.
+ *
+ * @param {string} controller
+ * @param {string} method
+ * @returns {boolean}
+ */
+function isNewMethod(controller:string,method:string):boolean{
+  let controllerInfo = oldApiIndex[controller];
+  if(controllerInfo && controllerInfo.methods[method]){
+    return false;
+  }
+
+  return true;
+}
 
 
 (async () => {
   let workBase = projectPath;
+  const ApiIndexPath = join(workBase, 'web_modules/api/_api-info.json');
+
+
   let apiJson = await loadJson();
   //   // // console.log(apiJson);
   //   await fse.writeJSON(join(__dirname, 'swagger-api.json'), apiJson);
@@ -75,108 +107,227 @@ try {
   //
   // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
   let apiGroups = transfer(apiJson);
-  await fse.writeJSON(join(__dirname,"webapi-def.json"),apiGroups);
+  // await fse.writeJSON(join(__dirname, 'webapi-def.json'), apiGroups);
 
-  // let basePath = "/Users/dong/wanmi/athena-frontend/src/webapi/";
-  let basePath = join(workBase,"web_modules/api");
 
-  let inserts:IInsertOption[] =[];
+  try {
+    oldApiIndex = await fse.readJSONSync(ApiIndexPath);
+  } catch (err) {
+    console.warn('读取历史api索引出错: ',err);
+  }
+
+  let basePath = join(workBase, 'web_modules/api');
+
+  let inserts: IInsertOption[] = [];
+  let newMethods:{controller:string;method:string;}[]=[];//新添加的方法记录
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
     try {
-      let webapiGroup:IWebApiGroup = apiGroups[i];
-      if(defaulltMoonConfig.api.exclude.includes(webapiGroup.name)){
-        console.log("ignore webapiGroup:",webapiGroup.name,"due to MoonConfig.api.exclude");
+      let webapiGroup: IWebApiGroup = apiGroups[i];
+      if (defaulltMoonConfig.api.exclude.includes(webapiGroup.name)) {
+        console.log(
+          `${i}/${ilen}`,
+          'ignore webapiGroup:',
+          webapiGroup.name,
+          'due to MoonConfig.api.exclude',
+        );
         continue;
-      }else{
-        console.log("current webapiGroup:",webapiGroup.name);
+      } else {
+        console.log(`${i}/${ilen}`, 'current webapiGroup:', webapiGroup.name);
       }
+      let mockData = {};
 
       await MoonCore.WebApiGen.buildWebApi({
         webapiGroup,
-        projectPath:basePath,// join(__dirname, 'out'),
+        projectPath: basePath, // join(__dirname, 'out'),
         beforeCompile: (apiItem: IWebApiDefinded) => {
           // apiItem.url =hostPre + apiItem.url;
           return apiItem;
         },
-        resSchemaModify,
-        beforeSave:(options:IFileSaveOptions,context: any)=>{
-          console.log(options.content.substring(0,30));
+        resSchemaModify: async (
+          schema: SchemaProps,
+          apiItem: IWebApiDefinded,
+          context: IWebApiContext,
+        ): Promise<SchemaProps> => {
+          if(isNewMethod(context.webapiGroup.name,apiItem.name)){
+            newMethods.push({
+              controller:context.webapiGroup.name,
+              method:apiItem.name
+            });
+          }
+          //添加生成mock数据的流程;;
+          let finalSchema = resSchemaModify(schema,apiItem, context);
+          if (finalSchema) {
+            console.log('开始生成mock数据');
+            //如果Schema有值,那么生成假数据
+            let json = {};
+            if (
+              ![
+                'CompanyInfoController',
+                'StoreContractController',
+                'DistributionRecordController',
+                'GoodsCateController',
+                'StoreStandardController',
+                'CustomerForPetController',
+                'StoreGoodsInfoController',
+                'StoreController',
+                'StoreGoodsController',
+                'DistributionSupplierGoodsController',
+                'DistributionGoodsMatterController',
+                'CouponInfoBaseController',
+                'StoreCustomerController'].includes(
+                webapiGroup.name,
+              )
+            ) {
+              try {
+                json = await MoonCore.fakeGen.genrateFakeData(
+                  finalSchema,
+                  context.webapiGroup.definitions,
+                );
+              } catch (err) {
+                //TODO 这里把出错的数据记录下来后面分析出错的原因;;
+                console.error(err, '解析数据出错;;');
+              }
+            } else {
+              fse.writeFileSync("mock-err"+webapiGroup.name+".json", JSON.stringify({...finalSchema,definitions:context.webapiGroup.definitions}, null, 2));
+            }
+            // console.log('mock 数据:',finalSchema.title,JSON.stringify(json,null,2));
+            mockData[finalSchema.title] = json;
+          }
+          return finalSchema;
+        },
+        beforeSave: (options: IFileSaveOptions, context: any) => {
+          console.log(options.content.substring(0, 30));
           options.content = options.content
-            .replace(`import sdk from "@api/sdk";`,`import * as sdk from './fetch';`)
-            .replace(`import sdk from '@api/sdk';`,`import * as sdk from './fetch';`)
-            .replace(/result\.data/ig,'result.context');
+            .replace(
+              `import sdk from "@api/sdk";`,
+              `import * as sdk from './fetch';`,
+            )
+            .replace(
+              `import sdk from '@api/sdk';`,
+              `import * as sdk from './fetch';`,
+            )
+            .replace(/result\.data/gi, 'result.context');
           return Promise.resolve(options);
-        }
+        },
       });
 
-       let controllerName= MoonCore.StringUtil.toLCamelize(webapiGroup.name);
-       let filePath =`./${webapiGroup.name}`;
+
+
+      let controllerName = MoonCore.StringUtil.toLCamelize(webapiGroup.name);
+      let filePath = `./${webapiGroup.name}`;
 
       inserts.push({
-        mark:"'whatwg-fetch';",
-        isBefore:false,
-        content:`import  ${controllerName} from '${filePath}';`,
-        check:(content:string)=>!content.includes(filePath)
+        mark: "'whatwg-fetch';",
+        isBefore: false,
+        content: `import  ${controllerName} from '${filePath}';`,
+        check: (content: string) => !content.includes(filePath),
       });
 
       inserts.push({
-        mark:"default {",
-        isBefore:false,
-        content:`${controllerName},`,
-        check:(_,raw)=>!raw.includes(filePath)
+        mark: 'default {',
+        isBefore: false,
+        content: `${controllerName},`,
+        check: (_, raw) => !raw.includes(filePath),
       });
 
+      //保存mock数据;
+      let mockFilePath = join(
+        projectPath,
+        'web_modules/api/mock/',
+        webapiGroup.name + '.json',
+      );
+      log('保存mock数据');
+      log('保存mock api定义数据');
+
+      fse.ensureFileSync(mockFilePath);
+      fse.writeFileSync(mockFilePath, JSON.stringify(mockData, null, 2));
     } catch (err) {
       console.error(err);
-
     }
   }
 
-  await MoonCore.CompileUtil.insertFile(join(basePath,"index.ts"),inserts);
+  await MoonCore.CompileUtil.insertFile(join(basePath, 'index.ts'), inserts);
   //还是生成 一个总的 ?
   //转换
 
   //生成api索引文件::
-  let indexInfo  = MoonCore.TsIndex.genApiTsIndex({
-    tsConfig: join(workBase,"tsconfig.json") ,
-    apiDir:join(workBase,"web_modules/api"),
-    apiSuffix:"Controller",
+  log('生成api索引文件');
+  let indexInfo = MoonCore.TsIndex.genApiTsIndex({
+    tsConfig: join(workBase, 'tsconfig.json'),
+    apiDir: join(workBase, 'web_modules/api'),
+    apiSuffix: 'Controller',
   });
-  fse.writeJsonSync( join(workBase , "web_modules/api/_api-info.json")  ,indexInfo);
+  log('保存api索引信息');
+
+  if(newMethods.length>0){
+    modifyAndSaveMoonConfig(newMethods);
+  }
+
+  fse.writeJsonSync(
+    ApiIndexPath,
+    indexInfo,
+  );
 })();
 
+function modifyAndSaveMoonConfig(newMethods:{controller:string;method:string;}[]){
+  for (let i = 0, iLen = newMethods.length; i < iLen; i++) {
+    let {controller,method} = newMethods[i];
+    if(!defaulltMoonConfig.api.mockApi[controller]){
+      defaulltMoonConfig.api.mockApi[controller]=[];
+    }
 
-function resSchemaModify(schema: IJSObjectProps,context: IWebApiContext) {
+    if(!defaulltMoonConfig.api.mockApi[controller].includes(method)){
+      defaulltMoonConfig.api.mockApi[controller].push(method);
+    }
+  }
 
+  let configFilePath = join(projectPath, '.moon.json');
+  defaulltMoonConfig = fse.readJSONSync(configFilePath);
+}
+
+function resSchemaModify(
+  schema: SchemaProps,
+  apiItem: IWebApiDefinded,
+  context: IWebApiContext,
+): SchemaProps {
   //api外了一层. 所有内容均把data提取出来即可..
-  if(!schema){
+  if (!schema) {
     return schema;
   }
 
   //TODO void怎么表示  ?
   //@ts-ignore;
-  if(schema['originalRef']==='BaseResponse'){
+  if (schema['originalRef'] === 'BaseResponse') {
     return null;
-  }else if (schema['$ref']) {
+  } else if (schema['$ref']) {
     // console.log('schema[\'$ref\']',schema);
-    let subSchema  = context.webapiGroup.definitions[schema['originalRef']] as IJSObjectProps;
+    let subSchema = context.webapiGroup.definitions[
+      schema['originalRef']
+    ] as IJSObjectProps;
 
-    if(!subSchema) {
+    if (!subSchema) {
       return null;
     }
-   // console.log('hema[\'originalRef\']===\'BaseResponse\'',subSchema);
-    if(subSchema.type==='object' && subSchema.properties && subSchema.properties.context ) {
-      if(subSchema.properties.context["$ref"]) {
-        return  context.webapiGroup.definitions[subSchema.properties.context["originalRef"]];
-      } else if(subSchema.properties.context['type'] ==='array') {
-        let arrayAschema =  subSchema.properties.context;
-        //@ts-ignore
-        arrayAschema.title=subSchema.properties.context.items.originalRef+"Array";
+    // console.log('hema[\'originalRef\']===\'BaseResponse\'',subSchema);
+    if (
+      subSchema.type === 'object' &&
+      subSchema.properties &&
+      subSchema.properties.context
+    ) {
+      if (subSchema.properties.context['$ref']) {
+        return context.webapiGroup.definitions[
+          subSchema.properties.context['originalRef']
+        ];
+      } else if (subSchema.properties.context['type'] === 'array') {
+        let arrayAschema = subSchema.properties.context;
+        arrayAschema.title =
+          //@ts-ignore
+          subSchema.properties.context.items.originalRef + 'Array';
         return arrayAschema;
       } else {
         return subSchema.properties.context;
       }
-    }else {
+    } else {
       return schema;
     }
   } else {
@@ -193,20 +344,20 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
   //分组;
   let apiGroups: IWebApiGroup[] = [];
 
-  let temp  = {};
+  let temp = {};
   let KeyMap = {};
   for (let url in apiDocs.paths) {
     let apiItem = apiDocs.paths[url];
 
-    let groupKey="";
+    let groupKey = '';
 
     //TODO 会不会有两个及三个方法呢 ? 会 account/invoiceProject/{projectId}
-    for(let method in apiItem) {
-      let apiDefItem:any ={url,method};
-      let methodInfo:IMethodDefinded = apiItem[method];
+    for (let method in apiItem) {
+      let apiDefItem: any = {url, method};
+      let methodInfo: IMethodDefinded = apiItem[method];
 
       // let groupKey = url.split('/')[1];
-       groupKey = methodInfo.tags[0];//controller
+      groupKey = methodInfo.tags[0]; //controller
 
       if (!KeyMap[groupKey]) {
         KeyMap[groupKey] = {
@@ -216,98 +367,112 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
         };
       }
 
+      temp[url] = {url, methodName: methodInfo.operationId, group: groupKey};
 
-      temp[url]={url,methodName:methodInfo.operationId,group:groupKey};
-
-      apiDefItem.name=MoonCore.StringUtil.toLCamelize(methodInfo.operationId)
-        .replace(/UsingPOST.*/ig,"")
-        .replace(/UsingPUT.*/ig,"")
-        .replace(/UsingGET.*/ig,"")
-        .replace(/UsingDELETE.*/ig,"_");
-      apiDefItem.comment= methodInfo.summary;
+      apiDefItem.name = MoonCore.StringUtil
+        .toLCamelize(methodInfo.operationId)
+        .replace(/UsingPOST.*/gi, '')
+        .replace(/UsingPUT.*/gi, '')
+        .replace(/UsingGET.*/gi, '')
+        .replace(/UsingDELETE.*/gi, '_');
+      apiDefItem.comment = methodInfo.summary;
       //in  = body header path
 
-      apiDefItem.requestParam = methodInfo.parameters.filter(item=>
-        item.in!='header'
-      ).map(item=>{
-        if(item.schema){
-          addDef2List(KeyMap[groupKey].definitions,findAllRefType(apiDocs.definitions,item.schema));
-        }
+      apiDefItem.requestParam = methodInfo.parameters
+        .filter(item => item.in != 'header')
+        .map(item => {
+          if (item.schema) {
+            addDef2List(
+              KeyMap[groupKey].definitions,
+              findAllRefType(apiDocs.definitions, item.schema),
+            );
+          }
 
-        return {
-          name:item.name,
-          isInPath:item.in==='path'?true:false,
-          comment:item.description,
-          jsonSchema:item.schema?item.schema:item
-        }
-      });
-      apiDefItem.responseSchema=methodInfo.responses['200'].schema;
-      addDef2List(KeyMap[groupKey].definitions,findAllRefType(apiDocs.definitions,apiDefItem.responseSchema));
+          return {
+            name: item.name,
+            isInPath: item.in === 'path' ? true : false,
+            comment: item.description,
+            jsonSchema: item.schema ? item.schema : item,
+          };
+        });
+      apiDefItem.responseSchema = methodInfo.responses['200'].schema;
+      addDef2List(
+        KeyMap[groupKey].definitions,
+        findAllRefType(apiDocs.definitions, apiDefItem.responseSchema),
+      );
       KeyMap[groupKey].apis.push(apiDefItem);
     }
   }
 
-
-  for(let key in KeyMap){
+  for (let key in KeyMap) {
     apiGroups.push(KeyMap[key]);
   }
   return apiGroups;
 }
 
-function addDef2List(definitions: {
-  [defName: string]: SchemaProps;
-},schema:SchemaProps|SchemaProps[]){
-
-  if ( schema instanceof Array) {
+function addDef2List(
+  definitions: {
+    [defName: string]: SchemaProps;
+  },
+  schema: SchemaProps | SchemaProps[],
+) {
+  if (schema instanceof Array) {
     for (let i = 0, iLen = schema.length; i < iLen; i++) {
       let schemaItem = schema[i];
 
-      if(!definitions[schemaItem.title]){
-        definitions[schemaItem.title]=schemaItem;
+      if (!definitions[schemaItem.title]) {
+        definitions[schemaItem.title] = schemaItem;
       }
     }
-
   } else {
-    if(!definitions[schema.title]){
-      definitions[schema.title]=schema;
+    if (!definitions[schema.title]) {
+      definitions[schema.title] = schema;
     }
   }
-
 }
 
 //TODO 枚举类型的控制.
-function  findAllRefType(definitions: {
-  [defName: string]: SchemaProps;
-},obj:any,refs:string[]=[]):SchemaProps[] {
-  if(!obj){
+function findAllRefType(
+  definitions: {
+    [defName: string]: SchemaProps;
+  },
+  obj: any,
+  refs: string[] = [],
+): SchemaProps[] {
+  if (!obj) {
     return [];
   }
 
-  let refLeng =refs.length;
-   traverseObj(obj,refs);
+  let refLeng = refs.length;
+  traverseObj(obj, refs);
 
   //TODO 这里要不要把名字改了呢 ?
-  let results  = [];
+  let results = [];
 
-  if(obj && !obj.$ref) {
+  if (obj && !obj.$ref) {
     results.push(obj);
   }
 
-
   for (let i = refLeng, ilen = refs.length; i < ilen; i++) {
-    let ref = refs[i].replace('#/definitions/',"");
+    let ref = refs[i].replace('#/definitions/', '');
 
-    if(ref && definitions[ref]) {
-
+    if (ref && definitions[ref]) {
       results.push(definitions[ref]);
       //遍历对象, 至到找到所有的引用内容为至;
       let jlen = refs.length;
-      traverseObj(definitions[ref],refs);
+      traverseObj(definitions[ref], refs);
       // console.log('子 traverseObj',refs);
-      if(refs.length > jlen){ //有新的ref添加进来..
+      if (refs.length > jlen) {
+        //有新的ref添加进来..
 
         for (let j = jlen, allen = refs.length; j < allen; j++) {
-          results=results.concat(findAllRefType(definitions,definitions[refs[j].replace('#/definitions/',"")],refs));
+          results = results.concat(
+            findAllRefType(
+              definitions,
+              definitions[refs[j].replace('#/definitions/', '')],
+              refs,
+            ),
+          );
         }
       }
     }
@@ -320,20 +485,18 @@ function  findAllRefType(definitions: {
  * 遍历 对象 寻找 ref类型.
  * TODO 会不会有相互引用呢?
  */
-function traverseObj(obj:object,refs:string[]=[]){
-  for(let key in obj){
-    if(obj.hasOwnProperty(key) && key==='$ref'){
-      if(!refs.includes(obj[key])) {
+function traverseObj(obj: object, refs: string[] = []) {
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key) && key === '$ref') {
+      if (!refs.includes(obj[key])) {
         refs.push(obj[key]);
       }
-    } else if (typeof (obj[key] )==='object') {
-      traverseObj(obj[key],refs);
+    } else if (typeof obj[key] === 'object') {
+      traverseObj(obj[key], refs);
     }
   }
   return refs;
 }
-
-
 
 interface ISwaggerApisDocs {
   swagger: string;

@@ -16,6 +16,9 @@ import {IParamShape} from "../../typings/api";
 import {IWebApiContext, IWebApiDefinded} from "../../typings/api";
 
 
+import debug from 'debug';
+const log = debug('web-api:');
+
 //TODO 参数是file类型的处理
 //TODO 类型生成重复的问题?
 
@@ -104,6 +107,7 @@ export async function buildWebApi(context: IWebApiContext) {
 }
 
 async function generateTsDefined(context: IWebApiContext): Promise<string> {
+  log(`ts定义信息: beg`);
   let {webapiGroup, resSchemaModify} = context;
 
   // let results = [];
@@ -127,21 +131,15 @@ async function generateTsDefined(context: IWebApiContext): Promise<string> {
     }
 
     if (apiItem.responseSchema) {
-
       let _resSchema = apiItem.responseSchema;
       if (resSchemaModify) {
-        _resSchema = await resSchemaModify(apiItem.responseSchema,context);
+        log(`ts定义信息: 调用resSchemaModify方法修饰返回值`);
+        _resSchema = await resSchemaModify(apiItem.responseSchema,apiItem ,context);
       }
       apiItem.responseSchema = _resSchema;
 
       if (_resSchema) {
         param2RespTypes.push(_resSchema);
-        // let {tsContent} = await genTsFromSchema(
-        //   Util.genInterfaceName(apiItem.name, 'res'),
-        //   _resSchema as any,
-        //   context,
-        // );
-        // results.push(tsContent);
       }
     }
   }

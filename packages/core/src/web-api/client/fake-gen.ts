@@ -8,7 +8,7 @@
  **/
 
 import * as jsf from 'json-schema-faker';
-
+import * as _ from 'lodash';
 //参考文档:
 //https://json-schema-faker.js.org/#gist/d9e27543d84157c1672f87e93ac250cc
 //https://github.com/json-schema-faker/json-schema-faker/tree/master/docs
@@ -64,13 +64,13 @@ jsf.option('failOnInvalidFormat',false);
         "type": "integer",
         "minimum": 0,
         "minimumExclusive": true
-      }
+      }s
     }
   }
  * @param jsonSchema
  * @param {{}} definitions
  */
-export function genrateFakeData(jsonSchema:any,definitions={}):object{
-  //避免循环引用; jsonSchema 出现在 definitions 中的情况;
-  return jsf.generate({...jsonSchema,definitions});
+export async function genrateFakeData(jsonSchema:any,definitions:{[name:string]:any}={}):Promise<object>{
+  let result =  await jsf.generate({... _.cloneDeep(jsonSchema),definitions});
+  return result;
 }

@@ -10,9 +10,13 @@
     "registory": "http://registory.npmjs.org"
   },
   "dependencies": {
+    "debug": "^4.1.1",
     "moon-core": "^0.0.6"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "fbc37e827d15c23480e20c0e32985e1aa3951a62"
+  "gitHead": "fbc37e827d15c23480e20c0e32985e1aa3951a62",
+  "devDependencies": {
+    "@types/fs-extra": "^7.0.0"
+  }
 }

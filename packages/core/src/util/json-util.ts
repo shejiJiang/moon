@@ -13,6 +13,9 @@ import {compile} from 'json-schema-to-typescript';
 import {IWebApiContext} from "../typings/api";
 import {IJsonTsGenResult, ITsGenResult} from "../typings/util";
 
+import debug from  'debug';
+
+const log  = debug('web-apis:jsonUtil');
 /**
  * 将json转换为ts定义
  *
@@ -20,6 +23,7 @@ import {IJsonTsGenResult, ITsGenResult} from "../typings/util";
  * @returns {any}
  */
 export async function genTsFromJSON(name:string,value:any,context?: IWebApiContext):Promise<IJsonTsGenResult> {
+  log(`根据JSON生成ts定义文件`);
   let schema  = generateSchema.json(name,value);
   let tsResult = await genTsFromSchema(name,schema,context);
   return {...tsResult, schema};
@@ -36,27 +40,7 @@ export async function genTsFromJSON(name:string,value:any,context?: IWebApiConte
  * @returns {Promise<string>}
  */
 export async function genTsFromSchema(name:string,jsonSchema:any,context?: IWebApiContext):Promise<ITsGenResult>{
-
-  // context.webapiGroup.definitions
-  // let reg  = /#\/definitions\//;
-  // let parse = {
-  //   order: 1,
-  //   canParse:reg ,
-  //   parse: function(refStr) {
-  //     console.log('definitions==>',refStr,
-  //       // context.webapiGroup.definitions[refStr.replace(reg,"")]
-  //     )
-  //     ;
-  //
-  //     // if(typeof(refStr)==='string'){
-  //     //   return context.webapiGroup.definitions[refStr.replace(reg,"")];
-  //     // }
-  //   }
-  // }
-
-  // let _jsonSchema  = await $RefParser.dereference(jsonSchema);
-
-  // console.log(_jsonSchema);
+  log(`根据jsonSchema生成ts定义文件`);
   let tsContent = await compile(
     jsonSchema,
     name,{
@@ -75,13 +59,14 @@ export async function genTsFromSchema(name:string,jsonSchema:any,context?: IWebA
     typeName:jsonSchema.title?jsonSchema.title.replace(/ */ig,""):name,
     tsContent
   }
-  // console.log(result);
   return result;
 }
 
 export async function genTsFromDefines(definitions:{
   definitions:{[key:string]:any}
 },name='IgnoreType'):Promise<string>{
+  log(`根据jsonSchema中definitions生成ts定义文件`);
+
   let tsContent = await compile(
     definitions,name
     ,{
