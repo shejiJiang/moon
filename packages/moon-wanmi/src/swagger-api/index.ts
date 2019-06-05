@@ -261,6 +261,8 @@ function isNewMethod(controller:string,method:string):boolean{
 
   if(newMethods.length>0){
     modifyAndSaveMoonConfig(newMethods);
+  } else {
+
   }
 
   fse.writeJsonSync(
@@ -280,8 +282,7 @@ function modifyAndSaveMoonConfig(newMethods:{controller:string;method:string;}[]
       defaulltMoonConfig.api.mockApi[controller].push(method);
     }
   }
-
-  let configFilePath = join(projectPath, '.moon.json');
+  console.log('保存.moon.config,更新mock接口信息');
   fse.writeFileSync(configFilePath,JSON.stringify(defaulltMoonConfig,null,2));
 }
 

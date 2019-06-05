@@ -10,9 +10,11 @@
  **/
 import {Project, InterfaceDeclarationStructure, StructureKind} from 'ts-morph';
 
+import debug from 'debug';
 const baseType = ['number', 'string','unknown','boolean'];
 const numberReg = /^[0-9]+$/;
 
+let log = debug('web-api:ts-index');
 export interface Controller{
   fileName:"",
   methods:{
@@ -125,7 +127,6 @@ function getAllTsNameRef(
           // @ts-ignore
           let property = interfaceItem.properties[j];
 
-          // console.log('property.type',property.type,typeof property.type);
           let _propertyType = property.type as string;
           if (_propertyType.includes('|')) {
             let allRef = _propertyType.split('|');
@@ -172,11 +173,6 @@ function isRefTs(refInfo: string): boolean {
   } else if (numberReg.test(refInfo.trim())) {
     return false;
   }
-  console.warn(`判断是否是引用类型;${numberReg.test('1')} -${refInfo}- VS -${refInfo.trim()}-` ,numberReg.test(refInfo+""), typeof refInfo);
+  log(`判断是否是引用类型;${numberReg.test('1')} -${refInfo}- VS -${refInfo.trim()}-` ,numberReg.test(refInfo+""), typeof refInfo);
   return true;
 }
-
-// single
-// const testSourceFiles = project.getSourceFiles();
-
-// console.log(testSourceFiles,"testSourceFiles");
