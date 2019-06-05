@@ -1,5 +1,7 @@
 import sdk from "@api/sdk";
 
+const controllerName = <%-webapiGroup.name %>
+
 <% webapiGroup.apis.forEach(apiItem=>{ %>
 
 /**
@@ -12,6 +14,13 @@ async function <%=Util.getMethodName(apiItem.name)%>(
         <%=paramItem.name%>:<%=Util.genInterfaceName(apiItem.name,paramItem.name,"req")%>,
     <% }) %>
 ):Promise< <%= Util.getTypeNameFromSchema(apiItem.responseSchema) %> > {
+
+  if(__DEV__){
+    if(require('./mock-util')(" <%-webapiGroup.name %>","<%=Util.getMethodName(apiItem.name)%>")){
+      return Promise.resolve(require('./mock/<%-webapiGroup.name %>.json').<%= Util.getTypeNameFromSchema(apiItem.responseSchema) %>||{});
+    }
+  }
+
   let result = await sdk.<%=Util.getMethodName(apiItem.method)%> <%-apiItem.responseSchema? "<"+Util.getTypeNameFromSchema(apiItem.responseSchema) +">":""%>(
   "<%=apiItem.url%>"
     <% apiItem.requestParam.forEach(paramItem=>{ %>
