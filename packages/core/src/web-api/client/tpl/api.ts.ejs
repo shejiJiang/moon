@@ -1,6 +1,7 @@
 import sdk from "@api/sdk";
 
-const controllerName = <%-webapiGroup.name %>
+import isMock from  './mock-util';
+const controllerName = "<%-webapiGroup.name %>"
 
 <% webapiGroup.apis.forEach(apiItem=>{ %>
 
@@ -16,7 +17,7 @@ async function <%=Util.getMethodName(apiItem.name)%>(
 ):Promise< <%= Util.getTypeNameFromSchema(apiItem.responseSchema) %> > {
 
   if(__DEV__){
-    if(require('./mock-util')(" <%-webapiGroup.name %>","<%=Util.getMethodName(apiItem.name)%>")){
+    if(isMock(" <%-webapiGroup.name %>","<%=Util.getMethodName(apiItem.name)%>")){
       return Promise.resolve(require('./mock/<%-webapiGroup.name %>.json').<%= Util.getTypeNameFromSchema(apiItem.responseSchema) %>||{});
     }
   }

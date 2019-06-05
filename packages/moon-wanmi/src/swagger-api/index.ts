@@ -190,12 +190,12 @@ function isNewMethod(controller:string,method:string):boolean{
               fse.writeFileSync("mock-err"+webapiGroup.name+".json", JSON.stringify({...finalSchema,definitions:context.webapiGroup.definitions}, null, 2));
             }
             // console.log('mock 数据:',finalSchema.title,JSON.stringify(json,null,2));
-            mockData[finalSchema.title.replace(/(«|»)/ig,"")] = json;
+            mockData[(finalSchema.title||"noneName").replace(/(«|»)/ig,"")] = json;
           }
           return finalSchema;
         },
         beforeSave: (options: IFileSaveOptions, context: any) => {
-          console.log(options.content.substring(0, 30));
+          // console.log(options.content.substring(0, 30));
           options.content = options.content
             .replace(
               `import sdk from "@api/sdk";`,
