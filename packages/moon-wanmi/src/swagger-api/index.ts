@@ -157,7 +157,6 @@ function isNewMethod(controller:string,method:string):boolean{
           //添加生成mock数据的流程;;
           let finalSchema = resSchemaModify(schema,apiItem, context);
           if (finalSchema) {
-            console.log('开始生成mock数据');
             //如果Schema有值,那么生成假数据
             let json = {};
             if (
@@ -265,9 +264,9 @@ function isNewMethod(controller:string,method:string):boolean{
 
   }
 
-  fse.writeJsonSync(
+  fse.writeFileSync(
     ApiIndexPath,
-    indexInfo,
+    JSON.stringify(indexInfo,null,2),
   );
 })();
 
