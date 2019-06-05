@@ -190,7 +190,7 @@ function isNewMethod(controller:string,method:string):boolean{
               fse.writeFileSync("mock-err"+webapiGroup.name+".json", JSON.stringify({...finalSchema,definitions:context.webapiGroup.definitions}, null, 2));
             }
             // console.log('mock 数据:',finalSchema.title,JSON.stringify(json,null,2));
-            mockData[finalSchema.title] = json;
+            mockData[finalSchema.title.replace(/(«|»)/ig,"")] = json;
           }
           return finalSchema;
         },
