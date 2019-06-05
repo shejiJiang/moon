@@ -282,7 +282,7 @@ function modifyAndSaveMoonConfig(newMethods:{controller:string;method:string;}[]
   }
 
   let configFilePath = join(projectPath, '.moon.json');
-  defaulltMoonConfig = fse.readJSONSync(configFilePath);
+  fse.writeFileSync(configFilePath,JSON.stringify(defaulltMoonConfig,null,2));
 }
 
 function resSchemaModify(
