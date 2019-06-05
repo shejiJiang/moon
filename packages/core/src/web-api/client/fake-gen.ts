@@ -8,103 +8,69 @@
  **/
 
 import * as jsf from 'json-schema-faker';
-import * as fse from 'fs-extra';
 
-import {join} from "path";
-
-
-// 1.0 - first, we need a working (and valid) `schema`
-const schema = {
-  type: 'string',
-};
-
-// 1.1 - optionally, you can provide used `refs`
-const refs = [
-  {
-    id: 'Test',
-    type: 'boolean',
-  }
-];
-
-// 1.2 - additionally, you can provide a `cwd` for local references
-const cwd = `${__dirname}/schema`;
+//参考文档:
+//https://json-schema-faker.js.org/#gist/d9e27543d84157c1672f87e93ac250cc
+//https://github.com/json-schema-faker/json-schema-faker/tree/master/docs
 
 
-(async ()=>{
+jsf.option('alwaysFakeOptionals',true);
+jsf.option('ignoreMissingRefs',true);
+jsf.option('failOnInvalidTypes',false);
+jsf.option('failOnInvalidFormat',false);
 
-  let apiSchema  =  fse.readJSONSync(join(__dirname,'api.json'));
-
-  let targetResponse= apiSchema.definitions['BaseResponse«BusinessConfigRopResponse»'];
-  // let targetResponse= apiSchema.definitions['BusinessConfigRopResponseFake'];
-
-  if(targetResponse.properties){
-    let required  = [];
-    for (let propertiesKey in targetResponse.properties) {
-      required.push(propertiesKey);
+/**
+ 示例数据:
+ {
+    "type": "object",
+    "properties": {
+      "user": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/definitions/positiveInt"
+          },
+          "name": {
+            "type": "string",
+            "faker": "name.findName"
+          },
+          "birthday": {
+            "type": "string",
+            "chance": {
+              "birthday": {
+                "string": true
+              }
+            }
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "faker": "internet.email"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "birthday",
+          "email"
+        ]
+      }
+    },
+    "required": [
+      "user"
+    ],
+    "definitions": {
+      "positiveInt": {
+        "type": "integer",
+        "minimum": 0,
+        "minimumExclusive": true
+      }
     }
-    targetResponse.required=required;
   }
-
-  let definitions = {
-  };
-  targetResponse.definitions = {
-    "BusinessConfigRopResponse":apiSchema.definitions['BusinessConfigRopResponse']
-  };
-
-
-
-
-  console.log(JSON.stringify(targetResponse,null,2));
-
-
-
-  fse.writeFileSync(join(__dirname,'api.result.json'),JSON.stringify(jsf.generate(targetResponse), null, 2))
-
-  // fse.writeFileSync(join(__dirname,'api.result.json'),JSON.stringify(jsf.generate({
-  //   "type": "object",
-  //   "properties": {
-  //     "user": {
-  //       "type": "object",
-  //       "properties": {
-  //         "id": {
-  //           "$ref": "#/definitions/positiveInt"
-  //         },
-  //         "name": {
-  //           "type": "string",
-  //           "faker": "name.findName"
-  //         },
-  //         "birthday": {
-  //           "type": "string",
-  //           "chance": {
-  //             "birthday": {
-  //               "string": true
-  //             }
-  //           }
-  //         },
-  //         "email": {
-  //           "type": "string",
-  //           "format": "email",
-  //           "faker": "internet.email"
-  //         }
-  //       },
-  //       "required": [
-  //         "id",
-  //         "name",
-  //         "birthday",
-  //         "email"
-  //       ]
-  //     }
-  //   },
-  //   "required": [
-  //     "user"
-  //   ],
-  //   "definitions": {
-  //     "positiveInt": {
-  //       "type": "integer",
-  //       "minimum": 0,
-  //       "minimumExclusive": true
-  //     }
-  //   }
-  // }), null, 2))
-
-})();
+ * @param jsonSchema
+ * @param {{}} definitions
+ */
+export function genrateFakeData(jsonSchema:any,definitions={}):object{
+  //避免循环引用; jsonSchema 出现在 definitions 中的情况;
+  return jsf.generate({...jsonSchema,definitions});
+}
