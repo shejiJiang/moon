@@ -9,7 +9,8 @@
 
 import * as request from 'request';
 import * as fse from 'fs-extra';
-import {join} from 'path';
+import * as _ from  'lodash';
+import { join } from 'path';
 import MoonCore from 'moon-core';
 import debug from 'debug';
 import {
@@ -17,21 +18,17 @@ import {
   IWebApiContext,
   IWebApiDefinded,
   IWebApiGroup,
-  SchemaProps,
+  SchemaProps
 } from 'moon-core/declarations/typings/api';
 
-import {IFileSaveOptions} from 'moon-core/declarations/typings/page';
-import {IInsertOption} from 'moon-core/declarations/typings/util';
+import { IFileSaveOptions } from 'moon-core/declarations/typings/page';
+import { IInsertOption } from 'moon-core/declarations/typings/util';
 
 const log = debug('j2t:cli');
 async function loadJson(): Promise<any> {
   return new Promise((resolve, reject) => {
     console.log(`从${defaulltMoonConfig.swaggerApi}中加载api doc信息`);
-    request(defaulltMoonConfig.swaggerApi, function(
-      error,
-      response,
-      body,
-    ) {
+    request(defaulltMoonConfig.swaggerApi, function(error, response, body) {
       if (error) {
         reject(error);
       } else {
@@ -45,8 +42,13 @@ let defaulltMoonConfig: {
   swaggerApi: string;
   api: {
     exclude: string[];
-    mockApi:{
-      [controller:string]:string[]
+    mock:{
+      ignoreApi:{
+        [controller: string]: string[];
+      };
+      mockApi: {
+        [controller: string]: string[];
+      };
     }
   };
 };
@@ -64,18 +66,17 @@ try {
   throw new Error('配置读取失败:' + configFilePath);
 }
 
-
-interface IApiIndex{
-  [controllerName:string]:{
-    fileName:string;
-    methods:{
-      [methodName:string]:{
-        responseTs:string[];
-      }
-    }
-  }
+interface IApiIndex {
+  [controllerName: string]: {
+    fileName: string;
+    methods: {
+      [methodName: string]: {
+        responseTs: string[];
+      };
+    };
+  };
 }
-let oldApiIndex:IApiIndex = {};
+let oldApiIndex: IApiIndex = {};
 
 /**
  * 判断是否是新添加的方法,如果是新方法, 默认在开发时走mock流程.
@@ -84,20 +85,18 @@ let oldApiIndex:IApiIndex = {};
  * @param {string} method
  * @returns {boolean}
  */
-function isNewMethod(controller:string,method:string):boolean{
+function isNewMethod(controller: string, method: string): boolean {
   let controllerInfo = oldApiIndex[controller];
-  if(controllerInfo && controllerInfo.methods[method]){
+  if (controllerInfo && controllerInfo.methods[method]) {
     return false;
   }
 
   return true;
 }
 
-
 (async () => {
   let workBase = projectPath;
   const ApiIndexPath = join(workBase, 'web_modules/api/_api-info.json');
-
 
   let apiJson = await loadJson();
   //   // // console.log(apiJson);
@@ -109,17 +108,16 @@ function isNewMethod(controller:string,method:string):boolean{
   let apiGroups = transfer(apiJson);
   // await fse.writeJSON(join(__dirname, 'webapi-def.json'), apiGroups);
 
-
   try {
     oldApiIndex = await fse.readJSONSync(ApiIndexPath);
   } catch (err) {
-    console.warn('读取历史api索引出错: ',err);
+    console.warn('读取历史api索引出错: ', err);
   }
 
   let basePath = join(workBase, 'web_modules/api');
 
   let inserts: IInsertOption[] = [];
-  let newMethods:{controller:string;method:string;}[]=[];//新添加的方法记录
+  let newMethods: { controller: string; method: string }[] = []; //新添加的方法记录
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
     try {
       let webapiGroup: IWebApiGroup = apiGroups[i];
@@ -128,7 +126,7 @@ function isNewMethod(controller:string,method:string):boolean{
           `${i}/${ilen}`,
           'ignore webapiGroup:',
           webapiGroup.name,
-          'due to MoonConfig.api.exclude',
+          'due to MoonConfig.api.exclude'
         );
         continue;
       } else {
@@ -146,51 +144,42 @@ function isNewMethod(controller:string,method:string):boolean{
         resSchemaModify: async (
           schema: SchemaProps,
           apiItem: IWebApiDefinded,
-          context: IWebApiContext,
+          context: IWebApiContext
         ): Promise<SchemaProps> => {
-          if(isNewMethod(context.webapiGroup.name,apiItem.name)){
+          let _isNewMethod  = isNewMethod(context.webapiGroup.name, apiItem.name);
+          if (_isNewMethod) {
             newMethods.push({
-              controller:context.webapiGroup.name,
-              method:apiItem.name
+              controller: context.webapiGroup.name,
+              method: apiItem.name
             });
           }
           //添加生成mock数据的流程;;
-          let finalSchema = resSchemaModify(schema,apiItem, context);
+          let finalSchema = resSchemaModify(schema, apiItem, context);
           if (finalSchema) {
             //如果Schema有值,那么生成假数据
             let json = {};
+            console.log(
+              `当前Controller:  ${webapiGroup.name}:['${apiItem.name}'],如果过进入infinite loop . 请设置moon.config :api.mock.ignoreApi`
+            );
             if (
-              ![
-                'CompanyInfoController',
-                'StoreContractController',
-                'DistributionRecordController',
-                'GoodsCateController',
-                'StoreStandardController',
-                'CustomerForPetController',
-                'StoreGoodsInfoController',
-                'StoreController',
-                'StoreGoodsController',
-                'DistributionSupplierGoodsController',
-                'DistributionGoodsMatterController',
-                'CouponInfoBaseController',
-                'StoreCustomerController'].includes(
-                webapiGroup.name,
+              !(
+                defaulltMoonConfig.api.mock.ignoreApi[webapiGroup.name] &&
+                defaulltMoonConfig.api.mock.ignoreApi[webapiGroup.name].includes(apiItem.name)
               )
             ) {
               try {
                 json = await MoonCore.fakeGen.genrateFakeData(
                   finalSchema,
-                  context.webapiGroup.definitions,
+                  context.webapiGroup.definitions
                 );
               } catch (err) {
                 //TODO 这里把出错的数据记录下来后面分析出错的原因;;
                 console.error(err, '解析数据出错;;');
               }
-            } else {
-              fse.writeFileSync("mock-err"+webapiGroup.name+".json", JSON.stringify({...finalSchema,definitions:context.webapiGroup.definitions}, null, 2));
             }
-            // console.log('mock 数据:',finalSchema.title,JSON.stringify(json,null,2));
-            mockData[(finalSchema.title||"noneName").replace(/(«|»)/ig,"")] = json;
+            mockData[
+              (finalSchema.title || 'noneName').replace(/(«|»)/gi, '')
+            ] = json;
           }
           return finalSchema;
         },
@@ -199,18 +188,18 @@ function isNewMethod(controller:string,method:string):boolean{
           options.content = options.content
             .replace(
               `import sdk from "@api/sdk";`,
-              `import * as sdk from './fetch';`,
+              `import * as sdk from './fetch';`
             )
             .replace(
               `import sdk from '@api/sdk';`,
-              `import * as sdk from './fetch';`,
+              `import * as sdk from './fetch';`
             )
             .replace(/result\.data/gi, 'result.context');
+
+          //在这里添加api TODO api中mock相关的操作, 应该在这里添加
           return Promise.resolve(options);
-        },
+        }
       });
-
-
 
       let controllerName = MoonCore.StringUtil.toLCamelize(webapiGroup.name);
       let filePath = `./${webapiGroup.name}`;
@@ -219,27 +208,31 @@ function isNewMethod(controller:string,method:string):boolean{
         mark: "'whatwg-fetch';",
         isBefore: false,
         content: `import  ${controllerName} from '${filePath}';`,
-        check: (content: string) => !content.includes(filePath),
+        check: (content: string) => !content.includes(filePath)
       });
 
       inserts.push({
         mark: 'default {',
         isBefore: false,
         content: `${controllerName},`,
-        check: (_, raw) => !raw.includes(filePath),
+        check: (_, raw) => !raw.includes(filePath)
       });
 
       //保存mock数据;
       let mockFilePath = join(
         projectPath,
         'web_modules/api/mock/',
-        webapiGroup.name + '.json',
+        webapiGroup.name + '.json'
       );
-      log('保存mock数据');
       log('保存mock api定义数据');
-
       fse.ensureFileSync(mockFilePath);
-      fse.writeFileSync(mockFilePath, JSON.stringify(mockData, null, 2));
+       let oldValue ={};
+      try {
+        log('读取oldvalue, 执行merge操作');
+        oldValue = fse.readJsonSync(mockFilePath);
+      } finally {
+        fse.writeFileSync(mockFilePath, JSON.stringify(_.merge(mockData,oldValue), null, 2));
+      }
     } catch (err) {
       console.error(err);
     }
@@ -250,45 +243,46 @@ function isNewMethod(controller:string,method:string):boolean{
   //转换
 
   //生成api索引文件::
-  console.log("开始生成api索引文件,时间稍长,耐心等待");
+  console.log('开始生成api索引文件,时间稍长,耐心等待');
   let indexInfo = MoonCore.TsIndex.genApiTsIndex({
     tsConfig: join(workBase, 'tsconfig.json'),
     apiDir: join(workBase, 'web_modules/api'),
-    apiSuffix: 'Controller',
+    apiSuffix: 'Controller'
   });
   log('保存api索引信息');
 
-  if(newMethods.length>0){
+  if (newMethods.length > 0) {
     modifyAndSaveMoonConfig(newMethods);
   } else {
-
   }
 
-  fse.writeFileSync(
-    ApiIndexPath,
-    JSON.stringify(indexInfo,null,2),
-  );
+  fse.writeFileSync(ApiIndexPath, JSON.stringify(indexInfo, null, 2));
 })();
 
-function modifyAndSaveMoonConfig(newMethods:{controller:string;method:string;}[]){
+function modifyAndSaveMoonConfig(
+  newMethods: { controller: string; method: string }[]
+) {
   for (let i = 0, iLen = newMethods.length; i < iLen; i++) {
-    let {controller,method} = newMethods[i];
-    if(!defaulltMoonConfig.api.mockApi[controller]){
-      defaulltMoonConfig.api.mockApi[controller]=[];
+    let { controller, method } = newMethods[i];
+    if (!defaulltMoonConfig.api.mock.mockApi[controller]) {
+      defaulltMoonConfig.api.mock.mockApi[controller] = [];
     }
 
-    if(!defaulltMoonConfig.api.mockApi[controller].includes(method)){
-      defaulltMoonConfig.api.mockApi[controller].push(method);
+    if (!defaulltMoonConfig.api.mock.mockApi[controller].includes(method)) {
+      defaulltMoonConfig.api.mock.mockApi[controller].push(method);
     }
   }
   console.log('保存.moon.config,更新mock接口信息');
-  fse.writeFileSync(configFilePath,JSON.stringify(defaulltMoonConfig,null,2));
+  fse.writeFileSync(
+    configFilePath,
+    JSON.stringify(defaulltMoonConfig, null, 2)
+  );
 }
 
 function resSchemaModify(
   schema: SchemaProps,
   apiItem: IWebApiDefinded,
-  context: IWebApiContext,
+  context: IWebApiContext
 ): SchemaProps {
   //api外了一层. 所有内容均把data提取出来即可..
   if (!schema) {
@@ -353,7 +347,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
 
     //TODO 会不会有两个及三个方法呢 ? 会 account/invoiceProject/{projectId}
     for (let method in apiItem) {
-      let apiDefItem: any = {url, method};
+      let apiDefItem: any = { url, method };
       let methodInfo: IMethodDefinded = apiItem[method];
 
       // let groupKey = url.split('/')[1];
@@ -363,14 +357,13 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
         KeyMap[groupKey] = {
           name: groupKey,
           apis: [],
-          definitions: {},
+          definitions: {}
         };
       }
 
-      temp[url] = {url, methodName: methodInfo.operationId, group: groupKey};
+      temp[url] = { url, methodName: methodInfo.operationId, group: groupKey };
 
-      apiDefItem.name = MoonCore.StringUtil
-        .toLCamelize(methodInfo.operationId)
+      apiDefItem.name = MoonCore.StringUtil.toLCamelize(methodInfo.operationId)
         .replace(/UsingPOST.*/gi, '')
         .replace(/UsingPUT.*/gi, '')
         .replace(/UsingGET.*/gi, '')
@@ -384,7 +377,7 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
           if (item.schema) {
             addDef2List(
               KeyMap[groupKey].definitions,
-              findAllRefType(apiDocs.definitions, item.schema),
+              findAllRefType(apiDocs.definitions, item.schema)
             );
           }
 
@@ -392,13 +385,13 @@ function transfer(apiDocs: ISwaggerApisDocs): IWebApiGroup[] {
             name: item.name,
             isInPath: item.in === 'path' ? true : false,
             comment: item.description,
-            jsonSchema: item.schema ? item.schema : item,
+            jsonSchema: item.schema ? item.schema : item
           };
         });
       apiDefItem.responseSchema = methodInfo.responses['200'].schema;
       addDef2List(
         KeyMap[groupKey].definitions,
-        findAllRefType(apiDocs.definitions, apiDefItem.responseSchema),
+        findAllRefType(apiDocs.definitions, apiDefItem.responseSchema)
       );
       KeyMap[groupKey].apis.push(apiDefItem);
     }
@@ -414,7 +407,7 @@ function addDef2List(
   definitions: {
     [defName: string]: SchemaProps;
   },
-  schema: SchemaProps | SchemaProps[],
+  schema: SchemaProps | SchemaProps[]
 ) {
   if (schema instanceof Array) {
     for (let i = 0, iLen = schema.length; i < iLen; i++) {
@@ -437,7 +430,7 @@ function findAllRefType(
     [defName: string]: SchemaProps;
   },
   obj: any,
-  refs: string[] = [],
+  refs: string[] = []
 ): SchemaProps[] {
   if (!obj) {
     return [];
@@ -470,8 +463,8 @@ function findAllRefType(
             findAllRefType(
               definitions,
               definitions[refs[j].replace('#/definitions/', '')],
-              refs,
-            ),
+              refs
+            )
           );
         }
       }

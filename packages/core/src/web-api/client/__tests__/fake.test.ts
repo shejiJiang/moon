@@ -4,12 +4,13 @@ import {join} from "path";
 
 
 import * as jsf from 'json-schema-faker';
+import * as $RefParser from 'json-schema-ref-parser';
 
 
-jsf.option('alwaysFakeOptionals',true);
-jsf.option('ignoreMissingRefs',true);
-jsf.option('failOnInvalidTypes',false);
-jsf.option('failOnInvalidFormat',false);
+// jsf.option('alwaysFakeOptionals',true);
+// jsf.option('ignoreMissingRefs',true);
+// jsf.option('failOnInvalidTypes',false);
+// jsf.option('failOnInvalidFormat',false);
 
 /**
  * @desc
@@ -23,9 +24,12 @@ jsf.option('failOnInvalidFormat',false);
 
 
 (async ()=>{
-  let apiSchema  =  fse.readJSONSync(join(__dirname,'mock-errCompanyInfoController.json'));
+  let apiSchema  =  fse.readJSONSync(join(__dirname,'mock-errCompanyInfoController-update.json'));
   // let targetResponse= {...apiSchema.definitions['BaseResponse«BusinessConfigRopResponse»']};
-  let result =  await jsf.generate(apiSchema);
+  let schema = await $RefParser.dereference(apiSchema,{dereference:{circular:true}});
+
+  // fse.writeFileSync(join(__dirname,'mock-errCompanyInfoController-update-Ok.json'),JSON.stringify(schema,null,2));
+  let result =  await jsf.generate(schema);
 
   console.log(result);
   //

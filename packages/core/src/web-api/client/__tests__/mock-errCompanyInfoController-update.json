@@ -1,92 +1,67 @@
 {
   "type": "object",
+  "required":["employeeVOList","detailAddress","goodsIds"],
   "properties": {
-    "areaId": {
-      "type": "integer",
-      "format": "int64",
-      "xml": {
-        "name": "areaId",
-        "attribute": true,
-        "wrapped": false
-      }
-    },
-    "cityId": {
-      "type": "integer",
-      "format": "int64",
-      "xml": {
-        "name": "cityId",
-        "attribute": true,
-        "wrapped": false
-      }
-    },
-    "companyDescript": {
-      "type": "string",
-      "xml": {
-        "name": "companyDescript",
-        "attribute": true,
-        "wrapped": false
-      }
-    },
-    "companyInfoId": {
-      "type": "integer",
-      "format": "int64",
-      "xml": {
-        "name": "companyInfoId",
-        "attribute": true,
-        "wrapped": false
-      }
-    },
-    "companyName": {
-      "type": "string",
-      "xml": {
-        "name": "companyName",
-        "attribute": true,
-        "wrapped": false
-      }
-    },
-    "contactName": {
-      "type": "string",
-      "xml": {
-        "name": "contactName",
-        "attribute": true,
-        "wrapped": false
-      }
-    },
-    "contactPhone": {
-      "type": "string",
-      "xml": {
-        "name": "contactPhone",
-        "attribute": true,
-        "wrapped": false
-      }
-    },
-    "copyright": {
-      "type": "string",
-      "xml": {
-        "name": "copyright",
-        "attribute": true,
-        "wrapped": false
-      }
-    },
     "detailAddress": {
       "type": "string",
-      "xml": {
-        "name": "detailAddress",
-        "attribute": true,
-        "wrapped": false
+      "description": "详细地址"
+    },
+    "employeeVOList": {
+      "type": "array",
+      "description": "员工信息",
+      "items": {
+        "$ref": "#/definitions/EmployeeVO",
+        "originalRef": "EmployeeVO"
+      }
+    },
+    "goodsIds": {
+      "type": "array",
+      "description": "多个SPU编号",
+      "items": {
+        "type": "string"
       }
     },
     "provinceId": {
       "type": "integer",
       "format": "int64",
-      "xml": {
-        "name": "provinceId",
-        "attribute": true,
-        "wrapped": false
+      "description": "省"
+    },
+    "registeredCapital": {
+      "type": "number",
+      "description": "注册资本"
+    },
+    "remitAffirm": {
+      "type": "integer",
+      "format": "int32",
+      "description": "是否确认打款\n* NO: 否\n* YES: 是",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "socialCreditCode": {
+      "type": "string",
+      "description": "社会信用代码"
+    },
+    "storeVOList": {
+      "type": "array",
+      "description": "店铺信息",
+      "items": {
+        "$ref": "#/definitions/StoreVO",
+        "originalRef": "StoreVO"
       }
+    },
+    "supplierName": {
+      "type": "string",
+      "description": "供应商名称"
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "修改时间"
     }
   },
-  "title": "CompanyInfoRopResponse",
+  "title": "CompanyInformationModifyResponse",
   "definitions": {
     "BaseResponse«CompanyInfoResponse»": {
       "type": "object",
@@ -100,8 +75,8 @@
         },
         "context": {
           "description": "内容",
-          "originalRef": "CompanyInfoResponse",
-          "$ref": "#/definitions/CompanyInfoResponse"
+          "$ref": "#/definitions/CompanyInfoResponse",
+          "originalRef": "CompanyInfoResponse"
         },
         "message": {
           "type": "string",
@@ -243,8 +218,8 @@
         },
         "context": {
           "description": "内容",
-          "originalRef": "CompanyInformationModifyResponse",
-          "$ref": "#/definitions/CompanyInformationModifyResponse"
+          "$ref": "#/definitions/CompanyInformationModifyResponse",
+          "originalRef": "CompanyInformationModifyResponse"
         },
         "message": {
           "type": "string",
@@ -357,8 +332,8 @@
           "type": "array",
           "description": "员工信息",
           "items": {
-            "originalRef": "EmployeeVO",
-            "$ref": "#/definitions/EmployeeVO"
+            "$ref": "#/definitions/EmployeeVO",
+            "originalRef": "EmployeeVO"
           }
         },
         "foundDate": {
@@ -411,8 +386,8 @@
           "type": "array",
           "description": "店铺信息",
           "items": {
-            "originalRef": "StoreVO",
-            "$ref": "#/definitions/StoreVO"
+            "$ref": "#/definitions/StoreVO",
+            "originalRef": "StoreVO"
           }
         },
         "supplierName": {
@@ -429,6 +404,7 @@
     },
     "EmployeeVO": {
       "type": "object",
+      "required":["accountDisableReason","accountName","accountPassword","accountState","accountType","companyInfo"],
       "properties": {
         "accountDisableReason": {
           "type": "string",
@@ -463,8 +439,8 @@
         },
         "companyInfo": {
           "description": "供应商",
-          "originalRef": "CompanyInfoVO",
-          "$ref": "#/definitions/CompanyInfoVO"
+          "$ref": "#/definitions/CompanyInfoVO",
+          "originalRef": "CompanyInfoVO"
         },
         "companyInfoId": {
           "type": "integer",
@@ -668,8 +644,8 @@
           "type": "array",
           "description": "员工信息",
           "items": {
-            "originalRef": "EmployeeVO",
-            "$ref": "#/definitions/EmployeeVO"
+            "$ref": "#/definitions/EmployeeVO",
+            "originalRef": "EmployeeVO"
           }
         },
         "foundDate": {
@@ -722,8 +698,8 @@
           "type": "array",
           "description": "店铺信息",
           "items": {
-            "originalRef": "StoreVO",
-            "$ref": "#/definitions/StoreVO"
+            "$ref": "#/definitions/StoreVO",
+            "originalRef": "StoreVO"
           }
         },
         "supplierName": {
@@ -780,8 +756,8 @@
         },
         "companyInfo": {
           "description": "公司信息",
-          "originalRef": "CompanyInfoVO",
-          "$ref": "#/definitions/CompanyInfoVO"
+          "$ref": "#/definitions/CompanyInfoVO",
+          "originalRef": "CompanyInfoVO"
         },
         "companyType": {
           "type": "integer",
@@ -851,6 +827,10 @@
         "storeClosedReason": {
           "type": "string",
           "description": "店铺关店原因"
+        },
+        "storeCode": {
+          "type": "string",
+          "description": "店铺号"
         },
         "storeId": {
           "type": "integer",
@@ -936,8 +916,8 @@
         },
         "context": {
           "description": "内容",
-          "originalRef": "CompanyInfoRopResponse",
-          "$ref": "#/definitions/CompanyInfoRopResponse"
+          "$ref": "#/definitions/CompanyInfoRopResponse",
+          "originalRef": "CompanyInfoRopResponse"
         },
         "message": {
           "type": "string",
@@ -1074,8 +1054,8 @@
           "format": "int64"
         },
         "ropRequestContext": {
-          "originalRef": "RopRequestContext",
-          "$ref": "#/definitions/RopRequestContext"
+          "$ref": "#/definitions/RopRequestContext",
+          "originalRef": "RopRequestContext"
         }
       },
       "title": "CompanyInfoSaveRopRequest"

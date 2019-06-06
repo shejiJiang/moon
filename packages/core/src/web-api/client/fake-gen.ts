@@ -73,11 +73,10 @@ jsf.option('failOnInvalidFormat',false);
 export async function genrateFakeData(jsonSchema:any,definitions:{[name:string]:any}={}):Promise<object>{
 
   let toDealJsonSchema =_.cloneDeep(jsonSchema);
-  let content =  JSON.stringify(jsonSchema);
-  if(content.includes("$ref")){
+  if( definitions) {
     toDealJsonSchema.definitions=definitions;
   }
 
-  let result =  await jsf.generate(toDealJsonSchema);
-  return result;
+  return  await jsf.generate(toDealJsonSchema);
+
 }
