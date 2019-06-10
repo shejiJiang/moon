@@ -184,7 +184,6 @@ function isNewMethod(controller: string, method: string): boolean {
           return finalSchema;
         },
         beforeSave: (options: IFileSaveOptions, context: any) => {
-          // console.log(options.content.substring(0, 30));
           options.content = options.content
             .replace(
               `import sdk from "@api/sdk";`,

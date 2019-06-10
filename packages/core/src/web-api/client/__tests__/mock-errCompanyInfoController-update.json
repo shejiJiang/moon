@@ -2,10 +2,6 @@
   "type": "object",
   "required":["employeeVOList","detailAddress","goodsIds"],
   "properties": {
-    "detailAddress": {
-      "type": "string",
-      "description": "详细地址"
-    },
     "employeeVOList": {
       "type": "array",
       "description": "员工信息",
@@ -21,28 +17,6 @@
         "type": "string"
       }
     },
-    "provinceId": {
-      "type": "integer",
-      "format": "int64",
-      "description": "省"
-    },
-    "registeredCapital": {
-      "type": "number",
-      "description": "注册资本"
-    },
-    "remitAffirm": {
-      "type": "integer",
-      "format": "int32",
-      "description": "是否确认打款\n* NO: 否\n* YES: 是",
-      "enum": [
-        0,
-        1
-      ]
-    },
-    "socialCreditCode": {
-      "type": "string",
-      "description": "社会信用代码"
-    },
     "storeVOList": {
       "type": "array",
       "description": "店铺信息",
@@ -50,10 +24,6 @@
         "$ref": "#/definitions/StoreVO",
         "originalRef": "StoreVO"
       }
-    },
-    "supplierName": {
-      "type": "string",
-      "description": "供应商名称"
     },
     "updateTime": {
       "type": "string",
@@ -542,6 +512,7 @@
     },
     "CompanyInfoVO": {
       "type": "object",
+      "required":["employeeVOList"],
       "properties": {
         "address": {
           "type": "string",

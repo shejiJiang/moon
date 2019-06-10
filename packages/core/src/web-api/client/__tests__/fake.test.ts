@@ -1,5 +1,5 @@
 import * as fse from "fs-extra";
-import {genrateFakeData} from "../fake-gen";
+import {genrateFakeData,cancelCircularRef} from "../fake-gen";
 import {join} from "path";
 
 
@@ -7,10 +7,10 @@ import * as jsf from 'json-schema-faker';
 import * as $RefParser from 'json-schema-ref-parser';
 
 
-// jsf.option('alwaysFakeOptionals',true);
-// jsf.option('ignoreMissingRefs',true);
-// jsf.option('failOnInvalidTypes',false);
-// jsf.option('failOnInvalidFormat',false);
+jsf.option('alwaysFakeOptionals',true);
+jsf.option('ignoreMissingRefs',true);
+jsf.option('failOnInvalidTypes',false);
+jsf.option('failOnInvalidFormat',false);
 
 /**
  * @desc
@@ -24,14 +24,30 @@ import * as $RefParser from 'json-schema-ref-parser';
 
 
 (async ()=>{
-  let apiSchema  =  fse.readJSONSync(join(__dirname,'mock-errCompanyInfoController-update.json'));
+  // let apiSchema  =  fse.readJSONSync(join(__dirname,'mock-errCompanyInfoController-update.json'));
+  let apiSchema  =  fse.readJSONSync(join(__dirname,'simple-circularref.json'));
   // let targetResponse= {...apiSchema.definitions['BaseResponse«BusinessConfigRopResponse»']};
-  let schema = await $RefParser.dereference(apiSchema,{dereference:{circular:true}});
 
+  let definitions = apiSchema.definitions;
+  delete apiSchema.definitions;
+
+  cancelCircularRef(apiSchema,definitions);
+
+  console.log(JSON.stringify(apiSchema,null,2))
+
+  let result = await genrateFakeData(apiSchema,definitions);
+  console.log(JSON.stringify(result,null,2));
+
+  //
+  // var parser = new $RefParser();
+  // let schema = await parser.dereference(apiSchema,{dereference:{circular:"ignore"}});
+  //
+  // console.log(JSON.stringify(schema,null,2));
+  // console.log(parser.$refs['_root$Ref']);
   // fse.writeFileSync(join(__dirname,'mock-errCompanyInfoController-update-Ok.json'),JSON.stringify(schema,null,2));
-  let result =  await jsf.generate(schema);
+  // let result =  await jsf.resolve(apiSchema);
 
-  console.log(result);
+  // console.log(result);
   //
   //
   // targetResponse.definitions =apiSchema.definitions;

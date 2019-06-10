@@ -57,7 +57,7 @@ function createWindow() {
     if(details.url.includes("employee/login") && details.method==='POST'){
       console.log('返回值为: ',details);
       setTimeout(()=>{
-        mainWindow.loadURL('http://localhost:3002/pages/moon/page');
+        mainWindow.loadURL('http://localhost:3002/pages/moon/list');
       },1000);
     }
   })
