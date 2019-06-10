@@ -94,6 +94,15 @@ function isNewMethod(controller: string, method: string): boolean {
   return true;
 }
 
+function isContain(db,controller: string, method: string){
+
+  if(db[controller] && db[controller].includes(method)){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 (async () => {
   let workBase = projectPath;
   const ApiIndexPath = join(workBase, 'web_modules/api/_api-info.json');
@@ -161,20 +170,19 @@ function isNewMethod(controller: string, method: string): boolean {
             console.log(
               `当前Controller:  ${webapiGroup.name}:['${apiItem.name}'],如果过进入infinite loop . 请设置moon.config :api.mock.ignoreApi`
             );
-            if (
-              !(
-                defaulltMoonConfig.api.mock.ignoreApi[webapiGroup.name] &&
-                defaulltMoonConfig.api.mock.ignoreApi[webapiGroup.name].includes(apiItem.name)
-              )
+            if (!isContain(defaulltMoonConfig.api.mock.ignoreApi,webapiGroup.name,apiItem.name)
             ) {
-              try {
-                json = await MoonCore.fakeGen.genrateFakeData(
-                  finalSchema,
-                  context.webapiGroup.definitions
-                );
-              } catch (err) {
-                //TODO 这里把出错的数据记录下来后面分析出错的原因;;
-                console.error(err, '解析数据出错;;');
+              //查看 是否需要翻译 , 只有当前是mock的, 及新接口才需要mock
+              if(isContain(defaulltMoonConfig.api.mock.mockApi,webapiGroup.name,apiItem.name) || _isNewMethod) {
+                try {
+                  json = await MoonCore.fakeGen.genrateFakeData(
+                    finalSchema,
+                    context.webapiGroup.definitions
+                  );
+                } catch (err) {
+                  //TODO 这里把出错的数据记录下来后面分析出错的原因;;
+                  console.error(err, '解析数据出错;;');
+                }
               }
             } else {
               fse.writeFileSync(join(workBase,"mock-err"+webapiGroup.name+".json"), JSON.stringify({...finalSchema,definitions:context.webapiGroup.definitions}, null, 2));
