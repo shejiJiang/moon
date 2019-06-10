@@ -167,14 +167,14 @@ function isContain(db,controller: string, method: string){
           if (finalSchema) {
             //如果Schema有值,那么生成假数据
             let json = {};
-            console.log(
-              `当前Controller:  ${webapiGroup.name}:['${apiItem.name}'],如果过进入infinite loop . 请设置moon.config :api.mock.ignoreApi`
-            );
             if (!isContain(defaulltMoonConfig.api.mock.ignoreApi,webapiGroup.name,apiItem.name)
             ) {
               //查看 是否需要翻译 , 只有当前是mock的, 及新接口才需要mock
               if(isContain(defaulltMoonConfig.api.mock.mockApi,webapiGroup.name,apiItem.name) || _isNewMethod) {
                 try {
+                  console.log(
+                    `当前Controller:  ${webapiGroup.name}:['${apiItem.name}'],如果过进入infinite loop . 请设置moon.config :api.mock.ignoreApi`
+                  );
                   json = await MoonCore.fakeGen.genrateFakeData(
                     finalSchema,
                     context.webapiGroup.definitions
