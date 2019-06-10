@@ -176,6 +176,8 @@ function isNewMethod(controller: string, method: string): boolean {
                 //TODO 这里把出错的数据记录下来后面分析出错的原因;;
                 console.error(err, '解析数据出错;;');
               }
+            } else {
+              fse.writeFileSync(join(workBase,"mock-err"+webapiGroup.name+".json"), JSON.stringify({...finalSchema,definitions:context.webapiGroup.definitions}, null, 2));
             }
             mockData[
               (finalSchema.title || 'noneName').replace(/(«|»)/gi, '')
