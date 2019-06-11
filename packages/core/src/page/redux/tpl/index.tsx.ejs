@@ -10,7 +10,7 @@ import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fil
  <% }) %>
 
 @connect(store2Props,actions)
-class <%=className%> extends React.Component<T.IProps, any> {
+export default class <%=className%> extends React.Component<Partial<T.IProps>, any> {
 
   componentDidMount() {
 
@@ -42,4 +42,3 @@ class <%=className%> extends React.Component<T.IProps, any> {
 }
 
 
-export default <%=className%> as any

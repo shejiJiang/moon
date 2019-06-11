@@ -10,7 +10,7 @@ import {store2Props} from "../selectors";
 type I<%=Util.toUCamelize(subComp.fileName)%>Props = T.IProps & T.I<%=Util.toUCamelize(subComp.fileName)%>Props;
 
 @connect(store2Props,actions)
-class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<I<%=Util.toUCamelize(subComp.fileName)%>Props, T.I<%=Util.toUCamelize(subComp.fileName)%>State> {
+export default class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<Partial<I<%=Util.toUCamelize(subComp.fileName)%>Props>, T.I<%=Util.toUCamelize(subComp.fileName)%>State> {
   constructor(props:I<%=Util.toUCamelize(subComp.fileName)%>Props) {
     super(props);
   }
@@ -44,4 +44,3 @@ class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<I<%=Util.t
         <% }) %>
 }
 
-export default <%=Util.toUCamelize(subComp.fileName)%> as any;
