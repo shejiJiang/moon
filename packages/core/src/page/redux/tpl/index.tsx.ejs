@@ -13,9 +13,7 @@ import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fil
 export default class <%=className%> extends React.Component<Partial<T.IProps>, any> {
 
   componentDidMount() {
-
 <%-(pageInfo.mainComp&&pageInfo.mainComp.methods.filter(item=>item.name =="componentDidMount")[0]||{}).content%>
-
     this.props.actions.init();
   }
 
@@ -32,6 +30,8 @@ export default class <%=className%> extends React.Component<Partial<T.IProps>, a
                     <%=Util.toLCamelize(actor.fileName)%> ,
       <% }) %>
     } =  this.props;
+
+<%-(pageInfo.mainComp&&pageInfo.mainComp.methods.filter(item=>item.name =="render")[0]||{}).content%>
 
     return (
       <div className="<%=instanceName%>">
