@@ -38,6 +38,9 @@ window.readConfig = function () {
 
 //@ts-ignore
 window.moon = {
+  context:{
+    pwd:process.cwd()
+  },
   /**
    * 仅保存数据定义;
    *
