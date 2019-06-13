@@ -1,6 +1,6 @@
 {
   "name": "moon-wanmi",
-  "version": "0.0.7-alpha.11",
+  "version": "0.0.7-alpha.12",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "debug": "^4.1.1",
-    "moon-core": "^0.0.7-alpha.10"
+    "moon-core": "^0.0.7-alpha.12"
   },
   "author": "",
   "license": "ISC",
