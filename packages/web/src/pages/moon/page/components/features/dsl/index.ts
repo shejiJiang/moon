@@ -16,6 +16,12 @@ import * as USearchList from './u-search-list';
 import * as UAntdTable from './u-antd-table';
 import * as UAntdTabs from './u-antd-tabs';
 import * as UForm from './u-form';
+import {TargetType} from "moon-core/declarations/typings/config";
+
+export function getFeatures(target:TargetType){
+
+}
+
 
 export default [
   FDialog,

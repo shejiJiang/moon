@@ -23,3 +23,6 @@ export interface IMoonConfig{
     }
   };
 }
+
+
+export type TargetType="h5-redux"|"taro-redux";

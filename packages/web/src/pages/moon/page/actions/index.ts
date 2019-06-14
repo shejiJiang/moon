@@ -2,7 +2,6 @@ import Store from '@/redux/store';
 import {Command} from '../constant';
 import {Dispatch} from 'typings';
 import {getActionProxy} from '@/redux/action-util';
-
 import Action from './action';
 
 let db=window.moon && window.moon.context.pageDb || {};
