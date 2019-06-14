@@ -1,6 +1,6 @@
 {
-  "name": "@qianmi/card_pc",
-  "version": "0.0.6",
+  "name": "moon-web",
+  "version": "0.0.0",
   "private": true,
   "publishConfig": {
     "registry": "http://registry.npm.qianmi.com"
