@@ -7,39 +7,36 @@
  * @Date    2019/6/2
  **/
 
-import  { ipcRenderer }  from 'electron';
+import {ipcRenderer} from 'electron';
 console.log(ipcRenderer.sendSync('synchronous-message', 'ping'));
-import {genPage} from  'moon-wanmi/lib/page/pc';
-import {join} from "path";
-import {IPageDefined} from "moon-core/declarations/typings/page";
+import {genPage} from 'moon-wanmi/lib/page/pc';
+import {genTaroPage} from 'moon-wanmi/lib/page/taro';
+import {join} from 'path';
+import {IPageDefined} from 'moon-core/declarations/typings/page';
 import * as fse from 'fs-extra';
-import {IMoonConfig} from "../../core/declarations/typings/config";
+import {IMoonConfig} from '../../core/declarations/typings/config';
 ipcRenderer.on('asynchronous-reply', (event, arg) => {
-  console.log(arg) // prints "pong"
-})
-ipcRenderer.send('asynchronous-message', 'ping')
-
+  console.log(arg); // prints "pong"
+});
+ipcRenderer.send('asynchronous-message', 'ping');
 
 process.once('loaded', () => {
-
   const _setImmediate = setImmediate;
   const _clearImmediate = clearImmediate;
 
   global.setImmediate = _setImmediate;
   global.clearImmediate = _clearImmediate;
 
-// the host page will have access to `window.readConfig`,
-// but not direct access to `readFileSync`
+  // the host page will have access to `window.readConfig`,
+  // but not direct access to `readFileSync`
 });
 
 //@ts-ignore
-window.readConfig = function () {
-  ipcRenderer.send('asynchronous-message', 'ping')
-}
-
+window.readConfig = function() {
+  ipcRenderer.send('asynchronous-message', 'ping');
+};
 
 let defaulltMoonConfig: IMoonConfig;
-
 
 let projectPath = process.cwd();
 let configFilePath = join(projectPath, '.moon.json');
@@ -57,27 +54,28 @@ try {
 let apiIndex = {};
 
 try {
-  apiIndex = fse.readJsonSync(join(projectPath,defaulltMoonConfig.api.dir,"_api-info.json"))
+  apiIndex = fse.readJsonSync(
+    join(projectPath, defaulltMoonConfig.api.dir, '_api-info.json'),
+  );
 } catch (err) {
-  console.warn('读取api索引出错',err);
+  console.warn('读取api索引出错', err);
 }
 
-let pageDb  = {};
+let pageDb = {};
 
 try {
-  pageDb = fse.readJsonSync(join(projectPath,"page-def/db.json"))
+  pageDb = fse.readJsonSync(join(projectPath, 'page-def/db.json'));
 } catch (err) {
-  console.warn('读取api索引出错',err);
+  console.warn('读取api索引出错', err);
 }
-
 
 //@ts-ignore
 window.moon = {
-  context:{
+  context: {
     apiIndex,
-    pageDb:pageDb,
-    moonConfig:defaulltMoonConfig,
-    pwd:process.cwd()
+    pageDb: pageDb,
+    moonConfig: defaulltMoonConfig,
+    pwd: process.cwd(),
   },
   /**
    * 仅保存数据定义;
@@ -86,11 +84,11 @@ window.moon = {
    * @param {IPageDefined} pageInfo
    * @returns {Promise<void>}
    */
-  savePageInfo:async(projectPath:string,pageInfo:IPageDefined)=>{
-    let _path = join(projectPath,'page-def/db.json');
-    let db  = fse.readJSONSync(_path);
+  savePageInfo: async (projectPath: string, pageInfo: IPageDefined) => {
+    let _path = join(projectPath, 'page-def/db.json');
+    let db = fse.readJSONSync(_path);
     db[pageInfo.pagePath] = pageInfo;
-    fse.writeJsonSync(_path,db);
+    fse.writeJsonSync(_path, db);
   },
   /**
    * 生成页面, 并保存显示定义;
@@ -99,9 +97,14 @@ window.moon = {
    * @param {IPageDefined} pageInfo
    * @returns {Promise<void>}
    */
-  generate:async (projectPath:string,pageInfo:IPageDefined)=>{
+  generate: async (projectPath: string, pageInfo: IPageDefined) => {
     //@ts-ignore
-    await window.moon.savePageInfo(projectPath,pageInfo);
-    genPage({pageInfo,projectPath});
-  }
-}
+    await window.moon.savePageInfo(projectPath, pageInfo);
+
+    if (defaulltMoonConfig.type === 'taro-redux') {
+      genTaroPage({pageInfo, projectPath});
+    } else if (defaulltMoonConfig.type === 'h5-redux') {
+      genPage({pageInfo, projectPath});
+    }
+  },
+};

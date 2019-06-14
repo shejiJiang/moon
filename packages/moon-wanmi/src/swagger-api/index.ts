@@ -228,6 +228,8 @@ function isContain(db,controller: string, method: string){
       try {
         log('读取oldvalue, 执行merge操作');
         oldValue = fse.readJsonSync(mockFilePath);
+      } catch(err){
+
       } finally {
         fse.writeFileSync(mockFilePath, JSON.stringify(_.merge(mockData,oldValue), null, 2));
       }
