@@ -67,8 +67,8 @@ function createWindow() {
 
   // and load the index.html of the app.
   // mainWindow.loadFile(path.join(__dirname, "../index.html"));
-  mainWindow.loadURL("http://localhost:8787/");
-  mainWindow.webContents.openDevTools();
+  mainWindow.loadURL("https://moon-coder.github.io/");
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.on("closed", () => {
     // Dereference the window object, usually you would store windows
