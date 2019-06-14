@@ -23,6 +23,9 @@ export async function genTaroPage(context:IContext) {
     ...context,
     prettiesConfig,
     beforeSave:async(options,context)=>{
+      if (options.tplPath.endsWith('less.ejs')) {
+        options.content=options.content.replace("@import \"~style/theme.less\";","");
+      }
       if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
         options.content  = options.content
           .replace("import {connect} from 'react-redux'","import { connect } from '@tarojs/redux'")
