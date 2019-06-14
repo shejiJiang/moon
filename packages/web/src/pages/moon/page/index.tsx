@@ -18,7 +18,7 @@ import { getHashParam } from 'kit/url-helper';
 )
 class MoonPage extends React.Component<T.IProps, any> {
   componentDidMount() {
-    let param = getHashParam<{id:string;}>(location.search);
+    let param = getHashParam<{id:string;}>(location.href);
     this.props.actions.init(param);
   }
 

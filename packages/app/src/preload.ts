@@ -62,10 +62,20 @@ try {
   console.warn('读取api索引出错',err);
 }
 
+let pageDb  = {};
+
+try {
+  pageDb = fse.readJsonSync(join(projectPath,"page-def/db.json"))
+} catch (err) {
+  console.warn('读取api索引出错',err);
+}
+
+
 //@ts-ignore
 window.moon = {
   context:{
     apiIndex,
+    pageDb:pageDb,
     moonConfig:defaulltMoonConfig,
     pwd:process.cwd()
   },

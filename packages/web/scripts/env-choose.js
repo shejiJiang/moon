@@ -47,6 +47,6 @@ module.exports = ()=>{
 let portMap ={
     prod:3000,
     test1:3001,
-    dev:3002,
+    dev:8787,
     local:3003,
 }

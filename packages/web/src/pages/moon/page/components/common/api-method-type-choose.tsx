@@ -11,7 +11,7 @@ import  * as React from 'react';
 import {Table, Divider, Tag, Input, Button, Cascader} from 'antd';
 import { ImportInfo } from '../../typings/index';
 
-let apiInfo=window.moon && window.moon.context.apiInfo || {};
+let apiInfo=window.moon && window.moon.context.apiIndex || {};
 let cascaderData = [];
 for (let controllerName in apiInfo) {
   let children = [];

@@ -28,7 +28,7 @@ import { IMoonConfig } from 'moon-core/declarations/typings/config';
 const log = debug('j2t:cli');
 async function loadJson(): Promise<any> {
   return new Promise((resolve, reject) => {
-    console.log(`从${defaulltMoonConfig.swaggerApi}中加载api doc信息`);
+    console.log(`从${defaulltMoonConfig.api.swaggerUrl}中加载api doc信息`);
     request(defaulltMoonConfig.swaggerApi, function(error, response, body) {
       if (error) {
         reject(error);
@@ -93,7 +93,7 @@ function isContain(db,controller: string, method: string){
 
 (async () => {
   let workBase = projectPath;
-  const ApiIndexPath = join(workBase, 'web_modules/api/_api-info.json');
+  const ApiIndexPath = join(workBase,defaulltMoonConfig.api.dir ,'_api-info.json');
 
   let apiJson = await loadJson();
   //   // // console.log(apiJson);
@@ -111,7 +111,7 @@ function isContain(db,controller: string, method: string){
     console.warn('读取历史api索引出错: ', err);
   }
 
-  let basePath = join(workBase, 'web_modules/api');
+  let basePath = join(workBase,defaulltMoonConfig.api.dir);
 
   let inserts: IInsertOption[] = [];
   let newMethods: { controller: string; method: string }[] = []; //新添加的方法记录

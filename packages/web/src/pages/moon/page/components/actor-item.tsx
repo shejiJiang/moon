@@ -6,7 +6,7 @@ import {Table, Divider, Tag, Input, Button, Cascader} from 'antd';
 import {IActorEvent} from '@/pages/moon/page/typings/index';
 import { IActorData, IMethodDef, ImportInfo } from '@/pages/moon/page/typings';
 
-let apiInfo=window.moon && window.moon.context.apiInfo || {};
+let apiInfo=window.moon && window.moon.context.apiIndex || {};
 let cascaderData = [];
 for (let controllerName in apiInfo) {
   let children = [];

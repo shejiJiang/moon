@@ -5,8 +5,7 @@ import {Action} from 'typings';
 import produce from 'immer';
 import * as immerUtil from '@/redux/immer-util';
 
-import db from '../../../../../page-def/db.json';
-
+let db  = window.moon && window.moon.context.pageDb || {};
 let list =[];
 for (let pagePath in db) {
   list.push(db[pagePath]);

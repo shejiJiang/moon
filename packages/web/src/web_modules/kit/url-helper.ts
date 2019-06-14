@@ -3,7 +3,7 @@ type HashUrl=string;
 
 
 export function getHashParam<T>(search:HashUrl):T{
-  let entrys = search.replace(/.*\?/,"").split('&')
+  let entrys = search.replace(/.*\?/,"").split('&');
 
   let result :any = {};
 
@@ -11,7 +11,7 @@ export function getHashParam<T>(search:HashUrl):T{
 
     let [key,value]=item.split('=');
 
-    result[key]=value;
+    result[key]= decodeURIComponent(value);
 
   })
   return result;

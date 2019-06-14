@@ -5,7 +5,7 @@ import {getActionProxy} from '@/redux/action-util';
 
 import Action from './action';
 
-import db from '../../../../../page-def/db.json';
+let db=window.moon && window.moon.context.pageDb || {};
 
 export default (dispatch: Dispatch) => {
   const actions = {
@@ -15,6 +15,7 @@ export default (dispatch: Dispatch) => {
      * 初始化数据
      */
     async init(param: {id: string}) {
+      debugger;
       if (param.id && db[param.id]) {
         dispatch({
           type: Command.init,
