@@ -23,6 +23,7 @@ import {
 
 import { IFileSaveOptions } from 'moon-core/declarations/typings/page';
 import { IInsertOption } from 'moon-core/declarations/typings/util';
+import { IMoonConfig } from 'moon-core/declarations/typings/config';
 
 const log = debug('j2t:cli');
 async function loadJson(): Promise<any> {
@@ -38,20 +39,7 @@ async function loadJson(): Promise<any> {
   });
 }
 
-let defaulltMoonConfig: {
-  swaggerApi: string;
-  api: {
-    exclude: string[];
-    mock:{
-      ignoreApi:{
-        [controller: string]: string[];
-      };
-      mockApi: {
-        [controller: string]: string[];
-      };
-    }
-  };
-};
+let defaulltMoonConfig: IMoonConfig;
 
 let projectPath = process.cwd();
 let configFilePath = join(projectPath, '.moon.json');

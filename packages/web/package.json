@@ -11,6 +11,7 @@
     "dll": "node scripts/dll.js",
     "build:prod": "cross-env NODE_ENV=production node scripts/build.js prod",
     "clean": "rm -rdf ./dist && mkdir dist",
+    "moon": "electron ./node_modules/moon-app/dist/main.js",
     "api": "cd  /Users/dong/Falcon/moon/app/src/migrate/swagger/ &&  ts-node index.ts"
   },
   "dependencies": {
@@ -93,6 +94,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "moon-wanmi": "0.0.7-alpha.13",
+    "moon-app": "0.0.7-alpha.13",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@types/react-redux": "^7.0.6",
     "ali-oss": "^6.1.0",

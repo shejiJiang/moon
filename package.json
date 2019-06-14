@@ -5,7 +5,8 @@
   },
   "packages": ["packages/*"],
   "dependencies": {
-    "lerna": "^3.14.1"
+    "lerna": "^3.14.1",
+    "typescript": "^3.5.2"
   },
   "name": "moon"
 }

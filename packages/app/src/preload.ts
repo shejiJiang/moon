@@ -13,6 +13,7 @@ import {genPage} from  'moon-wanmi/lib/page/pc';
 import {join} from "path";
 import {IPageDefined} from "moon-core/declarations/typings/page";
 import * as fse from 'fs-extra';
+import {IMoonConfig} from "../../core/declarations/typings/config";
 ipcRenderer.on('asynchronous-reply', (event, arg) => {
   console.log(arg) // prints "pong"
 })
@@ -36,9 +37,36 @@ window.readConfig = function () {
   ipcRenderer.send('asynchronous-message', 'ping')
 }
 
+
+let defaulltMoonConfig: IMoonConfig;
+
+
+let projectPath = process.cwd();
+let configFilePath = join(projectPath, '.moon.json');
+try {
+  console.log('读取项目配置文件', configFilePath);
+  if (fse.pathExistsSync(configFilePath)) {
+    defaulltMoonConfig = fse.readJSONSync(configFilePath);
+  } else {
+    throw new Error('配置不存在:' + configFilePath);
+  }
+} catch (err) {
+  throw new Error('配置读取失败:' + configFilePath);
+}
+
+let apiIndex = {};
+
+try {
+  apiIndex = fse.readJsonSync(join(projectPath,defaulltMoonConfig.api.dir,"_api-info.json"))
+} catch (err) {
+  console.warn('读取api索引出错',err);
+}
+
 //@ts-ignore
 window.moon = {
   context:{
+    apiIndex,
+    moonConfig:defaulltMoonConfig,
     pwd:process.cwd()
   },
   /**

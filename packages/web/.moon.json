@@ -1,6 +1,7 @@
 {
-  "swaggerApi": "http://172.19.26.161:8490/v2/api-docs",
   "api": {
+    "swaggerUrl": "http://172.19.26.161:8490/v2/api-docs",
+    "dir":"./src/webapi",
     "mock": {
       "mockApi": {
       },

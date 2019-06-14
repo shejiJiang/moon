@@ -5,13 +5,13 @@ import loadable from '@loadable/component'
 
 const MainFrame = loadable(() => import('@/pages/frame'));
 const Demo = loadable(() => import('@/pages/demo'));
-
     const Main = () =>
   <Router>
     <Switch>
       <Route path="/demo" component={Demo} />
       <Route path="/" render={() => <MainFrame>
-        {/*mark*/}
+        <Route path="/pages/moon/page" component={loadable(() => import('@/pages/moon/page'))} />
+        <Route path="/pages/moon/list" component={loadable(() => import('@/pages/moon/list'))} />
       </MainFrame>} />
     </Switch>
   </Router>;
