@@ -6,17 +6,18 @@ import actions from '../actions/index';
 import {connect} from 'react-redux';
 import {store2Props} from '../selectors';
 import FeatureCommon from './features/feature-common';
-import allFeaures from './features/dsl';
+import  {getFeatures} from './features/dsl';
 import ReactJson from 'react-json-view';
 import { Modal, Button,Tooltip} from 'antd';
 
 type ITopProps = T.IProps & T.ITopProps;
 
+let allFeaures= getFeatures(window.moon.moonConfig.type,window.moon.context.projectName);
+
 @connect(store2Props, actions)
 class Top extends React.Component<ITopProps, T.ITopState> {
   constructor(props: ITopProps) {
     super(props);
-
     this.state = {isShow: false};
   }
 

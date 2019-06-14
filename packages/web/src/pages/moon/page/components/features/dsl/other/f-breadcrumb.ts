@@ -27,6 +27,7 @@ export const FeatureInfo = {
   descHref:"/images/moon/f-breadcrumb.png",
   //示例图片;
   pic:"/images/moon/f-breadcrumb.png",
+  target:/h5-redux/
 };
 
 //特性需要用户输入数据;

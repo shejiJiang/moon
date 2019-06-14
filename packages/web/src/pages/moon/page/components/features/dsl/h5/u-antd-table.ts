@@ -28,6 +28,8 @@ export const FeatureInfo = {
   descHref:"/images/moon/u-antd-table.png",
   //示例图片;
   pic:"/images/moon/u-antd-table.png",
+  target:/h5-redux/
+
 };
 
 //特性需要用户输入数据;

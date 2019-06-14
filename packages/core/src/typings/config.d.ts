@@ -7,8 +7,7 @@
  * @Date    2019/5/31
  **/
 export interface IMoonConfig{
-  // @deprecate 请使用api.swaggerUrl 代替
-  target:TargetType;
+  type:TargetType;
   swaggerApi: string;
   api: {
     swaggerUrl: string;

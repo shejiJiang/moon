@@ -28,6 +28,7 @@ export const FeatureInfo = {
   descHref:"/images/moon/u-form.jpg",
   //示例图片;
   pic:"/images/moon/u-form.jpg",
+  target:/h5-redux/
 };
 
 //特性需要用户输入数据;

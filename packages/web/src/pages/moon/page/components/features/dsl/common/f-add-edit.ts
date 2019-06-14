@@ -27,6 +27,7 @@ export const FeatureInfo = {
   descHref:"/images/moon/f-add-edit.png",
   //示例图片;
   pic:"/images/moon/f-add-edit.png",
+  target:/.*/
 };
 
 //特性需要用户输入数据;

@@ -20,13 +20,16 @@ declare interface TResult {
 
 declare interface Window {
   moon:{
-    pwd:string;
-    apiIndex:{
-      [controllerName:string]:object
-    };
-    pageDb:{
-      [controllerName:string]:object
-    };
-    moonConfig:IMoonConfig;
+    context:{
+      pwd:string;
+      projectName:string;
+      apiIndex:{
+        [controllerName:string]:object
+      };
+      pageDb:{
+        [controllerName:string]:object
+      };
+      moonConfig:IMoonConfig;
+    }
   }
 }

@@ -7,23 +7,18 @@
  * @Date    2019/6/4
  **/
 
-import * as FDialog from './f-dialog';
-import * as FAction from './f-action';
-import * as FBreadcrumb from './f-breadcrumb';
-import * as FPagingQuery from './f-paging-query';
-import * as FAddEdit from './f-add-edit';
-import * as USearchList from './u-search-list';
-import * as UAntdTable from './u-antd-table';
-import * as UAntdTabs from './u-antd-tabs';
-import * as UForm from './u-form';
+import * as FDialog from './h5/f-dialog';
+import * as FAction from './common/f-action';
+import * as FBreadcrumb from './other/f-breadcrumb';
+import * as FPagingQuery from './common/f-paging-query';
+import * as FAddEdit from './common/f-add-edit';
+import * as USearchList from './h5/u-search-list';
+import * as UAntdTable from './h5/u-antd-table';
+import * as UAntdTabs from './h5/u-antd-tabs';
+import * as UForm from './h5/u-form';
 import {TargetType} from "moon-core/declarations/typings/config";
 
-export function getFeatures(target:TargetType){
-
-}
-
-
-export default [
+const allFeature =[
   FDialog,
   FPagingQuery,
   FAction,
@@ -34,3 +29,8 @@ export default [
   UForm,
   FBreadcrumb,
 ];
+
+export function getFeatures(target:TargetType,projectName:string) {
+  return allFeature.filter(item=>item.target.test(target+"-"+projectName));
+}
+export default allFeature;

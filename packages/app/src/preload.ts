@@ -14,7 +14,7 @@ import {genTaroPage} from 'moon-wanmi/lib/page/taro';
 import {join} from 'path';
 import {IPageDefined} from 'moon-core/declarations/typings/page';
 import * as fse from 'fs-extra';
-import {IMoonConfig} from '../../core/declarations/typings/config';
+import {IMoonConfig} from 'moon-core/declarations/typings/config';
 ipcRenderer.on('asynchronous-reply', (event, arg) => {
   console.log(arg); // prints "pong"
 });
@@ -76,6 +76,7 @@ window.moon = {
     pageDb: pageDb,
     moonConfig: defaulltMoonConfig,
     pwd: process.cwd(),
+    projectName:"",// TODO 添加 这个信息;
   },
   /**
    * 仅保存数据定义;

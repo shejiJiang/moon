@@ -29,6 +29,7 @@ export const FeatureInfo = {
   descHref:"/images/moon/u-search-list.png",
   //示例图片;
   pic:"/images/moon/u-search-list.png",
+  target:/h5-redux/
 };
 
 export function InterActData(data:IDialogData) :{

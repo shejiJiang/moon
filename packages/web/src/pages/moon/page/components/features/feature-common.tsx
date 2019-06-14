@@ -6,8 +6,9 @@ import actions from '../../actions/index';
 import {connect} from 'react-redux';
 import {store2Props} from '../../selectors';
 import { Modal, Select,Input} from 'antd';
-import allFeaures from './dsl';
+import {getFeatures} from './dsl';
 import { generateInteractEle, getInterActData } from '@/pages/moon/page/components/features/feature-util';
+let allFeaures= getFeatures(window.moon.moonConfig.type,window.moon.context.projectName);
 
 interface IState {
   isShow:boolean;
