@@ -30,7 +30,7 @@ async function loadJson(): Promise<any> {
   return new Promise((resolve, reject) => {
 
     console.log(`从${defaulltMoonConfig.api.swaggerUrl}中加载api doc信息`);
-    request(defaulltMoonConfig.swaggerApi, function(error, response, body) {
+    request(defaulltMoonConfig.api.swaggerUrl, function(error, response, body) {
       if (error) {
         reject(error);
       } else {
@@ -112,7 +112,7 @@ function isContain(db,controller: string, method: string){
     console.warn('读取历史api索引出错: ', err);
   }
 
-  let basePath = join(workBase,defaulltMoonConfig.api.dir);
+  let apiDir = join(workBase,defaulltMoonConfig.api.dir);
 
   let inserts: IInsertOption[] = [];
   let newMethods: { controller: string; method: string }[] = []; //新添加的方法记录
@@ -134,7 +134,7 @@ function isContain(db,controller: string, method: string){
 
       await MoonCore.WebApiGen.buildWebApi({
         webapiGroup,
-        projectPath: basePath, // join(__dirname, 'out'),
+        projectPath: apiDir, // join(__dirname, 'out'),
         beforeCompile: (apiItem: IWebApiDefinded) => {
           // apiItem.url =hostPre + apiItem.url;
           return apiItem;
@@ -218,8 +218,8 @@ function isContain(db,controller: string, method: string){
 
       //保存mock数据;
       let mockFilePath = join(
-        projectPath,
-        'web_modules/api/mock/',
+        apiDir,
+        'mock',
         webapiGroup.name + '.json'
       );
       log('保存mock api定义数据');
@@ -236,7 +236,7 @@ function isContain(db,controller: string, method: string){
     }
   }
 
-  await MoonCore.CompileUtil.insertFile(join(basePath, 'index.ts'), inserts);
+  await MoonCore.CompileUtil.insertFile(join(apiDir, 'index.ts'), inserts);
   //还是生成 一个总的 ?
   //转换
 
@@ -244,7 +244,7 @@ function isContain(db,controller: string, method: string){
   console.log('开始生成api索引文件,时间稍长,耐心等待');
   let indexInfo = MoonCore.TsIndex.genApiTsIndex({
     tsConfig: join(workBase, 'tsconfig.json'),
-    apiDir: join(workBase, 'web_modules/api'),
+    apiDir: apiDir,
     apiSuffix: 'Controller'
   });
   log('保存api索引信息');
