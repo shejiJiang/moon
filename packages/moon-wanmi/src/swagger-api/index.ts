@@ -28,6 +28,7 @@ import { IMoonConfig } from 'moon-core/declarations/typings/config';
 const log = debug('j2t:cli');
 async function loadJson(): Promise<any> {
   return new Promise((resolve, reject) => {
+
     console.log(`从${defaulltMoonConfig.api.swaggerUrl}中加载api doc信息`);
     request(defaulltMoonConfig.swaggerApi, function(error, response, body) {
       if (error) {
