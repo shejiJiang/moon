@@ -7,6 +7,8 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "auto":"npm run build dev && npm run deploy",
+    "deploy": "ts-node ./scripts/deploy.ts",
     "server": "http-server dist",
     "build": "cross-env NODE_ENV=development node scripts/build.js",
     "dll": "node scripts/dll.js",
@@ -98,6 +100,7 @@
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@types/react-redux": "^7.0.6",
+    "@types/shelljs": "^0.8.5",
     "ali-oss": "^6.1.0",
     "babel-plugin-import": "^1.12.0",
     "babel-plugin-lodash": "^3.3.4",
@@ -110,7 +113,8 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "moon-app": "^0.0.7-alpha.17",
-    "moon-wanmi": "^0.0.7-alpha.17"
+    "moon-wanmi": "^0.0.7-alpha.17",
+    "shelljs": "^0.8.3"
   },
   "jest": {
     "collectCoverageFrom": [

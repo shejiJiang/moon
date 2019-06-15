@@ -31,6 +31,6 @@ const allFeature =[
 ];
 
 export function getFeatures(target:TargetType,projectName:string) {
-  return allFeature.filter(item=>item.target.test(target+"-"+projectName));
+  return allFeature.filter(item=>item.FeatureInfo.target.test(target+"-"+projectName));
 }
 export default allFeature;

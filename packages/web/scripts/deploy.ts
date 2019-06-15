@@ -1,26 +1,23 @@
 
-import {join} from 'path';
-import {getOssClient} from './oss';
-const klaw = require('klaw');
+import shelljs from "shelljs";
+import {join} from  'path';
 
-let ossClient = getOssClient(require('../config/oss-config.json'));
-let basePath = join(__dirname, '..');
-let items: string[] = [];
+(async()=>{
+  let targetDir = "/Users/dong/Falcon/moon-coder.github.io";
+  shelljs.cp("-rf",join(__dirname,"../dist/*"),targetDir)
 
-klaw(join(basePath,"build/static/js"))
-  .on('data', (item: any) => {
-    // console.log('data::',item);
-    items.push(item.path)
-  })
-  .on('end', async () =>{
-    items =items.filter((fiPath:string)=>{
-      return !fiPath.endsWith('.map') && fiPath.endsWith('.js')
-    });
+  if(shelljs.exec(`cd ${targetDir} && git pull`).code !==0){
+    throw new Error('执行命令 git add . 出错');
+  }
+  if(shelljs.exec(`cd ${targetDir} && git add .`).code !==0){
+    throw new Error('执行命令 git add . 出错');
+  }
 
-    for (let i = 0, ilen = items.length; i < ilen; i++) {
-      let item = items[i];
-      console.log(item);
-      let result  = await ossClient.putObject(item,item.replace(join(basePath,'build'),""));
-      console.log(result);
-    }
-  });
+  if(shelljs.exec(`cd ${targetDir} && git commit -m 'auto'`).code !==0){
+    throw new Error('执行命令 git commit -m \'auto\' 出错');
+  }
+
+  if(shelljs.exec(`cd ${targetDir} && git push`).code !==0) {
+    throw new Error('执行命令 git push 出错');
+  }
+})();

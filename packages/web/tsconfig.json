@@ -13,8 +13,7 @@
       "kit/*": ["./src/web_modules/kit/*"],
       "ui/*": ["./src/web_modules/ui/*"],
       "api/*": ["./src/webapi/*"],
-      "@/**": ["./src/**"],
-      "components/*": ["./components/*"]
+      "@/**": ["./src/**"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -25,10 +24,10 @@
     "strictNullChecks": false,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "jsx": "react"
   },

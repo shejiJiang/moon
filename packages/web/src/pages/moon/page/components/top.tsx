@@ -12,7 +12,7 @@ import { Modal, Button,Tooltip} from 'antd';
 
 type ITopProps = T.IProps & T.ITopProps;
 
-let allFeaures= getFeatures(window.moon.moonConfig.type,window.moon.context.projectName);
+let allFeaures= getFeatures(window.moon.context.moonConfig.type,window.moon.context.projectName);
 
 @connect(store2Props, actions)
 class Top extends React.Component<ITopProps, T.ITopState> {
