@@ -6,24 +6,6 @@ import produce from 'immer';
 
 const INITIAL_STATE: IMainReducer = {
   isReady: false,
-  menuList: [
-    {menuName: '概况', image: '', url: '/survey'},
-    {
-      menuName: 'reduxH5',
-      image: '',
-      url: '',
-      sub: [
-        {
-          menuName: '页面',
-          url: '',
-          sub: [
-            {menuName: '列表', url: '/pages/moon/list'},
-            {menuName: '编辑', url: '/pages/moon/page'},
-          ],
-        }
-      ],
-    }
-   ],
 };
 console.log("load");
 

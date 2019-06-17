@@ -6,81 +6,74 @@ import './left-menu.less';
 import actions from '../actions/index';
 import {connect} from 'react-redux';
 import {store2Props} from '../selectors';
-import { Layout, Menu, Icon } from 'antd';
-const { SubMenu } = Menu;
-const { Sider } = Layout;
+import {Layout, Menu, Icon, Button} from 'antd';
+const {SubMenu} = Menu;
+const {Sider} = Layout;
 
 type ILeftMenuProps = T.IProps & T.ILeftMenuProps;
 
-@connect(
-  store2Props,
-  actions
-)
+@connect(store2Props, actions)
 class LeftMenu extends React.Component<ILeftMenuProps, T.ILeftMenuState> {
   constructor(props: ILeftMenuProps) {
     super(props);
-    this.state={
-      activeIndex:0
-    }
+    this.state = {
+      activeIndex: 0,
+    };
   }
 
   render() {
-    let {menuList} =  this.props.main;
-
-    let lv2Menu =(menuList[this.state.activeIndex].sub||[]).map((subMenu,index)=>{
-      return  (
-          <SubMenu
-            key={'001'+index}
-            title={
-              <div className="leftNavItem">
-                <span>{subMenu.menuName}</span>
-              </div>
-            }
-          >
-            {
-              (subMenu.sub||[]).map((item,index)=><Menu.Item key={index}>
-                <Link to={item.url}>{item.menuName}</Link>
-              </Menu.Item>)
-            }
-          </SubMenu>
-      )
-    });
+    let {} = this.props.main;
 
     return (
-      [
-        <Sider width={100} key={1}>
-          <Menu
-            mode="vertical"
-            style={{ height: '100%' }}
-          >
-            {
-              menuList.map((item,index)=> <Menu.Item key={index}
-              onClick={this._clickMenu}
-              >
-                <Icon type="pie-chart" />
-                <span>{item.menuName}</span>
-              </Menu.Item>)
+      <div className="leftMenu" style={{}}>
+        <Menu
+          defaultSelectedKeys={['1']}
+          defaultOpenKeys={['sub1']}
+          onClick={({item, key, keyPath, domEvent}) => {
+            let href = item.props['data-href'];
+            let target = item.props['data-target']||"";
+            debugger;
+            if (href) {
+              if(target ==='_blank'){
+                window.open(decodeURIComponent(href))
+              }else{
+                location.href = decodeURIComponent(href);
+              }
             }
-          </Menu>
-        </Sider>,
-        <Sider width={120} key={2}>
-          <Menu
-            mode="inline"
-            key={"l2Menu"}
-            inlineIndent={10}
-            style={{ height: '100%' }}
+          }}
+          mode="inline"
+          theme="light"
+          inlineCollapsed={this.state.collapsed}
+        >
+          <Menu.Item data-href={'/moon/list'} key="1">
+            <Icon type="unordered-list" />
+            <span>页面列表</span>
+          </Menu.Item>
+          <Menu.Item key="2">
+            <Icon type="api" />
+            <span>api接口生成</span>
+          </Menu.Item>
+          <SubMenu
+            key="sub1"
+            title={
+              <span>
+                <Icon type="tool" />
+                <span>前端工具合集</span>
+              </span>
+            }
           >
-            {lv2Menu}
-          </Menu>
-        </Sider>
-      ]
+            <Menu.Item key="5" data-href="http://json2ts.com/" data-target="_blank">JSON2TS</Menu.Item>
+          </SubMenu>
+        </Menu>
+
+      </div>
     );
   }
 
-  _clickMenu=({ item, key, keyPath })=>{
+  _clickMenu = ({item, key, keyPath}) => {
     console.log(item, key, keyPath);
-    this.setState({activeIndex:key});
-  }
+    this.setState({activeIndex: key});
+  };
 }
 
 export default LeftMenu as any;

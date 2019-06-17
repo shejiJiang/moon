@@ -2,12 +2,6 @@ import Actions from './actions';
 
 export interface IMainReducer {
   isReady: boolean;
-
-  menuList: IMainMenuList;
-
-  componyInfo: IMainComponyInfo;
-
-  personalInfo: IMainPersonalInfo;
 }
 
 export type ActionType = ReturnType<typeof Actions>;

@@ -8,8 +8,8 @@ const MainFrame = loadable(() => import('@/pages/frame'));
   <Router>
     <Switch>
       <Route path="/" render={() => <MainFrame>
-        <Route path="/pages/moon/page" component={loadable(() => import('@/pages/moon/page'))} />
-        <Route path="/pages/moon/list" component={loadable(() => import('@/pages/moon/list'))} />
+        <Route path="/moon/page" component={loadable(() => import('@/pages/moon/page'))} />
+        <Route path="/moon/list" component={loadable(() => import('@/pages/moon/list'))} />
       </MainFrame>} />
     </Switch>
   </Router>;
