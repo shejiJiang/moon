@@ -45,9 +45,13 @@ class LeftMenu extends React.Component<ILeftMenuProps, T.ILeftMenuState> {
           theme="light"
           inlineCollapsed={this.state.collapsed}
         >
-          <Menu.Item data-href={'/moon/list'} key="1">
+          <Menu.Item data-href={'#/moon/list'} key="1">
             <Icon type="unordered-list" />
             <span>页面列表</span>
+          </Menu.Item>
+          <Menu.Item data-href={'#/moon/add'} key="1">
+            <Icon type="ile-add" />
+            <span>添加页面</span>
           </Menu.Item>
           <Menu.Item key="2">
             <Icon type="api" />
