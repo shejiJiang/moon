@@ -8,12 +8,14 @@
  **/
 
 import {SchemaProps} from "./api";
+import {IHandlePageParam} from "./util";
 
 export interface IFileSaveOptions {
   projectOutDir: string;
   tplPath: string;
   toSaveFilePath: string;
   content: string;
+  param?: IHandlePageParam
 }
 
 export interface IPageDefined {

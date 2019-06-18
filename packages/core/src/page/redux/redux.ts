@@ -122,7 +122,9 @@ export async function generate(context: IContext) {
         });
         return conent;
       },
-      {saveFilePath: "reducers/"+actor.fileName + '.ts'},
+      {saveFilePath: "reducers/"+actor.fileName + '.ts',
+       actor
+      },
     );
   });
 
@@ -185,7 +187,8 @@ export async function generate(context: IContext) {
         });
         return conent;
       },
-      {saveFilePath: "actions/"+action.fileName + '.ts'},
+      {saveFilePath: "actions/"+action.fileName + '.ts',
+      action},
     );
   });
 
@@ -209,7 +212,10 @@ export async function generate(context: IContext) {
         });
         return conent;
       },
-      {saveFilePath: 'components/' + subComp.fileName + '.tsx'},
+      {
+        saveFilePath: 'components/' + subComp.fileName + '.tsx',
+        subComp,
+      },
     );
 
     await handlePage(

@@ -14,7 +14,7 @@ import {insertFile, getHandleFile} from "../../../util/compile-util";
 import * as stringUitl from '../../../util/string-util';
 import {genTsFromJSON} from "../../../util/json-util";
 import {DataType, IAction, IActorEvent, IActorItem, IPageDefined, IType} from "../../../typings/page";
-import {IFileSaveOpt} from "../../../typings/util";
+import {IFileSaveOpt, IHandlePageParam} from "../../../typings/util";
 
 const Util = {
   ... stringUitl,
@@ -191,6 +191,7 @@ export interface IFileSaveOptions{
   tplPath:string;
   toSaveFilePath:string;
   content:string;
+  param?: IHandlePageParam;
 }
 
 

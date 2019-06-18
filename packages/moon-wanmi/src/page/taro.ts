@@ -3,7 +3,8 @@ import MoonCore from  'moon-core';
 
 import * as fse from 'fs-extra';
 import {join} from 'path';
-import {IContext} from "../../../core/declarations/typings/page";
+import {IContext} from "moon-core/declarations/typings/page";
+import {IFileSaveOptions} from "moon-core/declarations/typings/page";
 /**
  * @desc
  *
@@ -22,10 +23,18 @@ export async function genTaroPage(context:IContext) {
   await MoonCore.ReduxGen.buildPage({
     ...context,
     prettiesConfig,
-    beforeSave:async(options,context)=>{
+    beforeSave:async(options:IFileSaveOptions,context:IContext)=>{
       if (options.tplPath.endsWith('less.ejs')) {
         options.content=options.content.replace("@import \"~style/theme.less\";","");
       }
+
+      if(options.tplPath==='components/sub-components.tsx.ejs') {
+        let _key =MoonCore.StringUtil.toUCamelize(options.param.subComp.fileName);
+        options.content =options.content.replace('@connect',`@connect<Partial<I${_key}PropsI>,T.I${_key}State>`);
+      } else if(options.tplPath==='index.tsx.ejs'){
+        options.content =options.content.replace('@connect',`@connect<Partial<T.IProps>>`);
+      }
+      
       if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
         options.content  = options.content
           .replace("import {connect} from 'react-redux'","import { connect } from '@tarojs/redux'")

@@ -53,6 +53,7 @@ export function getHandleFile({
       projectOutDir:"",
       tplPath,
       toSaveFilePath:join(outDir, _param.saveFilePath),
+      param,
       content
     };
 

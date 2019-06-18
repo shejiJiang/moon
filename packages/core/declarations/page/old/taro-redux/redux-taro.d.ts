@@ -1,11 +1,12 @@
 import { IPageDefined } from "../../../typings/page";
-import { IFileSaveOpt } from "../../../typings/util";
+import { IFileSaveOpt, IHandlePageParam } from "../../../typings/util";
 export declare function generate(context: IContext): Promise<void>;
 export interface IFileSaveOptions {
     projectOutDir: string;
     tplPath: string;
     toSaveFilePath: string;
     content: string;
+    param?: IHandlePageParam;
 }
 /**
  *

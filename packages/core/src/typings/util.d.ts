@@ -8,9 +8,13 @@
  **/
 import {IFileSaveOptions} from "../page/old/taro-redux/redux-taro";
 import {SchemaProps} from "./api";
+import {IAction, IActorItem, ISubComp} from "./page";
 
 interface IHandlePageParam {
   saveFilePath: string;
+  subComp?: ISubComp;
+  actor?: IActorItem;
+  action?: IAction
 }
 
 export interface IFileSaveOpt {
