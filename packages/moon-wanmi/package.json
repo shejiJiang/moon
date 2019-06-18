@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prepublishOnly":"echo prepublishOnly",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {

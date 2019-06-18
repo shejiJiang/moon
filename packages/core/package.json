@@ -8,7 +8,7 @@
     "registory": "http://registory.npmjs.org"
   },
   "scripts": {
-    "tt": "tsc && mkdir lib/page/redux/tpl &&  cp -r src/page/redux/tpl/* lib/page/redux/tpl && mkdir lib/web-api/client/tpl && cp -r src/web-api/client/tpl/*  lib/web-api/client/tpl ",
+    "prepublishOnly": "ts-node ./src/copy.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -30,6 +30,7 @@
   "license": "ISC",
   "gitHead": "fbc37e827d15c23480e20c0e32985e1aa3951a62",
   "devDependencies": {
-    "@types/fs-extra": "^7.0.0"
+    "@types/fs-extra": "^7.0.0",
+    "shelljs": "^0.8.3"
   }
 }

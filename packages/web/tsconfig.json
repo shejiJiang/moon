@@ -15,8 +15,7 @@
       "kit": ["./src/web_modules/kit"],
       "kit/*": ["./src/web_modules/kit/*"],
       "ui/*": ["./src/web_modules/ui/*"],
-      "api/*": ["./src/webapi/*"],
-      "@/**": ["./src/**"]
+      "api/*": ["./src/webapi/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
