@@ -1,10 +1,10 @@
 {
   "name": "moon-wanmi",
-  "version": "0.0.7-alpha.18",
+  "version": "0.0.7-alpha.20",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepublishOnly":"echo prepublishOnly",
+    "prepublishOnly": "echo prepublishOnly",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "debug": "^4.1.1",
-    "moon-core": "^0.0.7-alpha.18"
+    "moon-core": "^0.0.7-alpha.20"
   },
   "author": "",
   "license": "ISC",
