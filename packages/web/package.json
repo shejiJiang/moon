@@ -1,13 +1,13 @@
 {
   "name": "moon-web",
   "private": true,
-  "version": "0.0.7-alpha.17",
+  "version": "0.0.7-alpha.18",
   "publishConfig": {
     "registry": "http://registry.npm.qianmi.com"
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "auto":"npm run build dev && npm run deploy",
+    "auto": "npm run build dev && npm run deploy",
     "deploy": "ts-node ./scripts/deploy.ts",
     "server": "http-server dist",
     "build": "cross-env NODE_ENV=development node scripts/build.js",
@@ -60,7 +60,7 @@
     "jest-watch-typeahead": "^0.2.1",
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "0.5.0",
-    "moon-core": "^0.0.7-alpha.17",
+    "moon-core": "^0.0.7-alpha.18",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "plume2": "^1.2.6",
     "pnp-webpack-plugin": "1.2.1",
@@ -112,8 +112,8 @@
     "klaw": "^3.0.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    "moon-app": "^0.0.7-alpha.17",
-    "moon-wanmi": "^0.0.7-alpha.17",
+    "moon-app": "^0.0.7-alpha.18",
+    "moon-wanmi": "^0.0.7-alpha.18",
     "shelljs": "^0.8.3"
   },
   "jest": {
