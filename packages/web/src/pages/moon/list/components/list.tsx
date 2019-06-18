@@ -37,7 +37,7 @@ const getContent = (record: IPageInfo, index) =>(
       <div className="search">
           <div className="clearfix">
             <Button className="fl" type="primary" onClick={()=>{
-              location.href ="#/pages/moon/page";
+              location.href ="#/moon/page";
             }}>添加页面</Button>
           </div>
         </div>
@@ -78,7 +78,7 @@ const getContent = (record: IPageInfo, index) =>(
                     </Popover>
                     <a
                       className="btn"
-                      href={"#/pages/moon/page?id=" + encodeURIComponent(record.pagePath)}
+                      href={"#/moon/page?id=" + encodeURIComponent(record.pagePath)}
                     >
                       编辑
                     </a>

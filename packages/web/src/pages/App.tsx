@@ -4,10 +4,11 @@ import {HashRouter as Router, Route, Link, match,Switch} from 'react-router-dom'
 import loadable from '@loadable/component'
 
 const MainFrame = loadable(() => import('@/pages/frame'));
-    const Main = () =>
+const Main = () =>
   <Router>
     <Switch>
       <Route path="/" render={() => <MainFrame>
+        <Route path="/" exact={true} component={()=><div>hello welcome to moon</div>} />
         <Route path="/moon/page" component={loadable(() => import('@/pages/moon/page'))} />
         <Route path="/moon/list" component={loadable(() => import('@/pages/moon/list'))} />
       </MainFrame>} />

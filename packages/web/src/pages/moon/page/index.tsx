@@ -55,7 +55,7 @@ class MoonPage extends React.Component<T.IProps, any> {
         {main.context.tag==='action'?<ActionManger/>:null}
         {main.context.tag==='component'?<ComponentManger/>:null}
 
-        <a href={"#/pages/moon/list"}>返回管理列表</a>
+        <a href={"#/moon/list"}>返回管理列表</a>
       </div>
     );
   }
