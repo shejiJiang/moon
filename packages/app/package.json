@@ -6,7 +6,7 @@
     "test": "jest",
     "build": "tsc",
     "watch": "tsc -w",
-    "prepublishOnly": "echo prepublishOnly",
+    "prepublishOnly": "tsc",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "startTmp": "electron ./dist/main.js",
     "start": "npm run build && electron ./dist/main.js"
