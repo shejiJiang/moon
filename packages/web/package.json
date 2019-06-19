@@ -6,6 +6,7 @@
     "registry": "http://registry.npm.qianmi.com"
   },
   "scripts": {
+    "moon": "electron ./node_modules/moon-app/dist/main.js",
     "start": "node scripts/start.js",
     "auto": "npm run build dev && npm run deploy",
     "deploy": "ts-node ./scripts/deploy.ts",
@@ -14,7 +15,6 @@
     "dll": "node scripts/dll.js",
     "build:prod": "cross-env NODE_ENV=production node scripts/build.js prod",
     "clean": "rm -rdf ./dist && mkdir dist",
-    "moon": "electron ./node_modules/moon-app/dist/main.js",
     "api": "cd  /Users/dong/Falcon/moon/app/src/migrate/swagger/ &&  ts-node index.ts"
   },
   "dependencies": {

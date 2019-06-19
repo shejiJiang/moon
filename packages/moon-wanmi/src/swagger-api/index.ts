@@ -67,6 +67,9 @@ interface IApiIndex {
 }
 let oldApiIndex: IApiIndex = {};
 
+function isDebug():boolean{
+  return process.env.hasOwnProperty("DEBUG");
+}
 /**
  * 判断是否是新添加的方法,如果是新方法, 默认在开发时走mock流程.
  *
@@ -97,14 +100,16 @@ function isContain(db,controller: string, method: string){
   const ApiIndexPath = join(workBase,defaulltMoonConfig.api.dir ,'_api-info.json');
 
   let apiJson = await loadJson();
-  //   // // console.log(apiJson);
-  //   await fse.writeJSON(join(__dirname, 'swagger-api.json'), apiJson);
   //   // //按分组;
   // let apiJson= await fse.readJSON(join(__dirname, 'pets-api.json'));
   //
   // //单个文件 生成 , 不生成总的.生成总的, 更新 会有问题.
   let apiGroups = transfer(apiJson);
-  // await fse.writeJSON(join(__dirname, 'webapi-def.json'), apiGroups);
+
+  if(isDebug()) {
+    await fse.writeJSON(join(workBase, 'swagger-api.json'), apiJson);
+    await fse.writeJSON(join(__dirname, 'webapi-group.json'), apiGroups);
+  }
 
   try {
     oldApiIndex = await fse.readJSONSync(ApiIndexPath);
