@@ -107,8 +107,8 @@ function isContain(db,controller: string, method: string){
   let apiGroups = transfer(apiJson);
 
   if(isDebug()) {
-    await fse.writeJSON(join(workBase, 'swagger-api.json'), apiJson);
-    await fse.writeJSON(join(__dirname, 'webapi-group.json'), apiGroups);
+    await fse.writeFileSync(join(workBase, 'swagger-api.json'), JSON.stringify(apiJson,null,2));
+    await fse.writeFileSync(join(workBase, 'webapi-group.json'), JSON.stringify(apiGroups,null,2));
   }
 
   try {
