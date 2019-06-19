@@ -17,7 +17,7 @@ async function <%=Util.getMethodName(apiItem.name)%>(
 ):Promise< <%= Util.getTypeNameFromSchema(apiItem.responseSchema) %> > {
 
   if(__DEV__){
-    if(isMock(" <%-webapiGroup.name %>","<%=Util.getMethodName(apiItem.name)%>")){
+    if(isMock("<%-webapiGroup.name %>","<%=Util.getMethodName(apiItem.name)%>")){
       return Promise.resolve(require('./mock/<%-webapiGroup.name %>.json').<%= Util.getTypeNameFromSchema(apiItem.responseSchema) %>||{});
     }
   }
