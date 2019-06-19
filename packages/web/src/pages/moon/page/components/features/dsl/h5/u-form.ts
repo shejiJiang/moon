@@ -135,6 +135,7 @@ function getContent (features:string[]): string {
   }
 
   return `
+/*
         //1. 引入import
         import moment from 'moment';
         ${importLines.join(';')}
@@ -146,7 +147,7 @@ function getContent (features:string[]): string {
 }
         //3.render方法
        let { getFieldDecorator } = this.props.form;
-       export default Form.create({ name: 'pets-info' })(PetsInfo as any ) as any;
+       export default Form.create<any>({ name: 'pets-info' })(PetsInfo as any );
          
         
     const formItemLayout = {
@@ -161,9 +162,9 @@ function getContent (features:string[]): string {
   return (<div className="formContent #instanceName#">
        <Form layout="horizontal">
              ${formItemsContent}
-             
         </Form>
       </div>)
+*/
 `;
 
 };
