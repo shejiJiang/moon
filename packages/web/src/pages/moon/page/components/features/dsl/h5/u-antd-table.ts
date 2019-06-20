@@ -76,8 +76,8 @@ export async function apply(context: IProps & {data: IDialogData}) {
   let {actions: {action}, main} = context;
   let {targetCompMethod,isSelection} = context.data;
 
-  let content = getContent(context.data);
-  let {interfaceName}= getImportInfo(context.data.dataType);
+  let content = getContent(context);
+  let {interfaceName}= getImportInfo(context.data.dataType,main.pageInfo);
 
   await action.commonChange(`main.pageInfo.subComps.${targetCompMethod.compIndex}.methods.${targetCompMethod.methodIndex}.content`,content.content);
   await action.commonChange(`main.pageInfo.subComps.${targetCompMethod.compIndex}.methods.${targetCompMethod.methodIndex}.comment`,content.comment);
@@ -102,42 +102,13 @@ export async function apply(context: IProps & {data: IDialogData}) {
       param: "",
       returnType:"number[]"
     })
-
-    await action.componentMethodAdd(targetCompMethod.compIndex,{
-      name: "_pushItems",
-      comment:"获取选中的行索引数值. 可以跨页面记录的.",
-      content:`
-    let chooseItems = this.state.chooseItems;
-    for (let i = 0, iLen = records.length; i < iLen; i++) {
-      let row = records[i];
-      chooseItems[row.projectId] = row;
-    }
-    this.setState({ chooseItems });
-  `,
-      param: `records: ${interfaceName}[]`
-    })
-
-    await action.componentMethodAdd(targetCompMethod.compIndex,{
-      name: "_deleteItems",
-      comment:"获取选中的行索引数值. 可以跨页面记录的.",
-      content:`
-    let chooseItems = this.state.chooseItems;
-    for (let i = 0, iLen = records.length; i < iLen; i++) {
-      let row = records[i];
-      delete chooseItems[row.projectId];
-    }
-    this.setState({ chooseItems });
-  `,
-      param: `records: ${interfaceName}[]`
-    })
   }
 }
 
-function getContent (data: IDialogData): {comment:string;content:string} {
+function getContent (context: IProps & {data: IDialogData}): {comment:string;content:string} {
+  let {data,main} = context;
   let features = data.features;
-
-  let importInfo   = getImportInfo(data.dataType);
-
+  let importInfo   = getImportInfo(data.dataType,main.pageInfo);
   let interfaceName ="",importStr ="";
   if(importInfo){
     importStr = importInfo.importStatement;
@@ -147,7 +118,6 @@ function getContent (data: IDialogData): {comment:string;content:string} {
   return {
     comment: `
     table引入指南: 
-    
   入类
 import { Table, Popover,Button,Input,Select } from "antd";
 import * as uiLogic from "wmkit/ui-logic";
@@ -277,7 +247,7 @@ this.state={chooseItems:[]} chooseItems: ${interfaceName}[];`:""}
 /**
  * 获取引入信息;
  */
-function getImportInfo (dataItem:IActorDataItemInfo):{interfaceName:string;importStatement:string}|undefined {
+function getImportInfo (dataItem:IActorDataItemInfo,pageInfo):{interfaceName:string;importStatement:string}|undefined {
 
   let {actorData,actorIndex,dataIndex} =  dataItem;
 
@@ -287,7 +257,7 @@ function getImportInfo (dataItem:IActorDataItemInfo):{interfaceName:string;impor
       importStatement:`import {${actorData.importInfo.interfaceName}} from  'api/${actorData.importInfo.apiFile}'`
     }
   }else if(actorData.schemaType==='internal' || actorData.schemaType==='fromValue') {
-    let {pageInfo:{actors}}  = this.props.main;
+    let {actors}  = pageInfo;
     let currentActor = actors[actorIndex];
     let currentData = actors[actorIndex].datas[dataIndex];
     let interfaceName = `I` + toUCamelize(currentActor.fileName+"-"+currentData.name);

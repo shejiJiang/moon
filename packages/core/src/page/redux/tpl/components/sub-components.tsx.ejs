@@ -15,6 +15,9 @@ export default class <%=Util.toUCamelize(subComp.fileName)%> extends React.Compo
     super(props);
   }
 
+/**
+    <%-(subComp.methods.filter(item=>item.name =="render")[0]||{}).comment%>
+*/
   render() {
     let {actions:{
         <% pageInfo.actions.forEach(action=>{ %>

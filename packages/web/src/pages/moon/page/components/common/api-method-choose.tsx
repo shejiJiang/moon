@@ -20,13 +20,13 @@ for (let controllerName in apiInfo) {
   for (let methodName in apiInfo[controllerName].methods) {
     children.push({
       value: methodName,
-      label: methodName
+      label: methodName.toLowerCase()
     });
   }
 
   cascaderData.push({
     value: controllerName,
-    label: controllerName,
+    label: controllerName.toLowerCase(),
     children,
   });
 }

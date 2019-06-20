@@ -20,7 +20,7 @@ for (let controllerName in apiInfo) {
   for (let methodName in apiInfo[controllerName].methods) {
     children.push({
       value: methodName,
-      label: methodName,
+      label: methodName.toLowerCase(),
       children: apiInfo[controllerName].methods[
         methodName
         ].responseTs.map(item => {
@@ -31,7 +31,7 @@ for (let controllerName in apiInfo) {
 
   cascaderData.push({
     value: controllerName,
-    label: controllerName,
+    label: controllerName.toLowerCase(),
     children,
   });
 }
