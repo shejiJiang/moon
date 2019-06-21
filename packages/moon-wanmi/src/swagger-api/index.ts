@@ -121,6 +121,7 @@ function isContain(db,controller: string, method: string){
 
   let inserts: IInsertOption[] = [];
   let newMethods: { controller: string; method: string }[] = []; //新添加的方法记录
+  let includeApis =defaulltMoonConfig.api.include
   for (let i = 0, ilen = apiGroups.length; i < ilen; i++) {
     try {
       let webapiGroup: IWebApiGroup = apiGroups[i];
@@ -136,6 +137,16 @@ function isContain(db,controller: string, method: string){
         console.log(`${i}/${ilen}`, 'current webapiGroup:', webapiGroup.name);
       }
       let mockData = {};
+
+      if(includeApis && !includeApis.includes(webapiGroup.name)){
+        console.log(
+          `${i}/${ilen}`,
+          'ignore webapiGroup:',
+          webapiGroup.name,
+          'due to MoonConfig.api.include do not contain it'
+        );
+        continue;
+      }
 
       await MoonCore.WebApiGen.buildWebApi({
         webapiGroup,

@@ -12,7 +12,8 @@ export interface IMoonConfig{
   api: {
     swaggerUrl: string;
     dir:string;
-    exclude: string[];
+    exclude?: string[];
+    include?: string[];
     mock:{
       ignoreApi:{
         [controller: string]: string[];

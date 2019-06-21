@@ -34,9 +34,18 @@ export const FeatureInfo = {
 export const InterActData: {
   [key: string]: InteractConfig;
 } = {
+  apis: {
+    name: '关联api[option]',
+    interact: EInterActType.arrayChoose,
+    childrenInteract: {
+      name: '',
+      interact: EInterActType.apiMethodChoose,
+    },
+  },
 };
 
 interface IDialogData {
+  apis: ApiMethodInfo[];
 }
 
 /**
@@ -47,7 +56,7 @@ interface IDialogData {
  * */
 export async function apply(context: IProps & {data: IDialogData}) {
 
-  let {actions: {action}, main} = context;
+  let {actions: {action}, main,data} = context;
 
   let methods =main.pageInfo.mainComp.methods;
   let componentDidMountM = methods.filter(item=>item.name==='componentDidMount')[0];
@@ -58,6 +67,12 @@ export async function apply(context: IProps & {data: IDialogData}) {
     this.props.actions.init(param);
       `}
 
+  let apiStates = data.apis
+    .map(
+      apiItem =>
+        `//let {} = await api.${apiItem.apiFile}.${apiItem.methodName}();`,
+    )
+    .join('\n');
   action.commonChange([
     {
       paths: 'main.pageInfo.lifeCycles.init',
@@ -68,10 +83,11 @@ export async function apply(context: IProps & {data: IDialogData}) {
         main:{
         }
       }
-      
+        ${apiStates}
+       
       if(id) {
         //TODO 查询接口缺失
-        // let result = await api .
+        // let result = await api.
         // payload.main.info=
       }
 
