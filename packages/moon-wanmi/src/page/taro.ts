@@ -80,7 +80,7 @@ export async function genTaroPage(context:IContext) {
           {
             mark: '//pagePath//',
             isBefore: true,
-            content: `'${pageFilePath}',`,
+            content: `'${pageFilePath}/index',`,
             check: (content): boolean => !content.includes(pageFilePath),
           }
         ]);
