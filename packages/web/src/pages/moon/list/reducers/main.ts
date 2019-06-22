@@ -4,8 +4,9 @@ import {IMainReducer} from '../types';
 import {Action} from 'typings';
 import produce from 'immer';
 import * as immerUtil from '@/redux/immer-util';
+import {getPageDb} from "kit/moon";
 
-let db  = window.moon && window.moon.context.pageDb || {};
+let db  = getPageDb();
 let list =[];
 for (let pagePath in db) {
   list.push(db[pagePath]);

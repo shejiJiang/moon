@@ -4,27 +4,12 @@ import {IMainReducer} from '../types';
 import {Action} from 'typings/index';
 import produce from 'immer';
 import * as immerUtil from '@/redux/immer-util';
+import {getMoonContext} from "kit/moon";
 
-
-/**
- * 获取工作目录::
- *
- *
- *
- * @returns {string}
- */
-function getWorkDir() :string{
-  //@ts-ignore
-  if(window.moon && window.moon.context) {
-    //@ts-ignore
-    return window.moon.context.pwd;
-  }
-  return  '/Users/dong/wanmi/sbc/sbc-supplier';
-}
 
 const INITIAL_STATE: IMainReducer = {
   isReady: false,
-  projectPath:getWorkDir(),
+  projectPath:getMoonContext().pwd ||  '/Users/dong/wanmi/sbc/sbc-supplier',
   pageInfo: {
     pagePath:"",
     actors: [

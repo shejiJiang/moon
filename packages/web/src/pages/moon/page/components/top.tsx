@@ -9,10 +9,11 @@ import FeatureCommon from './features/feature-common';
 import  {getFeatures} from './features/dsl';
 import ReactJson from 'react-json-view';
 import { Modal, Button,Tooltip} from 'antd';
+import {getMoonContext, getProjectMoonConfig} from "kit/moon";
 
 type ITopProps = T.IProps & T.ITopProps;
 
-let allFeaures= getFeatures(window.moon.context.moonConfig.type,window.moon.context.projectName);
+let allFeaures= getFeatures(getProjectMoonConfig().type,getMoonContext().projectName);
 
 @connect(store2Props, actions)
 class Top extends React.Component<ITopProps, T.ITopState> {
@@ -34,6 +35,7 @@ class Top extends React.Component<ITopProps, T.ITopState> {
               <a href={FeatureDsl.FeatureInfo.descHref} target="_blank">
               <img  style={{
               width:"500px",
+                maxHeight:"500px",
               overflow:"scroll",
             }} className={"tipImage"} src={FeatureDsl.FeatureInfo.pic}></img>
               </a>

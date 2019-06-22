@@ -4,7 +4,8 @@ import {Dispatch} from 'typings';
 import {getActionProxy} from '@/redux/action-util';
 import Action from './action';
 
-let db=window.moon && window.moon.context.pageDb || {};
+import {getPageDb} from "kit/moon";
+let db=getPageDb();
 
 export default (dispatch: Dispatch) => {
   const actions = {

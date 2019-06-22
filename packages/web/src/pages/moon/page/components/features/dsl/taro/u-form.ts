@@ -28,7 +28,7 @@ export const FeatureInfo = {
   descHref:"/images/moon/u-form.jpg",
   //示例图片;
   pic:"/images/moon/u-form.jpg",
-  target:/h5-redux/
+  target:/taro-redux/
 };
 
 //特性需要用户输入数据;
@@ -80,27 +80,27 @@ export async function apply(context: IProps & {data: IDialogData}) {
     name: "_submit",
     comment:"提交表单",
     content:`
-    const { form: { validateFields },actions:{action},main} = this.props;
-    validateFields(async(errors, values) => {
-      if(!errors) {
-        await this.props.actions.action.submit();
-        return false;
-      }
-    });
       `,
-    param: ""
+    param: "e"
   });
-
-  await action.actionMethodAdd(0,{
-    name:"submit",
+  await action.componentMethodAdd(targetCompMethod.compIndex,{
+    name: "_reset",
     comment:"提交表单",
     content:`
-      let {main: {info, mode}} = getData();
-      if (info.id) {
-      } else {
-      }`,
-    param:"",
+      `,
+    param: "e"
   });
+  //
+  // await action.actionMethodAdd(0,{
+  //   name:"submit",
+  //   comment:"提交表单",
+  //   content:`
+  //     let {main: {info, mode}} = getData();
+  //     if (info.id) {
+  //     } else {
+  //     }`,
+  //   param:"",
+  // });
 }
 
 function getContent (features:string[]): string {
@@ -112,6 +112,9 @@ function getContent (features:string[]): string {
 
   for (let i = 0, iLen = features.length; i < iLen; i++) {
     let feature = features[i];
+    if(!tplMap[feature]){
+      continue;
+    }
     let {dependencies , content}   = tplMap[feature];
     for (let depKey in dependencies) {
       if(allDepend[depKey]) {
@@ -137,29 +140,10 @@ function getContent (features:string[]): string {
   return `
 /*
         //1. 引入import
-        import moment from 'moment';
         ${importLines.join(';')}
-        
-        import {WrappedFormUtils} from "antd/lib/form/Form";
-        //2. 定义formts提示
-        &{
-  form:WrappedFormUtils
-}
-        //3.render方法
-       let { getFieldDecorator } = this.props.form;
-       export default Form.create<any>({ name: 'pets-info' })(PetsInfo as any );
          
         
-    const formItemLayout = {
-      labelCol: { span: 4 },
-      wrapperCol: { span: 8 }
-    };
-    const formItemLayoutBig = {
-      labelCol: { span: 4 },
-      wrapperCol: { span: 16 }
-    };
-        
-  return (<Form onSubmit={this.formSubmit} onReset={this.formReset} >
+  return (<Form onSubmit={this._submit} onReset={this._reset} >
           ${formItemsContent}
       </Form>)
 */
@@ -212,16 +196,16 @@ let tplMap = {
         <Button size='mini' type='primary'>按钮</Button>
     `
   },
-
-  imageUpload:{
-  },
+  //
+  // imageUpload:{
+  // },
 
 // 'input','checkbox','button','picker','pickerView','radio','slider',
 //   'switch','textArea'
 
-  cascader:{
-
-  },
+  // cascader:{
+  //
+  // },
   radio:{
     dependencies:{
       "@tarojs/components":['Radio','RadioGroup'],

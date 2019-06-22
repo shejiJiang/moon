@@ -10,8 +10,10 @@ import  * as React from 'react';
 import { ApiMethodInfo } from '../../typings/index';
 import {Table, Divider, Tag, Input, Button, Cascader} from 'antd';
 
+import {getApiIndex} from "kit/moon";
 
-let apiInfo=window.moon && window.moon.context.apiIndex || {};
+
+let apiInfo=getApiIndex();
 let cascaderData = [];
 for (let controllerName in apiInfo) {
   let children = [];

@@ -8,7 +8,9 @@ import {store2Props} from '../../selectors';
 import { Modal, Select,Input} from 'antd';
 import {getFeatures} from './dsl';
 import { generateInteractEle, getInterActData } from '@/pages/moon/page/components/features/feature-util';
-let allFeaures= getFeatures(window.moon.context.moonConfig.type,window.moon.context.projectName);
+import {getProjectMoonConfig,getMoonContext} from "kit/moon";
+
+let allFeaures= getFeatures(getProjectMoonConfig().type,getMoonContext().projectName);
 
 interface IState {
   isShow:boolean;
