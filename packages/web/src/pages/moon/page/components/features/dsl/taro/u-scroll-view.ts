@@ -25,9 +25,9 @@ export const FeatureInfo = {
   code: 'U:ScrollView',
   name: '[Ui]:下拉列表',
   //介绍站点
-  descHref:"/images/moon/u-form.jpg",
+  descHref:"/images/moon/ui-taro-scrollview.png",
   //示例图片;
-  pic:"/images/moon/u-form.jpg",
+  pic:"/images/moon/ui-taro-scrollview.png",
   target:/taro-redux/
 };
 

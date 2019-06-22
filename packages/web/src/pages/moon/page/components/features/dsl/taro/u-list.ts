@@ -25,9 +25,9 @@ export const FeatureInfo = {
   code: 'U:List',
   name: '[Ui]:列表',
   //介绍站点
-  descHref:"/images/moon/u-form.jpg",
+  descHref:"/images/moon/ui-taro-list.png",
   //示例图片;
-  pic:"/images/moon/u-form.jpg",
+  pic:"/images/moon/ui-taro-list.png",
   target:/taro-redux/
 };
 
