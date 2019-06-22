@@ -18,6 +18,7 @@ import * as UAntdTabs from './h5/u-antd-tabs';
 import * as UForm from './h5/u-form';
 import * as TaroUList from './taro/u-list';
 import * as TaroUScrollView from './taro/u-scroll-view';
+import * as TaroUForm from './taro/u-form';
 import {TargetType} from "moon-core/declarations/typings/config";
 
 const allFeature =[
@@ -28,6 +29,7 @@ const allFeature =[
   USearchList,
   UAntdTable,
   TaroUList,
+  TaroUForm,
   TaroUScrollView,
   UAntdTabs,
   UForm,
