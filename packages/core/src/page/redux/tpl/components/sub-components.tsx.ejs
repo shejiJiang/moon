@@ -28,13 +28,14 @@ export default class <%=Util.toUCamelize(subComp.fileName)%> extends React.Compo
       <% }) %>
     } =  this.props;
 
-    <%-(subComp.methods.filter(item=>item.name =="render")[0]||{}).content%>
-
+    <%-(subComp.methods.filter(item=>item.name =="render")[0]||{}).content || `
     return (
-      <div className="<%=Util.toLCamelize(subComp.fileName)%>">
-         <div/>
-      </div>
-    );
+          <div className="<%=Util.toLCamelize(subComp.fileName)%>">
+             <div/>
+          </div>
+        );
+    `%>
+
   }
 
    <% subComp.methods.filter(item=>item.name!=="render").forEach(method=>{ %>

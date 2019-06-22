@@ -9,7 +9,7 @@
     "moon": "electron ./node_modules/moon-app/dist/main.js",
     "start": "node scripts/start.js",
     "auto": "npm run build dev && npm run deploy",
-    "deploy": "ts-node ./scripts/deploy.ts",
+    "deploy": "cd scripts && ts-node ./deploy.ts",
     "server": "http-server dist",
     "build": "cross-env NODE_ENV=development node scripts/build.js",
     "dll": "node scripts/dll.js",

@@ -16,6 +16,8 @@ import * as USearchList from './h5/u-search-list';
 import * as UAntdTable from './h5/u-antd-table';
 import * as UAntdTabs from './h5/u-antd-tabs';
 import * as UForm from './h5/u-form';
+import * as TaroUList from './taro/u-list';
+import * as TaroUScrollView from './taro/u-scroll-view';
 import {TargetType} from "moon-core/declarations/typings/config";
 
 const allFeature =[
@@ -25,6 +27,8 @@ const allFeature =[
   FAddEdit,
   USearchList,
   UAntdTable,
+  TaroUList,
+  TaroUScrollView,
   UAntdTabs,
   UForm,
   FBreadcrumb,
