@@ -26,6 +26,7 @@ export function getHandleFile({
   outDir,
   tplBase,
   context,
+  //TODO 格式化的操作提取出去.
   prettiesConfig = {},
 }: IHandleFile) {
   prettiesConfig = {
