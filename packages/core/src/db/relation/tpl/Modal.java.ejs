@@ -8,8 +8,7 @@ import javax.persistence.*;
 
 
 /**
- * <p>商品分类实体</p>
- * Created by dyt 2019/4/25
+ * <%- table.chnname||""%>
  */
 //@EqualsAndHashCode(callSuper = true)
 @Data
@@ -31,16 +30,7 @@ public class User {
      <%- field.chnname||""%>
      <%- field.remark||""%>
     */
-
     @Column(name = "<%= field.name%>")
     private <%=Util.getJavaType(field)%> <%= field.name%>;
-    <%=event.name%> =  "<%=Util.toUCamelize(pageInfo.pageKey)%>_<%=event.name%>",
   <% }) %>
-
-
-    /**
-     * 名字
-     */
-    @Column(name = "name")
-    private String name;
 }
