@@ -206,21 +206,21 @@
           {
             "shape": "erdRelation",
             "relation": "0,n:1",
-            "source": "b3bc274c",
-            "target": "bad8ba92",
-            "id": "79156f79",
+            "source": "bad8ba92",
+            "target": "b3bc274c",
+            "id": "f232857a",
             "controlPoints": [
-              {
-                "x": 421.5107421875,
-                "y": 92.22058823529412
-              },
               {
                 "x": 296.935546875,
                 "y": 132.86111111111111
+              },
+              {
+                "x": 421.5107421875,
+                "y": 92.22058823529412
               }
             ],
-            "sourceAnchor": 0,
-            "targetAnchor": 5
+            "sourceAnchor": 5,
+            "targetAnchor": 0
           }
         ]
       },
@@ -228,12 +228,12 @@
         {
           "relation": "0,n:1",
           "from": {
-            "entity": "class",
-            "field": "id"
-          },
-          "to": {
             "entity": "user",
             "field": "classId"
+          },
+          "to": {
+            "entity": "class",
+            "field": "id"
           }
         }
       ]
