@@ -40,7 +40,8 @@ export async function generate(table:Table,option:{
 
   await handlePage('Modal.java.ejs', async (tplConent: string) => {
     let conent = ejs.render(tplConent, {
-      table
+      table,
+      Util
     });
     return conent;
   },
@@ -61,7 +62,8 @@ export async function generate(table:Table,option:{
 
   await handlePage('ModalService.java.ejs', async (tplConent: string) => {
       let conent = ejs.render(tplConent, {
-        table
+        table,
+        Util
       });
       return conent;
     },
