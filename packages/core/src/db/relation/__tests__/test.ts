@@ -16,6 +16,6 @@ import {generate} from "../index";
   let db = fse.readJsonSync(join(__dirname,"./demo.pdman.json"));
   console.log(db);
   await generate(db.modules[0].entities[0],{
-    modalSavePath:join(__dirname,"temp"),
+    modalSavePath:join(__dirname,"temp","com/a/modal/"),
   });
 })();

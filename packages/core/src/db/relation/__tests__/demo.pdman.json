@@ -11,13 +11,117 @@
               "name": "id",
               "type": "MiddleString",
               "remark": "",
-              "chnname": "主键"
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "relationNoShow": false
             },
             {
               "name": "name",
               "type": "MiddleString",
               "remark": "",
               "chnname": "名字"
+            },
+            {
+              "name": "classId",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "所在班级",
+              "relationNoShow": false
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户信息表"
+        },
+        {
+          "title": "class",
+          "fields": [
+            {
+              "name": "id",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "班级编号",
+              "pk": true,
+              "notNull": true,
+              "relationNoShow": false
+            },
+            {
+              "name": "REVISION",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "乐观锁"
+            },
+            {
+              "name": "name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "班级名称"
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "创建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间"
             }
           ],
           "indexs": [],
@@ -63,7 +167,8 @@
               "relationNoShow": true
             }
           ],
-          "chnname": "用户信息表"
+          "chnname": "班级表",
+          "remark": "记录一个班级的信息"
         }
       ],
       "graphCanvas": {
@@ -79,11 +184,59 @@
               296.5203120391727,
               114.48685029589916
             ]
+          },
+          {
+            "shape": "table",
+            "title": "user:1",
+            "moduleName": false,
+            "x": 180,
+            "y": 100,
+            "id": "bad8ba92"
+          },
+          {
+            "shape": "table",
+            "title": "class",
+            "moduleName": false,
+            "x": 570,
+            "y": 140,
+            "id": "b3bc274c"
           }
         ],
-        "edges": []
+        "edges": [
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "b3bc274c",
+            "target": "bad8ba92",
+            "id": "79156f79",
+            "controlPoints": [
+              {
+                "x": 421.5107421875,
+                "y": 92.22058823529412
+              },
+              {
+                "x": 296.935546875,
+                "y": 132.86111111111111
+              }
+            ],
+            "sourceAnchor": 0,
+            "targetAnchor": 5
+          }
+        ]
       },
-      "associations": []
+      "associations": [
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "class",
+            "field": "id"
+          },
+          "to": {
+            "entity": "user",
+            "field": "classId"
+          }
+        }
+      ]
     }
   ],
   "dataTypeDomains": {

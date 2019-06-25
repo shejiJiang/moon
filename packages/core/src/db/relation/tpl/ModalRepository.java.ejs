@@ -1,4 +1,4 @@
-package com.example.demo.model.user;
+package <%=packagePath%>;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -9,11 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 /**
- * 商品分类Repository
- * Created by dyt 2019/4/25
+ *  <%- table.chnname||""%>Repository
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
+public interface <%-modalUCamelName%>Repository extends JpaRepository<<%-modalUCamelName%>, Long>, JpaSpecificationExecutor<<%-modalUCamelName%>> {
 
     @Transactional
     @Modifying

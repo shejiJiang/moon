@@ -1,23 +1,22 @@
-package com.example.demo.model.user;
+package <%=packagePath%>;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * 商品分类商品
- * Created by daiyitian on 2017/4/11.
+ * <%- table.chnname||""%> Service
  */
-@Service("GoodsCateStoreService")
-public class UserService {
+@Service
+public class <%-modalUCamelName%>Service {
 
     @Autowired
-    private UserRepository userRepository;
+    private <%-modalUCamelName%>Repository <%-modalLCamelName%>Repository;
 
     public void page() {
-        System.out.println(userRepository.findAll());
+        //System.out.println(userRepository.findAll());
     }
 
     public void save(User user) {
-        System.out.println(userRepository.save(user));
+        //System.out.println(userRepository.save(user));
     }
 }
