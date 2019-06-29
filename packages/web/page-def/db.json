@@ -1,1 +1,1 @@
-{}
+{"feature/define":{"pagePath":"feature/define","actors":[{"fileName":"main","datas":[{"name":"features","schemaType":"fromValue","value":[]}],"events":[]}],"actions":[{"fileName":"action","methods":[]}],"subComps":[{"fileName":"define","methods":[{"name":"render","comment":"","content":"","param":""}]},{"fileName":"result","methods":[{"name":"render","comment":"","content":"","param":""}]}],"lifeCycles":{"init":{"name":"init","param":"","content":""},"clean":{"name":"clean","param":"","content":""}},"mainComp":{"methods":[]}}}

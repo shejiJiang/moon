@@ -4,10 +4,14 @@ import moonPageMain from '@/pages/moon/page/reducers/main';
 
 import moonListMain from '@/pages/moon/list/reducers/main';
 
-//mark1//
+
+    import featureDefineMain from "@/pages/feature/define/reducers/main"; 
+    //mark1//
 
 export default {
   //mark2//
+    featureDefineMain, 
+    
     frameMain,
   moonPageMain,
   moonListMain
