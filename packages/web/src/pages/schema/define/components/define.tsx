@@ -46,8 +46,6 @@ export default class Define extends React.Component<
       </Menu>
     );
 
-    // let PropsTypeComp = PropsMap[this.state.propsType];
-
     return (
       <div className="define">
         <Dropdown
