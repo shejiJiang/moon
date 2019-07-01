@@ -8,7 +8,7 @@ import * as immerUtil from '@/redux/immer-util';
 const INITIAL_STATE: IMainReducer = {
   isReady: false,
 
-  schemaProps:{},
+  schemaProps:[],
 
   features: [],
 };

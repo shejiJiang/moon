@@ -55,9 +55,7 @@ export default class PropsDefDialog extends React.Component<IPropsDefDialogP,IPr
   }
   
   render() {
-    debugger
     let Comp = PropsRepo[this.props.type] || "div";
-    debugger
 
     return (<Modal
         title="Modal"
@@ -74,12 +72,10 @@ export default class PropsDefDialog extends React.Component<IPropsDefDialogP,IPr
 
 
   _onChange=(param)=>{
-    debugger;
     this.setState({param});
   }
 
   _onOk = ()=>{
-    debugger;
     this.props.onOk(this.state.param);
   }
 

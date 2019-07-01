@@ -63,8 +63,8 @@ export default class Define extends React.Component<
           <PropsDefDialog type={this.state.propsType} onOk={(param)=>{
             this.setState({
               propsType:""
-            })
-            action.commonChange('main.schemaProps',{...main.schemaProps,...param})
+            });
+            action.commonChange('main.schemaProps',[...main.schemaProps,param])
           }
           }>
           </PropsDefDialog>
