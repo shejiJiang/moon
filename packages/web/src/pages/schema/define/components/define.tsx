@@ -5,7 +5,7 @@ import './define.less';
 import actions from '../actions/index';
 import {connect} from 'react-redux';
 import {store2Props} from '../selectors';
-import  CheckboxProps from './props-def/checkbox-props';
+import CheckboxProps from './props-def/checkbox-props';
 
 type IDefineProps = T.IProps & T.IDefineProps;
 
