@@ -11,6 +11,7 @@ import boolean from './props-def/boolean-props';
 import actorEvent from './props-def/actor-event-props';
 import apiMethod from './props-def/api-method-props';
 import array from './props-def/array-props';
+import object from './props-def/object-props';
 import actionMethod from './props-def/action-method-props';
 
 /**
@@ -26,6 +27,7 @@ let PropsRepo = {
   boolean,
   array,
   checkbox,
+  object,
   action,
   actionMethod,
   input,
@@ -48,6 +50,7 @@ let alls = [
   'checkbox',
   'boolean',
   'radio',
+  'object',
   'array',
   'input',
   'action',
