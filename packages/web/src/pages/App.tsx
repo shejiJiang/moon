@@ -11,6 +11,7 @@ const Main = () =>
         <Route path="/" exact={true} component={()=><div>hello welcome to moon</div>} />
         <Route path="/moon/page" component={loadable(() => import('@/pages/moon/page'))} />
         <Route path="/moon/list" component={loadable(() => import('@/pages/moon/list'))} />
+        <Route path="/schema/define" component={loadable(() => import('@/pages/schema/define'))} />
       </MainFrame>} />
     </Switch>
   </Router>;

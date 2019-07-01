@@ -18,7 +18,10 @@ export type IAllReducerProps = {
 export type IProps = IAllReducerProps & ActionType;
 
 export type IDefineProps = {};
-export type IDefineState = {};
+export type IDefineState = {
+  propsType:string;
+  schemaProps:object;
+};
 
 export type IResultProps = {};
 export type IResultState = {};

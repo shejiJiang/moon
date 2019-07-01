@@ -72,6 +72,17 @@ class LeftMenu extends React.Component<ILeftMenuProps, T.ILeftMenuState> {
           >
             <Menu.Item key="5" data-href="http://json2ts.com/" data-target="_blank">JSON2TS</Menu.Item>
           </SubMenu>
+          <SubMenu
+            key="sub1"
+            title={
+              <span>
+                <Icon type="tool" />
+                <span>xLib合集</span>
+              </span>
+            }
+          >
+            <Menu.Item key="5" data-href="#/schema/define" >模式定义</Menu.Item>
+          </SubMenu>
         </Menu>
 
       </div>

@@ -5,7 +5,7 @@ import moonPageMain from '@/pages/moon/page/reducers/main';
 import moonListMain from '@/pages/moon/list/reducers/main';
 
 
-    import featureDefineMain from "@/pages/feature/define/reducers/main"; 
+    import featureDefineMain from "@/pages/schema/define/reducers/main";
     //mark1//
 
 export default {
