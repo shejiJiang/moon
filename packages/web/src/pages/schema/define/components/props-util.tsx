@@ -44,27 +44,27 @@ export function getPropsComp(type: string) {
   return PropsRepo[type] || 'div';
 }
 
-let alls= [
-  "checkbox",
-  "boolean",
-  "radio",
-  "array",
-  "input",
-  "action",
-  "actionMethod",
-  "actor",
-  "actorEvent",
-  "actorData",
-  "comp",
-  "compMethod",
-  "apiMethod",
-  "apiMethodType",
+let alls = [
+  'checkbox',
+  'boolean',
+  'radio',
+  'array',
+  'input',
+  'action',
+  'actionMethod',
+  'actor',
+  'actorEvent',
+  'actorData',
+  'comp',
+  'compMethod',
+  'apiMethod',
+  'apiMethodType',
 ];
 
 /**
  * 添加可选组件;
  * @returns {string[]}
  */
-export function getChooseableComp() :string[]{
+export function getChooseableComp(): string[] {
   return alls;
 }

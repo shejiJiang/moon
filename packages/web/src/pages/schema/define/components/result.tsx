@@ -103,7 +103,6 @@ function transferConfig2CodeStr(config):string {
 
   //把type的处理添加起来...
   let result:string = JSON.stringify(config,null,2);
-  debugger;
   // return result.replace(//ig,"")
   return result;
 }

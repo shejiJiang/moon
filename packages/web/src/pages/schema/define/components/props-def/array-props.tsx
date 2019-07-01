@@ -8,13 +8,16 @@
  **/
 
 import * as React from 'react';
-import PropsChoose from "../props-choose";
+import {Menu, Dropdown, Icon, Input} from 'antd';
+import {getChooseableComp, getPropsComp} from '../props-util';
 
 interface ICheckboxPropsP {
   onChange: (
     param: {
-      type:string,
-      name: string; datas: {name: string; value: string}[]},
+      type: string;
+      name: string;
+      datas: {name: string; value: string}[];
+    },
   ) => void;
   [name: string]: any;
 }
@@ -29,29 +32,60 @@ export default class ArrayProps extends React.Component<
 > {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
     this._notify();
   }
 
   componentDidMount() {}
 
   render() {
+    const menu = (
+      <Menu onClick={this._handleMenuClick}>
+        {getChooseableComp().map(item =>
+          <Menu.Item key={item}>{item}</Menu.Item>,
+        )}
+      </Menu>
+    );
+
+    let Comp = getPropsComp(this.state.propsType);
     return (
       <div>
         选择子项类型:
-
-        <PropsChoose onOk={(childrenInteract)=>{
-          this.setState({childrenInteract},this._notify)
-        }}></PropsChoose>
+        <Dropdown
+          overlay={menu}
+          onVisibleChange={this._handleVisibleChange}
+          visible={this.state.visible}
+        >
+          <a className="ant-dropdown-link" href="javascript:void(0)">
+            选择添加属性类型
+          </a>
+        </Dropdown>
+        <Comp onChange={this._onChange} />
       </div>
     );
   }
 
+  _onChange = param => {
+    debugger;
+    this.setState({childrenInteract: param},this._notify);
+  };
+
+  _handleMenuClick = e => {
+    this.setState({
+      visible: false,
+      propsType: e.key,
+    });
+  };
+
+  _handleVisibleChange = flag => {
+    this.setState({visible: flag});
+  };
+
   _notify = () => {
-    this.props.onChange({
-      interact:'array' ,
-      childrenInteract:this.state.childrenInteract
+    debugger;
+    this.props.onChange && this.props.onChange({
+      interact: 'array',
+      childrenInteract: this.state.childrenInteract,
     });
   };
 }
