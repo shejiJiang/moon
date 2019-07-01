@@ -7,57 +7,60 @@
  * @Date    2019/7/1
  **/
 
-
-import  * as React from 'react';
-export type PropsType  ="checkbox"|"boolean";
+import * as React from 'react';
+export type PropsType = 'checkbox' | 'boolean';
 import {Modal, Button, Input} from 'antd';
-interface IPropsDefDialogP{
-  type?:PropsType;
+interface IPropsDefDialogP {
+  type?: PropsType;
   onOk: (param: any) => void;
-  [name:string]:any;
+  [name: string]: any;
 }
 
-interface IPropsDefDialogS{
-  type:PropsType;
-  param:object;
-  [name:string]:any;
+interface IPropsDefDialogS {
+  type: PropsType;
+  param: object;
+  [name: string]: any;
 }
 
-
-import checkbox from  './checkbox-props';
+import checkbox from './checkbox-props';
+import action from './action-props';
+import actionMethod from './action-method-props';
 //TODO 这块如果是动态加载就可更好了了.. 但没有调通
-let PropsRepo={
+let PropsRepo = {
   checkbox,
-}
+  action,
+  actionMethod,
+};
 
+export default class PropsDefDialog extends React.Component<
+  IPropsDefDialogP,
+  IPropsDefDialogS
+> {
+  static defaultProps = {};
 
-export default class PropsDefDialog extends React.Component<IPropsDefDialogP,IPropsDefDialogS> {
-  static defaultProps = {
-  };
- 
-  constructor(props:IPropsDefDialogP){
+  constructor(props: IPropsDefDialogP) {
     super(props);
     this.state = {
-      type:props.type
+      param: {},
+      type: props.type,
     };
   }
 
-  componentWillReceiveProps(nextProps:IPropsDefDialogP){
-    if(nextProps.type !==this.state.type){
+  componentWillReceiveProps(nextProps: IPropsDefDialogP) {
+    if (nextProps.type !== this.state.type) {
       this.setState({
-        type:nextProps.type
-      })
+        type: nextProps.type,
+      });
     }
-
   }
 
-  componentDidMount() {
-  }
-  
+  componentDidMount() {}
+
   render() {
-    let Comp = PropsRepo[this.props.type] || "div";
+    let Comp = PropsRepo[this.props.type] || 'div';
 
-    return (<Modal
+    return (
+      <Modal
         title="Modal"
         visible={!!this.props.type}
         onOk={this._onOk}
@@ -65,25 +68,42 @@ export default class PropsDefDialog extends React.Component<IPropsDefDialogP,IPr
         okText="确认"
         cancelText="取消"
       >
-        <Comp onChange={this._onChange}></Comp>
+        <Input
+          data-key={'name'}
+          value={this.state.param.name}
+          onChange={this._change}
+          placeholder="变量名称"
+        />
+        <Input
+          data-key={'code'}
+          value={this.state.param.code}
+          onChange={this._change}
+          placeholder="变量编码"
+        />
+        <Comp onChange={this._onChange} />
       </Modal>
     );
   }
 
-
-  _onChange=(param)=>{
-    this.setState({param});
-  }
-
-  _onOk = ()=>{
-    this.props.onOk(this.state.param);
-  }
-
-  _hideModal=(e) => {
+  _change = e => {
+    debugger;
     this.setState({
-      type:""
+      param: {...this.state.param, [e.target.dataset.key]: e.target.value},
     });
-  }
-}
+  };
 
- 
+  _onChange = param => {
+    this.setState({param: {...this.state.param, ...param}});
+  };
+
+  _onOk = () => {
+    debugger;
+    this.props.onOk(this.state.param);
+  };
+
+  _hideModal = e => {
+    this.setState({
+      type: '',
+    });
+  };
+}

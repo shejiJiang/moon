@@ -1,9 +1,10 @@
 import Actions from './actions';
+import {InteractConfig} from "../../moon/page/components/features/feature-util";
 
 export interface IMainReducer {
   isReady: boolean;
   isLoading?: boolean;
-  schemaProps:object;
+  schemaProps:InteractConfig;
   features: IMainFeaturesSet;
 }
 

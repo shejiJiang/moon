@@ -21,18 +21,16 @@ interface ICheckboxPropsP {
 }
 
 interface ICheckboxPropsS {
-  value: string;
   [name: string]: any;
 }
 
-export default class CheckboxProps extends React.Component<
+export default class ActionMethodProps extends React.Component<
   ICheckboxPropsP,
   ICheckboxPropsS
 > {
   constructor(props) {
     super(props);
     this.state = {
-      values: '',
     };
     this._notify();
   }
@@ -42,37 +40,13 @@ export default class CheckboxProps extends React.Component<
   render() {
     return (
       <div>
-        <Input
-          data-key={'values'}
-          onChange={this._change}
-          placeholder="format: key:value,key2:value or key1,key2"
-        />
       </div>
     );
   }
 
-  _change = e => {
-    this.setState(
-      {
-        [e.target.dataset.key]: e.target.value,
-      },
-      this._notify,
-    );
-  };
-
   _notify = () => {
-    let {values} = this.state;
-    let datas = values.split(',').map(item => {
-      let datas = item.trim().split(':');
-      return {
-        name: datas[0],
-        value: datas[1] || datas[0],
-      };
-    });
-
     this.props.onChange({
-      interact:'checkbox' ,//EInterActType.checkboxChoose,
-      datas,
+      interact:'actionMethod' ,//EInterActType.checkboxChoose
     });
   };
 }

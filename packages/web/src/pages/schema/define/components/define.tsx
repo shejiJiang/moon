@@ -5,13 +5,10 @@ import './define.less';
 import actions from '../actions/index';
 import {connect} from 'react-redux';
 import {store2Props} from '../selectors';
-// import CheckboxProps from './props-def/checkbox-props';
 import PropsDefDialog from './props-def/props-def-dialog';
+import actionMethod from "./props-def/action-method-props";
 type IDefineProps = T.IProps & T.IDefineProps;
 
-// let PropsMap = {
-//   checkbox:CheckboxProps,
-// }
 
 @connect(store2Props, actions)
 export default class Define extends React.Component<
@@ -37,6 +34,8 @@ export default class Define extends React.Component<
     const menu = (
       <Menu onClick={this._handleMenuClick}>
         <Menu.Item key="checkbox">添加checkbox</Menu.Item>
+        <Menu.Item key="action">添加action</Menu.Item>
+        <Menu.Item key="actionMethod">添加actionMethod</Menu.Item>
       </Menu>
     );
 
@@ -90,10 +89,10 @@ export default class Define extends React.Component<
               this.setState({
                 propsType: '',
               });
-              action.commonChange('main.schemaProps', [
+              action.commonChange('main.schemaProps', {
                 ...main.schemaProps,
-                param,
-              ]);
+                [param.code]:param,
+              });
             }}
           />
         </div>

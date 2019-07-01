@@ -1,15 +1,6 @@
-import {
-  ApiMethodInfo,
-  EInterActType,
-  IActionMethodInfo,
-  IActorDataItemInfo,
-  IActorEventInfo,
-  ICompMethodInfo,
-} from '@/pages/moon/page/typings';
+import * as Type from '@/pages/moon/page/typings';
 import {IProps} from '@/pages/moon/page/types';
 import {InteractConfig} from '@/pages/moon/page/components/features/feature-util';
-import {Command} from '@/pages/goods/service-add/constant';
-import { toUCamelize } from '@/pages/moon/page/util/string-util';
 
 /**
  * @desc
@@ -37,11 +28,11 @@ export const InterActData: {
 } = {
   targetCompMethod:{
     name:"目标组件",
-    interact:EInterActType.compMethodChoose
+    interact:Type.EInterActType.compMethodChoose
   },
   features:{
     name:"列包含类型",
-    interact:EInterActType.checkboxChoose,
+    interact:Type.EInterActType.checkboxChoose,
     datas:['input','inputNumber','imageUpload','textArea','select','cascader','DatePicker',
       'Radio','checkBox'
     ]
@@ -58,7 +49,7 @@ export const InterActData: {
 };
 
 interface IDialogData {
-  targetCompMethod:ICompMethodInfo;
+  targetCompMethod:Type.ICompMethodInfo;
   features:string[];
 }
 
