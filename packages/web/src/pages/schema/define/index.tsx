@@ -33,7 +33,7 @@ export default class FeatureDefine extends React.Component<
     return (
       <div className="featureDefine">
         <Define/>
-        <div />
+        <Result />
       </div>
     );
   }

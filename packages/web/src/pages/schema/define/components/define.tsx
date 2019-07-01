@@ -5,13 +5,13 @@ import './define.less';
 import actions from '../actions/index';
 import {connect} from 'react-redux';
 import {store2Props} from '../selectors';
-import CheckboxProps from './props-def/checkbox-props';
-
+// import CheckboxProps from './props-def/checkbox-props';
+import PropsDefDialog from  './props-def/props-def-dialog';
 type IDefineProps = T.IProps & T.IDefineProps;
 
-let PropsMap = {
-  checkbox:CheckboxProps,
-}
+// let PropsMap = {
+//   checkbox:CheckboxProps,
+// }
 
 @connect(
   store2Props,
@@ -46,7 +46,7 @@ export default class Define extends React.Component<
       </Menu>
     );
 
-    let PropsTypeComp = PropsMap[this.state.propsType];
+    // let PropsTypeComp = PropsMap[this.state.propsType];
 
     return (
       <div className="define">
@@ -60,13 +60,14 @@ export default class Define extends React.Component<
           </a>
         </Dropdown>
         <div>
-          {PropsTypeComp?<PropsTypeComp onOk={(param:any)=>{
+          <PropsDefDialog type={this.state.propsType} onOk={(param)=>{
             this.setState({
-              propsType:"",
-              schemaProps:{...this.state.schemaProps,...param}
+              propsType:""
             })
-          }}>
-          </PropsTypeComp>:null}
+            action.commonChange('main.schemaProps',{...main.schemaProps,...param})
+          }
+          }>
+          </PropsDefDialog>
         </div>
       </div>
     );

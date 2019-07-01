@@ -3,7 +3,7 @@ import Actions from './actions';
 export interface IMainReducer {
   isReady: boolean;
   isLoading?: boolean;
-
+  schemaProps:object;
   features: IMainFeaturesSet;
 }
 

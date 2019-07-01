@@ -31,7 +31,7 @@ export default class Result extends React.Component<
 
     return (
       <div className="result">
-        <div />
+        <div >{JSON.stringify(main.schemaProps,null,2)}</div>
       </div>
     );
   }
