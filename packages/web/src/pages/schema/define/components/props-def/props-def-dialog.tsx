@@ -33,8 +33,11 @@ import comp from './comp-props';
 import input from './input-props';
 import apiMethod from './api-method-props';
 import apiMethodType from './api-method-type-props';
+import boolean from './boolean-props';
+import radio from './radio-props';
 //TODO 这块如果是动态加载就可更好了了.. 但没有调通
 let PropsRepo = {
+  boolean,
   checkbox,
   action,
   actionMethod,
@@ -44,6 +47,8 @@ let PropsRepo = {
   actorEvent,
   compMethod,
   comp,
+  boolean,
+  radio,
   apiMethod,
   apiMethodType,
 };
