@@ -10,6 +10,7 @@
 import * as React from 'react';
 import {Menu, Dropdown, Icon, Input} from 'antd';
 import {getChooseableComp, getPropsComp} from '../props-util';
+import PropsChoose from "../props-choose";
 
 interface ICheckboxPropsP {
   onChange: (
@@ -49,7 +50,6 @@ export default class ArrayProps extends React.Component<
         </div>
         选择子项类型:
         <PropsChoose onOk={(param)=>{
-
           this.setState({
             childrenInteract:{
               ...this.state.childrenInteract,[param.code]:param

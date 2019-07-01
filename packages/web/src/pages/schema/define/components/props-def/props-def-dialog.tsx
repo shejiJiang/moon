@@ -66,7 +66,6 @@ export default class PropsDefDialog extends React.Component<
   render() {
 
     let Comp = getPropsComp(this.props.type);
-    debugger
     return (
       <Modal
         title="Modal"
