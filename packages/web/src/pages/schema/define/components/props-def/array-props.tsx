@@ -50,6 +50,9 @@ export default class ArrayProps extends React.Component<
     let Comp = getPropsComp(this.state.propsType);
     return (
       <div>
+        <div>
+          当前子属性为:{JSON.stringify(this.state.childrenInteract,null,2)}
+        </div>
         选择子项类型:
         <Dropdown
           overlay={menu}
