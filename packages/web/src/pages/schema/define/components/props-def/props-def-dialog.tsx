@@ -25,11 +25,27 @@ interface IPropsDefDialogS {
 import checkbox from './checkbox-props';
 import action from './action-props';
 import actionMethod from './action-method-props';
+import actorData from './actor-data-props';
+import actor from './actor-props';
+import actorEvent from './actor-event-props';
+import compMethod from './comp-method-props';
+import comp from './comp-props';
+import input from './input-props';
+import apiMethod from './api-method-props';
+import apiMethodType from './api-method-type-props';
 //TODO 这块如果是动态加载就可更好了了.. 但没有调通
 let PropsRepo = {
   checkbox,
   action,
   actionMethod,
+  input,
+  actorData,
+  actor,
+  actorEvent,
+  compMethod,
+  comp,
+  apiMethod,
+  apiMethodType,
 };
 
 export default class PropsDefDialog extends React.Component<
