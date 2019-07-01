@@ -34,10 +34,13 @@ import input from './input-props';
 import apiMethod from './api-method-props';
 import apiMethodType from './api-method-type-props';
 import boolean from './boolean-props';
+import array from './array-props';
 import radio from './radio-props';
+import {getPropsComp} from "../props-util";
 //TODO 这块如果是动态加载就可更好了了.. 但没有调通
 let PropsRepo = {
   boolean,
+  array,
   checkbox,
   action,
   actionMethod,
@@ -78,7 +81,7 @@ export default class PropsDefDialog extends React.Component<
   componentDidMount() {}
 
   render() {
-    let Comp = PropsRepo[this.props.type] || 'div';
+    let Comp = getPropsComp(this.props.type);
 
     return (
       <Modal
