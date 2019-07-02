@@ -11,6 +11,7 @@ import {ipcRenderer} from 'electron';
 console.log(ipcRenderer.sendSync('synchronous-message', 'ping'));
 import {genPage} from 'moon-wanmi/lib/page/pc';
 import {genTaroPage} from 'moon-wanmi/lib/page/taro';
+import {genRnPage} from 'moon-wanmi/lib/page/rn';
 import {join} from 'path';
 import {IPageDefined} from 'moon-core/declarations/typings/page';
 import * as fse from 'fs-extra';
@@ -106,6 +107,8 @@ window.moon = {
       genTaroPage({pageInfo, projectPath});
     } else if (defaulltMoonConfig.type === 'h5-redux') {
       genPage({pageInfo, projectPath});
+    } else if (defaulltMoonConfig.type === 'rn-redux') {
+      genRnPage({pageInfo, projectPath});
     }
   },
 };
