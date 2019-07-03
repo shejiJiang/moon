@@ -28,14 +28,15 @@ export async function genRnPage(context:IContext) {
         options.content=options.content.replace("@import \"~style/theme.less\";","");
       }
 
-      if(options.tplPath==='components/sub-components.tsx.ejs') {
-        let _key =MoonCore.StringUtil.toUCamelize(options.param.subComp.fileName);
-        options.content =options.content.replace('@connect',`@connect<Partial<I${_key}Props>,T.I${_key}State>`);
-        //不需要less文件了.
-      } else if(options.tplPath==='index.tsx.ejs'){
-        options.content =options.content.replace('@connect',`@connect<Partial<T.IProps>>`);
-        //不需要less文件了.
-      }
+      // if(options.tplPath==='components/sub-components.tsx.ejs') {
+      //   let _key =MoonCore.StringUtil.toUCamelize(options.param.subComp.fileName);
+      //   options.content =options.content.replace('@connect',`@connect<Partial<I${_key}Props>,T.I${_key}State>`);
+      //   //不需要less文件了.
+      // } else if(options.tplPath==='index.tsx.ejs'){
+      //   options.content =options.content.replace('@connect',`@connect<Partial<T.IProps>>`);
+      //   //不需要less文件了.
+      // }
+      //添加rn stylesheet;
       
       if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
         options.content  = options.content

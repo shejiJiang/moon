@@ -28,12 +28,12 @@ export async function genTaroPage(context:IContext) {
         options.content=options.content.replace("@import \"~style/theme.less\";","");
       }
 
-      if(options.tplPath==='components/sub-components.tsx.ejs') {
-        let _key =MoonCore.StringUtil.toUCamelize(options.param.subComp.fileName);
-        options.content =options.content.replace('@connect',`@connect<Partial<I${_key}Props>,T.I${_key}State>`);
-      } else if(options.tplPath==='index.tsx.ejs'){
-        options.content =options.content.replace('@connect',`@connect<Partial<T.IProps>>`);
-      }
+      // if(options.tplPath==='components/sub-components.tsx.ejs') {
+      //   let _key =MoonCore.StringUtil.toUCamelize(options.param.subComp.fileName);
+      //   options.content =options.content.replace('@connect',`@connect<Partial<I${_key}Props>,T.I${_key}State>`);
+      // } else if(options.tplPath==='index.tsx.ejs'){
+      //   options.content =options.content.replace('@connect',`@connect<Partial<T.IProps>>`);
+      // }
       
       if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
         options.content  = options.content

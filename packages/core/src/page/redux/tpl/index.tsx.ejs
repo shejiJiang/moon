@@ -44,10 +44,10 @@ export default class <%=className%> extends React.Component<Partial<T.IProps>, a
 
 //==动态注入reducer===
  <% pageInfo.actors.forEach(actor=>{ %>
- import ${toLCamelize(actor.fileName)} from './reducers/<%=actor.fileName%>';
+ import <%=toLCamelize(actor.fileName)%> from './reducers/<%=actor.fileName%>';
  <% }) %>
  <% pageInfo.actors.forEach(actor=>{ %>
-registerReducer({${toLCamelize(context.pageInfo.pageKey+"-"+actor.fileName)}});
+registerReducer({<%=toLCamelize(context.pageInfo.pageKey+"-"+actor.fileName)%>});
  <% }) %>
 
 
