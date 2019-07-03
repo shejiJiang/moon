@@ -9,7 +9,7 @@ import {store2Props} from "../selectors";
 
 type I<%=Util.toUCamelize(subComp.fileName)%>Props = T.IProps & T.I<%=Util.toUCamelize(subComp.fileName)%>Props;
 
-@connect(store2Props,actions)
+@connect<Partial<I<%=Util.toUCamelize(subComp.fileName)%>Props>, T.I<%=Util.toUCamelize(subComp.fileName)%>State>(store2Props,actions)
 export default class <%=Util.toUCamelize(subComp.fileName)%> extends React.Component<Partial<I<%=Util.toUCamelize(subComp.fileName)%>Props>, T.I<%=Util.toUCamelize(subComp.fileName)%>State> {
   constructor(props:I<%=Util.toUCamelize(subComp.fileName)%>Props) {
     super(props);
@@ -28,14 +28,17 @@ export default class <%=Util.toUCamelize(subComp.fileName)%> extends React.Compo
       <% }) %>
     } =  this.props;
 
-    <%-(subComp.methods.filter(item=>item.name =="render")[0]||{}).content || `
-    return (
-          <div className="<%=Util.toLCamelize(subComp.fileName)%>">
-             <div/>
-          </div>
-        );
-    `%>
+    <% if (subComp.methods.filter(item=>item.name =="render")[0]) { %>
+        <%- (subComp.methods.filter(item=>item.name =="render")[0]||{}).content %>
+    <% } %>
 
+    <% if (!subComp.methods.filter(item=>item.name =="render")[0]) { %>
+        `return (
+                  <div className="<%=Util.toLCamelize(subComp.fileName)%>">
+                     <div/>
+                  </div>
+                );`
+    <% } %>
   }
 
    <% subComp.methods.filter(item=>item.name!=="render").forEach(method=>{ %>

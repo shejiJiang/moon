@@ -64,30 +64,8 @@ let toGenMainPage = [
 
             console.log('应该只打印一遍的. ');
             let projectSrc  = projectPath;
-            let pageKey = context.pageInfo.pageKey;
+            // let pageKey = context.pageInfo.pageKey;
             let pageFilePath =join('pages', context.pageInfo.pagePath);
-
-            for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
-              let actor = pageInfo.actors[i];
-
-              let reducerKey =  MoonCore.StringUtil.toLCamelize(pageKey+"-"+actor.fileName);
-
-              await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
-                {
-                  mark: '//mark1//',
-                  isBefore: true,
-                  content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
-                  check: (content): boolean => !content.includes(pageFilePath),
-                },
-                {
-                  mark: '//mark2//',
-                  isBefore: false,
-                  content: reducerKey+ ',',
-                  check: (content, rawContent): boolean =>
-                    !rawContent.includes(pageFilePath),
-                },
-              ]);
-            }
 
             //TODO 路由添加下呢.
             await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/app.tsx'), [
@@ -126,7 +104,7 @@ let toGenMainPage = [
         //         mark: '@connect',
         //         isBefore: true,
         //         content: `
-        //         import { registerReducer } from "@/store";
+        //         import { registerReducer } from "@/redux/store";
         //         import ${toLCamelize(context.pageInfo.pageKey)} from './reducer';
         //         registerReducer({${toLCamelize(context.pageInfo.pageKey)}});
         //         `,

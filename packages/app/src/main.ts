@@ -67,7 +67,8 @@ function createWindow() {
 
   // and load the index.html of the app.
   // mainWindow.loadFile(path.join(__dirname, "../index.html"));
-  mainWindow.loadURL("https://moon-coder.github.io/");
+  // mainWindow.loadURL("https://moon-coder.github.io/");
+  mainWindow.loadURL("http://localhost:8787/");
   // mainWindow.webContents.openDevTools();
 
   mainWindow.on("closed", () => {

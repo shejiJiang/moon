@@ -31,61 +31,66 @@ export async function genRnPage(context:IContext) {
       if(options.tplPath==='components/sub-components.tsx.ejs') {
         let _key =MoonCore.StringUtil.toUCamelize(options.param.subComp.fileName);
         options.content =options.content.replace('@connect',`@connect<Partial<I${_key}Props>,T.I${_key}State>`);
+        //不需要less文件了.
       } else if(options.tplPath==='index.tsx.ejs'){
         options.content =options.content.replace('@connect',`@connect<Partial<T.IProps>>`);
+        //不需要less文件了.
       }
       
       if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
         options.content  = options.content
-          .replace("import {connect} from 'react-redux'","import { connect } from '@tarojs/redux'")
-          .replace("import * as React from 'react';","")
-          .replace("React.Component","Component")
+          // .replace("import {connect} from 'react-redux'","import { connect } from '@tarojs/redux'")
+          .replace("import * as React from 'react';",`
+          import React from 'react';
+          import { StyleSheet, View } from 'react-native';
+          `)
+          // .replace("React.Component","Component")
           .replace(/<div/ig,"<View")
           .replace(/<\/div>/ig,"</View>");
-        options.content = `import { View, Button, Text } from '@tarojs/components';
-            import Taro, { Component, Config } from '@tarojs/taro'
-            ${options.content}`
+        // options.content = `import { View, Button, Text } from '@tarojs/components';
+        //     import Taro, { Component, Config } from '@tarojs/taro'
+        //     ${options.content}`
       }
       return options;
     },
-    afterSave: async (options, context) => {
-      if(options.toSaveFilePath.includes("index.tsx")) {
-
-        let projectSrc  = projectPath;
-        let pageKey = context.pageInfo.pageKey;
-        let pageFilePath =join('pages', context.pageInfo.pagePath);
-        for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
-          let actor = pageInfo.actors[i];
-
-          let reducerKey =  MoonCore.StringUtil.toLCamelize(pageKey+"-"+actor.fileName);
-
-          await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
-            {
-              mark: '//mark1//',
-              isBefore: true,
-              content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
-              check: (content): boolean => !content.includes(pageFilePath),
-            },
-            {
-              mark: '//mark2//',
-              isBefore: false,
-              content: reducerKey+ ',',
-              check: (content, rawContent): boolean =>
-                !rawContent.includes(pageFilePath),
-            },
-          ]);
-        }
-
-        await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/app.tsx'), [
-          {
-            mark: '//pagePath//',
-            isBefore: true,
-            content: `'${pageFilePath}/index',`,
-            check: (content): boolean => !content.includes(pageFilePath),
-          }
-        ]);
-      }
-    },
+    // afterSave: async (options, context) => {
+    //   if(options.toSaveFilePath.includes("index.tsx")) {
+    //
+    //     let projectSrc  = projectPath;
+    //     let pageKey = context.pageInfo.pageKey;
+    //     let pageFilePath =join('pages', context.pageInfo.pagePath);
+    //     for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
+    //       let actor = pageInfo.actors[i];
+    //
+    //       let reducerKey =  MoonCore.StringUtil.toLCamelize(pageKey+"-"+actor.fileName);
+    //
+    //       await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
+    //         {
+    //           mark: '//mark1//',
+    //           isBefore: true,
+    //           content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
+    //           check: (content): boolean => !content.includes(pageFilePath),
+    //         },
+    //         {
+    //           mark: '//mark2//',
+    //           isBefore: false,
+    //           content: reducerKey+ ',',
+    //           check: (content, rawContent): boolean =>
+    //             !rawContent.includes(pageFilePath),
+    //         },
+    //       ]);
+    //     }
+    //
+    //     await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/app.tsx'), [
+    //       {
+    //         mark: '//pagePath//',
+    //         isBefore: true,
+    //         content: `'${pageFilePath}/index',`,
+    //         check: (content): boolean => !content.includes(pageFilePath),
+    //       }
+    //     ]);
+    //   }
+    // },
   });
 }
 //

@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "compile": "lerna run prepublishOnly",
     "install": "lerna bootstrap",
     "clean": "lerna clean"
   },
