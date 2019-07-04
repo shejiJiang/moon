@@ -70,6 +70,7 @@ class LeftMenu extends React.Component<ILeftMenuProps, T.ILeftMenuState> {
             }
           >
             <Menu.Item key="5" data-href="http://json2ts.com/" data-target="_blank">JSON2TS</Menu.Item>
+            <Menu.Item key="5" data-href="https://www.json.cn/" data-target="_blank">JSON格式化</Menu.Item>
           </SubMenu>
           <SubMenu
             key="sub3"
