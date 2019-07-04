@@ -40,19 +40,19 @@ export async function genRnPage(context:IContext) {
       
       if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
         let keyName ="index";
-          if(options.param.subComp){
+          if(options.param && options.param.subComp){
             keyName = MoonCore.StringUtil.toLCamelize(options.param.subComp.fileName);
             options.content  = options.content.replace(`import './${options.param.subComp.fileName}.less';`,"")
               .replace(`className="${keyName}"`,"");
           } else {
             options.content  = options.content.replace(`import './index.less';`,"")
-              .replace(`className="${MoonCore.StringUtil.toLCamelize(context.pageInfo.pageKey)}""`,"");
+              .replace(`className="${MoonCore.StringUtil.toLCamelize(context.pageInfo.pageKey)}"`,"");
           }
 
         options.content  = options.content
           .replace("import * as React from 'react';",`
           import React from 'react';
-          import { StyleSheet, View } from 'react-native';
+          import { StyleSheet, View , Text } from 'react-native';
           `)
           // .replace("React.Component","Component")
           .replace(/<div/ig,"<View")
