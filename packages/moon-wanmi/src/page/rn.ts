@@ -42,7 +42,13 @@ export async function genRnPage(context:IContext) {
         let keyName ="index";
           if(options.param.subComp){
             keyName = MoonCore.StringUtil.toLCamelize(options.param.subComp.fileName);
+            options.content  = options.content.replace(`import './${options.param.subComp.fileName}.less';`,"")
+              .replace(`className="${keyName}"`,"");
+          } else {
+            options.content  = options.content.replace(`import './index.less';`,"")
+              .replace(`className="${MoonCore.StringUtil.toLCamelize(context.pageInfo.pageKey)}""`,"");
           }
+
         options.content  = options.content
           .replace("import * as React from 'react';",`
           import React from 'react';
@@ -51,15 +57,18 @@ export async function genRnPage(context:IContext) {
           // .replace("React.Component","Component")
           .replace(/<div/ig,"<View")
           .replace(/<\/div>/ig,"</View>");
+
+
         options.content = `${options.content}
           const styles = StyleSheet.create({
             ${keyName} : {
             }
           });
-          
-          
-        
         `
+
+
+        // import './info.less';
+        // className="info"
       }
       return options;
     },
