@@ -39,8 +39,11 @@ export async function genRnPage(context:IContext) {
       //添加rn stylesheet;
       
       if(options.tplPath==='index.tsx.ejs' || options.tplPath==='components/sub-components.tsx.ejs'){
+        let keyName ="index";
+          if(options.param.subComp){
+            keyName = MoonCore.StringUtil.toLCamelize(options.param.subComp.fileName);
+          }
         options.content  = options.content
-          // .replace("import {connect} from 'react-redux'","import { connect } from '@tarojs/redux'")
           .replace("import * as React from 'react';",`
           import React from 'react';
           import { StyleSheet, View } from 'react-native';
@@ -48,9 +51,15 @@ export async function genRnPage(context:IContext) {
           // .replace("React.Component","Component")
           .replace(/<div/ig,"<View")
           .replace(/<\/div>/ig,"</View>");
-        // options.content = `import { View, Button, Text } from '@tarojs/components';
-        //     import Taro, { Component, Config } from '@tarojs/taro'
-        //     ${options.content}`
+        options.content = `${options.content}
+          const styles = StyleSheet.create({
+            ${keyName} : {
+            }
+          });
+          
+          
+        
+        `
       }
       return options;
     },
