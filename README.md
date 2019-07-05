@@ -4,7 +4,9 @@
 ## 发布
 lerna publish
 
-## TODO
+## 更多功能
+
+[![Feature Requests](https://feathub.com/creasy2010/moon?format=svg)](https://feathub.com/creasy2010/moon)
 
 - [x] api自动生成;
 - [x] 可视化操作生成页面结构;
