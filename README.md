@@ -8,20 +8,14 @@ lerna publish
 
 [![Feature Requests](https://feathub.com/creasy2010/moon?format=svg)](https://feathub.com/creasy2010/moon)
 
-- [x] api自动生成;
-- [x] 可视化操作生成页面结构;
-- [x] 把electron调起来;
-- [ ] 页面单元概念;
-- [ ] 服务端项目起一个出来;
-- [ ] 服务化功能组件使用;
-    - [ ]建站;
-    - [ ]用户管理;
 
 ##基本概念
 
-### webapi
+### webapi/openapi
 
 ### 模式
+
+### 页面单元 TODO
 
 ### 页面单元
 
