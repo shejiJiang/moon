@@ -71,17 +71,60 @@ swagger中api定义如下.
 2.
 
 
+## 相关资料;
+
+## FAQ
+
+### api生成相关问题
+
+#### 生成的api是否可以跨端适用(RN H5 小程序)?
+   可以的,我们生成的代码只是定义了入参及出参, 而发送http请求时,是用的外部的方法.如下图的例子;
+
+   ```typescript
+   import * as sdk from './fetch';
+
+   import isMock from './mock-util';
+   const controllerName = 'AuthorizeController';
+
+   /**
+    *
+    * 授权登录
+    *
+    */
+   async function authorize(
+     wechatAuthRequest: IAuthorizeWechatAuthRequestReq,
+   ): Promise<ThirdLoginResponse> {
+     if (__DEV__) {
+       if (isMock('AuthorizeController', 'authorize')) {
+         return Promise.resolve(
+           require('./mock/AuthorizeController.json').ThirdLoginResponse || {},
+         );
+       }
+     }
+
+     let result = await sdk.post<ThirdLoginResponse>(
+       '/pet/authorize/authorize',
+
+       {
+         ...wechatAuthRequest,
+       },
+     );
+     return result.context;
+   }
 
 
 
+   ```
 
-## 项目工作量定制
 
-1. 按页面算;
- 高中低
- 一个页面0.5天 前端切页面.
- 对接口. 一个人一天对3个页面.
+   sdk 实现了标准的get post 待http方法接口, 所以相关的token信息, 包括请求拦截可以放在fetch中;
+   不周平台的请求在fetch.ts文件中实现即可..
 
-2. 按领域算;
+   我们没有用一套方法适配多端, 而是分离开来, 这样更具灵活性;
 
-3. 按功能算;
+
+#### 调用http权限认证信息eg:JWT,如何添加到http请求中?
+可以参见上个例子. 在fetch.ts中实现;
+
+
+### 页面生成相关问题
