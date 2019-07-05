@@ -6,6 +6,7 @@ lerna publish
 
 ## TODO
 
+- [x] api自动生成;
 - [ ] 可视化操作生成页面结构;
 - [ ] 把electron调起来;
 - [ ] 服务端项目起一个出来;
@@ -14,15 +15,51 @@ lerna publish
     - [ ]建站;
     - [ ]用户管理;
 
+##应用场景
+
+### 场景1: api自动生成;
+根据yapi  swagger中api的定义生成客户端可以调用的api,并且把mock数据等流程嵌入进来;
+
+eg:
+swagger中api定义如下.
+![](./doc/images/swagger-api.png);
+
+经过moon工具生成代码结构如下:
+```shell
+.
+├── AuthorizeController.ts
+├── CouponCodeBaseController.ts
+├── CouponInfoController.ts
+├── CustomerBaseController.ts
+├── PetCouponInfoController.ts
+├── StoreCustomerController.ts
+├── _api-info.json
+├── fetch.ts
+├── index.ts
+├── mock
+│   ├── AuthorizeController.json
+│   ├── CouponCodeBaseController.json
+│   ├── CouponInfoController.json
+│   ├── CustomerBaseController.json
+│   ├── PetCouponInfoController.json
+│   └── StoreCustomerController.json
+└── mock-util.ts
+
+```
+
+对应单个controller如下图所示,
+
+![](./doc/images/api-example.png);
+
+
+#### 总结
+
+    moon中api生成工具可以代替人力出色生成调用代码,不但包括mock数据,bean对应的ts结构,还包括备注信息;而且日后的同步工作也省了;
+
+
 ## 场景1: 生成taro页面skeleton
 
 参考代码:/Users/dong/Falcon/moon/app/src/core/page/taro-redux/index.ts
-
-## 场景2: 根据yapi中接口的定义生成前端web-api代码;
-
-先把yapi相关接口定义导出数据 . 然后数据转换为生成web-api所需要的数据格式;
-
-参考代码:/Users/dong/Falcon/moon/app/src/migrate/yapi/index.ts
 
 ## 场景3: 定义modal,自动生成服务端, 及客户端代码;
 
