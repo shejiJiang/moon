@@ -1,6 +1,6 @@
 {
   "name": "moon-app",
-  "version": "0.0.7-alpha.27",
+  "version": "0.0.7-alpha.28",
   "description": "A minimal Electron application written with Typescript",
   "scripts": {
     "test": "jest",
