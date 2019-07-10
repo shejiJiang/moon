@@ -1,10 +1,10 @@
 {
 	"name": "moon-wanmi",
-	"version": "0.0.7-alpha.33",
+	"version": "0.0.7-alpha.34",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"prepublishOnly": "tsc && ts-node ./src/copy.ts",
+		"prepublishOnly": "tsc",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"publishConfig": {
@@ -16,7 +16,7 @@
 	},
 	"author": "",
 	"license": "ISC",
-	"gitHead": "590c47eaf2f655bcf4ed6e9509fcd2b235f6ceeb",
+	"gitHead": "6aae7991a0836b42a953947106038280ed57e3ca",
 	"devDependencies": {
 		"@types/fs-extra": "^8.1.0"
 	}
