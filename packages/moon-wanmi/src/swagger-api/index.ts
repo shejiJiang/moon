@@ -46,7 +46,7 @@ let projectPath = process.cwd();
 let configFilePath = join(projectPath, '.moon.json');
 try {
   console.log('读取配置文件', configFilePath);
-  if (fse.pathExistsSync(configFilePath)) {
+  if (fse.existsSync(configFilePath)) {
     defaulltMoonConfig = fse.readJSONSync(configFilePath);
   } else {
     throw new Error('配置不存在:' + configFilePath);
