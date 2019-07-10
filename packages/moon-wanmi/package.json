@@ -18,6 +18,7 @@
 	"license": "ISC",
 	"gitHead": "9c201ea30833f5b90050e5d2eb887ef7a8977109",
 	"devDependencies": {
+        "fs-extra": "^8.1.0",
 		"@types/fs-extra": "^7.0.0"
 	}
 }
