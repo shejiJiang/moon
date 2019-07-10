@@ -1,8 +1,12 @@
 {
 	"name": "moon-wanmi",
-	"version": "0.0.7-alpha.30",
+	"version": "0.0.7-alpha.31",
 	"description": "",
 	"main": "index.js",
+	"scripts": {
+		"prepublishOnly": "tsc && ts-node ./src/copy.ts",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
 	"publishConfig": {
 		"registory": "http://registory.npmjs.org"
 	},
@@ -12,7 +16,7 @@
 	},
 	"author": "",
 	"license": "ISC",
-	"gitHead": "fbc37e827d15c23480e20c0e32985e1aa3951a62",
+	"gitHead": "590c47eaf2f655bcf4ed6e9509fcd2b235f6ceeb",
 	"devDependencies": {
 		"@types/fs-extra": "^8.1.0"
 	}

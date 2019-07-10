@@ -1,6 +1,6 @@
 {
   "name": "moon-app",
-  "version": "0.0.7-alpha.30",
+  "version": "0.0.7-alpha.31",
   "description": "A minimal Electron application written with Typescript",
   "scripts": {
     "test": "jest",
@@ -38,8 +38,9 @@
     "json-schema-to-typescript": "^6.1.3",
     "jsonschema": "^1.2.4",
     "klaw": "^3.0.0",
-    "moon-core": "^0.0.7-alpha.30",
-    "moon-wanmi": "^0.0.7-alpha.30",
+    "moon-core": "^0.0.7-alpha.31",
+    "moon-wanmi": "^0.0.7-alpha.31",
     "request": "^2.88.0"
-  }
+  },
+  "gitHead": "590c47eaf2f655bcf4ed6e9509fcd2b235f6ceeb"
 }

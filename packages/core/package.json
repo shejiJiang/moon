@@ -1,6 +1,6 @@
 {
   "name": "moon-core",
-  "version": "0.0.7-alpha.30",
+  "version": "0.0.7-alpha.31",
   "description": "",
   "main": "lib/index.js",
   "typings": "declarations/index.d.ts",
@@ -28,7 +28,7 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "fbc37e827d15c23480e20c0e32985e1aa3951a62",
+  "gitHead": "590c47eaf2f655bcf4ed6e9509fcd2b235f6ceeb",
   "devDependencies": {
     "@types/fs-extra": "^7.0.0",
     "shelljs": "^0.8.3"
