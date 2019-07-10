@@ -1,7 +1,7 @@
 {
   "name": "moon-web",
   "private": true,
-  "version": "0.0.7-alpha.36",
+  "version": "0.0.7-alpha.37",
   "publishConfig": {
     "registry": "http://registry.npm.qianmi.com"
   },
@@ -112,8 +112,8 @@
     "klaw": "^3.0.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    "moon-app": "^0.0.7-alpha.36",
-    "moon-wanmi": "^0.0.7-alpha.36",
+    "moon-app": "^0.0.7-alpha.37",
+    "moon-wanmi": "^0.0.7-alpha.37",
     "shelljs": "^0.8.3"
   },
   "jest": {
