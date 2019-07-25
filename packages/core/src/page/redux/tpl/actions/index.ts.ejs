@@ -38,9 +38,11 @@ export default (dispatch:Dispatch) => {
      * 动态添加注入reducer
      */
     async loadReducer(){
+    reduxStore.registerReducer({
          <% pageInfo.actors.forEach(actor=>{ %>
-            reduxStore.registerReducer({<%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>});
+            <%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>,
          <% }) %>
+         })
     },
 
     /**
@@ -48,9 +50,11 @@ export default (dispatch:Dispatch) => {
      */
     async unloadReducer(){
          if(reduxStore.deregister) {
+         reduxStore.deregister([
                  <% pageInfo.actors.forEach(actor=>{ %>
-                      reduxStore.deregister("<%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>");
+                      "<%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>"
                  <% }) %>
+                 ])
          } else {
            console.error('请在redux/store中实现deregister逻辑. ');
          }

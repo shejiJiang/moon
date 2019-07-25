@@ -17,6 +17,7 @@ export interface IResult {
 
 export function readDirFiles(dirPath: string): Promise<IResult> {
   log(`读取文件夹${dirPath}下文件内容`);
+  dirPath =  dirPath.endsWith("/")?dirPath:dirPath+"/";
   return new Promise((resolve, reject) => {
     let allFilePaths: string[] = [];
     klaw(dirPath)
