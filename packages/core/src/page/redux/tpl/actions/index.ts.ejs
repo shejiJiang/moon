@@ -3,11 +3,15 @@ import {Command} from '../constant';
 import {Dispatch} from "typings";
 import {getActionProxy} from "@/redux/action-util";
 import api from 'api';
+import * as reduxStore from "@/redux/store";
 
 <% pageInfo.actions.forEach(action=>{ %>
 import <%=Util.toUCamelize(action.fileName) %> from './<%=action.fileName%>'
 <% }) %>
 
+ <% pageInfo.actors.forEach(actor=>{ %>
+import <%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%> from '../reducers/<%=actor.fileName%>';
+ <% }) %>
 export default (dispatch:Dispatch) => {
   const actions = {
 
@@ -28,6 +32,28 @@ export default (dispatch:Dispatch) => {
                          //<%=Util.toLCamelize(actor.fileName)%>  :{},
               <% }) %>
       }});
+    },
+
+    /**
+     * 动态添加注入reducer
+     */
+    async loadReducer(){
+         <% pageInfo.actors.forEach(actor=>{ %>
+            reduxStore.registerReducer({<%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>});
+         <% }) %>
+    },
+
+    /**
+     * 卸载reducer
+     */
+    async unloadReducer(){
+         if(reduxStore.deregister) {
+                 <% pageInfo.actors.forEach(actor=>{ %>
+                      reduxStore.deregister("<%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>");
+                 <% }) %>
+         } else {
+           console.error('请在redux/store中实现deregister逻辑. ');
+         }
     },
 
     /**

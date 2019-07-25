@@ -4,7 +4,6 @@ import './index.less';
 import * as T from './types';
 import actions from './actions';
 import {store2Props} from "./selectors";
-import { registerReducer } from "@/redux/store";
 
  <% pageInfo.subComps.forEach(subComp=>{ %>
 import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fileName%>"; %>
@@ -42,12 +41,5 @@ export default class <%=className%> extends React.Component<Partial<T.IProps>, a
   }
 }
 
-//==动态注入reducer===
- <% pageInfo.actors.forEach(actor=>{ %>
- import <%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%> from './reducers/<%=actor.fileName%>';
- <% }) %>
- <% pageInfo.actors.forEach(actor=>{ %>
-registerReducer({<%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>});
- <% }) %>
 
 
