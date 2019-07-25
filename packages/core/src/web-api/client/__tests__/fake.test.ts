@@ -22,38 +22,16 @@ jsf.option('failOnInvalidFormat',false);
  **/
 
 
+describe('循环依赖测试', () => {
+  it('测试', async () => {
 
-(async ()=>{
-  // let apiSchema  =  fse.readJSONSync(join(__dirname,'mock-errCompanyInfoController-update.json'));
-  let apiSchema  =  fse.readJSONSync(join(__dirname,'simple-circularref.json'));
-  // let targetResponse= {...apiSchema.definitions['BaseResponse«BusinessConfigRopResponse»']};
+    // let apiSchema  =  fse.readJSONSync(join(__dirname,'mock-errCompanyInfoController-update.json'));
+    let apiSchema  =  fse.readJSONSync(join(__dirname,'simple-circularref.json'));
+    let definitions = apiSchema.definitions;
+    delete apiSchema.definitions;
 
-  let definitions = apiSchema.definitions;
-  delete apiSchema.definitions;
-
-  cancelCircularRef(apiSchema,definitions);
-
-  console.log(JSON.stringify(apiSchema,null,2))
-
-  let result = await genrateFakeData(apiSchema,definitions);
-  console.log(JSON.stringify(result,null,2));
-
-  //
-  // var parser = new $RefParser();
-  // let schema = await parser.dereference(apiSchema,{dereference:{circular:"ignore"}});
-  //
-  // console.log(JSON.stringify(schema,null,2));
-  // console.log(parser.$refs['_root$Ref']);
-  // fse.writeFileSync(join(__dirname,'mock-errCompanyInfoController-update-Ok.json'),JSON.stringify(schema,null,2));
-  // let result =  await jsf.resolve(apiSchema);
-
-  // console.log(result);
-  //
-  //
-  // targetResponse.definitions =apiSchema.definitions;
-  // console.log(JSON.stringify(targetResponse,null,2));
-  //
-  //
-  // fse.writeFileSync(join(__dirname,'api.result.json'),JSON.stringify(genrateFakeData(targetResponse,apiSchema.definitions), null, 2))
-
-})();
+    cancelCircularRef(apiSchema,definitions);
+    let result = await genrateFakeData(apiSchema,definitions);
+    expect(result).not.toBeNull();
+  });
+});
