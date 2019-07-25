@@ -7,15 +7,16 @@
  * @Date    2019/7/25
  **/
 
-import {join} from 'path';
 import * as klaw from 'klaw';
+import debug from  'debug';
 import {readFile} from 'fs-extra';
-
+const log  = debug('jest-util');
 export interface IResult {
   [path: string]: string;
 }
 
 export function readDirFiles(dirPath: string): Promise<IResult> {
+  log(`读取文件夹${dirPath}下文件内容`);
   return new Promise((resolve, reject) => {
     let allFilePaths: string[] = [];
     klaw(dirPath)
@@ -26,8 +27,6 @@ export function readDirFiles(dirPath: string): Promise<IResult> {
       })
       .on('end', async () => {
         let result = {};
-        console.log(allFilePaths);
-
         let contents = await Promise.all(
           allFilePaths.map(filePath => readFile(filePath)),
         );
@@ -35,7 +34,6 @@ export function readDirFiles(dirPath: string): Promise<IResult> {
           let fileName = allFilePaths[i].replace(dirPath, '');
           result[fileName] = contents[i].toString();
         }
-
         resolve(result);
       });
   });

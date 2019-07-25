@@ -8,23 +8,28 @@
  **/
 
 import {generate} from '../redux/redux';
-import {join} from  'path';
+import {tmpdir} from 'os';
+import {join} from 'path';
+import {readDirFiles} from '../../util/jest-util';
 
 describe('生成页面测试', () => {
   it('redux页面生成测试', async () => {
+    let targetDir = join(tmpdir(), 'moon-temp/');
+
     await generate({
-      projectPath:join(__dirname,"temp/"),
+      projectPath: targetDir,
       //@ts-ignore
-      pageInfo:cashManPageDef,
+      pageInfo: cashManPageDef,
     });
-    expect('hello').toEqual('hello');
+    let content = await readDirFiles(targetDir);
+    expect(content).toMatchSnapshot();
   });
 });
 
 let cashManPageDef = {
   pagePath: 'cashier/main',
-  pageKey:"cashierMain",
-  title:"测试",
+  pageKey: 'cashierMain',
+  title: '测试',
   actors: [
     {
       fileName: 'cart',

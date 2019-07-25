@@ -11,8 +11,9 @@ import * as fse from 'fs-extra';
 import * as prettier from 'prettier';
 import {IFileSaveOptions} from "../page/old/taro-redux/redux-taro";
 import {IHandleFile, IHandlePageParam, IInsertOption} from "../typings/util";
+import debug from  'debug';
 
-
+const log  = debug('moon:core:compile-util');
 /**
  * 获取处理页面内容;;
  * 处理文件 的公共逻辑; 从模板中取出内容,渲染出来, 然后保存;
@@ -47,7 +48,7 @@ export function getHandleFile({
     let _tplFilePath = join(tplBase, tplPath);
 
     let _tplContent = await fse.readFile(_tplFilePath);
-    console.log('开始处理模板: ', _tplFilePath);
+    log('开始处理模板: ', _tplFilePath);
     let content = await dealCal(_tplContent.toString());
 
     let saveOptions:IFileSaveOptions = {
@@ -74,7 +75,7 @@ export function getHandleFile({
     try {
       saveOptions.content = prettier.format(saveOptions.content, prettiesConfig);
     } catch (err) {}
-    console.log('output filePath: ', saveOptions.toSaveFilePath);
+    log('output filePath: ', saveOptions.toSaveFilePath);
     await fse.writeFile(saveOptions.toSaveFilePath, saveOptions.content);
     if(context.afterSave) {
       await   context.afterSave(saveOptions,context);
