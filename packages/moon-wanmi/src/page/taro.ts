@@ -54,27 +54,27 @@ export async function genTaroPage(context:IContext) {
         let projectSrc  = projectPath;
         let pageKey = context.pageInfo.pageKey;
         let pageFilePath =join('pages', context.pageInfo.pagePath);
-        for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
-          let actor = pageInfo.actors[i];
-
-          let reducerKey =  MoonCore.StringUtil.toLCamelize(pageKey+"-"+actor.fileName);
-
-          await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
-            {
-              mark: '//mark1//',
-              isBefore: true,
-              content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
-              check: (content): boolean => !content.includes(pageFilePath),
-            },
-            {
-              mark: '//mark2//',
-              isBefore: false,
-              content: reducerKey+ ',',
-              check: (content, rawContent): boolean =>
-                !rawContent.includes(pageFilePath),
-            },
-          ]);
-        }
+        // for (let i = 0, iLen = pageInfo.actors.length; i < iLen; i++) {
+        //   // let actor = pageInfo.actors[i];
+        //
+        //   // let reducerKey =  MoonCore.StringUtil.toLCamelize(pageKey+"-"+actor.fileName);
+        //
+        //   // await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/redux/reducers/index.ts'), [
+        //   //   {
+        //   //     mark: '//mark1//',
+        //   //     isBefore: true,
+        //   //     content: `import ${reducerKey} from "@/${pageFilePath}/reducers/${actor.fileName}";`,
+        //   //     check: (content): boolean => !content.includes(pageFilePath),
+        //   //   },
+        //   //   {
+        //   //     mark: '//mark2//',
+        //   //     isBefore: false,
+        //   //     content: reducerKey+ ',',
+        //   //     check: (content, rawContent): boolean =>
+        //   //       !rawContent.includes(pageFilePath),
+        //   //   },
+        //   // ]);
+        // }
 
         await MoonCore.CompileUtil.insertFile(join(projectSrc, 'src/app.tsx'), [
           {
