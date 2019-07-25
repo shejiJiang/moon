@@ -1,0 +1,359 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rn生成页面测试 列表页面 1`] = `
+Object {
+  "/src/pages/pages/test/actions/action.ts": "import {Command} from '../constant';
+import {Dispatch} from 'typings';
+import {IAllReducerProps} from '../types';
+import {getReducerData} from '@/redux/store';
+import api from 'api';
+import {extraPathsValue} from '@/redux/util';
+
+export default (dispatch: Dispatch) => {
+  let action = {
+    commonChange(...param: any) {
+      dispatch({
+        type: Command.commonChange,
+        payload: extraPathsValue(...arguments),
+      });
+    },
+
+    /**
+         * 
+              普通条件查询可以走,commonChange
+              
+         */
+    async modifySearch(
+      param,
+      options: {
+        isQuery: boolean;
+        isResetPage: boolean;
+      } = {isQuery: true, isResetPage: false},
+    ) {
+      dispatch({type: Command.modifyRequest, payload: param});
+      //修改完直接查询;
+      if (options.isQuery) {
+        await this.query(options.isResetPage);
+      }
+    },
+
+    /**
+     * 查询下一页
+     */
+    async nextPage() {
+      let {request} = getData().main;
+      request.pageNum = request.pageNum + 1;
+      dispatch({type: Command.modifyRequest, payload: request});
+      await this.query();
+    },
+
+    /**
+     * 以当前查询条件查询
+     */
+    async query(isResetPage: boolean = false) {
+      if (isResetPage) {
+        await dispatch({type: Command.modifyRequest, payload: {pageNum: 0}});
+      }
+
+      let {request} = getData().main;
+      //TODO 接口缺失
+      // let {} = await api..XXapi();
+
+      dispatch({
+        type: Command.queryResult,
+        payload: {
+          total: 0,
+          list: [],
+        },
+      });
+    },
+  };
+  return action;
+};
+
+function getData(): IAllReducerProps {
+  return {
+    main: getReducerData('pagesTestMain'),
+  };
+}
+",
+  "/src/pages/pages/test/actions/index.ts": "import Store from '@/redux/store';
+import {Command} from '../constant';
+import {Dispatch} from 'typings';
+import {getActionProxy} from '@/redux/action-util';
+import api from 'api';
+
+import Action from './action';
+
+export default (dispatch: Dispatch) => {
+  const actions = {
+    action: getActionProxy<typeof Action>(Action)(dispatch),
+
+    /**
+     * 初始化数据
+     */
+    async init() {
+      dispatch({
+        type: Command.init,
+        payload: {
+          //main  :{},
+        },
+      });
+    },
+
+    /**
+     * 重置
+     */
+    async clean() {
+      dispatch({type: Command.clean});
+    },
+  };
+
+  return {actions};
+};
+",
+  "/src/pages/pages/test/components/info.less": "
+
+.info {
+}
+",
+  "/src/pages/pages/test/components/info.tsx": "import React from 'react';
+import {StyleSheet, View, Text} from 'react-native';
+
+import * as T from '../types';
+
+import actions from '../actions/index';
+import {connect} from 'react-redux';
+import {store2Props} from '../selectors';
+
+type IInfoProps = T.IProps & T.IInfoProps;
+
+@connect<Partial<IInfoProps>, T.IInfoState>(
+  store2Props,
+  actions,
+)
+export default class Info extends React.Component<
+  Partial<IInfoProps>,
+  T.IInfoState
+> {
+  constructor(props: IInfoProps) {
+    super(props);
+  }
+
+  /**
+    
+*/
+  render() {
+    let {
+      actions: {action},
+      main,
+    } = this.props;
+
+    return (
+      <View>
+        <View />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  info: {},
+});
+",
+  "/src/pages/pages/test/constant.ts": "export const BASE = 'PagesTest_';
+
+export enum Command {
+  //通用修改数据方法
+  commonChange = 'PagesTest_commonChange',
+  init = 'PagesTest_INIT',
+  clean = 'PagesTest_CLEAN',
+
+  /*
+        修改查询条件数据
+    */
+  modifyRequest = 'PagesTest_modifyRequest',
+
+  /*
+        清空查询结果
+    */
+  cleanList = 'PagesTest_cleanList',
+
+  /*
+        
+    */
+  queryResult = 'PagesTest_queryResult',
+}
+",
+  "/src/pages/pages/test/index.less": "
+
+.pagesTest {
+}
+",
+  "/src/pages/pages/test/index.tsx": "import React from 'react';
+import {StyleSheet, View, Text} from 'react-native';
+
+import {connect} from 'react-redux';
+
+import * as T from './types';
+import actions from './actions';
+import {store2Props} from './selectors';
+import {registerReducer} from '@/redux/store';
+
+import Info from './components/info';
+
+@connect<Partial<T.IProps>, any>(
+  store2Props,
+  actions,
+)
+export default class PagesTest extends React.Component<Partial<T.IProps>, any> {
+  componentDidMount() {
+    this.props.actions.init();
+  }
+
+  componentWillUnmount() {
+    this.props.actions.clean();
+  }
+
+  render() {
+    let {
+      actions: {action},
+      main,
+    } = this.props;
+
+    return (
+      <View>
+        <View />
+      </View>
+    );
+  }
+}
+
+//==动态注入reducer===
+
+import pagesTestMain from './reducers/main';
+
+registerReducer({pagesTestMain});
+
+const styles = StyleSheet.create({
+  index: {},
+});
+",
+  "/src/pages/pages/test/reducers/main.ts": "import {Command} from '../constant';
+import _ from 'lodash';
+import {IMainReducer} from '../types';
+import {Action} from 'typings';
+import produce from 'immer';
+import * as immerUtil from '@/redux/immer-util';
+
+const INITIAL_STATE: IMainReducer = {
+  isReady: false,
+
+  request: {q: '', pageNum: 0, pageSize: 10},
+
+  total: 0,
+
+  list: [],
+};
+
+export default function main(
+  state = INITIAL_STATE,
+  action: Action,
+): IMainReducer {
+  const {type, payload} = action;
+
+  return produce<IMainReducer>(state, draftState => {
+    switch (type) {
+      //通用改变数据
+      case Command.commonChange:
+        return immerUtil.commonChange(draftState, {...payload, key: 'main'});
+
+      //修改查询条件数据
+      case Command.modifyRequest:
+        immerUtil.assign(draftState.request, payload);
+        return draftState;
+
+      //清空查询结果
+      case Command.cleanList:
+        draftState.list = [];
+        return draftState;
+
+      //
+      case Command.queryResult:
+        draftState.list = payload.list;
+        draftState.total = payload.total;
+
+        return draftState;
+
+      //初始化
+      case Command.init:
+        draftState.isReady = true;
+        for (let propKey in payload.main) {
+          //@ts-ignore 这里处理的不够好.
+          draftState[propKey] = payload.main[propKey];
+        }
+        return draftState;
+
+      //重置
+      case Command.clean:
+        for (let propKey in INITIAL_STATE) {
+          //@ts-ignore 这里处理的不够好.
+          draftState[propKey] = INITIAL_STATE[propKey];
+        }
+        return draftState;
+    }
+  });
+}
+",
+  "/src/pages/pages/test/selectors.ts": "import {createSelector} from 'reselect';
+import {IAllReducerProps} from './types';
+
+export function store2Props({pagesTestMain}: any): IAllReducerProps {
+  return {
+    main: pagesTestMain,
+  };
+}
+
+//衍生数据使用请参考:  https://github.com/reduxjs/reselect
+",
+  "/src/pages/pages/test/types.ts": "import Actions from './actions';
+
+export interface IMainReducer {
+  isReady: boolean;
+  isLoading?: boolean;
+
+  request: IMainRequest;
+
+  total: IMainTotal;
+
+  list: IMainListSet;
+}
+
+export type ActionType = ReturnType<typeof Actions>;
+export type IAllReducerProps = {
+  main: IMainReducer;
+
+  [name: string]: any;
+};
+
+//默认是全部的属性,可以自定义
+export type IProps = IAllReducerProps & ActionType;
+
+export type IInfoProps = {};
+export type IInfoState = {};
+
+export interface IMainRequest {
+  q?: string;
+  pageNum?: number;
+  pageSize?: number;
+  [k: string]: any;
+}
+export type IMainTotal = number;
+export type IMainListSet = IMainList[];
+
+export interface IMainList {
+  [k: string]: any;
+}
+",
+}
+`;
