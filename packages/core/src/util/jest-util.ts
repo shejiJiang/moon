@@ -40,9 +40,3 @@ export function readDirFiles(dirPath: string): Promise<IResult> {
       });
   });
 }
-
-(async () => {
- let result = await readDirFiles(join(__dirname, '..'));
-
- console.log(result);
-})();
