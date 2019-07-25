@@ -9,21 +9,22 @@
 
 import {tmpdir} from 'os';
 import {join} from 'path';
+import {remove} from  'fs-extra';
 import MoonCore from  'moon-core';
 import {genPage} from  '../pc';
 
 describe('pc生成页面测试', () => {
-  it('pc页面', async () => {
-
-    let targetDir = join(tmpdir(), 'moon-temp/');
+  it('收银台页面生成', async () => {
+    let targetDir = join(tmpdir(), 'moon-temp/' ,Math.random()+"");
     await genPage({
       projectPath: targetDir,
       //@ts-ignore
       pageInfo: cashManPageDef,
     });
+
     let content = await MoonCore.JestUtil.readDirFiles(targetDir);
     expect(content).toMatchSnapshot();
-    expect('hello').toEqual("hello");
+    await remove(targetDir);
   });
 });
 
