@@ -31,6 +31,7 @@
   "gitHead": "9c201ea30833f5b90050e5d2eb887ef7a8977109",
   "devDependencies": {
     "@types/fs-extra": "^7.0.0",
+    "@types/klaw": "^3.0.0",
     "shelljs": "^0.8.3"
   }
 }
