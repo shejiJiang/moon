@@ -264,6 +264,11 @@ export default (dispatch: Dispatch) => {
   return {actions};
 };
 ",
+  "/src/pages/cashier/main/components/cart-foot.less": "@import \\"~style/theme.less\\";
+
+.cartFoot {
+}
+",
   "/src/pages/cashier/main/components/cart-foot.tsx": "import * as React from 'react';
 
 import * as T from '../types';
@@ -307,6 +312,11 @@ export default class CartFoot extends React.Component<
       </div>
     );
   }
+}
+",
+  "/src/pages/cashier/main/components/cart-header.less": "@import \\"~style/theme.less\\";
+
+.cartHeader {
 }
 ",
   "/src/pages/cashier/main/components/cart-header.tsx": "import * as React from 'react';
@@ -354,6 +364,11 @@ export default class CartHeader extends React.Component<
   }
 }
 ",
+  "/src/pages/cashier/main/components/cart-list.less": "@import \\"~style/theme.less\\";
+
+.cartList {
+}
+",
   "/src/pages/cashier/main/components/cart-list.tsx": "import * as React from 'react';
 
 import * as T from '../types';
@@ -397,6 +412,11 @@ export default class CartList extends React.Component<
       </div>
     );
   }
+}
+",
+  "/src/pages/cashier/main/components/cart-summary.less": "@import \\"~style/theme.less\\";
+
+.cartSummary {
 }
 ",
   "/src/pages/cashier/main/components/cart-summary.tsx": "import * as React from 'react';
@@ -444,6 +464,11 @@ export default class CartSummary extends React.Component<
   }
 }
 ",
+  "/src/pages/cashier/main/components/cart.less": "@import \\"~style/theme.less\\";
+
+.cart {
+}
+",
   "/src/pages/cashier/main/components/cart.tsx": "import * as React from 'react';
 
 import * as T from '../types';
@@ -487,6 +512,11 @@ export default class Cart extends React.Component<
       </div>
     );
   }
+}
+",
+  "/src/pages/cashier/main/components/content-bottom.less": "@import \\"~style/theme.less\\";
+
+.contentBottom {
 }
 ",
   "/src/pages/cashier/main/components/content-bottom.tsx": "import * as React from 'react';
@@ -534,6 +564,11 @@ export default class ContentBottom extends React.Component<
   }
 }
 ",
+  "/src/pages/cashier/main/components/content-search.less": "@import \\"~style/theme.less\\";
+
+.contentSearch {
+}
+",
   "/src/pages/cashier/main/components/content-search.tsx": "import * as React from 'react';
 
 import * as T from '../types';
@@ -577,6 +612,11 @@ export default class ContentSearch extends React.Component<
       </div>
     );
   }
+}
+",
+  "/src/pages/cashier/main/components/content-tabs-cards.less": "@import \\"~style/theme.less\\";
+
+.contentTabsCards {
 }
 ",
   "/src/pages/cashier/main/components/content-tabs-cards.tsx": "import * as React from 'react';
@@ -624,6 +664,11 @@ export default class ContentTabsCards extends React.Component<
   }
 }
 ",
+  "/src/pages/cashier/main/components/content-tabs-goods.less": "@import \\"~style/theme.less\\";
+
+.contentTabsGoods {
+}
+",
   "/src/pages/cashier/main/components/content-tabs-goods.tsx": "import * as React from 'react';
 
 import * as T from '../types';
@@ -667,6 +712,11 @@ export default class ContentTabsGoods extends React.Component<
       </div>
     );
   }
+}
+",
+  "/src/pages/cashier/main/components/content-tabs-service.less": "@import \\"~style/theme.less\\";
+
+.contentTabsService {
 }
 ",
   "/src/pages/cashier/main/components/content-tabs-service.tsx": "import * as React from 'react';
@@ -714,6 +764,11 @@ export default class ContentTabsService extends React.Component<
   }
 }
 ",
+  "/src/pages/cashier/main/components/content-tabs.less": "@import \\"~style/theme.less\\";
+
+.contentTabs {
+}
+",
   "/src/pages/cashier/main/components/content-tabs.tsx": "import * as React from 'react';
 
 import * as T from '../types';
@@ -757,6 +812,11 @@ export default class ContentTabs extends React.Component<
       </div>
     );
   }
+}
+",
+  "/src/pages/cashier/main/components/content.less": "@import \\"~style/theme.less\\";
+
+.content {
 }
 ",
   "/src/pages/cashier/main/components/content.tsx": "import * as React from 'react';

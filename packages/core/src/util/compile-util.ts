@@ -76,9 +76,9 @@ export function getHandleFile({
       saveOptions.content = prettier.format(saveOptions.content, prettiesConfig);
     } catch (err) {}
     log('output filePath: ', saveOptions.toSaveFilePath);
-    await fse.writeFile(saveOptions.toSaveFilePath, saveOptions.content);
+    fse.writeFileSync(saveOptions.toSaveFilePath, saveOptions.content);
     if(context.afterSave) {
-      await   context.afterSave(saveOptions,context);
+      await  context.afterSave(saveOptions,context);
     }
   };
 }
