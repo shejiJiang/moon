@@ -1,4 +1,3 @@
-import {IPageDefined} from "moon-core/declarations/typings/page";
 import MoonCore from  'moon-core';
 
 import * as fse from 'fs-extra';
