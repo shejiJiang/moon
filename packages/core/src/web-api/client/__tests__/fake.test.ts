@@ -25,7 +25,6 @@ jsf.option('failOnInvalidFormat',false);
 describe('循环依赖测试', () => {
   it('测试', async () => {
 
-    // let apiSchema  =  fse.readJSONSync(join(__dirname,'mock-errCompanyInfoController-update.json'));
     let apiSchema  =  fse.readJSONSync(join(__dirname,'simple-circularref.json'));
     let definitions = apiSchema.definitions;
     delete apiSchema.definitions;
