@@ -64,10 +64,6 @@ export async function genRnPage(context:IContext) {
             }
           });
         `
-
-
-        // import './info.less';
-        // className="info"
       }
       return options;
     },
