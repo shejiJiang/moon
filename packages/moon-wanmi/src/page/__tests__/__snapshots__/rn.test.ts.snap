@@ -2,7 +2,7 @@
 
 exports[`rn生成页面测试 列表页面 1`] = `
 Object {
-  "/src/pages/pages/test/actions/action.ts": "import {Command} from '../constant';
+  "src/pages/pages/test/actions/action.ts": "import {Command} from '../constant';
 import {Dispatch} from 'typings';
 import {IAllReducerProps} from '../types';
 import {getReducerData} from '@/redux/store';
@@ -77,13 +77,16 @@ function getData(): IAllReducerProps {
   };
 }
 ",
-  "/src/pages/pages/test/actions/index.ts": "import Store from '@/redux/store';
+  "src/pages/pages/test/actions/index.ts": "import Store from '@/redux/store';
 import {Command} from '../constant';
 import {Dispatch} from 'typings';
 import {getActionProxy} from '@/redux/action-util';
 import api from 'api';
+import * as reduxStore from '@/redux/store';
 
 import Action from './action';
+
+import pagesTestMain from '../reducers/main';
 
 export default (dispatch: Dispatch) => {
   const actions = {
@@ -102,6 +105,26 @@ export default (dispatch: Dispatch) => {
     },
 
     /**
+     * 动态添加注入reducer
+     */
+    async loadReducer() {
+      reduxStore.registerReducer({
+        pagesTestMain,
+      });
+    },
+
+    /**
+     * 卸载reducer
+     */
+    async unloadReducer() {
+      if (reduxStore.deregister) {
+        reduxStore.deregister(['pagesTestMain']);
+      } else {
+        console.error('请在redux/store中实现deregister逻辑. ');
+      }
+    },
+
+    /**
      * 重置
      */
     async clean() {
@@ -112,12 +135,12 @@ export default (dispatch: Dispatch) => {
   return {actions};
 };
 ",
-  "/src/pages/pages/test/components/info.less": "
+  "src/pages/pages/test/components/info.less": "
 
 .info {
 }
 ",
-  "/src/pages/pages/test/components/info.tsx": "import React from 'react';
+  "src/pages/pages/test/components/info.tsx": "import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
 import * as T from '../types';
@@ -161,7 +184,7 @@ const styles = StyleSheet.create({
   info: {},
 });
 ",
-  "/src/pages/pages/test/constant.ts": "export const BASE = 'PagesTest_';
+  "src/pages/pages/test/constant.ts": "export const BASE = 'PagesTest_';
 
 export enum Command {
   //通用修改数据方法
@@ -185,12 +208,12 @@ export enum Command {
   queryResult = 'PagesTest_queryResult',
 }
 ",
-  "/src/pages/pages/test/index.less": "
+  "src/pages/pages/test/index.less": "
 
 .pagesTest {
 }
 ",
-  "/src/pages/pages/test/index.tsx": "import React from 'react';
+  "src/pages/pages/test/index.tsx": "import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
 import {connect} from 'react-redux';
@@ -198,7 +221,6 @@ import {connect} from 'react-redux';
 import * as T from './types';
 import actions from './actions';
 import {store2Props} from './selectors';
-import {registerReducer} from '@/redux/store';
 
 import Info from './components/info';
 
@@ -229,17 +251,11 @@ export default class PagesTest extends React.Component<Partial<T.IProps>, any> {
   }
 }
 
-//==动态注入reducer===
-
-import pagesTestMain from './reducers/main';
-
-registerReducer({pagesTestMain});
-
 const styles = StyleSheet.create({
   index: {},
 });
 ",
-  "/src/pages/pages/test/reducers/main.ts": "import {Command} from '../constant';
+  "src/pages/pages/test/reducers/main.ts": "import {Command} from '../constant';
 import _ from 'lodash';
 import {IMainReducer} from '../types';
 import {Action} from 'typings';
@@ -305,7 +321,7 @@ export default function main(
   });
 }
 ",
-  "/src/pages/pages/test/selectors.ts": "import {createSelector} from 'reselect';
+  "src/pages/pages/test/selectors.ts": "import {createSelector} from 'reselect';
 import {IAllReducerProps} from './types';
 
 export function store2Props({pagesTestMain}: any): IAllReducerProps {
@@ -316,7 +332,7 @@ export function store2Props({pagesTestMain}: any): IAllReducerProps {
 
 //衍生数据使用请参考:  https://github.com/reduxjs/reselect
 ",
-  "/src/pages/pages/test/types.ts": "import Actions from './actions';
+  "src/pages/pages/test/types.ts": "import Actions from './actions';
 
 export interface IMainReducer {
   isReady: boolean;

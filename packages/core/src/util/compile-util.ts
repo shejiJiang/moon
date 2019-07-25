@@ -63,7 +63,11 @@ export function getHandleFile({
     //自定义前后都格式化下.避免多种判断问题...
     try {
       saveOptions.content = prettier.format(saveOptions.content, prettiesConfig);
-    } catch (err) {}
+    } catch (err) {
+      if(tplPath.endsWith(".ts.ejs")) {
+         console.warn(err);
+      }
+    }
 
 
     if(context.beforeSave) {

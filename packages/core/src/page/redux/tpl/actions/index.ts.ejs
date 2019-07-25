@@ -52,7 +52,7 @@ export default (dispatch:Dispatch) => {
          if(reduxStore.deregister) {
          reduxStore.deregister([
                  <% pageInfo.actors.forEach(actor=>{ %>
-                      "<%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>"
+                      "<%=Util.toLCamelize(pageInfo.pageKey+"-"+actor.fileName)%>",
                  <% }) %>
                  ])
          } else {

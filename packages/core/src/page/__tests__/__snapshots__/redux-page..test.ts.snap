@@ -2,7 +2,7 @@
 
 exports[`生成页面测试 redux页面生成测试 1`] = `
 Object {
-  "/src/pages/cashier/main/actions/cartAction.ts": "import {Command} from '../constant';
+  "src/pages/cashier/main/actions/cartAction.ts": "import {Command} from '../constant';
 import {Dispatch} from 'typings';
 import {IAllReducerProps} from '../types';
 import {getReducerData} from '@/redux/store';
@@ -49,7 +49,7 @@ function getData(): IAllReducerProps {
   };
 }
 ",
-  "/src/pages/cashier/main/actions/contentAction.ts": "import {Command} from '../constant';
+  "src/pages/cashier/main/actions/contentAction.ts": "import {Command} from '../constant';
 import {Dispatch} from 'typings';
 import {IAllReducerProps} from '../types';
 import {getReducerData} from '@/redux/store';
@@ -222,15 +222,20 @@ function getData(): IAllReducerProps {
   };
 }
 ",
-  "/src/pages/cashier/main/actions/index.ts": "import Store from '@/redux/store';
+  "src/pages/cashier/main/actions/index.ts": "import Store from '@/redux/store';
 import {Command} from '../constant';
 import {Dispatch} from 'typings';
 import {getActionProxy} from '@/redux/action-util';
 import api from 'api';
+import * as reduxStore from '@/redux/store';
 
 import CartAction from './cartAction';
 
 import ContentAction from './contentAction';
+
+import cashierMainCart from '../reducers/cart';
+
+import cashierMainContent from '../reducers/content';
 
 export default (dispatch: Dispatch) => {
   const actions = {
@@ -254,6 +259,28 @@ export default (dispatch: Dispatch) => {
     },
 
     /**
+     * 动态添加注入reducer
+     */
+    async loadReducer() {
+      reduxStore.registerReducer({
+        cashierMainCart,
+
+        cashierMainContent,
+      });
+    },
+
+    /**
+     * 卸载reducer
+     */
+    async unloadReducer() {
+      if (reduxStore.deregister) {
+        reduxStore.deregister(['cashierMainCart', 'cashierMainContent']);
+      } else {
+        console.error('请在redux/store中实现deregister逻辑. ');
+      }
+    },
+
+    /**
      * 重置
      */
     async clean() {
@@ -264,12 +291,12 @@ export default (dispatch: Dispatch) => {
   return {actions};
 };
 ",
-  "/src/pages/cashier/main/components/cart-foot.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/cart-foot.less": "@import \\"~style/theme.less\\";
 
 .cartFoot {
 }
 ",
-  "/src/pages/cashier/main/components/cart-foot.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/cart-foot.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './cart-foot.less';
@@ -314,12 +341,12 @@ export default class CartFoot extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/cart-header.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/cart-header.less": "@import \\"~style/theme.less\\";
 
 .cartHeader {
 }
 ",
-  "/src/pages/cashier/main/components/cart-header.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/cart-header.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './cart-header.less';
@@ -364,12 +391,12 @@ export default class CartHeader extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/cart-list.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/cart-list.less": "@import \\"~style/theme.less\\";
 
 .cartList {
 }
 ",
-  "/src/pages/cashier/main/components/cart-list.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/cart-list.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './cart-list.less';
@@ -414,12 +441,12 @@ export default class CartList extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/cart-summary.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/cart-summary.less": "@import \\"~style/theme.less\\";
 
 .cartSummary {
 }
 ",
-  "/src/pages/cashier/main/components/cart-summary.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/cart-summary.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './cart-summary.less';
@@ -464,12 +491,12 @@ export default class CartSummary extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/cart.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/cart.less": "@import \\"~style/theme.less\\";
 
 .cart {
 }
 ",
-  "/src/pages/cashier/main/components/cart.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/cart.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './cart.less';
@@ -514,12 +541,12 @@ export default class Cart extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/content-bottom.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/content-bottom.less": "@import \\"~style/theme.less\\";
 
 .contentBottom {
 }
 ",
-  "/src/pages/cashier/main/components/content-bottom.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/content-bottom.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './content-bottom.less';
@@ -564,12 +591,12 @@ export default class ContentBottom extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/content-search.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/content-search.less": "@import \\"~style/theme.less\\";
 
 .contentSearch {
 }
 ",
-  "/src/pages/cashier/main/components/content-search.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/content-search.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './content-search.less';
@@ -614,12 +641,12 @@ export default class ContentSearch extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/content-tabs-cards.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/content-tabs-cards.less": "@import \\"~style/theme.less\\";
 
 .contentTabsCards {
 }
 ",
-  "/src/pages/cashier/main/components/content-tabs-cards.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/content-tabs-cards.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './content-tabs-cards.less';
@@ -664,12 +691,12 @@ export default class ContentTabsCards extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/content-tabs-goods.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/content-tabs-goods.less": "@import \\"~style/theme.less\\";
 
 .contentTabsGoods {
 }
 ",
-  "/src/pages/cashier/main/components/content-tabs-goods.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/content-tabs-goods.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './content-tabs-goods.less';
@@ -714,12 +741,12 @@ export default class ContentTabsGoods extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/content-tabs-service.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/content-tabs-service.less": "@import \\"~style/theme.less\\";
 
 .contentTabsService {
 }
 ",
-  "/src/pages/cashier/main/components/content-tabs-service.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/content-tabs-service.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './content-tabs-service.less';
@@ -764,12 +791,12 @@ export default class ContentTabsService extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/content-tabs.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/content-tabs.less": "@import \\"~style/theme.less\\";
 
 .contentTabs {
 }
 ",
-  "/src/pages/cashier/main/components/content-tabs.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/content-tabs.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './content-tabs.less';
@@ -814,12 +841,12 @@ export default class ContentTabs extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/components/content.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/components/content.less": "@import \\"~style/theme.less\\";
 
 .content {
 }
 ",
-  "/src/pages/cashier/main/components/content.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/components/content.tsx": "import * as React from 'react';
 
 import * as T from '../types';
 import './content.less';
@@ -864,7 +891,7 @@ export default class Content extends React.Component<
   }
 }
 ",
-  "/src/pages/cashier/main/constant.ts": "export const BASE = 'CashierMain_';
+  "src/pages/cashier/main/constant.ts": "export const BASE = 'CashierMain_';
 
 export enum Command {
   //通用修改数据方法
@@ -938,18 +965,17 @@ export enum Command {
   queryResultCard = 'CashierMain_queryResultCard',
 }
 ",
-  "/src/pages/cashier/main/index.less": "@import \\"~style/theme.less\\";
+  "src/pages/cashier/main/index.less": "@import \\"~style/theme.less\\";
 
 .cashierMain {
 }
 ",
-  "/src/pages/cashier/main/index.tsx": "import * as React from 'react';
+  "src/pages/cashier/main/index.tsx": "import * as React from 'react';
 import {connect} from 'react-redux';
 import './index.less';
 import * as T from './types';
 import actions from './actions';
 import {store2Props} from './selectors';
-import {registerReducer} from '@/redux/store';
 
 import Cart from './components/cart';
 
@@ -1010,18 +1036,8 @@ export default class CashierMain extends React.Component<
     );
   }
 }
-
-//==动态注入reducer===
-
-import cashierMainCart from './reducers/cart';
-
-import cashierMainContent from './reducers/content';
-
-registerReducer({cashierMainCart});
-
-registerReducer({cashierMainContent});
 ",
-  "/src/pages/cashier/main/reducers/cart.ts": "import {Command} from '../constant';
+  "src/pages/cashier/main/reducers/cart.ts": "import {Command} from '../constant';
 import _ from 'lodash';
 import {ICartReducer} from '../types';
 import {Action} from 'typings';
@@ -1088,7 +1104,7 @@ export default function cart(
   });
 }
 ",
-  "/src/pages/cashier/main/reducers/content.ts": "import {Command} from '../constant';
+  "src/pages/cashier/main/reducers/content.ts": "import {Command} from '../constant';
 import _ from 'lodash';
 import {IContentReducer} from '../types';
 import {Action} from 'typings';
@@ -1206,7 +1222,7 @@ export default function content(
   });
 }
 ",
-  "/src/pages/cashier/main/selectors.ts": "import {createSelector} from 'reselect';
+  "src/pages/cashier/main/selectors.ts": "import {createSelector} from 'reselect';
 import {IAllReducerProps} from './types';
 
 export function store2Props({
@@ -1223,7 +1239,7 @@ export function store2Props({
 
 //衍生数据使用请参考:  https://github.com/reduxjs/reselect
 ",
-  "/src/pages/cashier/main/types.ts": "import Actions from './actions';
+  "src/pages/cashier/main/types.ts": "import Actions from './actions';
 import {GoodsVO2} from 'api/PetGoodsController';
 import {ProjectVO} from 'api/ProjectController';
 import {GoodsEvaluateVO3} from 'api/BossGoodsEvaluateController';

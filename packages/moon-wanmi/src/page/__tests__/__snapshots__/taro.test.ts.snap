@@ -2,7 +2,7 @@
 
 exports[`taro生成页面测试 商品列表页面生成 1`] = `
 Object {
-  "/src/app.tsx": "
+  "src/app.tsx": "
      pages: [ 
        
     'pages/goods/list/index', 
@@ -10,7 +10,7 @@ Object {
       \\"pages/entry/index\\"
     ]
     ",
-  "/src/pages/goods/list/actions/action.ts": "import {Command} from '../constant';
+  "src/pages/goods/list/actions/action.ts": "import {Command} from '../constant';
 import {Dispatch} from 'typings';
 import {IAllReducerProps} from '../types';
 import {getReducerData} from '@/redux/store';
@@ -85,13 +85,16 @@ function getData(): IAllReducerProps {
   };
 }
 ",
-  "/src/pages/goods/list/actions/index.ts": "import Store from '@/redux/store';
+  "src/pages/goods/list/actions/index.ts": "import Store from '@/redux/store';
 import {Command} from '../constant';
 import {Dispatch} from 'typings';
 import {getActionProxy} from '@/redux/action-util';
 import api from 'api';
+import * as reduxStore from '@/redux/store';
 
 import Action from './action';
+
+import goodsListMain from '../reducers/main';
 
 export default (dispatch: Dispatch) => {
   const actions = {
@@ -110,6 +113,26 @@ export default (dispatch: Dispatch) => {
     },
 
     /**
+     * 动态添加注入reducer
+     */
+    async loadReducer() {
+      reduxStore.registerReducer({
+        goodsListMain,
+      });
+    },
+
+    /**
+     * 卸载reducer
+     */
+    async unloadReducer() {
+      if (reduxStore.deregister) {
+        reduxStore.deregister(['goodsListMain']);
+      } else {
+        console.error('请在redux/store中实现deregister逻辑. ');
+      }
+    },
+
+    /**
      * 重置
      */
     async clean() {
@@ -120,12 +143,12 @@ export default (dispatch: Dispatch) => {
   return {actions};
 };
 ",
-  "/src/pages/goods/list/components/info.less": "
+  "src/pages/goods/list/components/info.less": "
 
 .info {
 }
 ",
-  "/src/pages/goods/list/components/info.tsx": "import {View, Button, Text} from '@tarojs/components';
+  "src/pages/goods/list/components/info.tsx": "import {View, Button, Text} from '@tarojs/components';
 import Taro, {Component, Config} from '@tarojs/taro';
 
 import * as T from '../types';
@@ -162,7 +185,7 @@ export default class Info extends Component<Partial<IInfoProps>, T.IInfoState> {
   }
 }
 ",
-  "/src/pages/goods/list/constant.ts": "export const BASE = 'GoodsList_';
+  "src/pages/goods/list/constant.ts": "export const BASE = 'GoodsList_';
 
 export enum Command {
   //通用修改数据方法
@@ -186,12 +209,12 @@ export enum Command {
   queryResult = 'GoodsList_queryResult',
 }
 ",
-  "/src/pages/goods/list/index.less": "
+  "src/pages/goods/list/index.less": "
 
 .goodsList {
 }
 ",
-  "/src/pages/goods/list/index.tsx": "import {View, Button, Text} from '@tarojs/components';
+  "src/pages/goods/list/index.tsx": "import {View, Button, Text} from '@tarojs/components';
 import Taro, {Component, Config} from '@tarojs/taro';
 
 import {connect} from '@tarojs/redux';
@@ -199,7 +222,6 @@ import './index.less';
 import * as T from './types';
 import actions from './actions';
 import {store2Props} from './selectors';
-import {registerReducer} from '@/redux/store';
 
 import Info from './components/info';
 
@@ -229,14 +251,8 @@ export default class GoodsList extends Component<Partial<T.IProps>, any> {
     );
   }
 }
-
-//==动态注入reducer===
-
-import goodsListMain from './reducers/main';
-
-registerReducer({goodsListMain});
 ",
-  "/src/pages/goods/list/reducers/main.ts": "import {Command} from '../constant';
+  "src/pages/goods/list/reducers/main.ts": "import {Command} from '../constant';
 import _ from 'lodash';
 import {IMainReducer} from '../types';
 import {Action} from 'typings';
@@ -302,7 +318,7 @@ export default function main(
   });
 }
 ",
-  "/src/pages/goods/list/selectors.ts": "import {createSelector} from 'reselect';
+  "src/pages/goods/list/selectors.ts": "import {createSelector} from 'reselect';
 import {IAllReducerProps} from './types';
 
 export function store2Props({goodsListMain}: any): IAllReducerProps {
@@ -313,7 +329,7 @@ export function store2Props({goodsListMain}: any): IAllReducerProps {
 
 //衍生数据使用请参考:  https://github.com/reduxjs/reselect
 ",
-  "/src/pages/goods/list/types.ts": "import Actions from './actions';
+  "src/pages/goods/list/types.ts": "import Actions from './actions';
 
 export interface IMainReducer {
   isReady: boolean;
