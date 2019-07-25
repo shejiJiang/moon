@@ -84,6 +84,8 @@ function getData(): IAllReducerProps {
     main: getReducerData('goodsListMain'),
   };
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/goods/list/actions/index.ts": "import Store from '@/redux/store';
 import {Command} from '../constant';
@@ -144,6 +146,8 @@ export default (dispatch: Dispatch) => {
 
   return {actions};
 };
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/goods/list/components/info.less": "
 
@@ -186,6 +190,8 @@ export default class Info extends Component<Partial<IInfoProps>, T.IInfoState> {
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/goods/list/constant.ts": "export const BASE = 'GoodsList_';
 
@@ -210,11 +216,14 @@ export enum Command {
     */
   queryResult = 'GoodsList_queryResult',
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/goods/list/index.less": "
 
 .goodsList {
 }
+
 ",
   "src/pages/goods/list/index.tsx": "import {View, Button, Text} from '@tarojs/components';
 import Taro, {Component, Config} from '@tarojs/taro';
@@ -253,6 +262,8 @@ export default class GoodsList extends Component<Partial<T.IProps>, any> {
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/goods/list/reducers/main.ts": "import {Command} from '../constant';
 import _ from 'lodash';
@@ -319,6 +330,8 @@ export default function main(
     }
   });
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/goods/list/selectors.ts": "import {createSelector} from 'reselect';
 import {IAllReducerProps} from './types';
@@ -330,6 +343,7 @@ export function store2Props({goodsListMain}: any): IAllReducerProps {
 }
 
 //衍生数据使用请参考:  https://github.com/reduxjs/reselect
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/goods/list/types.ts": "import Actions from './actions';
 
@@ -369,6 +383,8 @@ export type IMainListSet = IMainList[];
 export interface IMainList {
   [k: string]: any;
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
 }
 `;

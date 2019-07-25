@@ -76,6 +76,8 @@ function getData(): IAllReducerProps {
     main: getReducerData('pagesTestMain'),
   };
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/pages/test/actions/index.ts": "import Store from '@/redux/store';
 import {Command} from '../constant';
@@ -136,6 +138,8 @@ export default (dispatch: Dispatch) => {
 
   return {actions};
 };
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/pages/test/components/info.less": "
 
@@ -182,6 +186,8 @@ export default class Info extends React.Component<
   }
 }
 
+//create by moon https://github.com/creasy2010/moon
+
 const styles = StyleSheet.create({
   info: {},
 });
@@ -209,11 +215,14 @@ export enum Command {
     */
   queryResult = 'PagesTest_queryResult',
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/pages/test/index.less": "
 
 .pagesTest {
 }
+
 ",
   "src/pages/pages/test/index.tsx": "import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
@@ -252,6 +261,8 @@ export default class PagesTest extends React.Component<Partial<T.IProps>, any> {
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 
 const styles = StyleSheet.create({
   index: {},
@@ -322,6 +333,8 @@ export default function main(
     }
   });
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/pages/test/selectors.ts": "import {createSelector} from 'reselect';
 import {IAllReducerProps} from './types';
@@ -333,6 +346,7 @@ export function store2Props({pagesTestMain}: any): IAllReducerProps {
 }
 
 //衍生数据使用请参考:  https://github.com/reduxjs/reselect
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/pages/test/types.ts": "import Actions from './actions';
 
@@ -372,6 +386,8 @@ export type IMainListSet = IMainList[];
 export interface IMainList {
   [k: string]: any;
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
 }
 `;

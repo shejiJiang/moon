@@ -48,6 +48,8 @@ function getData(): IAllReducerProps {
     content: getReducerData('cashierMainContent'),
   };
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/actions/contentAction.ts": "import {Command} from '../constant';
 import {Dispatch} from 'typings';
@@ -221,6 +223,8 @@ function getData(): IAllReducerProps {
     content: getReducerData('cashierMainContent'),
   };
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/actions/index.ts": "import Store from '@/redux/store';
 import {Command} from '../constant';
@@ -292,6 +296,8 @@ export default (dispatch: Dispatch) => {
 
   return {actions};
 };
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/cart-foot.less": "@import \\"~style/theme.less\\";
 
@@ -342,6 +348,8 @@ export default class CartFoot extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/cart-header.less": "@import \\"~style/theme.less\\";
 
@@ -392,6 +400,8 @@ export default class CartHeader extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/cart-list.less": "@import \\"~style/theme.less\\";
 
@@ -442,6 +452,8 @@ export default class CartList extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/cart-summary.less": "@import \\"~style/theme.less\\";
 
@@ -492,6 +504,8 @@ export default class CartSummary extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/cart.less": "@import \\"~style/theme.less\\";
 
@@ -542,6 +556,8 @@ export default class Cart extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/content-bottom.less": "@import \\"~style/theme.less\\";
 
@@ -592,6 +608,8 @@ export default class ContentBottom extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/content-search.less": "@import \\"~style/theme.less\\";
 
@@ -642,6 +660,8 @@ export default class ContentSearch extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/content-tabs-cards.less": "@import \\"~style/theme.less\\";
 
@@ -692,6 +712,8 @@ export default class ContentTabsCards extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/content-tabs-goods.less": "@import \\"~style/theme.less\\";
 
@@ -742,6 +764,8 @@ export default class ContentTabsGoods extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/content-tabs-service.less": "@import \\"~style/theme.less\\";
 
@@ -792,6 +816,8 @@ export default class ContentTabsService extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/content-tabs.less": "@import \\"~style/theme.less\\";
 
@@ -842,6 +868,8 @@ export default class ContentTabs extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/components/content.less": "@import \\"~style/theme.less\\";
 
@@ -892,6 +920,8 @@ export default class Content extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/constant.ts": "export const BASE = 'CashierMain_';
 
@@ -966,11 +996,14 @@ export enum Command {
     */
   queryResultCard = 'CashierMain_queryResultCard',
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/index.less": "@import \\"~style/theme.less\\";
 
 .cashierMain {
 }
+
 ",
   "src/pages/cashier/main/index.tsx": "import * as React from 'react';
 import {connect} from 'react-redux';
@@ -1038,6 +1071,8 @@ export default class CashierMain extends React.Component<
     );
   }
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/reducers/cart.ts": "import {Command} from '../constant';
 import _ from 'lodash';
@@ -1105,6 +1140,8 @@ export default function cart(
     }
   });
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/reducers/content.ts": "import {Command} from '../constant';
 import _ from 'lodash';
@@ -1223,6 +1260,8 @@ export default function content(
     }
   });
 }
+
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/selectors.ts": "import {createSelector} from 'reselect';
 import {IAllReducerProps} from './types';
@@ -1240,6 +1279,7 @@ export function store2Props({
 }
 
 //衍生数据使用请参考:  https://github.com/reduxjs/reselect
+//create by moon https://github.com/creasy2010/moon
 ",
   "src/pages/cashier/main/types.ts": "import Actions from './actions';
 import {GoodsVO2} from 'api/PetGoodsController';
@@ -1364,6 +1404,8 @@ export interface IContentRequestCard {
   [k: string]: any;
 }
 export type IContentTotalCard = number;
+
+//create by moon https://github.com/creasy2010/moon
 ",
 }
 `;
