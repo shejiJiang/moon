@@ -22,7 +22,7 @@ export default (dispatch:Dispatch) => {
      * 初始化数据
      */
     async init(<%- pageInfo.lifeCycles && pageInfo.lifeCycles.param%>) {
-
+      await actions.loadReducer();
     <% if (pageInfo.lifeCycles && pageInfo.lifeCycles.content) { %>
       <%-pageInfo.lifeCycles.content %>
     <% } %>
@@ -33,6 +33,15 @@ export default (dispatch:Dispatch) => {
               <% }) %>
       }});
     },
+    /**
+     * 重置
+     */
+    async clean() {
+      await actions.unloadReducer();
+      dispatch({type: Command.clean});
+    },
+
+
 
     /**
      * 动态添加注入reducer
@@ -60,12 +69,6 @@ export default (dispatch:Dispatch) => {
          }
     },
 
-    /**
-     * 重置
-     */
-    async clean() {
-      dispatch({type: Command.clean});
-    },
   };
 
   return {actions};

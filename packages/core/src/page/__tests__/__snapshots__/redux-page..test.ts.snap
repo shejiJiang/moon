@@ -249,6 +249,8 @@ export default (dispatch: Dispatch) => {
      * 初始化数据
      */
     async init() {
+      await actions.loadReducer();
+
       dispatch({
         type: Command.init,
         payload: {
@@ -256,6 +258,13 @@ export default (dispatch: Dispatch) => {
           //content  :{},
         },
       });
+    },
+    /**
+     * 重置
+     */
+    async clean() {
+      await actions.unloadReducer();
+      dispatch({type: Command.clean});
     },
 
     /**
@@ -278,13 +287,6 @@ export default (dispatch: Dispatch) => {
       } else {
         console.error('请在redux/store中实现deregister逻辑. ');
       }
-    },
-
-    /**
-     * 重置
-     */
-    async clean() {
-      dispatch({type: Command.clean});
     },
   };
 

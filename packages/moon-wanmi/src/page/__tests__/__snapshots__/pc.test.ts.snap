@@ -224,81 +224,69 @@ function getData(): IAllReducerProps {
 ",
   "src/pages/cashier/main/actions/index.ts": "import Store from '@/redux/store';
 import {Command} from '../constant';
-import {Dispatch} from \\"typings\\";
-import {getActionProxy} from \\"@/redux/action-util\\";
+import {Dispatch} from 'typings';
+import {getActionProxy} from '@/redux/action-util';
 import api from 'api';
-import * as reduxStore from \\"@/redux/store\\";
+import * as reduxStore from '@/redux/store';
 
+import CartAction from './cartAction';
 
-import CartAction from './cartAction'
+import ContentAction from './contentAction';
 
-import ContentAction from './contentAction'
-
-
- 
 import cashierMainCart from '../reducers/cart';
- 
-import cashierMainContent from '../reducers/content';
- 
-export default (dispatch:Dispatch) => {
-  const actions = {
 
-    
-        cartAction :getActionProxy<typeof CartAction>(CartAction)(dispatch),
-    
-        contentAction :getActionProxy<typeof ContentAction>(ContentAction)(dispatch),
-    
+import cashierMainContent from '../reducers/content';
+
+export default (dispatch: Dispatch) => {
+  const actions = {
+    cartAction: getActionProxy<typeof CartAction>(CartAction)(dispatch),
+
+    contentAction: getActionProxy<typeof ContentAction>(ContentAction)(
+      dispatch,
+    ),
+
     /**
      * 初始化数据
      */
     async init() {
+      await actions.loadReducer();
 
-    
-
-      dispatch({type: Command.init,payload:{
-            
-                         //cart  :{},
-              
-                         //content  :{},
-              
-      }});
+      dispatch({
+        type: Command.init,
+        payload: {
+          //cart  :{},
+          //content  :{},
+        },
+      });
+    },
+    /**
+     * 重置
+     */
+    async clean() {
+      await actions.unloadReducer();
+      dispatch({type: Command.clean});
     },
 
     /**
      * 动态添加注入reducer
      */
-    async loadReducer(){
-    reduxStore.registerReducer({
-         
-            cashierMainCart,
-         
-            cashierMainContent,
-         
-         })
+    async loadReducer() {
+      reduxStore.registerReducer({
+        cashierMainCart,
+
+        cashierMainContent,
+      });
     },
 
     /**
      * 卸载reducer
      */
-    async unloadReducer(){
-         if(reduxStore.deregister) {
-         reduxStore.deregister([
-                 
-                      \\"cashierMainCart\\"
-                 
-                      \\"cashierMainContent\\"
-                 
-                 ])
-         } else {
-           console.error('请在redux/store中实现deregister逻辑. ');
-         }
-    },
-
-    /**
-     * 重置
-     */
-    async clean() {
-      dispatch({type: Command.clean});
+    async unloadReducer() {
+      if (reduxStore.deregister) {
+        reduxStore.deregister(['cashierMainCart', 'cashierMainContent']);
+      } else {
+        console.error('请在redux/store中实现deregister逻辑. ');
+      }
     },
   };
 
