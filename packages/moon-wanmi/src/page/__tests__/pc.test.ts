@@ -9,26 +9,23 @@
 
 import {tmpdir} from 'os';
 import {join} from 'path';
-// import {JestUtil} from  'moon-core';
-//
-//
-//
-// describe('pc生成页面测试', () => {
-//   it('pc页面', async () => {
-//
-//     let targetDir = join(tmpdir(), 'moon-temp/');
-//
-//     await generate({
-//       projectPath: targetDir,
-//       //@ts-ignore
-//       pageInfo: cashManPageDef,
-//     });
-//     let content = await readDirFiles(targetDir);
-//     expect(content).toMatchSnapshot();
-//     expect('hello').toEqual("hello");
-//   });
-// });
-//
+import MoonCore from  'moon-core';
+import {genPage} from  '../pc';
+
+describe('pc生成页面测试', () => {
+  it('pc页面', async () => {
+
+    let targetDir = join(tmpdir(), 'moon-temp/');
+    await genPage({
+      projectPath: targetDir,
+      //@ts-ignore
+      pageInfo: cashManPageDef,
+    });
+    let content = await MoonCore.JestUtil.readDirFiles(targetDir);
+    expect(content).toMatchSnapshot();
+    expect('hello').toEqual("hello");
+  });
+});
 
 
 let cashManPageDef = {

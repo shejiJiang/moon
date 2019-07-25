@@ -1,7 +1,7 @@
 {
   "scripts": {
     "compile": "lerna run prepublishOnly",
-    "install": "lerna bootstrap",
+    "install": "lerna bootstrap --registry=https://registry.npm.taobao.org",
     "clean": "lerna clean"
   },
   "packages": [
