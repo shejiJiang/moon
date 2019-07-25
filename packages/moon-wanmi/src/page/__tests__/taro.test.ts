@@ -30,12 +30,14 @@ describe('taro生成页面测试', () => {
       pageInfo: goodList,
     });
 
-    setTimeout(async ()=>{
-      //直接访问有问题..似乎会有 读取不到文件的情况发生;;
-      let content = await MoonCore.JestUtil.readDirFiles(targetDir);
-      expect(content).toMatchSnapshot();
-      await remove(targetDir);
-    },5000);
+    console.log("0000");
+    //直接访问有问题..似乎会有 读取不到文件的情况发生;;
+    let content = await MoonCore.JestUtil.readDirFiles(targetDir);
+    expect(content).toMatchSnapshot();
+    await remove(targetDir);
+
+    // setTimeout(async ()=>{
+    // },2000);
   });
 });
 
