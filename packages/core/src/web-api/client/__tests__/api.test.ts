@@ -7,10 +7,27 @@
  * @Date    2019/7/25
  **/
 
+import {readJSON} from  'fs-extra';
+import {join} from  'path';
+
+import {buildWebApi} from  '..';
+import {IWebApiGroup} from "../../../typings/api";
+import {readDirFiles} from  '../../../util/jest-util';
+
+import {tmpdir} from  'os';
 
 describe('api生成', () => {
   it('简单api生成', async () => {
+    let groupArray:IWebApiGroup[] = await readJSON(join(__dirname,"webapi-group.json"));
 
-    expect('hello').toEqual("hello");
+    let projectPath = join(tmpdir(),"moon-temp",Math.random()+"/");
+
+    await buildWebApi({
+      projectPath:projectPath,
+      webapiGroup:groupArray[0]
+    });
+
+    let content = await readDirFiles(projectPath);
+    expect(content).toMatchSnapshot();
   });
 });
