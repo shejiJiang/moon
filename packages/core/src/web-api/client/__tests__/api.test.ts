@@ -7,7 +7,7 @@
  * @Date    2019/7/25
  **/
 
-import {readJSON} from  'fs-extra';
+import {readJSON,remove} from  'fs-extra';
 import {join} from  'path';
 
 import {buildWebApi} from  '..';
@@ -29,5 +29,6 @@ describe('api生成', () => {
 
     let content = await readDirFiles(projectPath);
     expect(content).toMatchSnapshot();
+    await remove(projectPath);
   });
 });
