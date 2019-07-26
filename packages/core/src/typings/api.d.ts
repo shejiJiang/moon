@@ -34,6 +34,7 @@ export interface IWebApiContext extends IFileSaveOpt {
   projectPath: string;
   //修改返回值的schema信息; 进行调整以生成ts定义; 因为多了api层的修改;
   resSchemaModify?: (resScheme: SchemaProps,apiItem: IWebApiDefinded , context: IWebApiContext) => Promise<SchemaProps>;
+  isNeedMock?:(controller:string,method:string)=>boolean;
   beforeCompile?: (
     apiItem: IWebApiDefinded,
   ) => Promise<IWebApiDefinded> | IWebApiDefinded;

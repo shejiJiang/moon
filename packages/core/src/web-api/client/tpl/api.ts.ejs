@@ -15,12 +15,13 @@ async function <%=Util.getMethodName(apiItem.name)%>(
         <%=paramItem.name%>:<%=Util.genInterfaceName(apiItem.name,paramItem.name,"req")%>,
     <% }) %>
 ):Promise< <%= Util.getTypeNameFromSchema(apiItem.responseSchema) %> > {
-
-  if(__DEV__){
+<% if (Util.isNeedMock(webapiGroup.name,Util.getMethodName(apiItem.name))) { %>
+  if(__DEV__) {
     if(isMock("<%-webapiGroup.name %>","<%=Util.getMethodName(apiItem.name)%>")){
       return Promise.resolve(require('./mock/<%-webapiGroup.name %>.json').<%= Util.getTypeNameFromSchema(apiItem.responseSchema) %>||{});
     }
   }
+ <% } %>
 
   let result = await sdk.<%=Util.getMethodName(apiItem.method)%> <%-apiItem.responseSchema? "<"+Util.getTypeNameFromSchema(apiItem.responseSchema) +">":""%>(
   "<%=apiItem.url%>"

@@ -93,7 +93,7 @@ export async function buildWebApi(context: IWebApiContext) {
     'api.ts.ejs',
     async tplConent => {
       let conent = ejs.render(tplConent, {
-        Util,
+        Util:{...Util,isNeedMock:context.isNeedMock||(() => false) },
         webapiGroup,
         tsDefinded,
       });

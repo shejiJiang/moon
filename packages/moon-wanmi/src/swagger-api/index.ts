@@ -143,9 +143,14 @@ function isContain(db,controller: string, method: string){
         continue;
       }
 
+      function isNeedMock(controller:string,method:string):boolean {
+        return isContain(defaulltMoonConfig.api.mock.mockApi,controller,method);
+      }
+
       await MoonCore.WebApiGen.buildWebApi({
         webapiGroup,
         projectPath: apiDir,
+        isNeedMock,
         beforeCompile: (apiItem: IWebApiDefinded) => {
           return apiItem;
         },
