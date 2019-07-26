@@ -1,0 +1,7957 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`swaggerapi测试 正常生成测试 1`] = `
+Object {
+  "account.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'account';
+
+/**
+ *
+ * 查询所有的（包括删除的）线下结算银行账户
+ *
+ */
+async function findAllOfflineAccountsWithDeleteUsingGET(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findAllOfflineAccountsWithDeleteUsingGET')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get<unknown>(
+    '/account/allOfflineAccounts',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 获取配置银行列表
+ *
+ */
+async function getBaseBankUsingGET(): Promise<BaseBankArray> {
+  if (__DEV__) {
+    if (isMock('account', 'getBaseBankUsingGET')) {
+      return Promise.resolve(
+        require('./mock/account.json').BaseBankArray || {},
+      );
+    }
+  }
+
+  let result = await sdk.get<BaseBankArray>(
+    '/account/base/bank',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 确认订单收款
+ *
+ */
+async function confirmUsingPOST(
+  payOrderOperateRequest: IConfirmUsingPOSTPayOrderOperateRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'confirmUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/account/confirm',
+
+    {
+      ...payOrderOperateRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 导出订单开票
+ *
+ */
+async function exportByParamsUsingGET(
+  encrypted: IExportByParamsUsingGETEncryptedReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'exportByParamsUsingGET')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/account/export/orderInvoices/{encrypted}'.replace(
+      '{encrypted}',
+      encrypted + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 导出退单
+ *
+ */
+async function exportByParamsUsingGET_1(
+  encrypted: IExportByParamsUsingGET_1EncryptedReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'exportByParamsUsingGET_1')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/account/export/params/{encrypted}'.replace('{encrypted}', encrypted + ''),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 导出退单
+ *
+ */
+async function exportByParamsUsingGET_2(
+  encrypted: IExportByParamsUsingGET_2EncryptedReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'exportByParamsUsingGET_2')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/account/export/refund/{encrypted}'.replace('{encrypted}', encrypted + ''),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 删除
+ *
+ */
+async function deleteInvoiceProjectUsingDELETE(
+  invoiceProjectRequest: IDeleteInvoiceProjectUsingDELETEInvoiceProjectRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'deleteInvoiceProjectUsingDELETE')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.deleteF(
+    '/account/invoiceProject',
+
+    {
+      ...invoiceProjectRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据id查询开票项目
+ *
+ */
+async function findInvoiceProjectByIdUsingGET(
+  projectId: IFindInvoiceProjectByIdUsingGETProjectIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findInvoiceProjectByIdUsingGET')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get<unknown>(
+    '/account/invoiceProject/{projectId}'.replace(
+      '{projectId}',
+      projectId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据id查询开票项目
+ *
+ */
+async function findInvoiceProjectByIdUsingHEAD(
+  projectId: IFindInvoiceProjectByIdUsingHEADProjectIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findInvoiceProjectByIdUsingHEAD')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.head<unknown>(
+    '/account/invoiceProject/{projectId}'.replace(
+      '{projectId}',
+      projectId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据id查询开票项目
+ *
+ */
+async function findInvoiceProjectByIdUsingPOST(
+  projectId: IFindInvoiceProjectByIdUsingPOSTProjectIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findInvoiceProjectByIdUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post<unknown>(
+    '/account/invoiceProject/{projectId}'.replace(
+      '{projectId}',
+      projectId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据id查询开票项目
+ *
+ */
+async function findInvoiceProjectByIdUsingPUT(
+  projectId: IFindInvoiceProjectByIdUsingPUTProjectIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findInvoiceProjectByIdUsingPUT')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.put<unknown>(
+    '/account/invoiceProject/{projectId}'.replace(
+      '{projectId}',
+      projectId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据id查询开票项目
+ *
+ */
+async function findInvoiceProjectByIdUsingDELETE(
+  projectId: IFindInvoiceProjectByIdUsingDELETEProjectIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findInvoiceProjectByIdUsingDELETE')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.deleteF<unknown>(
+    '/account/invoiceProject/{projectId}'.replace(
+      '{projectId}',
+      projectId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据id查询开票项目
+ *
+ */
+async function findInvoiceProjectByIdUsingOPTIONS(
+  projectId: IFindInvoiceProjectByIdUsingOPTIONSProjectIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findInvoiceProjectByIdUsingOPTIONS')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.options<unknown>(
+    '/account/invoiceProject/{projectId}'.replace(
+      '{projectId}',
+      projectId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据id查询开票项目
+ *
+ */
+async function findInvoiceProjectByIdUsingPATCH(
+  projectId: IFindInvoiceProjectByIdUsingPATCHProjectIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findInvoiceProjectByIdUsingPATCH')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.patch<unknown>(
+    '/account/invoiceProject/{projectId}'.replace(
+      '{projectId}',
+      projectId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * S2B 平台端-获取供应商结算银行账户
+ *
+ */
+async function listUsingGET_8(
+  companyInfoId: IListUsingGET_8CompanyInfoIdReq,
+): Promise<CompanyAccountVOArray> {
+  if (__DEV__) {
+    if (isMock('account', 'listUsingGET_8')) {
+      return Promise.resolve(
+        require('./mock/account.json').CompanyAccountVOArray || {},
+      );
+    }
+  }
+
+  let result = await sdk.get<CompanyAccountVOArray>(
+    '/account/list/{companyInfoId}'.replace(
+      '{companyInfoId}',
+      companyInfoId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 查询所有的（未被删除的）线下结算银行账户
+ *
+ */
+async function findManagerAccountsUsingGET(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findManagerAccountsUsingGET')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get<unknown>(
+    '/account/managerOfflineAccounts',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 禁用线下结算银行账户
+ *
+ */
+async function disableOfflineByIdUsingPOST(
+  accountId: IDisableOfflineByIdUsingPOSTAccountIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'disableOfflineByIdUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/account/offline/disable/{accountId}'.replace(
+      '{accountId}',
+      accountId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 启用线下结算银行账户
+ *
+ */
+async function enableOfflineByIdUsingPOST(
+  accountId: IEnableOfflineByIdUsingPOSTAccountIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'enableOfflineByIdUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/account/offline/enable/{accountId}'.replace(
+      '{accountId}',
+      accountId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 新增线下结算银行账户
+ *
+ */
+async function addOfflineAccountUsingPOST(
+  saveRequest: IAddOfflineAccountUsingPOSTSaveRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'addOfflineAccountUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/account/offlineAccount',
+
+    {
+      ...saveRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 修改线下结算银行账户
+ *
+ */
+async function modifyLineAccountUsingPUT(
+  saveRequest: IModifyLineAccountUsingPUTSaveRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'modifyLineAccountUsingPUT')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.put(
+    '/account/offlineAccount',
+
+    {
+      ...saveRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据结算银行账户ID查询线下结算银行账户
+ *
+ */
+async function findOfflineAccountByIdUsingGET(
+  accountId: IFindOfflineAccountByIdUsingGETAccountIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findOfflineAccountByIdUsingGET')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get<unknown>(
+    '/account/offlineAccount/{accountId}'.replace(
+      '{accountId}',
+      accountId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 删除线下结算银行账户
+ *
+ */
+async function removeOfflineByIdUsingDELETE(
+  accountId: IRemoveOfflineByIdUsingDELETEAccountIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'removeOfflineByIdUsingDELETE')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.deleteF(
+    '/account/offlineAccount/{accountId}'.replace(
+      '{accountId}',
+      accountId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 查询所有有效的线下结算银行账户
+ *
+ */
+async function findAllOfflineAccountsUsingGET(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findAllOfflineAccountsUsingGET')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get<unknown>(
+    '/account/offlineAccounts',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 查询所有有效的线下结算银行账户
+ *
+ */
+async function findValidOfflineAccountsUsingGET(): Promise<
+  OfflineAccountVOArray
+> {
+  if (__DEV__) {
+    if (isMock('account', 'findValidOfflineAccountsUsingGET')) {
+      return Promise.resolve(
+        require('./mock/account.json').OfflineAccountVOArray || {},
+      );
+    }
+  }
+
+  let result = await sdk.get<OfflineAccountVOArray>(
+    '/account/offlineValidAccounts',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 新增订单开票信息
+ *
+ */
+async function saveUsingPOST(
+  saveRequest: ISaveUsingPOSTSaveRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'saveUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/account/orderInvoice',
+
+    {
+      ...saveRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据开票单号查询
+ *
+ */
+async function findOrderInvoiceViewUsingGET(
+  orderInvoiceId: IFindOrderInvoiceViewUsingGETOrderInvoiceIdReq,
+): Promise<OrderInvoiceViewResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'findOrderInvoiceViewUsingGET')) {
+      return Promise.resolve(
+        require('./mock/account.json').OrderInvoiceViewResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.get<OrderInvoiceViewResponse>(
+    '/account/orderInvoice/{orderInvoiceId}'.replace(
+      '{orderInvoiceId}',
+      orderInvoiceId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 订单发票作废
+ *
+ */
+async function invalidInvoiceUsingPUT(
+  orderInvoiceId: IInvalidInvoiceUsingPUTOrderInvoiceIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'invalidInvoiceUsingPUT')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.put(
+    '/account/orderInvoice/{orderInvoiceId}'.replace(
+      '{orderInvoiceId}',
+      orderInvoiceId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 删除订单开票信息
+ *
+ */
+async function deleteOrderInvoiceUsingDELETE(
+  orderInvoiceId: IDeleteOrderInvoiceUsingDELETEOrderInvoiceIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'deleteOrderInvoiceUsingDELETE')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.deleteF(
+    '/account/orderInvoice/{orderInvoiceId}'.replace(
+      '{orderInvoiceId}',
+      orderInvoiceId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 订单开票详情/新增订单开票时
+ *
+ */
+async function findOrderInvoiceDetailUsingGET(
+  orderNo: IFindOrderInvoiceDetailUsingGETOrderNoReq,
+): Promise<OrderInvoiceDetailResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'findOrderInvoiceDetailUsingGET')) {
+      return Promise.resolve(
+        require('./mock/account.json').OrderInvoiceDetailResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.get<OrderInvoiceDetailResponse>(
+    '/account/orderInvoiceDetail/{orderNo}'.replace('{orderNo}', orderNo + ''),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 订单批量/单个开票
+ *
+ */
+async function updateOrderInvoiceStateUsingPOST(
+  editRequest: IUpdateOrderInvoiceStateUsingPOSTEditRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'updateOrderInvoiceStateUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/account/orderInvoiceState',
+
+    {
+      ...editRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 分页查询订单开票
+ *
+ */
+async function pageUsingPOST_8(
+  queryRequest: IPageUsingPOST_8QueryRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'pageUsingPOST_8')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/account/orderInvoices',
+
+    {
+      ...queryRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 作废订单收款
+ *
+ */
+async function destoryUsingPUT(
+  payOrderOperateRequest: IDestoryUsingPUTPayOrderOperateRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'destoryUsingPUT')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.put(
+    '/account/payOrder/destory',
+
+    {
+      ...payOrderOperateRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 作废订单收款
+ *
+ */
+async function destoryByPayOrderIdUsingPUT(
+  payOrderId: IDestoryByPayOrderIdUsingPUTPayOrderIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'destoryByPayOrderIdUsingPUT')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.put(
+    '/account/payOrder/destory/{payOrderId}'.replace(
+      '{payOrderId}',
+      payOrderId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据订单编号查询收款单
+ *
+ */
+async function findPayOrderByOrderNoUsingGET(
+  orderNo: IFindPayOrderByOrderNoUsingGETOrderNoReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findPayOrderByOrderNoUsingGET')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get<unknown>(
+    '/account/payOrder/{orderNo}'.replace('{orderNo}', orderNo + ''),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 查询订单收款
+ *
+ */
+async function findPayOrderUsingPOST(
+  payOrderRequest: IFindPayOrderUsingPOSTPayOrderRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'findPayOrderUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post<unknown>(
+    '/account/payOrders',
+
+    {
+      ...payOrderRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 新增收款单
+ *
+ */
+async function addReceivableUsingPOST(
+  receivableAddRequest: IAddReceivableUsingPOSTReceivableAddRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'addReceivableUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/account/receivable',
+
+    {
+      ...receivableAddRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 新增退单流水
+ *
+ */
+async function addRefundBillUsingPOST(
+  refundBillRequest: IAddRefundBillUsingPOSTRefundBillRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'addRefundBillUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/account/refundBill',
+
+    {
+      ...refundBillRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 查询订单退款
+ *
+ */
+async function findPayOrderUsingPOST_1(
+  refundOrderRequest: IFindPayOrderUsingPOST_1RefundOrderRequestReq,
+): Promise<RefundOrderPageResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'findPayOrderUsingPOST_1')) {
+      return Promise.resolve(
+        require('./mock/account.json').RefundOrderPageResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.post<RefundOrderPageResponse>(
+    '/account/refundOrders',
+
+    {
+      ...refundOrderRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 销毁
+ *
+ */
+async function destoryUsingGET(
+  refundId: IDestoryUsingGETRefundIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'destoryUsingGET')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/account/refundOrders/destory/{refundId}'.replace(
+      '{refundId}',
+      refundId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 拒绝退款
+ *
+ */
+async function refuseUsingPUT(
+  refuseReasonRequest: IRefuseUsingPUTRefuseReasonRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'refuseUsingPUT')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.put(
+    '/account/refundOrders/refuse',
+
+    {
+      ...refuseReasonRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据退单号查询
+ *
+ */
+async function queryRefundByReturnOrderNoUsingGET(
+  returnOrderNo: IQueryRefundByReturnOrderNoUsingGETReturnOrderNoReq,
+): Promise<RefundOrderResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'queryRefundByReturnOrderNoUsingGET')) {
+      return Promise.resolve(
+        require('./mock/account.json').RefundOrderResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.get<RefundOrderResponse>(
+    '/account/refundOrders/{returnOrderNo}'.replace(
+      '{returnOrderNo}',
+      returnOrderNo + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据退单号查询
+ *
+ */
+async function queryRefundByReturnOrderNoUsingHEAD(
+  returnOrderNo: IQueryRefundByReturnOrderNoUsingHEADReturnOrderNoReq,
+): Promise<RefundOrderResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'queryRefundByReturnOrderNoUsingHEAD')) {
+      return Promise.resolve(
+        require('./mock/account.json').RefundOrderResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.head<RefundOrderResponse>(
+    '/account/refundOrders/{returnOrderNo}'.replace(
+      '{returnOrderNo}',
+      returnOrderNo + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据退单号查询
+ *
+ */
+async function queryRefundByReturnOrderNoUsingPOST(
+  returnOrderNo: IQueryRefundByReturnOrderNoUsingPOSTReturnOrderNoReq,
+): Promise<RefundOrderResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'queryRefundByReturnOrderNoUsingPOST')) {
+      return Promise.resolve(
+        require('./mock/account.json').RefundOrderResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.post<RefundOrderResponse>(
+    '/account/refundOrders/{returnOrderNo}'.replace(
+      '{returnOrderNo}',
+      returnOrderNo + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据退单号查询
+ *
+ */
+async function queryRefundByReturnOrderNoUsingPUT(
+  returnOrderNo: IQueryRefundByReturnOrderNoUsingPUTReturnOrderNoReq,
+): Promise<RefundOrderResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'queryRefundByReturnOrderNoUsingPUT')) {
+      return Promise.resolve(
+        require('./mock/account.json').RefundOrderResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.put<RefundOrderResponse>(
+    '/account/refundOrders/{returnOrderNo}'.replace(
+      '{returnOrderNo}',
+      returnOrderNo + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据退单号查询
+ *
+ */
+async function queryRefundByReturnOrderNoUsingDELETE(
+  returnOrderNo: IQueryRefundByReturnOrderNoUsingDELETEReturnOrderNoReq,
+): Promise<RefundOrderResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'queryRefundByReturnOrderNoUsingDELETE')) {
+      return Promise.resolve(
+        require('./mock/account.json').RefundOrderResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.deleteF<RefundOrderResponse>(
+    '/account/refundOrders/{returnOrderNo}'.replace(
+      '{returnOrderNo}',
+      returnOrderNo + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据退单号查询
+ *
+ */
+async function queryRefundByReturnOrderNoUsingOPTIONS(
+  returnOrderNo: IQueryRefundByReturnOrderNoUsingOPTIONSReturnOrderNoReq,
+): Promise<RefundOrderResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'queryRefundByReturnOrderNoUsingOPTIONS')) {
+      return Promise.resolve(
+        require('./mock/account.json').RefundOrderResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.options<RefundOrderResponse>(
+    '/account/refundOrders/{returnOrderNo}'.replace(
+      '{returnOrderNo}',
+      returnOrderNo + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据退单号查询
+ *
+ */
+async function queryRefundByReturnOrderNoUsingPATCH(
+  returnOrderNo: IQueryRefundByReturnOrderNoUsingPATCHReturnOrderNoReq,
+): Promise<RefundOrderResponse> {
+  if (__DEV__) {
+    if (isMock('account', 'queryRefundByReturnOrderNoUsingPATCH')) {
+      return Promise.resolve(
+        require('./mock/account.json').RefundOrderResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.patch<RefundOrderResponse>(
+    '/account/refundOrders/{returnOrderNo}'.replace(
+      '{returnOrderNo}',
+      returnOrderNo + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 查询所有收款单价格
+ *
+ */
+async function sumPayOrderPriceUsingPOST(
+  payOrderRequest: ISumPayOrderPriceUsingPOSTPayOrderRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'sumPayOrderPriceUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post<unknown>(
+    '/account/sumPayOrderPrice',
+
+    {
+      ...payOrderRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 求和退款金额
+ *
+ */
+async function sumReturnPriceUsingPOST(
+  refundOrderRequest: ISumReturnPriceUsingPOSTRefundOrderRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('account', 'sumReturnPriceUsingPOST')) {
+      return Promise.resolve(require('./mock/account.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post<unknown>(
+    '/account/sumReturnPrice',
+
+    {
+      ...refundOrderRequest,
+    },
+  );
+  return result.data;
+}
+
+export default {
+  findAllOfflineAccountsWithDeleteUsingGET,
+
+  getBaseBankUsingGET,
+
+  confirmUsingPOST,
+
+  exportByParamsUsingGET,
+
+  exportByParamsUsingGET_1,
+
+  exportByParamsUsingGET_2,
+
+  deleteInvoiceProjectUsingDELETE,
+
+  findInvoiceProjectByIdUsingGET,
+
+  findInvoiceProjectByIdUsingHEAD,
+
+  findInvoiceProjectByIdUsingPOST,
+
+  findInvoiceProjectByIdUsingPUT,
+
+  findInvoiceProjectByIdUsingDELETE,
+
+  findInvoiceProjectByIdUsingOPTIONS,
+
+  findInvoiceProjectByIdUsingPATCH,
+
+  listUsingGET_8,
+
+  findManagerAccountsUsingGET,
+
+  disableOfflineByIdUsingPOST,
+
+  enableOfflineByIdUsingPOST,
+
+  addOfflineAccountUsingPOST,
+
+  modifyLineAccountUsingPUT,
+
+  findOfflineAccountByIdUsingGET,
+
+  removeOfflineByIdUsingDELETE,
+
+  findAllOfflineAccountsUsingGET,
+
+  findValidOfflineAccountsUsingGET,
+
+  saveUsingPOST,
+
+  findOrderInvoiceViewUsingGET,
+
+  invalidInvoiceUsingPUT,
+
+  deleteOrderInvoiceUsingDELETE,
+
+  findOrderInvoiceDetailUsingGET,
+
+  updateOrderInvoiceStateUsingPOST,
+
+  pageUsingPOST_8,
+
+  destoryUsingPUT,
+
+  destoryByPayOrderIdUsingPUT,
+
+  findPayOrderByOrderNoUsingGET,
+
+  findPayOrderUsingPOST,
+
+  addReceivableUsingPOST,
+
+  addRefundBillUsingPOST,
+
+  findPayOrderUsingPOST_1,
+
+  destoryUsingGET,
+
+  refuseUsingPUT,
+
+  queryRefundByReturnOrderNoUsingGET,
+
+  queryRefundByReturnOrderNoUsingHEAD,
+
+  queryRefundByReturnOrderNoUsingPOST,
+
+  queryRefundByReturnOrderNoUsingPUT,
+
+  queryRefundByReturnOrderNoUsingDELETE,
+
+  queryRefundByReturnOrderNoUsingOPTIONS,
+
+  queryRefundByReturnOrderNoUsingPATCH,
+
+  sumPayOrderPriceUsingPOST,
+
+  sumReturnPriceUsingPOST,
+};
+
+/**
+ * 内容
+ */
+export type BaseBankArray = BaseBank[];
+/**
+ * 内容
+ */
+export type CompanyAccountVOArray = CompanyAccountVO[];
+/**
+ * 内容
+ */
+export type OfflineAccountVOArray = OfflineAccountVO1[];
+/**
+ * 内容
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"undefined\\".
+ */
+export type Undefined = number;
+/**
+ * 内容
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseBankArray\\".
+ */
+export type BaseBankArray1 = BaseBank2[];
+/**
+ * 加密
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IExportByParamsUsingGETEncryptedReq\\".
+ */
+export type IExportByParamsUsingGETEncryptedReq = string;
+/**
+ * 加密
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IExportByParamsUsingGET_1EncryptedReq\\".
+ */
+export type IExportByParamsUsingGET_1EncryptedReq = string;
+/**
+ * 加密
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IExportByParamsUsingGET_2EncryptedReq\\".
+ */
+export type IExportByParamsUsingGET_2EncryptedReq = string;
+/**
+ * 开票项目ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindInvoiceProjectByIdUsingGETProjectIdReq\\".
+ */
+export type IFindInvoiceProjectByIdUsingGETProjectIdReq = string;
+/**
+ * 开票项目ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindInvoiceProjectByIdUsingHEADProjectIdReq\\".
+ */
+export type IFindInvoiceProjectByIdUsingHEADProjectIdReq = string;
+/**
+ * 开票项目ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindInvoiceProjectByIdUsingPOSTProjectIdReq\\".
+ */
+export type IFindInvoiceProjectByIdUsingPOSTProjectIdReq = string;
+/**
+ * 开票项目ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindInvoiceProjectByIdUsingPUTProjectIdReq\\".
+ */
+export type IFindInvoiceProjectByIdUsingPUTProjectIdReq = string;
+/**
+ * 开票项目ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindInvoiceProjectByIdUsingDELETEProjectIdReq\\".
+ */
+export type IFindInvoiceProjectByIdUsingDELETEProjectIdReq = string;
+/**
+ * 开票项目ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindInvoiceProjectByIdUsingOPTIONSProjectIdReq\\".
+ */
+export type IFindInvoiceProjectByIdUsingOPTIONSProjectIdReq = string;
+/**
+ * 开票项目ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindInvoiceProjectByIdUsingPATCHProjectIdReq\\".
+ */
+export type IFindInvoiceProjectByIdUsingPATCHProjectIdReq = string;
+/**
+ * 供应商的公司id
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IListUsingGET_8CompanyInfoIdReq\\".
+ */
+export type IListUsingGET_8CompanyInfoIdReq = number;
+/**
+ * 内容
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"CompanyAccountVOArray\\".
+ */
+export type CompanyAccountVOArray1 = CompanyAccountVO2[];
+/**
+ * 结算银行账户ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IDisableOfflineByIdUsingPOSTAccountIdReq\\".
+ */
+export type IDisableOfflineByIdUsingPOSTAccountIdReq = number;
+/**
+ * 结算银行账户ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IEnableOfflineByIdUsingPOSTAccountIdReq\\".
+ */
+export type IEnableOfflineByIdUsingPOSTAccountIdReq = number;
+/**
+ * 结算银行账户ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindOfflineAccountByIdUsingGETAccountIdReq\\".
+ */
+export type IFindOfflineAccountByIdUsingGETAccountIdReq = number;
+/**
+ * 结算银行账户ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IRemoveOfflineByIdUsingDELETEAccountIdReq\\".
+ */
+export type IRemoveOfflineByIdUsingDELETEAccountIdReq = number;
+/**
+ * 内容
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OfflineAccountVOArray\\".
+ */
+export type OfflineAccountVOArray1 = OfflineAccountVO2[];
+/**
+ * 订单发票ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindOrderInvoiceViewUsingGETOrderInvoiceIdReq\\".
+ */
+export type IFindOrderInvoiceViewUsingGETOrderInvoiceIdReq = string;
+/**
+ * 订单发票ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IInvalidInvoiceUsingPUTOrderInvoiceIdReq\\".
+ */
+export type IInvalidInvoiceUsingPUTOrderInvoiceIdReq = string;
+/**
+ * 订单发票ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IDeleteOrderInvoiceUsingDELETEOrderInvoiceIdReq\\".
+ */
+export type IDeleteOrderInvoiceUsingDELETEOrderInvoiceIdReq = string;
+/**
+ * 订单编号
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindOrderInvoiceDetailUsingGETOrderNoReq\\".
+ */
+export type IFindOrderInvoiceDetailUsingGETOrderNoReq = string;
+/**
+ * 支付单ID
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IDestoryByPayOrderIdUsingPUTPayOrderIdReq\\".
+ */
+export type IDestoryByPayOrderIdUsingPUTPayOrderIdReq = string;
+/**
+ * 订单编号
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindPayOrderByOrderNoUsingGETOrderNoReq\\".
+ */
+export type IFindPayOrderByOrderNoUsingGETOrderNoReq = string;
+/**
+ * 退款Id
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IDestoryUsingGETRefundIdReq\\".
+ */
+export type IDestoryUsingGETRefundIdReq = string;
+/**
+ * 退单号
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IQueryRefundByReturnOrderNoUsingGETReturnOrderNoReq\\".
+ */
+export type IQueryRefundByReturnOrderNoUsingGETReturnOrderNoReq = string;
+/**
+ * 退单号
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IQueryRefundByReturnOrderNoUsingHEADReturnOrderNoReq\\".
+ */
+export type IQueryRefundByReturnOrderNoUsingHEADReturnOrderNoReq = string;
+/**
+ * 退单号
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IQueryRefundByReturnOrderNoUsingPOSTReturnOrderNoReq\\".
+ */
+export type IQueryRefundByReturnOrderNoUsingPOSTReturnOrderNoReq = string;
+/**
+ * 退单号
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IQueryRefundByReturnOrderNoUsingPUTReturnOrderNoReq\\".
+ */
+export type IQueryRefundByReturnOrderNoUsingPUTReturnOrderNoReq = string;
+/**
+ * 退单号
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IQueryRefundByReturnOrderNoUsingDELETEReturnOrderNoReq\\".
+ */
+export type IQueryRefundByReturnOrderNoUsingDELETEReturnOrderNoReq = string;
+/**
+ * 退单号
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IQueryRefundByReturnOrderNoUsingOPTIONSReturnOrderNoReq\\".
+ */
+export type IQueryRefundByReturnOrderNoUsingOPTIONSReturnOrderNoReq = string;
+/**
+ * 退单号
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IQueryRefundByReturnOrderNoUsingPATCHReturnOrderNoReq\\".
+ */
+export type IQueryRefundByReturnOrderNoUsingPATCHReturnOrderNoReq = string;
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OfflineAccountVO\\".
+ */
+export interface OfflineAccountVO {
+  /**
+   * 线下账户id
+   */
+  accountId?: number;
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行
+   */
+  bankBranch?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 账号状态
+   * * ENABLE: 启用
+   * * DISABLE: 禁用
+   */
+  bankStatus?: '0' | '1';
+  /**
+   * 公司信息id
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标志
+   * * NO: 否
+   * * YES: 是
+   */
+  deleteFlag?: '0' | '1';
+  /**
+   * 删除时间
+   */
+  deleteTime?: string;
+  /**
+   * 是否主账号
+   * * NO: 否
+   * * YES: 是
+   */
+  isDefaultAccount?: '0' | '1';
+  /**
+   * 是否收到平台首次打款
+   * * NO: 否
+   * * YES: 是
+   */
+  isReceived?: '0' | '1';
+  /**
+   * 第三方店铺id
+   */
+  thirdId?: string;
+  /**
+   * 修改时间
+   */
+  update_time?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«List«BaseBank»»\\".
+ */
+export interface BaseResponseListBaseBank {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: BaseBankArray;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+export interface BaseBank {
+  /**
+   * 银行编号
+   */
+  bankCode?: string;
+  /**
+   * 银行名称
+   */
+  bankName?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseBank\\".
+ */
+export interface BaseBank1 {
+  /**
+   * 银行编号
+   */
+  bankCode?: string;
+  /**
+   * 银行名称
+   */
+  bankName?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"TradeConfirmPayOrderRequest\\".
+ */
+export interface TradeConfirmPayOrderRequest {
+  operator?: Operator;
+  /**
+   * 支付单id列表
+   */
+  payOrderIds?: string[];
+  [k: string]: any;
+}
+/**
+ * 操作人
+ */
+export interface Operator {
+  /**
+   * 操作人账号
+   */
+  account?: string;
+  /**
+   * 管理员Id
+   */
+  adminId?: string;
+  /**
+   * 供应商类型
+   * * NO: 否
+   * * YES: 是
+   */
+  companyType?: '0' | '1';
+  /**
+   * 操作所在的Ip地址
+   */
+  ip?: string;
+  /**
+   * 操作人
+   */
+  name?: string;
+  /**
+   * 操作方
+   * * BOSS: BOSS
+   * * CUSTOMER: 商户(小B)
+   * * THIRD: 第三方
+   * * SUPPLIER: 供应商
+   * * PLATFORM: 平台
+   */
+  platform?: 'BOSS' | 'CUSTOMER' | 'THIRD' | 'SUPPLIER' | 'PLATFORM';
+  /**
+   * 店铺id
+   */
+  storeId?: string;
+  /**
+   * 用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"Operator\\".
+ */
+export interface Operator1 {
+  /**
+   * 操作人账号
+   */
+  account?: string;
+  /**
+   * 管理员Id
+   */
+  adminId?: string;
+  /**
+   * 供应商类型
+   * * NO: 否
+   * * YES: 是
+   */
+  companyType?: '0' | '1';
+  /**
+   * 操作所在的Ip地址
+   */
+  ip?: string;
+  /**
+   * 操作人
+   */
+  name?: string;
+  /**
+   * 操作方
+   * * BOSS: BOSS
+   * * CUSTOMER: 商户(小B)
+   * * THIRD: 第三方
+   * * SUPPLIER: 供应商
+   * * PLATFORM: 平台
+   */
+  platform?: 'BOSS' | 'CUSTOMER' | 'THIRD' | 'SUPPLIER' | 'PLATFORM';
+  /**
+   * 店铺id
+   */
+  storeId?: string;
+  /**
+   * 用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse\\".
+ */
+export interface BaseResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: {
+    [k: string]: any;
+  };
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"InvoiceProjectDeleteByIdRequest\\".
+ */
+export interface InvoiceProjectDeleteByIdRequest {
+  /**
+   * 开票项目id
+   */
+  projectId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"InvoiceProjectByIdResponse\\".
+ */
+export interface InvoiceProjectByIdResponse {
+  /**
+   * 公司信息id
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标志
+   * * NO: 否
+   * * YES: 是
+   */
+  delFlag?: '0' | '1';
+  /**
+   * 操作人
+   */
+  operatePerson?: string;
+  /**
+   * 开票项目id
+   */
+  projectId?: string;
+  /**
+   * 开票项目名称
+   */
+  projectName?: string;
+  /**
+   * 更新时间
+   */
+  updateTime?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«List«CompanyAccountVO»»\\".
+ */
+export interface BaseResponseListCompanyAccountVO {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: CompanyAccountVOArray;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+export interface CompanyAccountVO {
+  /**
+   * 供应商收款账户id
+   */
+  accountId?: number;
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行
+   */
+  bankBranch?: string;
+  /**
+   * 银行账号编码
+   */
+  bankCode?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 账号状态
+   * * ENABLE: 启用
+   * * DISABLE: 禁用
+   */
+  bankStatus?: '0' | '1';
+  /**
+   * 公司信息id
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标志
+   * * NO: 否
+   * * YES: 是
+   */
+  deleteFlag?: '0' | '1';
+  /**
+   * 删除时间
+   */
+  deleteTime?: string;
+  /**
+   * 是否主账号
+   * * NO: 否
+   * * YES: 是
+   */
+  isDefaultAccount?: '0' | '1';
+  /**
+   * 是否收到平台首次打款
+   * * NO: 否
+   * * YES: 是
+   */
+  isReceived?: '0' | '1';
+  /**
+   * 打款金额
+   */
+  remitPrice?: number;
+  /**
+   * 第三方店铺id
+   */
+  thirdId?: string;
+  /**
+   * 修改时间
+   */
+  update_time?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"CompanyAccountVO\\".
+ */
+export interface CompanyAccountVO1 {
+  /**
+   * 供应商收款账户id
+   */
+  accountId?: number;
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行
+   */
+  bankBranch?: string;
+  /**
+   * 银行账号编码
+   */
+  bankCode?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 账号状态
+   * * ENABLE: 启用
+   * * DISABLE: 禁用
+   */
+  bankStatus?: '0' | '1';
+  /**
+   * 公司信息id
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标志
+   * * NO: 否
+   * * YES: 是
+   */
+  deleteFlag?: '0' | '1';
+  /**
+   * 删除时间
+   */
+  deleteTime?: string;
+  /**
+   * 是否主账号
+   * * NO: 否
+   * * YES: 是
+   */
+  isDefaultAccount?: '0' | '1';
+  /**
+   * 是否收到平台首次打款
+   * * NO: 否
+   * * YES: 是
+   */
+  isReceived?: '0' | '1';
+  /**
+   * 打款金额
+   */
+  remitPrice?: number;
+  /**
+   * 第三方店铺id
+   */
+  thirdId?: string;
+  /**
+   * 修改时间
+   */
+  update_time?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OfflineAccountAddRequest\\".
+ */
+export interface OfflineAccountAddRequest {
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行信息
+   */
+  bankBranch?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 公司信息ID
+   */
+  companyInfoId?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OfflineAccountModifyRequest\\".
+ */
+export interface OfflineAccountModifyRequest {
+  /**
+   * 账户id
+   */
+  accountId?: number;
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行信息
+   */
+  bankBranch?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 公司信息ID
+   */
+  companyInfoId?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OfflineAccountGetByIdResponse\\".
+ */
+export interface OfflineAccountGetByIdResponse {
+  /**
+   * 线下账户id
+   */
+  accountId?: number;
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行
+   */
+  bankBranch?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 账号状态
+   * * ENABLE: 启用
+   * * DISABLE: 禁用
+   */
+  bankStatus?: '0' | '1';
+  /**
+   * 公司信息id
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标志
+   * * NO: 否
+   * * YES: 是
+   */
+  deleteFlag?: '0' | '1';
+  /**
+   * 删除时间
+   */
+  deleteTime?: string;
+  /**
+   * 是否主账号
+   * * NO: 否
+   * * YES: 是
+   */
+  isDefaultAccount?: '0' | '1';
+  /**
+   * 是否收到平台首次打款
+   * * NO: 否
+   * * YES: 是
+   */
+  isReceived?: '0' | '1';
+  /**
+   * 第三方店铺id
+   */
+  thirdId?: string;
+  /**
+   * 修改时间
+   */
+  update_time?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«List«OfflineAccountVO»»\\".
+ */
+export interface BaseResponseListOfflineAccountVO {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: OfflineAccountVOArray;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+export interface OfflineAccountVO1 {
+  /**
+   * 线下账户id
+   */
+  accountId?: number;
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行
+   */
+  bankBranch?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 账号状态
+   * * ENABLE: 启用
+   * * DISABLE: 禁用
+   */
+  bankStatus?: '0' | '1';
+  /**
+   * 公司信息id
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标志
+   * * NO: 否
+   * * YES: 是
+   */
+  deleteFlag?: '0' | '1';
+  /**
+   * 删除时间
+   */
+  deleteTime?: string;
+  /**
+   * 是否主账号
+   * * NO: 否
+   * * YES: 是
+   */
+  isDefaultAccount?: '0' | '1';
+  /**
+   * 是否收到平台首次打款
+   * * NO: 否
+   * * YES: 是
+   */
+  isReceived?: '0' | '1';
+  /**
+   * 第三方店铺id
+   */
+  thirdId?: string;
+  /**
+   * 修改时间
+   */
+  update_time?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OrderInvoiceSaveRequest\\".
+ */
+export interface OrderInvoiceSaveRequest {
+  /**
+   * 收货地址
+   */
+  address?: string;
+  /**
+   * 订单开票收货地址
+   */
+  addressInfoId?: string;
+  /**
+   * 供应商id
+   */
+  companyInfoId?: number;
+  /**
+   * 收货人
+   */
+  contacts?: string;
+  /**
+   * 用户id
+   */
+  customerId?: string;
+  /**
+   * 发票地址
+   */
+  invoiceAddress?: string;
+  /**
+   * 开票时间
+   */
+  invoiceTime?: string;
+  /**
+   * 发票title
+   */
+  invoiceTitle?: string;
+  /**
+   * 发票类型
+   * * NORMAL: 普通发票
+   * * SPECIAL: 增值税专用发票
+   */
+  invoiceType?: '0' | '1';
+  /**
+   * 订单开票ID
+   */
+  orderInvoiceId?: string;
+  /**
+   * 订单编号
+   */
+  orderNo?: string;
+  /**
+   * 收货人联系号码
+   */
+  phone?: string;
+  /**
+   * 开票项id
+   */
+  projectId?: string;
+  /**
+   * 店铺id
+   */
+  storeId?: number;
+  /**
+   * 纳税人识别号
+   */
+  taxpayerNumber?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«OrderInvoiceViewResponse»\\".
+ */
+export interface BaseResponseOrderInvoiceViewResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: OrderInvoiceViewResponse;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * 内容
+ */
+export interface OrderInvoiceViewResponse {
+  /**
+   * 银行名称
+   */
+  bankName?: string;
+  /**
+   * 银行账户号
+   */
+  bankNo?: string;
+  /**
+   * 用户姓名
+   */
+  customerName?: string;
+  /**
+   * 发票寄送地址
+   */
+  invoiceAddress?: string;
+  /**
+   * 订单开票状态
+   * * WAIT: 待开票
+   * * ALREADY: 已开票
+   */
+  invoiceState?: '0' | '1';
+  /**
+   * 开票时间
+   */
+  invoiceTime?: string;
+  /**
+   * 发票title
+   */
+  invoiceTitle?: string;
+  /**
+   * 发票类型
+   * * NORMAL: 普通发票
+   * * SPECIAL: 增值税专用发票
+   */
+  invoiceType?: '0' | '1';
+  /**
+   * 订单编号
+   */
+  orderNo?: string;
+  /**
+   * 订单金额
+   */
+  orderPrice?: number;
+  /**
+   * 付款状态
+   * * PAYED: 已收款
+   * * NOTPAY: 未收款
+   * * TOCONFIRM: 待确认
+   */
+  payOrderStatus?: '0' | '1' | '2';
+  /**
+   * 开票项目
+   */
+  projectName?: string;
+  /**
+   * 注册地址
+   */
+  registerAddress?: string;
+  /**
+   * 注册电话
+   */
+  registerPhone?: string;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * 纳税识别号
+   */
+  taxNo?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OrderInvoiceViewResponse\\".
+ */
+export interface OrderInvoiceViewResponse1 {
+  /**
+   * 银行名称
+   */
+  bankName?: string;
+  /**
+   * 银行账户号
+   */
+  bankNo?: string;
+  /**
+   * 用户姓名
+   */
+  customerName?: string;
+  /**
+   * 发票寄送地址
+   */
+  invoiceAddress?: string;
+  /**
+   * 订单开票状态
+   * * WAIT: 待开票
+   * * ALREADY: 已开票
+   */
+  invoiceState?: '0' | '1';
+  /**
+   * 开票时间
+   */
+  invoiceTime?: string;
+  /**
+   * 发票title
+   */
+  invoiceTitle?: string;
+  /**
+   * 发票类型
+   * * NORMAL: 普通发票
+   * * SPECIAL: 增值税专用发票
+   */
+  invoiceType?: '0' | '1';
+  /**
+   * 订单编号
+   */
+  orderNo?: string;
+  /**
+   * 订单金额
+   */
+  orderPrice?: number;
+  /**
+   * 付款状态
+   * * PAYED: 已收款
+   * * NOTPAY: 未收款
+   * * TOCONFIRM: 待确认
+   */
+  payOrderStatus?: '0' | '1' | '2';
+  /**
+   * 开票项目
+   */
+  projectName?: string;
+  /**
+   * 注册地址
+   */
+  registerAddress?: string;
+  /**
+   * 注册电话
+   */
+  registerPhone?: string;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * 纳税识别号
+   */
+  taxNo?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«OrderInvoiceDetailResponse»\\".
+ */
+export interface BaseResponseOrderInvoiceDetailResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: OrderInvoiceDetailResponse;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * 内容
+ */
+export interface OrderInvoiceDetailResponse {
+  /**
+   * 开户行
+   */
+  bankName?: string;
+  /**
+   * 银行基本户号
+   */
+  bankNo?: string;
+  /**
+   * 单位地址
+   */
+  companyAddress?: string;
+  /**
+   * 单位全称
+   */
+  companyName?: string;
+  /**
+   * 单位电话
+   */
+  companyPhone?: string;
+  /**
+   * 开票时间
+   */
+  createTime?: string;
+  /**
+   * 会员id
+   */
+  customerId?: string;
+  /**
+   * 增专资质id
+   */
+  customerInvoiceId?: number;
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 发票地址
+   */
+  invoiceAddress?: string;
+  /**
+   * 开票状态
+   * * WAIT: 待开票
+   * * ALREADY: 已开票
+   */
+  invoiceState?: '0' | '1';
+  /**
+   * 发票抬头
+   */
+  invoiceTitle?: string;
+  /**
+   * 发票类型
+   * * NORMAL: 普通发票
+   * * SPECIAL: 增值税专用发票
+   */
+  invoiceType?: '0' | '1';
+  /**
+   * 订单号
+   */
+  orderNo?: string;
+  /**
+   * 订单金额
+   */
+  orderPrice?: number;
+  /**
+   * 付款状态
+   * * NOT_PAID: 0: NOT_PAID 未支付
+   * * UNCONFIRMED: 1: UNCONFIRMED 待确认
+   * * PAID: 2: PAID 已支付
+   */
+  payState?: 'NOT_PAID' | 'UNCONFIRMED' | 'PAID';
+  /**
+   * 开票项目名称
+   */
+  projectName?: string;
+  /**
+   * 纳税人识别号
+   */
+  taxpayerNumber?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OrderInvoiceDetailResponse\\".
+ */
+export interface OrderInvoiceDetailResponse1 {
+  /**
+   * 开户行
+   */
+  bankName?: string;
+  /**
+   * 银行基本户号
+   */
+  bankNo?: string;
+  /**
+   * 单位地址
+   */
+  companyAddress?: string;
+  /**
+   * 单位全称
+   */
+  companyName?: string;
+  /**
+   * 单位电话
+   */
+  companyPhone?: string;
+  /**
+   * 开票时间
+   */
+  createTime?: string;
+  /**
+   * 会员id
+   */
+  customerId?: string;
+  /**
+   * 增专资质id
+   */
+  customerInvoiceId?: number;
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 发票地址
+   */
+  invoiceAddress?: string;
+  /**
+   * 开票状态
+   * * WAIT: 待开票
+   * * ALREADY: 已开票
+   */
+  invoiceState?: '0' | '1';
+  /**
+   * 发票抬头
+   */
+  invoiceTitle?: string;
+  /**
+   * 发票类型
+   * * NORMAL: 普通发票
+   * * SPECIAL: 增值税专用发票
+   */
+  invoiceType?: '0' | '1';
+  /**
+   * 订单号
+   */
+  orderNo?: string;
+  /**
+   * 订单金额
+   */
+  orderPrice?: number;
+  /**
+   * 付款状态
+   * * NOT_PAID: 0: NOT_PAID 未支付
+   * * UNCONFIRMED: 1: UNCONFIRMED 待确认
+   * * PAID: 2: PAID 已支付
+   */
+  payState?: 'NOT_PAID' | 'UNCONFIRMED' | 'PAID';
+  /**
+   * 开票项目名称
+   */
+  projectName?: string;
+  /**
+   * 纳税人识别号
+   */
+  taxpayerNumber?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OrderInvoiceModifyStateRequest\\".
+ */
+export interface OrderInvoiceModifyStateRequest {
+  /**
+   * 开票id列表
+   */
+  orderInvoiceIds?: string[];
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"OrderInvoiceFindAllRequest\\".
+ */
+export interface OrderInvoiceFindAllRequest {
+  /**
+   * 查询退款开始时间，精确到天
+   */
+  beginTime?: string;
+  /**
+   * 供应商id
+   */
+  companyInfoId?: number;
+  /**
+   * 供应商id
+   */
+  companyInfoIds?: number[];
+  /**
+   * 批量会员Ids
+   */
+  customerIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 负责业务员
+   */
+  employeeId?: string;
+  /**
+   * 查询退款结束时间，精确到天
+   */
+  endTime?: string;
+  /**
+   * 开票状态
+   * * WAIT: 待开票
+   * * ALREADY: 已开票
+   */
+  invoiceState?: '0' | '1';
+  /**
+   * 订单开票IDs
+   */
+  orderInvoiceIds?: string[];
+  /**
+   * 订单号
+   */
+  orderNo?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 店铺id
+   */
+  storeId?: number;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  payOrderStatus?: '0' | '1' | '2';
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"FindPayOrderByPayOrderIdsRequest\\".
+ */
+export interface FindPayOrderByPayOrderIdsRequest {
+  /**
+   * 付款单id列表
+   */
+  payOrderIds?: string[];
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"FindPayOrderResponse\\".
+ */
+export interface FindPayOrderResponse {
+  /**
+   * 备注
+   */
+  comment?: string;
+  /**
+   * 供应商编号
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 会员id
+   */
+  customerId?: string;
+  /**
+   * 会员名称
+   */
+  customerName?: string;
+  /**
+   * 附件
+   */
+  encloses?: string;
+  /**
+   * 订单编号
+   */
+  orderCode?: string;
+  /**
+   * 收款在线渠道
+   */
+  payChannel?: string;
+  /**
+   * 收款在线渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 支付单Id
+   */
+  payOrderId?: string;
+  /**
+   * 收款金额
+   */
+  payOrderPrice?: number;
+  /**
+   * 支付单状态
+   * * PAYED: 已收款
+   * * NOTPAY: 未收款
+   * * TOCONFIRM: 待确认
+   */
+  payOrderStatus?: '0' | '1' | '2';
+  /**
+   * 支付类型
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 收款单账号
+   */
+  receivableAccount?: string;
+  /**
+   * 流水号
+   */
+  receivableNo?: string;
+  /**
+   * 收款时间
+   */
+  receiveTime?: string;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * 应付金额
+   */
+  totalPrice?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"FindPayOrdersRequest\\".
+ */
+export interface FindPayOrdersRequest {
+  /**
+   * 收款账号账户名称
+   */
+  account?: string;
+  /**
+   * 收款账户id
+   */
+  accountId?: string;
+  /**
+   * 多个收款账户id
+   */
+  accountIds?: number[];
+  /**
+   * 供应商id
+   */
+  companyInfoId?: string;
+  /**
+   * 多个供应商ids
+   */
+  companyInfoIds?: number[];
+  /**
+   * 多个会员详细ids
+   */
+  customerDetailIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 收款结束时间
+   */
+  endTime?: string;
+  /**
+   * 模糊查询order字段
+   */
+  orderCode?: string;
+  /**
+   * 订单号
+   */
+  orderNo?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 收款流水号
+   */
+  payBillNo?: string;
+  /**
+   * 在支付渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 收款单主键
+   */
+  payOrderIds?: string[];
+  /**
+   * 支付状态
+   * * PAYED: 已收款
+   * * NOTPAY: 未收款
+   * * TOCONFIRM: 待确认
+   */
+  payOrderStatus?: '0' | '1' | '2';
+  /**
+   * 支付方式
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 是否根据收款时间排序
+   */
+  sortByReceiveTime?: boolean;
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 收款开始时间
+   */
+  startTime?: string;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"FindPayOrdersResponse\\".
+ */
+export interface FindPayOrdersResponse {
+  /**
+   * 当前页
+   */
+  currentPage?: number;
+  /**
+   * 每页记录数
+   */
+  pageSize?: number;
+  /**
+   * 支付单列表
+   */
+  payOrderResponses?: PayOrderResponseVO[];
+  /**
+   * 总数
+   */
+  total?: number;
+  [k: string]: any;
+}
+export interface PayOrderResponseVO {
+  /**
+   * 备注
+   */
+  comment?: string;
+  /**
+   * 供应商编号
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 会员id
+   */
+  customerId?: string;
+  /**
+   * 会员名称
+   */
+  customerName?: string;
+  /**
+   * 附件
+   */
+  encloses?: string;
+  /**
+   * 订单编号
+   */
+  orderCode?: string;
+  /**
+   * 收款在线渠道
+   */
+  payChannel?: string;
+  /**
+   * 收款在线渠道
+   */
+  payChannelId?: number;
+  /**
+   * 支付单Id
+   */
+  payOrderId?: string;
+  /**
+   * 收款金额
+   */
+  payOrderPrice?: number;
+  /**
+   * 付款状态
+   * * PAYED: 已收款
+   * * NOTPAY: 未收款
+   * * TOCONFIRM: 待确认
+   */
+  payOrderStatus?: '0' | '1' | '2';
+  /**
+   * 支付类型
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 收款单账号
+   */
+  receivableAccount?: string;
+  /**
+   * 流水号
+   */
+  receivableNo?: string;
+  /**
+   * 收款时间
+   */
+  receiveTime?: string;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * 应付金额
+   */
+  totalPrice?: number;
+  tradeState?: TradeStateVO;
+  [k: string]: any;
+}
+/**
+ * 订单状态
+ */
+export interface TradeStateVO {
+  /**
+   * 审核状态
+   * * NON_CHECKED: 0: 未审核
+   * * CHECKED: 1: 已审核
+   * * REJECTED: 2: 已打回
+   */
+  auditState?: 'NON_CHECKED' | 'CHECKED' | 'REJECTED';
+  /**
+   * 自动确认收货时间
+   */
+  autoConfirmTime?: string;
+  /**
+   * 开始时间
+   */
+  createTime?: string;
+  /**
+   * 发货状态
+   * * NOT_YET_SHIPPED: 0: 未发货
+   * * SHIPPED: 1: 已发货
+   * * PART_SHIPPED: 2: 部分发货
+   * * VOID: 3: 作废
+   */
+  deliverStatus?: 'NOT_YET_SHIPPED' | 'SHIPPED' | 'PART_SHIPPED' | 'VOID';
+  /**
+   * 发货时间
+   */
+  deliverTime?: string;
+  /**
+   * 结束时间
+   */
+  endTime?: string;
+  /**
+   * 流程状态
+   * * INIT: 0: INIT 创建订单
+   * * REMEDY: 1: REMEDY 修改订单
+   * * REFUND: 2: REFUND 已退款
+   * * AUDIT: 3: AUDIT 已审核
+   * * DELIVERED_PART: 4: DELIVERED_PART 部分发货
+   * * DELIVERED: 5: DELIVERED 已发货
+   * * CONFIRMED: 6: CONFIRMED 已确认
+   * * COMPLETED: 7: COMPLETED 已完成
+   * * VOID: 8: VOID 已作废
+   */
+  flowState?:
+    | 'INIT'
+    | 'REMEDY'
+    | 'REFUND'
+    | 'AUDIT'
+    | 'DELIVERED_PART'
+    | 'DELIVERED'
+    | 'CONFIRMED'
+    | 'COMPLETED'
+    | 'VOID';
+  /**
+   * 修改时间
+   */
+  modifyTime?: string;
+  /**
+   * 作废原因
+   */
+  obsoleteReason?: string;
+  /**
+   * 支付状态
+   * * NOT_PAID: 0: NOT_PAID 未支付
+   * * UNCONFIRMED: 1: UNCONFIRMED 待确认
+   * * PAID: 2: PAID 已支付
+   */
+  payState?: 'NOT_PAID' | 'UNCONFIRMED' | 'PAID';
+  /**
+   * 付款时间
+   */
+  payTime?: string;
+  /**
+   * 进入支付页面的时间
+   */
+  startPayTime?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"PayOrderResponseVO\\".
+ */
+export interface PayOrderResponseVO1 {
+  /**
+   * 备注
+   */
+  comment?: string;
+  /**
+   * 供应商编号
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 会员id
+   */
+  customerId?: string;
+  /**
+   * 会员名称
+   */
+  customerName?: string;
+  /**
+   * 附件
+   */
+  encloses?: string;
+  /**
+   * 订单编号
+   */
+  orderCode?: string;
+  /**
+   * 收款在线渠道
+   */
+  payChannel?: string;
+  /**
+   * 收款在线渠道
+   */
+  payChannelId?: number;
+  /**
+   * 支付单Id
+   */
+  payOrderId?: string;
+  /**
+   * 收款金额
+   */
+  payOrderPrice?: number;
+  /**
+   * 付款状态
+   * * PAYED: 已收款
+   * * NOTPAY: 未收款
+   * * TOCONFIRM: 待确认
+   */
+  payOrderStatus?: '0' | '1' | '2';
+  /**
+   * 支付类型
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 收款单账号
+   */
+  receivableAccount?: string;
+  /**
+   * 流水号
+   */
+  receivableNo?: string;
+  /**
+   * 收款时间
+   */
+  receiveTime?: string;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * 应付金额
+   */
+  totalPrice?: number;
+  tradeState?: TradeStateVO;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"TradeStateVO\\".
+ */
+export interface TradeStateVO1 {
+  /**
+   * 审核状态
+   * * NON_CHECKED: 0: 未审核
+   * * CHECKED: 1: 已审核
+   * * REJECTED: 2: 已打回
+   */
+  auditState?: 'NON_CHECKED' | 'CHECKED' | 'REJECTED';
+  /**
+   * 自动确认收货时间
+   */
+  autoConfirmTime?: string;
+  /**
+   * 开始时间
+   */
+  createTime?: string;
+  /**
+   * 发货状态
+   * * NOT_YET_SHIPPED: 0: 未发货
+   * * SHIPPED: 1: 已发货
+   * * PART_SHIPPED: 2: 部分发货
+   * * VOID: 3: 作废
+   */
+  deliverStatus?: 'NOT_YET_SHIPPED' | 'SHIPPED' | 'PART_SHIPPED' | 'VOID';
+  /**
+   * 发货时间
+   */
+  deliverTime?: string;
+  /**
+   * 结束时间
+   */
+  endTime?: string;
+  /**
+   * 流程状态
+   * * INIT: 0: INIT 创建订单
+   * * REMEDY: 1: REMEDY 修改订单
+   * * REFUND: 2: REFUND 已退款
+   * * AUDIT: 3: AUDIT 已审核
+   * * DELIVERED_PART: 4: DELIVERED_PART 部分发货
+   * * DELIVERED: 5: DELIVERED 已发货
+   * * CONFIRMED: 6: CONFIRMED 已确认
+   * * COMPLETED: 7: COMPLETED 已完成
+   * * VOID: 8: VOID 已作废
+   */
+  flowState?:
+    | 'INIT'
+    | 'REMEDY'
+    | 'REFUND'
+    | 'AUDIT'
+    | 'DELIVERED_PART'
+    | 'DELIVERED'
+    | 'CONFIRMED'
+    | 'COMPLETED'
+    | 'VOID';
+  /**
+   * 修改时间
+   */
+  modifyTime?: string;
+  /**
+   * 作废原因
+   */
+  obsoleteReason?: string;
+  /**
+   * 支付状态
+   * * NOT_PAID: 0: NOT_PAID 未支付
+   * * UNCONFIRMED: 1: UNCONFIRMED 待确认
+   * * PAID: 2: PAID 已支付
+   */
+  payState?: 'NOT_PAID' | 'UNCONFIRMED' | 'PAID';
+  /**
+   * 付款时间
+   */
+  payTime?: string;
+  /**
+   * 进入支付页面的时间
+   */
+  startPayTime?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ReceivableAddDTO\\".
+ */
+export interface ReceivableAddDTO {
+  /**
+   * 收款账号
+   */
+  accountId?: number;
+  /**
+   * 评价
+   */
+  comment?: string;
+  /**
+   * 收款单时间
+   */
+  createTime: string;
+  /**
+   * 附件
+   */
+  encloses?: string;
+  /**
+   * 线上支付渠道描述，在线支付必传
+   */
+  payChannel?: string;
+  /**
+   * 线上支付渠道id，在线支付必传
+   */
+  payChannelId?: number;
+  /**
+   * 支付单id
+   */
+  payOrderId: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"RefundBillAddRequest\\".
+ */
+export interface RefundBillAddRequest {
+  /**
+   * 实付金额
+   */
+  actualReturnPrice?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 线下账户
+   */
+  offlineAccountId?: number;
+  operator?: Operator2;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 退款评论
+   */
+  refundComment?: string;
+  /**
+   * 退款单外键
+   */
+  refundId?: string;
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * 操作人
+ */
+export interface Operator2 {
+  /**
+   * 操作人账号
+   */
+  account?: string;
+  /**
+   * 管理员Id
+   */
+  adminId?: string;
+  /**
+   * 供应商类型
+   * * NO: 否
+   * * YES: 是
+   */
+  companyType?: '0' | '1';
+  /**
+   * 操作所在的Ip地址
+   */
+  ip?: string;
+  /**
+   * 操作人
+   */
+  name?: string;
+  /**
+   * 操作方
+   * * BOSS: BOSS
+   * * CUSTOMER: 商户(小B)
+   * * THIRD: 第三方
+   * * SUPPLIER: 供应商
+   * * PLATFORM: 平台
+   */
+  platform?: 'BOSS' | 'CUSTOMER' | 'THIRD' | 'SUPPLIER' | 'PLATFORM';
+  /**
+   * 店铺id
+   */
+  storeId?: string;
+  /**
+   * 用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"RefundOrderPageRequest\\".
+ */
+export interface RefundOrderPageRequest {
+  /**
+   * 账号id
+   */
+  accountId?: string;
+  /**
+   * 查询退款开始时间，精确到天
+   */
+  beginTime?: string;
+  /**
+   * 多个供应商ids
+   */
+  companyInfoIds?: number[];
+  /**
+   * 多个会员详细ids
+   */
+  customerDetailIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 查询退款结束时间，精确到天
+   */
+  endTime?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 支付渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 支付方式
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 收款流水号
+   */
+  refundBillCode?: string;
+  /**
+   * 退款单主键
+   */
+  refundIds?: string[];
+  /**
+   * 退款单状态
+   * * TODO: 待退款
+   * * REFUSE: 拒绝退款
+   * * FINISH: 已退款
+   * * APPLY: 供应商申请退款(待平台退款)
+   */
+  refundStatus?: '0' | '1' | '2' | '3';
+  /**
+   * 退单编号
+   */
+  returnOrderCode?: string;
+  /**
+   * 退单编号列表
+   */
+  returnOrderCodes?: string[];
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 供应商编码
+   */
+  supplierId?: number;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«RefundOrderPageResponse»\\".
+ */
+export interface BaseResponseRefundOrderPageResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: RefundOrderPageResponse;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * 内容
+ */
+export interface RefundOrderPageResponse {
+  /**
+   * 查询到的数据
+   */
+  data?: RefundOrderResponse[];
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页展示多少条
+   */
+  pageSize?: number;
+  /**
+   * 总条数
+   */
+  total?: number;
+  [k: string]: any;
+}
+export interface RefundOrderResponse {
+  /**
+   * 实退金额
+   */
+  actualReturnPrice?: number;
+  /**
+   * 备注
+   */
+  comment?: string;
+  /**
+   * 退单下单时间
+   */
+  createTime?: string;
+  /**
+   * 客户账号
+   */
+  customerAccountName?: string;
+  /**
+   * 客户id
+   */
+  customerId?: string;
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 线下平台账户
+   */
+  offlineAccountId?: number;
+  /**
+   * 收款在线渠道
+   */
+  payChannel?: string;
+  /**
+   * 收款在线渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 支付类型
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 退款流水号
+   */
+  refundBillCode?: string;
+  /**
+   * 退款时间
+   */
+  refundBillTime?: string;
+  /**
+   * 退款单id
+   */
+  refundId?: string;
+  /**
+   * 退款单状态
+   * * TODO: 待退款
+   * * REFUSE: 拒绝退款
+   * * FINISH: 已退款
+   * * APPLY: 供应商申请退款(待平台退款)
+   */
+  refundStatus?: '0' | '1' | '2' | '3';
+  /**
+   * 拒绝原因
+   */
+  refuseReason?: string;
+  /**
+   * 退款账户
+   */
+  returnAccount?: number;
+  /**
+   * 退款账户
+   */
+  returnAccountName?: string;
+  /**
+   * 退单编号
+   */
+  returnOrderCode?: string;
+  /**
+   * 应退金额
+   */
+  returnPrice?: number;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"RefundOrderPageResponse\\".
+ */
+export interface RefundOrderPageResponse1 {
+  /**
+   * 查询到的数据
+   */
+  data?: RefundOrderResponse[];
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页展示多少条
+   */
+  pageSize?: number;
+  /**
+   * 总条数
+   */
+  total?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"RefundOrderResponse\\".
+ */
+export interface RefundOrderResponse1 {
+  /**
+   * 实退金额
+   */
+  actualReturnPrice?: number;
+  /**
+   * 备注
+   */
+  comment?: string;
+  /**
+   * 退单下单时间
+   */
+  createTime?: string;
+  /**
+   * 客户账号
+   */
+  customerAccountName?: string;
+  /**
+   * 客户id
+   */
+  customerId?: string;
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 线下平台账户
+   */
+  offlineAccountId?: number;
+  /**
+   * 收款在线渠道
+   */
+  payChannel?: string;
+  /**
+   * 收款在线渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 支付类型
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 退款流水号
+   */
+  refundBillCode?: string;
+  /**
+   * 退款时间
+   */
+  refundBillTime?: string;
+  /**
+   * 退款单id
+   */
+  refundId?: string;
+  /**
+   * 退款单状态
+   * * TODO: 待退款
+   * * REFUSE: 拒绝退款
+   * * FINISH: 已退款
+   * * APPLY: 供应商申请退款(待平台退款)
+   */
+  refundStatus?: '0' | '1' | '2' | '3';
+  /**
+   * 拒绝原因
+   */
+  refuseReason?: string;
+  /**
+   * 退款账户
+   */
+  returnAccount?: number;
+  /**
+   * 退款账户
+   */
+  returnAccountName?: string;
+  /**
+   * 退单编号
+   */
+  returnOrderCode?: string;
+  /**
+   * 应退金额
+   */
+  returnPrice?: number;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"RefuseReasonRequest\\".
+ */
+export interface RefuseReasonRequest {
+  /**
+   * 退款单主键
+   */
+  refundId?: string;
+  /**
+   * 拒绝原因
+   */
+  refuseReason?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«RefundOrderResponse»\\".
+ */
+export interface BaseResponseRefundOrderResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: RefundOrderResponse2;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * 内容
+ */
+export interface RefundOrderResponse2 {
+  /**
+   * 实退金额
+   */
+  actualReturnPrice?: number;
+  /**
+   * 备注
+   */
+  comment?: string;
+  /**
+   * 退单下单时间
+   */
+  createTime?: string;
+  /**
+   * 客户账号
+   */
+  customerAccountName?: string;
+  /**
+   * 客户id
+   */
+  customerId?: string;
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 线下平台账户
+   */
+  offlineAccountId?: number;
+  /**
+   * 收款在线渠道
+   */
+  payChannel?: string;
+  /**
+   * 收款在线渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 支付类型
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 退款流水号
+   */
+  refundBillCode?: string;
+  /**
+   * 退款时间
+   */
+  refundBillTime?: string;
+  /**
+   * 退款单id
+   */
+  refundId?: string;
+  /**
+   * 退款单状态
+   * * TODO: 待退款
+   * * REFUSE: 拒绝退款
+   * * FINISH: 已退款
+   * * APPLY: 供应商申请退款(待平台退款)
+   */
+  refundStatus?: '0' | '1' | '2' | '3';
+  /**
+   * 拒绝原因
+   */
+  refuseReason?: string;
+  /**
+   * 退款账户
+   */
+  returnAccount?: number;
+  /**
+   * 退款账户
+   */
+  returnAccountName?: string;
+  /**
+   * 退单编号
+   */
+  returnOrderCode?: string;
+  /**
+   * 应退金额
+   */
+  returnPrice?: number;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"SumPayOrderPriceRequest\\".
+ */
+export interface SumPayOrderPriceRequest {
+  /**
+   * 收款账号账户名称
+   */
+  account?: string;
+  /**
+   * 收款账户id
+   */
+  accountId?: string;
+  /**
+   * 多个收款账户id
+   */
+  accountIds?: number[];
+  /**
+   * 供应商id
+   */
+  companyInfoId?: string;
+  /**
+   * 多个供应商ids
+   */
+  companyInfoIds?: number[];
+  /**
+   * 多个会员详细ids
+   */
+  customerDetailIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 收款结束时间
+   */
+  endTime?: string;
+  /**
+   * 模糊查询order字段
+   */
+  orderCode?: string;
+  /**
+   * 订单号
+   */
+  orderNo?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 收款流水号
+   */
+  payBillNo?: string;
+  /**
+   * 在支付渠道
+   */
+  payChannelId?: number;
+  /**
+   * 收款单主键
+   */
+  payOrderIds?: string[];
+  /**
+   * 支付状态
+   * * PAYED: 已收款
+   * * NOTPAY: 未收款
+   * * TOCONFIRM: 待确认
+   */
+  payOrderStatus?: '0' | '1' | '2';
+  /**
+   * 支付方式
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 是否根据收款时间排序
+   */
+  sortByReceiveTime?: boolean;
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 收款开始时间
+   */
+  startTime?: string;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«bigdecimal»\\".
+ */
+export interface BaseResponseBigdecimal {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: number;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"RefundOrderRequest\\".
+ */
+export interface RefundOrderRequest {
+  /**
+   * 账号id
+   */
+  accountId?: string;
+  /**
+   * 查询退款开始时间，精确到天
+   */
+  beginTime?: string;
+  /**
+   * 多个供应商ids
+   */
+  companyInfoIds?: number[];
+  /**
+   * 多个会员详细ids
+   */
+  customerDetailIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 查询退款结束时间，精确到天
+   */
+  endTime?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 支付渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 支付方式
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 收款流水号
+   */
+  refundBillCode?: string;
+  /**
+   * 退款单主键
+   */
+  refundIds?: string[];
+  refundStatus?: '0' | '1' | '2' | '3';
+  /**
+   * 退单编号
+   */
+  returnOrderCode?: string;
+  /**
+   * 退单编号列表
+   */
+  returnOrderCodes?: string[];
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 供应商编码
+   */
+  supplierId?: number;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+export interface BaseBank2 {
+  /**
+   * 银行编号
+   */
+  bankCode?: string;
+  /**
+   * 银行名称
+   */
+  bankName?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IConfirmUsingPOSTPayOrderOperateRequestReq\\".
+ */
+export interface IConfirmUsingPOSTPayOrderOperateRequestReq {
+  operator?: Operator;
+  /**
+   * 支付单id列表
+   */
+  payOrderIds?: string[];
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IDeleteInvoiceProjectUsingDELETEInvoiceProjectRequestReq\\".
+ */
+export interface IDeleteInvoiceProjectUsingDELETEInvoiceProjectRequestReq {
+  /**
+   * 开票项目id
+   */
+  projectId?: string;
+  [k: string]: any;
+}
+export interface CompanyAccountVO2 {
+  /**
+   * 供应商收款账户id
+   */
+  accountId?: number;
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行
+   */
+  bankBranch?: string;
+  /**
+   * 银行账号编码
+   */
+  bankCode?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 账号状态
+   * * ENABLE: 启用
+   * * DISABLE: 禁用
+   */
+  bankStatus?: '0' | '1';
+  /**
+   * 公司信息id
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标志
+   * * NO: 否
+   * * YES: 是
+   */
+  deleteFlag?: '0' | '1';
+  /**
+   * 删除时间
+   */
+  deleteTime?: string;
+  /**
+   * 是否主账号
+   * * NO: 否
+   * * YES: 是
+   */
+  isDefaultAccount?: '0' | '1';
+  /**
+   * 是否收到平台首次打款
+   * * NO: 否
+   * * YES: 是
+   */
+  isReceived?: '0' | '1';
+  /**
+   * 打款金额
+   */
+  remitPrice?: number;
+  /**
+   * 第三方店铺id
+   */
+  thirdId?: string;
+  /**
+   * 修改时间
+   */
+  update_time?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IAddOfflineAccountUsingPOSTSaveRequestReq\\".
+ */
+export interface IAddOfflineAccountUsingPOSTSaveRequestReq {
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行信息
+   */
+  bankBranch?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 公司信息ID
+   */
+  companyInfoId?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IModifyLineAccountUsingPUTSaveRequestReq\\".
+ */
+export interface IModifyLineAccountUsingPUTSaveRequestReq {
+  /**
+   * 账户id
+   */
+  accountId?: number;
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行信息
+   */
+  bankBranch?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 公司信息ID
+   */
+  companyInfoId?: number;
+  [k: string]: any;
+}
+export interface OfflineAccountVO2 {
+  /**
+   * 线下账户id
+   */
+  accountId?: number;
+  /**
+   * 账户名称
+   */
+  accountName?: string;
+  /**
+   * 支行
+   */
+  bankBranch?: string;
+  /**
+   * 开户银行
+   */
+  bankName?: string;
+  /**
+   * 账号
+   */
+  bankNo?: string;
+  /**
+   * 账号状态
+   * * ENABLE: 启用
+   * * DISABLE: 禁用
+   */
+  bankStatus?: '0' | '1';
+  /**
+   * 公司信息id
+   */
+  companyInfoId?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标志
+   * * NO: 否
+   * * YES: 是
+   */
+  deleteFlag?: '0' | '1';
+  /**
+   * 删除时间
+   */
+  deleteTime?: string;
+  /**
+   * 是否主账号
+   * * NO: 否
+   * * YES: 是
+   */
+  isDefaultAccount?: '0' | '1';
+  /**
+   * 是否收到平台首次打款
+   * * NO: 否
+   * * YES: 是
+   */
+  isReceived?: '0' | '1';
+  /**
+   * 第三方店铺id
+   */
+  thirdId?: string;
+  /**
+   * 修改时间
+   */
+  update_time?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISaveUsingPOSTSaveRequestReq\\".
+ */
+export interface ISaveUsingPOSTSaveRequestReq {
+  /**
+   * 收货地址
+   */
+  address?: string;
+  /**
+   * 订单开票收货地址
+   */
+  addressInfoId?: string;
+  /**
+   * 供应商id
+   */
+  companyInfoId?: number;
+  /**
+   * 收货人
+   */
+  contacts?: string;
+  /**
+   * 用户id
+   */
+  customerId?: string;
+  /**
+   * 发票地址
+   */
+  invoiceAddress?: string;
+  /**
+   * 开票时间
+   */
+  invoiceTime?: string;
+  /**
+   * 发票title
+   */
+  invoiceTitle?: string;
+  /**
+   * 发票类型
+   * * NORMAL: 普通发票
+   * * SPECIAL: 增值税专用发票
+   */
+  invoiceType?: '0' | '1';
+  /**
+   * 订单开票ID
+   */
+  orderInvoiceId?: string;
+  /**
+   * 订单编号
+   */
+  orderNo?: string;
+  /**
+   * 收货人联系号码
+   */
+  phone?: string;
+  /**
+   * 开票项id
+   */
+  projectId?: string;
+  /**
+   * 店铺id
+   */
+  storeId?: number;
+  /**
+   * 纳税人识别号
+   */
+  taxpayerNumber?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IUpdateOrderInvoiceStateUsingPOSTEditRequestReq\\".
+ */
+export interface IUpdateOrderInvoiceStateUsingPOSTEditRequestReq {
+  /**
+   * 开票id列表
+   */
+  orderInvoiceIds?: string[];
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IPageUsingPOST_8QueryRequestReq\\".
+ */
+export interface IPageUsingPOST_8QueryRequestReq {
+  /**
+   * 查询退款开始时间，精确到天
+   */
+  beginTime?: string;
+  /**
+   * 供应商id
+   */
+  companyInfoId?: number;
+  /**
+   * 供应商id
+   */
+  companyInfoIds?: number[];
+  /**
+   * 批量会员Ids
+   */
+  customerIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 负责业务员
+   */
+  employeeId?: string;
+  /**
+   * 查询退款结束时间，精确到天
+   */
+  endTime?: string;
+  /**
+   * 开票状态
+   * * WAIT: 待开票
+   * * ALREADY: 已开票
+   */
+  invoiceState?: '0' | '1';
+  /**
+   * 订单开票IDs
+   */
+  orderInvoiceIds?: string[];
+  /**
+   * 订单号
+   */
+  orderNo?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 店铺id
+   */
+  storeId?: number;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  payOrderStatus?: '0' | '1' | '2';
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IDestoryUsingPUTPayOrderOperateRequestReq\\".
+ */
+export interface IDestoryUsingPUTPayOrderOperateRequestReq {
+  /**
+   * 付款单id列表
+   */
+  payOrderIds?: string[];
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindPayOrderUsingPOSTPayOrderRequestReq\\".
+ */
+export interface IFindPayOrderUsingPOSTPayOrderRequestReq {
+  /**
+   * 收款账号账户名称
+   */
+  account?: string;
+  /**
+   * 收款账户id
+   */
+  accountId?: string;
+  /**
+   * 多个收款账户id
+   */
+  accountIds?: number[];
+  /**
+   * 供应商id
+   */
+  companyInfoId?: string;
+  /**
+   * 多个供应商ids
+   */
+  companyInfoIds?: number[];
+  /**
+   * 多个会员详细ids
+   */
+  customerDetailIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 收款结束时间
+   */
+  endTime?: string;
+  /**
+   * 模糊查询order字段
+   */
+  orderCode?: string;
+  /**
+   * 订单号
+   */
+  orderNo?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 收款流水号
+   */
+  payBillNo?: string;
+  /**
+   * 在支付渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 收款单主键
+   */
+  payOrderIds?: string[];
+  /**
+   * 支付状态
+   * * PAYED: 已收款
+   * * NOTPAY: 未收款
+   * * TOCONFIRM: 待确认
+   */
+  payOrderStatus?: '0' | '1' | '2';
+  /**
+   * 支付方式
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 是否根据收款时间排序
+   */
+  sortByReceiveTime?: boolean;
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 收款开始时间
+   */
+  startTime?: string;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IAddReceivableUsingPOSTReceivableAddRequestReq\\".
+ */
+export interface IAddReceivableUsingPOSTReceivableAddRequestReq {
+  /**
+   * 收款账号
+   */
+  accountId?: number;
+  /**
+   * 评价
+   */
+  comment?: string;
+  /**
+   * 收款单时间
+   */
+  createTime: string;
+  /**
+   * 附件
+   */
+  encloses?: string;
+  /**
+   * 线上支付渠道描述，在线支付必传
+   */
+  payChannel?: string;
+  /**
+   * 线上支付渠道id，在线支付必传
+   */
+  payChannelId?: number;
+  /**
+   * 支付单id
+   */
+  payOrderId: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IAddRefundBillUsingPOSTRefundBillRequestReq\\".
+ */
+export interface IAddRefundBillUsingPOSTRefundBillRequestReq {
+  /**
+   * 实付金额
+   */
+  actualReturnPrice?: number;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 线下账户
+   */
+  offlineAccountId?: number;
+  operator?: Operator2;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 退款评论
+   */
+  refundComment?: string;
+  /**
+   * 退款单外键
+   */
+  refundId?: string;
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IFindPayOrderUsingPOST_1RefundOrderRequestReq\\".
+ */
+export interface IFindPayOrderUsingPOST_1RefundOrderRequestReq {
+  /**
+   * 账号id
+   */
+  accountId?: string;
+  /**
+   * 查询退款开始时间，精确到天
+   */
+  beginTime?: string;
+  /**
+   * 多个供应商ids
+   */
+  companyInfoIds?: number[];
+  /**
+   * 多个会员详细ids
+   */
+  customerDetailIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 查询退款结束时间，精确到天
+   */
+  endTime?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 支付渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 支付方式
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 收款流水号
+   */
+  refundBillCode?: string;
+  /**
+   * 退款单主键
+   */
+  refundIds?: string[];
+  /**
+   * 退款单状态
+   * * TODO: 待退款
+   * * REFUSE: 拒绝退款
+   * * FINISH: 已退款
+   * * APPLY: 供应商申请退款(待平台退款)
+   */
+  refundStatus?: '0' | '1' | '2' | '3';
+  /**
+   * 退单编号
+   */
+  returnOrderCode?: string;
+  /**
+   * 退单编号列表
+   */
+  returnOrderCodes?: string[];
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 供应商编码
+   */
+  supplierId?: number;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IRefuseUsingPUTRefuseReasonRequestReq\\".
+ */
+export interface IRefuseUsingPUTRefuseReasonRequestReq {
+  /**
+   * 退款单主键
+   */
+  refundId?: string;
+  /**
+   * 拒绝原因
+   */
+  refuseReason?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISumPayOrderPriceUsingPOSTPayOrderRequestReq\\".
+ */
+export interface ISumPayOrderPriceUsingPOSTPayOrderRequestReq {
+  /**
+   * 收款账号账户名称
+   */
+  account?: string;
+  /**
+   * 收款账户id
+   */
+  accountId?: string;
+  /**
+   * 多个收款账户id
+   */
+  accountIds?: number[];
+  /**
+   * 供应商id
+   */
+  companyInfoId?: string;
+  /**
+   * 多个供应商ids
+   */
+  companyInfoIds?: number[];
+  /**
+   * 多个会员详细ids
+   */
+  customerDetailIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 收款结束时间
+   */
+  endTime?: string;
+  /**
+   * 模糊查询order字段
+   */
+  orderCode?: string;
+  /**
+   * 订单号
+   */
+  orderNo?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 收款流水号
+   */
+  payBillNo?: string;
+  /**
+   * 在支付渠道
+   */
+  payChannelId?: number;
+  /**
+   * 收款单主键
+   */
+  payOrderIds?: string[];
+  /**
+   * 支付状态
+   * * PAYED: 已收款
+   * * NOTPAY: 未收款
+   * * TOCONFIRM: 待确认
+   */
+  payOrderStatus?: '0' | '1' | '2';
+  /**
+   * 支付方式
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 是否根据收款时间排序
+   */
+  sortByReceiveTime?: boolean;
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 收款开始时间
+   */
+  startTime?: string;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISumReturnPriceUsingPOSTRefundOrderRequestReq\\".
+ */
+export interface ISumReturnPriceUsingPOSTRefundOrderRequestReq {
+  /**
+   * 账号id
+   */
+  accountId?: string;
+  /**
+   * 查询退款开始时间，精确到天
+   */
+  beginTime?: string;
+  /**
+   * 多个供应商ids
+   */
+  companyInfoIds?: number[];
+  /**
+   * 多个会员详细ids
+   */
+  customerDetailIds?: string[];
+  /**
+   * 客户名称
+   */
+  customerName?: string;
+  /**
+   * 查询退款结束时间，精确到天
+   */
+  endTime?: string;
+  /**
+   * 第几页
+   */
+  pageNum?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  /**
+   * 支付渠道id
+   */
+  payChannelId?: number;
+  /**
+   * 支付方式
+   * * ONLINE: 在线支付
+   * * OFFLINE: 线下支付
+   */
+  payType?: '0' | '1';
+  /**
+   * 收款流水号
+   */
+  refundBillCode?: string;
+  /**
+   * 退款单主键
+   */
+  refundIds?: string[];
+  refundStatus?: '0' | '1' | '2' | '3';
+  /**
+   * 退单编号
+   */
+  returnOrderCode?: string;
+  /**
+   * 退单编号列表
+   */
+  returnOrderCodes?: string[];
+  /**
+   * 排序字段
+   */
+  sortColumn?: string;
+  /**
+   * 多重排序
+   */
+  sortMap?: {
+    [k: string]: string;
+  };
+  /**
+   * 排序规则 desc asc
+   */
+  sortRole?: string;
+  /**
+   * 排序类型
+   */
+  sortType?: string;
+  /**
+   * 供应商编码
+   */
+  supplierId?: number;
+  /**
+   * 供应商名称
+   */
+  supplierName?: string;
+  /**
+   * token
+   */
+  token?: string;
+  /**
+   * 登录用户Id
+   */
+  userId?: string;
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+  "api.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'api';
+
+/**
+ *
+ * 魔方查询图片分类
+ *
+ */
+async function listUsingGET_13(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('api', 'listUsingGET_13')) {
+      return Promise.resolve(require('./mock/api.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get<unknown>(
+    '/api/gallery/cate/list',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 保存图片信息
+ *
+ */
+async function saveImgUsingPOST(
+  imgRequest: ISaveImgUsingPOSTImgRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('api', 'saveImgUsingPOST')) {
+      return Promise.resolve(require('./mock/api.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post<unknown>(
+    '/api/gallery/image/save',
+
+    {
+      ...imgRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 魔方分页图片
+ *
+ */
+async function pageUsingPOST_13(
+  imgPageReq: IPageUsingPOST_13ImgPageReqReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('api', 'pageUsingPOST_13')) {
+      return Promise.resolve(require('./mock/api.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post<unknown>(
+    '/api/gallery/item/list',
+
+    {
+      ...imgPageReq,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 上传图片
+ *
+ */
+async function uploadFileUsingPOST_2(
+  file: IUploadFileUsingPOST_2FileReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('api', 'uploadFileUsingPOST_2')) {
+      return Promise.resolve(require('./mock/api.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post<unknown>(
+    '/api/upload/image',
+
+    {
+      file,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 根据网络地址拉网络图片
+ *
+ */
+async function netImgUsingGET(url: INetImgUsingGETUrlReq): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('api', 'netImgUsingGET')) {
+      return Promise.resolve(require('./mock/api.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get<unknown>(
+    '/api/upload/image/net',
+
+    {
+      url,
+    },
+  );
+  return result.data;
+}
+
+export default {
+  listUsingGET_13,
+
+  saveImgUsingPOST,
+
+  pageUsingPOST_13,
+
+  uploadFileUsingPOST_2,
+
+  netImgUsingGET,
+};
+
+/**
+ * url
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"INetImgUsingGETUrlReq\\".
+ */
+export type INetImgUsingGETUrlReq = string;
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ImgRequest\\".
+ */
+export interface ImgRequest {
+  /**
+   * 分类
+   */
+  cateId?: string;
+  /**
+   * 图片列表
+   */
+  imageForms?: ImageForms[];
+  [k: string]: any;
+}
+export interface ImageForms {
+  /**
+   * 魔方建站参数
+   */
+  advice?: string;
+  /**
+   * 文件
+   */
+  duration?: string;
+  /**
+   * 文件类型
+   */
+  fileType?: string;
+  /**
+   * 魔方建站参数
+   */
+  height?: number;
+  /**
+   * 文件名
+   */
+  name?: string;
+  /**
+   * 魔方建站参数
+   */
+  scene?: string;
+  /**
+   * 魔方建站参数
+   */
+  size?: number;
+  /**
+   * 魔方建站参数
+   */
+  url?: string;
+  /**
+   * 魔方建站参数
+   */
+  width?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ImageForms\\".
+ */
+export interface ImageForms1 {
+  /**
+   * 魔方建站参数
+   */
+  advice?: string;
+  /**
+   * 文件
+   */
+  duration?: string;
+  /**
+   * 文件类型
+   */
+  fileType?: string;
+  /**
+   * 魔方建站参数
+   */
+  height?: number;
+  /**
+   * 文件名
+   */
+  name?: string;
+  /**
+   * 魔方建站参数
+   */
+  scene?: string;
+  /**
+   * 魔方建站参数
+   */
+  size?: number;
+  /**
+   * 魔方建站参数
+   */
+  url?: string;
+  /**
+   * 魔方建站参数
+   */
+  width?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ImgPageReq\\".
+ */
+export interface ImgPageReq {
+  /**
+   * 分类
+   */
+  cateId?: number;
+  /**
+   * 名称
+   */
+  name?: string;
+  /**
+   * 第几页
+   */
+  pageNo?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"undefined\\".
+ */
+export interface Undefined {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISaveImgUsingPOSTImgRequestReq\\".
+ */
+export interface ISaveImgUsingPOSTImgRequestReq {
+  /**
+   * 分类
+   */
+  cateId?: string;
+  /**
+   * 图片列表
+   */
+  imageForms?: ImageForms[];
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IPageUsingPOST_13ImgPageReqReq\\".
+ */
+export interface IPageUsingPOST_13ImgPageReqReq {
+  /**
+   * 分类
+   */
+  cateId?: number;
+  /**
+   * 名称
+   */
+  name?: string;
+  /**
+   * 第几页
+   */
+  pageNo?: number;
+  /**
+   * 每页显示多少条
+   */
+  pageSize?: number;
+  [k: string]: any;
+}
+/**
+ * file
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IUploadFileUsingPOST_2FileReq\\".
+ */
+export interface IUploadFileUsingPOST_2FileReq {
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+  "auth.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'auth';
+
+/**
+ *
+ * login
+ *
+ */
+async function loginUsingGET(code: ILoginUsingGETCodeReq): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('auth', 'loginUsingGET')) {
+      return Promise.resolve(require('./mock/auth.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/auth/login/{code}'.replace('{code}', code + ''),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * logout
+ *
+ */
+async function logoutUsingGET(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('auth', 'logoutUsingGET')) {
+      return Promise.resolve(require('./mock/auth.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/auth/logout',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * session
+ *
+ */
+async function sessionUsingGET(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('auth', 'sessionUsingGET')) {
+      return Promise.resolve(require('./mock/auth.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/auth/session',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * verify
+ *
+ */
+async function verifyUsingGET(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('auth', 'verifyUsingGET')) {
+      return Promise.resolve(require('./mock/auth.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/auth/verify',
+
+    {},
+  );
+  return result.data;
+}
+
+export default {
+  loginUsingGET,
+
+  logoutUsingGET,
+
+  sessionUsingGET,
+
+  verifyUsingGET,
+};
+
+/**
+ * code
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ILoginUsingGETCodeReq\\".
+ */
+export type ILoginUsingGETCodeReq = string;
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse\\".
+ */
+export interface BaseResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: {
+    [k: string]: any;
+  };
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+  "baseConfig.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'baseConfig';
+
+/**
+ *
+ * 查询基本设置
+ *
+ */
+async function findBaseConfigUsingGET(): Promise<BaseConfigRopResponse> {
+  if (__DEV__) {
+    if (isMock('baseConfig', 'findBaseConfigUsingGET')) {
+      return Promise.resolve(
+        require('./mock/baseConfig.json').BaseConfigRopResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.get<BaseConfigRopResponse>(
+    '/baseConfig',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 保存基本设置
+ *
+ */
+async function saveBaseConfigUsingPOST(
+  saveRopRequest: ISaveBaseConfigUsingPOSTSaveRopRequestReq,
+): Promise<BaseConfigRopResponse> {
+  if (__DEV__) {
+    if (isMock('baseConfig', 'saveBaseConfigUsingPOST')) {
+      return Promise.resolve(
+        require('./mock/baseConfig.json').BaseConfigRopResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.post<BaseConfigRopResponse>(
+    '/baseConfig',
+
+    {
+      ...saveRopRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 修改基本设置
+ *
+ */
+async function updateBaseConfigUsingPUT(
+  updateRopRequest: IUpdateBaseConfigUsingPUTUpdateRopRequestReq,
+): Promise<BaseConfigRopResponse> {
+  if (__DEV__) {
+    if (isMock('baseConfig', 'updateBaseConfigUsingPUT')) {
+      return Promise.resolve(
+        require('./mock/baseConfig.json').BaseConfigRopResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.put<BaseConfigRopResponse>(
+    '/baseConfig',
+
+    {
+      ...updateRopRequest,
+    },
+  );
+  return result.data;
+}
+
+export default {
+  findBaseConfigUsingGET,
+
+  saveBaseConfigUsingPOST,
+
+  updateBaseConfigUsingPUT,
+};
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«BaseConfigRopResponse»\\".
+ */
+export interface BaseResponseBaseConfigRopResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: BaseConfigRopResponse;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * 内容
+ */
+export interface BaseConfigRopResponse {
+  baseConfigId?: number;
+  mobileBanner?: string;
+  mobileWebsite?: string;
+  pcBanner?: string;
+  pcIco?: string;
+  pcLogo?: string;
+  pcMainBanner?: string;
+  pcTitle?: string;
+  pcWebsite?: string;
+  registerContent?: string;
+  supplierWebsite?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseConfigRopResponse\\".
+ */
+export interface BaseConfigRopResponse1 {
+  baseConfigId?: number;
+  mobileBanner?: string;
+  mobileWebsite?: string;
+  pcBanner?: string;
+  pcIco?: string;
+  pcLogo?: string;
+  pcMainBanner?: string;
+  pcTitle?: string;
+  pcWebsite?: string;
+  registerContent?: string;
+  supplierWebsite?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseConfigSaveRopRequest\\".
+ */
+export interface BaseConfigSaveRopRequest {
+  baseConfigId?: number;
+  mobileBanner?: string;
+  mobileWebsite?: string;
+  pcBanner?: string;
+  pcIco?: string;
+  pcLogo?: string;
+  pcMainBanner?: string;
+  pcTitle?: string;
+  pcWebsite?: string;
+  registerContent?: string;
+  ropRequestContext?: RopRequestContext;
+  supplierWebsite?: string;
+  [k: string]: any;
+}
+export interface RopRequestContext {
+  ropResponse?: {
+    [k: string]: any;
+  };
+  serviceBeginTime?: number;
+  serviceEndTime?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"RopRequestContext\\".
+ */
+export interface RopRequestContext1 {
+  ropResponse?: {
+    [k: string]: any;
+  };
+  serviceBeginTime?: number;
+  serviceEndTime?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISaveBaseConfigUsingPOSTSaveRopRequestReq\\".
+ */
+export interface ISaveBaseConfigUsingPOSTSaveRopRequestReq {
+  baseConfigId?: number;
+  mobileBanner?: string;
+  mobileWebsite?: string;
+  pcBanner?: string;
+  pcIco?: string;
+  pcLogo?: string;
+  pcMainBanner?: string;
+  pcTitle?: string;
+  pcWebsite?: string;
+  registerContent?: string;
+  ropRequestContext?: RopRequestContext;
+  supplierWebsite?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IUpdateBaseConfigUsingPUTUpdateRopRequestReq\\".
+ */
+export interface IUpdateBaseConfigUsingPUTUpdateRopRequestReq {
+  baseConfigId?: number;
+  mobileBanner?: string;
+  mobileWebsite?: string;
+  pcBanner?: string;
+  pcIco?: string;
+  pcLogo?: string;
+  pcMainBanner?: string;
+  pcTitle?: string;
+  pcWebsite?: string;
+  registerContent?: string;
+  ropRequestContext?: RopRequestContext;
+  supplierWebsite?: string;
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+  "boss.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'boss';
+
+/**
+ *
+ * 关闭客户信息完善开关-------关闭客户信息完善开关时，客户审核开关一起关闭
+ *
+ */
+async function closeAuditCustomerInfoUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'closeAuditCustomerInfoUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/customer-info/close',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 开启客户信息完善开关
+ *
+ */
+async function openAuditCustomerInfoUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'openAuditCustomerInfoUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/customer-info/open',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 关闭客户审核开关
+ *
+ */
+async function closeAuditCustomerUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'closeAuditCustomerUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/customer/close',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 开启客户审核开关
+ *
+ */
+async function openAuditCustomerUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'openAuditCustomerUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/customer/open',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 关闭商品审核开关
+ *
+ */
+async function closeAuditGoodsUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'closeAuditGoodsUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/goods/close',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 开启商品审核开关
+ *
+ */
+async function openAuditGoodsUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'openAuditGoodsUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/goods/open',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 关闭自营商品审核开关
+ *
+ */
+async function closeAuditSelfGoodsUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'closeAuditSelfGoodsUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/goods/self/close',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 开启自营商品审核开关
+ *
+ */
+async function openAuditSelfGoodsUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'openAuditSelfGoodsUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/goods/self/open',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 移动端商品列表大小图默认展示设置
+ *
+ */
+async function setDisplayImgForMobileUsingPOST(
+  status: ISetDisplayImgForMobileUsingPOSTStatusReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'setDisplayImgForMobileUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/imgdisplayformobile/{status}'.replace(
+      '{status}',
+      status + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * pc端商品列表大小图默认展示设置
+ *
+ */
+async function setDisplayImgForPcUsingPOST(
+  status: ISetDisplayImgForPcUsingPOSTStatusReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'setDisplayImgForPcUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/imgdisplayforpc/{status}'.replace(
+      '{status}',
+      status + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 查询审核开关状态
+ *
+ */
+async function listConfigsUsingGET(): Promise<ConfigVOArray> {
+  if (__DEV__) {
+    if (isMock('boss', 'listConfigsUsingGET')) {
+      return Promise.resolve(require('./mock/boss.json').ConfigVOArray || {});
+    }
+  }
+
+  let result = await sdk.get<ConfigVOArray>(
+    '/boss/config/audit/list',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 小程序分享设置
+ *
+ */
+async function modifyShareLittleProgramUsingPOST(
+  request: IModifyShareLittleProgramUsingPOSTRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'modifyShareLittleProgramUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/modify-share-little-program',
+
+    {
+      ...request,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 关闭订单审核开关
+ *
+ */
+async function closeAuditOrderUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'closeAuditOrderUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/order/close',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 开启订单审核开关
+ *
+ */
+async function openAuditOrderUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'openAuditOrderUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/order/open',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 移动端商城商品列表展示维度SKU或者SPU设置
+ *
+ */
+async function setDisplaySpecForMobileUsingPOST(
+  status: ISetDisplaySpecForMobileUsingPOSTStatusReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'setDisplaySpecForMobileUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/specdisplayformobile/{status}'.replace(
+      '{status}',
+      status + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * PC商城商品列表展示维度SKU或者SPU设置
+ *
+ */
+async function setDisplaySpecForPcUsingPOST(
+  status: ISetDisplaySpecForPcUsingPOSTStatusReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'setDisplaySpecForPcUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/specdisplayforpc/{status}'.replace(
+      '{status}',
+      status + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 关闭用户审核（即访问商城无需登录）
+ *
+ */
+async function closeUserSettingUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'closeUserSettingUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/usersetting/close',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 开启用户审核（即访问需登录）
+ *
+ */
+async function openUserSettingUsingPOST(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'openUserSettingUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/config/audit/usersetting/open',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 查询BOSS管理后台邮箱接口配置
+ *
+ */
+async function queryEmailConfigUsingGET(): Promise<EmailConfigQueryResponse> {
+  if (__DEV__) {
+    if (isMock('boss', 'queryEmailConfigUsingGET')) {
+      return Promise.resolve(
+        require('./mock/boss.json').EmailConfigQueryResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.get<EmailConfigQueryResponse>(
+    '/boss/emailConfig',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 更新邮箱接口配置
+ *
+ */
+async function modifyEmailConfigUsingPUT(
+  request: IModifyEmailConfigUsingPUTRequestReq,
+): Promise<EmailConfigQueryResponse> {
+  if (__DEV__) {
+    if (isMock('boss', 'modifyEmailConfigUsingPUT')) {
+      return Promise.resolve(
+        require('./mock/boss.json').EmailConfigQueryResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.put<EmailConfigQueryResponse>(
+    '/boss/emailConfig',
+
+    {
+      ...request,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * S2B平台端 查询所有有效的物流公司列表
+ *
+ */
+async function allExpressCompanyListUsingGET(): Promise<undefinedArray> {
+  if (__DEV__) {
+    if (isMock('boss', 'allExpressCompanyListUsingGET')) {
+      return Promise.resolve(require('./mock/boss.json').undefinedArray || {});
+    }
+  }
+
+  let result = await sdk.get<undefinedArray>(
+    '/boss/expressCompany',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * S2B平台端 新增物流公司
+ *
+ */
+async function addExpressCompanyUsingPOST(
+  saveRopRequest: IAddExpressCompanyUsingPOSTSaveRopRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'addExpressCompanyUsingPOST')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/boss/expressCompany',
+
+    {
+      ...saveRopRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * S2B平台端 删除物流公司
+ *
+ */
+async function delExpressCompanyUsingDELETE(
+  expressCompanyId: IDelExpressCompanyUsingDELETEExpressCompanyIdReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('boss', 'delExpressCompanyUsingDELETE')) {
+      return Promise.resolve(require('./mock/boss.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.deleteF(
+    '/boss/expressCompany/{expressCompanyId}'.replace(
+      '{expressCompanyId}',
+      expressCompanyId + '',
+    ),
+
+    {},
+  );
+  return result.data;
+}
+
+export default {
+  closeAuditCustomerInfoUsingPOST,
+
+  openAuditCustomerInfoUsingPOST,
+
+  closeAuditCustomerUsingPOST,
+
+  openAuditCustomerUsingPOST,
+
+  closeAuditGoodsUsingPOST,
+
+  openAuditGoodsUsingPOST,
+
+  closeAuditSelfGoodsUsingPOST,
+
+  openAuditSelfGoodsUsingPOST,
+
+  setDisplayImgForMobileUsingPOST,
+
+  setDisplayImgForPcUsingPOST,
+
+  listConfigsUsingGET,
+
+  modifyShareLittleProgramUsingPOST,
+
+  closeAuditOrderUsingPOST,
+
+  openAuditOrderUsingPOST,
+
+  setDisplaySpecForMobileUsingPOST,
+
+  setDisplaySpecForPcUsingPOST,
+
+  closeUserSettingUsingPOST,
+
+  openUserSettingUsingPOST,
+
+  queryEmailConfigUsingGET,
+
+  modifyEmailConfigUsingPUT,
+
+  allExpressCompanyListUsingGET,
+
+  addExpressCompanyUsingPOST,
+
+  delExpressCompanyUsingDELETE,
+};
+
+/**
+ * 内容
+ */
+export type ConfigVOArray = ConfigVO[];
+/**
+ * 内容
+ */
+export type UndefinedArray = {
+  [k: string]: any;
+}[];
+/**
+ * 内容
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ConfigVOArray\\".
+ */
+export type ConfigVOArray1 = ConfigVO2[];
+/**
+ * 内容
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"undefinedArray\\".
+ */
+export type UndefinedArray1 = {
+  [k: string]: any;
+}[];
+/**
+ * 物流公司id
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IDelExpressCompanyUsingDELETEExpressCompanyIdReq\\".
+ */
+export type IDelExpressCompanyUsingDELETEExpressCompanyIdReq = number;
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse\\".
+ */
+export interface BaseResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: {
+    [k: string]: any;
+  };
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«List«ConfigVO»»\\".
+ */
+export interface BaseResponseListConfigVO {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: ConfigVOArray;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+export interface ConfigVO {
+  /**
+   * 配置键
+   */
+  configKey?: string;
+  /**
+   * 名称
+   */
+  configName?: string;
+  /**
+   * 类型
+   */
+  configType?: string;
+  /**
+   * 内容
+   */
+  context?: string;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标记
+   * * NO: 否
+   * * YES: 是
+   */
+  delFlag?: '0' | '1';
+  /**
+   * 编号
+   */
+  id?: number;
+  /**
+   * 备注
+   */
+  remark?: string;
+  /**
+   * 状态
+   */
+  status?: number;
+  /**
+   * 更新时间
+   */
+  updateTime?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ConfigVO\\".
+ */
+export interface ConfigVO1 {
+  /**
+   * 配置键
+   */
+  configKey?: string;
+  /**
+   * 名称
+   */
+  configName?: string;
+  /**
+   * 类型
+   */
+  configType?: string;
+  /**
+   * 内容
+   */
+  context?: string;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标记
+   * * NO: 否
+   * * YES: 是
+   */
+  delFlag?: '0' | '1';
+  /**
+   * 编号
+   */
+  id?: number;
+  /**
+   * 备注
+   */
+  remark?: string;
+  /**
+   * 状态
+   */
+  status?: number;
+  /**
+   * 更新时间
+   */
+  updateTime?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ConfigContextModifyByTypeAndKeyRequest\\".
+ */
+export interface ConfigContextModifyByTypeAndKeyRequest {
+  /**
+   * 配置键
+   * * IMAGESERVER: image_server:图片服务器
+   * * KUAIDI100: kuaidi100
+   * * S2BAUDIT: S2B审核管理
+   * * ORDERSETTING: 订单设置
+   * * MOBILE_SETTING: 移动端设置
+   * * SMALL_PROGRAM_SETTING: 小程序设置
+   * * GROWTH_VALUE: 成长值
+   * * GROWTH_VALUE_BASIC_RULE: 成长值获取基础规则
+   */
+  configKey?:
+    | 'image_server'
+    | 'kuaidi100'
+    | 's2b_audit'
+    | 'order_setting'
+    | 'mobile_setting'
+    | 'small_program_setting'
+    | 'growth_value'
+    | 'growth_value_basic_rule';
+  /**
+   * 类型
+   * * ALIYUN: aliYun:阿里云
+   * * KUAIDI100: kuaidi100
+   * * TICKETAUDIT: 增值税资质审核
+   * * SUPPLIERAUDIT: 供应商审核
+   * * SUPPLIERGOODSAUDIT: 供应商商品审核
+   * * BOSSGOODSAUDIT: 自营商品审核
+   * * ORDERAUDIT: 订单审核
+   * * CUSTOMERAUDIT: 客户审核
+   * * CUSTOMERINFOAUDIT: 客户审核
+   * * USERAUDIT: 用户设置
+   * * ORDER_SETTING_AUTO_RECEIVE: 订单设置自动收货
+   * * ORDER_SETTING_REFUND_AUTO_AUDIT: 退单自动审核
+   * * ORDER_SETTING_REFUND_AUTO_RECEIVE: 退单自动收货
+   * * ORDER_SETTING_APPLY_REFUND: 允许申请退单
+   * * PC_GOODS_IMAGE_SWITCH: PC商城商品列表默认展示大图或小图
+   * * PC_GOODS_SPEC_SWITCH: PC商城商品列表展示维度SKU或者SPU
+   * * MOBILE_GOODS_IMAGE_SWITCH: 移动端商城商品列表默认展示大图或小图
+   * * MOBILE_GOODS_SPEC_SWITCH: 移动端商城商品列表展示维度SKU或者SPU
+   * * ORDER_SETTING_PAYMENT_ORDER: 订单支付顺序设置（先款后货/不限）
+   * * ORDER_SETTING_TIMEOUT_CANCEL: 超时未支付取消订单
+   * * ABOUT_US: 关于我们
+   * * APP_UPDATE: app检测升级
+   * * APP_SHARE: app分享
+   * * APPLET_SHARE_SETTING: 小程序分享设置
+   * * SMALL_PROGRAM_SETTING_CUSTOMER: 小程序基础配置
+   * * GROWTH_VALUE_SWITCH: 成长值开关
+   * * GROWTH_VALUE_BASIC_RULE_REGISTER: 成长值基础规则类型——注册
+   * * GROWTH_VALUE_BASIC_RULE_BIND_WECHAT: 成长值基础规则类型——绑定微信
+   * * GROWTH_VALUE_BASIC_RULE_ADD_DELIVERY_ADDRESS: 成长值基础获取规则类型——添加收货地址
+   * * GROWTH_VALUE_BASIC_RULE_FOLLOW_STORE: 成长值基础获取规则类型——关注店铺
+   * * GROWTH_VALUE_BASIC_RULE_INTRODUCTION: 成长值获取规则说明
+   */
+  configType?:
+    | 'aliYun'
+    | 'kuaidi100'
+    | 'ticket_aduit'
+    | 'supplier_audit'
+    | 'supplier_goods_audit'
+    | 'boss_goods_audit'
+    | 'order_audit'
+    | 'customer_audit'
+    | 'customer_info_audit'
+    | 'user_audit'
+    | 'order_setting_auto_receive'
+    | 'order_setting_refund_auto_audit'
+    | 'order_setting_refund_auto_receive'
+    | 'order_setting_apply_refund'
+    | 'pc_goods_image_switch'
+    | 'pc_goods_spec_switch'
+    | 'mobile_goods_image_switch'
+    | 'mobile_goods_spec_switch'
+    | 'order_setting_payment_order'
+    | 'order_setting_timeout_cancel'
+    | 'about_us'
+    | 'app_update'
+    | 'app_share'
+    | 'applet_share_setting'
+    | 'small_program_setting_customer'
+    | 'growth_value_switch'
+    | 'growth_value_basic_rule_register'
+    | 'growth_value_basic_rule_bind_wechat'
+    | 'growth_value_basic_rule_add_delivery_address'
+    | 'growth_value_basic_rule_follow_store'
+    | 'growth_value_basic_rule_introduction';
+  /**
+   * 配置内容
+   */
+  context?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«EmailConfigQueryResponse»\\".
+ */
+export interface BaseResponseEmailConfigQueryResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: EmailConfigQueryResponse;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * 内容
+ */
+export interface EmailConfigQueryResponse {
+  /**
+   * SMTP服务器授权码
+   */
+  authCode?: string;
+  /**
+   * 邮箱配置Id
+   */
+  emailConfigId?: string;
+  /**
+   * SMTP服务器主机名
+   */
+  emailSmtpHost?: string;
+  /**
+   * SMTP服务器端口号
+   */
+  emailSmtpPort?: string;
+  /**
+   * 发信人邮箱地址
+   */
+  fromEmailAddress?: string;
+  /**
+   * 发信人
+   */
+  fromPerson?: string;
+  /**
+   * 邮箱启用状态
+   * * DISABLE: 0：停用
+   * * ENABLE: 1：启用
+   */
+  status?: '0' | '1';
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"EmailConfigQueryResponse\\".
+ */
+export interface EmailConfigQueryResponse1 {
+  /**
+   * SMTP服务器授权码
+   */
+  authCode?: string;
+  /**
+   * 邮箱配置Id
+   */
+  emailConfigId?: string;
+  /**
+   * SMTP服务器主机名
+   */
+  emailSmtpHost?: string;
+  /**
+   * SMTP服务器端口号
+   */
+  emailSmtpPort?: string;
+  /**
+   * 发信人邮箱地址
+   */
+  fromEmailAddress?: string;
+  /**
+   * 发信人
+   */
+  fromPerson?: string;
+  /**
+   * 邮箱启用状态
+   * * DISABLE: 0：停用
+   * * ENABLE: 1：启用
+   */
+  status?: '0' | '1';
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"EmailConfigModifyRequest\\".
+ */
+export interface EmailConfigModifyRequest {
+  /**
+   * SMTP服务器授权码
+   */
+  authCode?: string;
+  /**
+   * 邮箱配置Id
+   */
+  emailConfigId?: string;
+  /**
+   * SMTP服务器主机名
+   */
+  emailSmtpHost?: string;
+  /**
+   * SMTP服务器端口号
+   */
+  emailSmtpPort?: string;
+  /**
+   * 发信人邮箱地址
+   */
+  fromEmailAddress?: string;
+  /**
+   * 发信人
+   */
+  fromPerson?: string;
+  /**
+   * 邮箱启用状态
+   * * DISABLE: 0：停用
+   * * ENABLE: 1：启用
+   */
+  status?: '0' | '1';
+  /**
+   * 修改时间
+   */
+  updateTime?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«List»\\".
+ */
+export interface BaseResponseList {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: UndefinedArray;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ExpsComSaveRopRequest\\".
+ */
+export interface ExpsComSaveRopRequest {
+  expressCode?: string;
+  expressName?: string;
+  ropRequestContext?: RopRequestContext;
+  [k: string]: any;
+}
+export interface RopRequestContext {
+  ropResponse?: {
+    [k: string]: any;
+  };
+  serviceBeginTime?: number;
+  serviceEndTime?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"RopRequestContext\\".
+ */
+export interface RopRequestContext1 {
+  ropResponse?: {
+    [k: string]: any;
+  };
+  serviceBeginTime?: number;
+  serviceEndTime?: number;
+  [k: string]: any;
+}
+/**
+ * 状态
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISetDisplayImgForMobileUsingPOSTStatusReq\\".
+ */
+export interface ISetDisplayImgForMobileUsingPOSTStatusReq {
+  [k: string]: any;
+}
+/**
+ * 状态
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISetDisplayImgForPcUsingPOSTStatusReq\\".
+ */
+export interface ISetDisplayImgForPcUsingPOSTStatusReq {
+  [k: string]: any;
+}
+export interface ConfigVO2 {
+  /**
+   * 配置键
+   */
+  configKey?: string;
+  /**
+   * 名称
+   */
+  configName?: string;
+  /**
+   * 类型
+   */
+  configType?: string;
+  /**
+   * 内容
+   */
+  context?: string;
+  /**
+   * 创建时间
+   */
+  createTime?: string;
+  /**
+   * 删除标记
+   * * NO: 否
+   * * YES: 是
+   */
+  delFlag?: '0' | '1';
+  /**
+   * 编号
+   */
+  id?: number;
+  /**
+   * 备注
+   */
+  remark?: string;
+  /**
+   * 状态
+   */
+  status?: number;
+  /**
+   * 更新时间
+   */
+  updateTime?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IModifyShareLittleProgramUsingPOSTRequestReq\\".
+ */
+export interface IModifyShareLittleProgramUsingPOSTRequestReq {
+  /**
+   * 配置键
+   * * IMAGESERVER: image_server:图片服务器
+   * * KUAIDI100: kuaidi100
+   * * S2BAUDIT: S2B审核管理
+   * * ORDERSETTING: 订单设置
+   * * MOBILE_SETTING: 移动端设置
+   * * SMALL_PROGRAM_SETTING: 小程序设置
+   * * GROWTH_VALUE: 成长值
+   * * GROWTH_VALUE_BASIC_RULE: 成长值获取基础规则
+   */
+  configKey?:
+    | 'image_server'
+    | 'kuaidi100'
+    | 's2b_audit'
+    | 'order_setting'
+    | 'mobile_setting'
+    | 'small_program_setting'
+    | 'growth_value'
+    | 'growth_value_basic_rule';
+  /**
+   * 类型
+   * * ALIYUN: aliYun:阿里云
+   * * KUAIDI100: kuaidi100
+   * * TICKETAUDIT: 增值税资质审核
+   * * SUPPLIERAUDIT: 供应商审核
+   * * SUPPLIERGOODSAUDIT: 供应商商品审核
+   * * BOSSGOODSAUDIT: 自营商品审核
+   * * ORDERAUDIT: 订单审核
+   * * CUSTOMERAUDIT: 客户审核
+   * * CUSTOMERINFOAUDIT: 客户审核
+   * * USERAUDIT: 用户设置
+   * * ORDER_SETTING_AUTO_RECEIVE: 订单设置自动收货
+   * * ORDER_SETTING_REFUND_AUTO_AUDIT: 退单自动审核
+   * * ORDER_SETTING_REFUND_AUTO_RECEIVE: 退单自动收货
+   * * ORDER_SETTING_APPLY_REFUND: 允许申请退单
+   * * PC_GOODS_IMAGE_SWITCH: PC商城商品列表默认展示大图或小图
+   * * PC_GOODS_SPEC_SWITCH: PC商城商品列表展示维度SKU或者SPU
+   * * MOBILE_GOODS_IMAGE_SWITCH: 移动端商城商品列表默认展示大图或小图
+   * * MOBILE_GOODS_SPEC_SWITCH: 移动端商城商品列表展示维度SKU或者SPU
+   * * ORDER_SETTING_PAYMENT_ORDER: 订单支付顺序设置（先款后货/不限）
+   * * ORDER_SETTING_TIMEOUT_CANCEL: 超时未支付取消订单
+   * * ABOUT_US: 关于我们
+   * * APP_UPDATE: app检测升级
+   * * APP_SHARE: app分享
+   * * APPLET_SHARE_SETTING: 小程序分享设置
+   * * SMALL_PROGRAM_SETTING_CUSTOMER: 小程序基础配置
+   * * GROWTH_VALUE_SWITCH: 成长值开关
+   * * GROWTH_VALUE_BASIC_RULE_REGISTER: 成长值基础规则类型——注册
+   * * GROWTH_VALUE_BASIC_RULE_BIND_WECHAT: 成长值基础规则类型——绑定微信
+   * * GROWTH_VALUE_BASIC_RULE_ADD_DELIVERY_ADDRESS: 成长值基础获取规则类型——添加收货地址
+   * * GROWTH_VALUE_BASIC_RULE_FOLLOW_STORE: 成长值基础获取规则类型——关注店铺
+   * * GROWTH_VALUE_BASIC_RULE_INTRODUCTION: 成长值获取规则说明
+   */
+  configType?:
+    | 'aliYun'
+    | 'kuaidi100'
+    | 'ticket_aduit'
+    | 'supplier_audit'
+    | 'supplier_goods_audit'
+    | 'boss_goods_audit'
+    | 'order_audit'
+    | 'customer_audit'
+    | 'customer_info_audit'
+    | 'user_audit'
+    | 'order_setting_auto_receive'
+    | 'order_setting_refund_auto_audit'
+    | 'order_setting_refund_auto_receive'
+    | 'order_setting_apply_refund'
+    | 'pc_goods_image_switch'
+    | 'pc_goods_spec_switch'
+    | 'mobile_goods_image_switch'
+    | 'mobile_goods_spec_switch'
+    | 'order_setting_payment_order'
+    | 'order_setting_timeout_cancel'
+    | 'about_us'
+    | 'app_update'
+    | 'app_share'
+    | 'applet_share_setting'
+    | 'small_program_setting_customer'
+    | 'growth_value_switch'
+    | 'growth_value_basic_rule_register'
+    | 'growth_value_basic_rule_bind_wechat'
+    | 'growth_value_basic_rule_add_delivery_address'
+    | 'growth_value_basic_rule_follow_store'
+    | 'growth_value_basic_rule_introduction';
+  /**
+   * 配置内容
+   */
+  context?: string;
+  [k: string]: any;
+}
+/**
+ * 状态
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISetDisplaySpecForMobileUsingPOSTStatusReq\\".
+ */
+export interface ISetDisplaySpecForMobileUsingPOSTStatusReq {
+  [k: string]: any;
+}
+/**
+ * 状态
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISetDisplaySpecForPcUsingPOSTStatusReq\\".
+ */
+export interface ISetDisplaySpecForPcUsingPOSTStatusReq {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IModifyEmailConfigUsingPUTRequestReq\\".
+ */
+export interface IModifyEmailConfigUsingPUTRequestReq {
+  /**
+   * SMTP服务器授权码
+   */
+  authCode?: string;
+  /**
+   * 邮箱配置Id
+   */
+  emailConfigId?: string;
+  /**
+   * SMTP服务器主机名
+   */
+  emailSmtpHost?: string;
+  /**
+   * SMTP服务器端口号
+   */
+  emailSmtpPort?: string;
+  /**
+   * 发信人邮箱地址
+   */
+  fromEmailAddress?: string;
+  /**
+   * 发信人
+   */
+  fromPerson?: string;
+  /**
+   * 邮箱启用状态
+   * * DISABLE: 0：停用
+   * * ENABLE: 1：启用
+   */
+  status?: '0' | '1';
+  /**
+   * 修改时间
+   */
+  updateTime?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IAddExpressCompanyUsingPOSTSaveRopRequestReq\\".
+ */
+export interface IAddExpressCompanyUsingPOSTSaveRopRequestReq {
+  expressCode?: string;
+  expressName?: string;
+  ropRequestContext?: RopRequestContext;
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+  "bosslogo.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'bosslogo';
+
+/**
+ *
+ * 查询平台Logo
+ *
+ */
+async function queryBossLogoUsingGET(): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('bosslogo', 'queryBossLogoUsingGET')) {
+      return Promise.resolve(require('./mock/bosslogo.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get<unknown>(
+    '/bosslogo',
+
+    {},
+  );
+  return result.data;
+}
+
+export default {
+  queryBossLogoUsingGET,
+};
+
+/**
+ * 内容
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"undefined\\".
+ */
+export type Undefined = string;
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«string»\\".
+ */
+export interface BaseResponseString {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: string;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+  "business.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'business';
+
+/**
+ *
+ * 查询招商页设置
+ *
+ */
+async function findConfigUsingGET(): Promise<BusinessConfigRopResponse> {
+  if (__DEV__) {
+    if (isMock('business', 'findConfigUsingGET')) {
+      return Promise.resolve(
+        require('./mock/business.json').BusinessConfigRopResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.get<BusinessConfigRopResponse>(
+    '/business/config',
+
+    {},
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 保存招商页设置
+ *
+ */
+async function saveBaseConfigUsingPOST_1(
+  saveRopRequest: ISaveBaseConfigUsingPOST_1SaveRopRequestReq,
+): Promise<BusinessConfigRopResponse> {
+  if (__DEV__) {
+    if (isMock('business', 'saveBaseConfigUsingPOST_1')) {
+      return Promise.resolve(
+        require('./mock/business.json').BusinessConfigRopResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.post<BusinessConfigRopResponse>(
+    '/business/config',
+
+    {
+      ...saveRopRequest,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 修改基本设置
+ *
+ */
+async function updateBaseConfigUsingPUT_1(
+  updateRopRequest: IUpdateBaseConfigUsingPUT_1UpdateRopRequestReq,
+): Promise<BusinessConfigRopResponse> {
+  if (__DEV__) {
+    if (isMock('business', 'updateBaseConfigUsingPUT_1')) {
+      return Promise.resolve(
+        require('./mock/business.json').BusinessConfigRopResponse || {},
+      );
+    }
+  }
+
+  let result = await sdk.put<BusinessConfigRopResponse>(
+    '/business/config',
+
+    {
+      ...updateRopRequest,
+    },
+  );
+  return result.data;
+}
+
+export default {
+  findConfigUsingGET,
+
+  saveBaseConfigUsingPOST_1,
+
+  updateBaseConfigUsingPUT_1,
+};
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«BusinessConfigRopResponse»\\".
+ */
+export interface BaseResponseBusinessConfigRopResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  context?: BusinessConfigRopResponse;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * 内容
+ */
+export interface BusinessConfigRopResponse {
+  businessBanner?: string;
+  businessConfigId?: number;
+  businessCustom?: string;
+  businessEnter?: string;
+  businessRegister?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BusinessConfigRopResponse\\".
+ */
+export interface BusinessConfigRopResponse1 {
+  businessBanner?: string;
+  businessConfigId?: number;
+  businessCustom?: string;
+  businessEnter?: string;
+  businessRegister?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BusinessConfigSaveRopRequest\\".
+ */
+export interface BusinessConfigSaveRopRequest {
+  businessBanner?: string;
+  businessConfigId?: number;
+  businessCustom?: string;
+  businessEnter?: string;
+  businessRegister?: string;
+  ropRequestContext?: RopRequestContext;
+  [k: string]: any;
+}
+export interface RopRequestContext {
+  ropResponse?: {
+    [k: string]: any;
+  };
+  serviceBeginTime?: number;
+  serviceEndTime?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"RopRequestContext\\".
+ */
+export interface RopRequestContext1 {
+  ropResponse?: {
+    [k: string]: any;
+  };
+  serviceBeginTime?: number;
+  serviceEndTime?: number;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ISaveBaseConfigUsingPOST_1SaveRopRequestReq\\".
+ */
+export interface ISaveBaseConfigUsingPOST_1SaveRopRequestReq {
+  businessBanner?: string;
+  businessConfigId?: number;
+  businessCustom?: string;
+  businessEnter?: string;
+  businessRegister?: string;
+  ropRequestContext?: RopRequestContext;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"IUpdateBaseConfigUsingPUT_1UpdateRopRequestReq\\".
+ */
+export interface IUpdateBaseConfigUsingPUT_1UpdateRopRequestReq {
+  businessBanner?: string;
+  businessConfigId?: number;
+  businessCustom?: string;
+  businessEnter?: string;
+  businessRegister?: string;
+  ropRequestContext?: RopRequestContext;
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+  "captcha.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'captcha';
+
+/**
+ *
+ * 获取验证码
+ *
+ */
+async function captchaUsingGET(
+  uuid: ICaptchaUsingGETUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('captcha', 'captchaUsingGET')) {
+      return Promise.resolve(require('./mock/captcha.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/captcha',
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 获取验证码
+ *
+ */
+async function captchaUsingHEAD(
+  uuid: ICaptchaUsingHEADUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('captcha', 'captchaUsingHEAD')) {
+      return Promise.resolve(require('./mock/captcha.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.head(
+    '/captcha',
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 获取验证码
+ *
+ */
+async function captchaUsingPOST(
+  uuid: ICaptchaUsingPOSTUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('captcha', 'captchaUsingPOST')) {
+      return Promise.resolve(require('./mock/captcha.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/captcha',
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 获取验证码
+ *
+ */
+async function captchaUsingPUT(
+  uuid: ICaptchaUsingPUTUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('captcha', 'captchaUsingPUT')) {
+      return Promise.resolve(require('./mock/captcha.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.put(
+    '/captcha',
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 获取验证码
+ *
+ */
+async function captchaUsingDELETE(
+  uuid: ICaptchaUsingDELETEUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('captcha', 'captchaUsingDELETE')) {
+      return Promise.resolve(require('./mock/captcha.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.deleteF(
+    '/captcha',
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 获取验证码
+ *
+ */
+async function captchaUsingOPTIONS(
+  uuid: ICaptchaUsingOPTIONSUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('captcha', 'captchaUsingOPTIONS')) {
+      return Promise.resolve(require('./mock/captcha.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.options(
+    '/captcha',
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 获取验证码
+ *
+ */
+async function captchaUsingPATCH(
+  uuid: ICaptchaUsingPATCHUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('captcha', 'captchaUsingPATCH')) {
+      return Promise.resolve(require('./mock/captcha.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.patch(
+    '/captcha',
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+export default {
+  captchaUsingGET,
+
+  captchaUsingHEAD,
+
+  captchaUsingPOST,
+
+  captchaUsingPUT,
+
+  captchaUsingDELETE,
+
+  captchaUsingOPTIONS,
+
+  captchaUsingPATCH,
+};
+
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICaptchaUsingGETUuidReq\\".
+ */
+export type ICaptchaUsingGETUuidReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICaptchaUsingHEADUuidReq\\".
+ */
+export type ICaptchaUsingHEADUuidReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICaptchaUsingPOSTUuidReq\\".
+ */
+export type ICaptchaUsingPOSTUuidReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICaptchaUsingPUTUuidReq\\".
+ */
+export type ICaptchaUsingPUTUuidReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICaptchaUsingDELETEUuidReq\\".
+ */
+export type ICaptchaUsingDELETEUuidReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICaptchaUsingOPTIONSUuidReq\\".
+ */
+export type ICaptchaUsingOPTIONSUuidReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICaptchaUsingPATCHUuidReq\\".
+ */
+export type ICaptchaUsingPATCHUuidReq = string;
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+  "check-function-auth.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'check-function-auth';
+
+/**
+ *
+ * 验证用户是否有某一个url/requestType的接口权限
+ *
+ */
+async function checkFunctionAuthUsingPOST(
+  authorityRequest: ICheckFunctionAuthUsingPOSTAuthorityRequestReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('check-function-auth', 'checkFunctionAuthUsingPOST')) {
+      return Promise.resolve(
+        require('./mock/check-function-auth.json').unknown || {},
+      );
+    }
+  }
+
+  let result = await sdk.post<unknown>(
+    '/check-function-auth',
+
+    {
+      ...authorityRequest,
+    },
+  );
+  return result.data;
+}
+
+export default {
+  checkFunctionAuthUsingPOST,
+};
+
+/**
+ * 内容
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"undefined\\".
+ */
+export type Undefined = boolean;
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"AuthorityRequest\\".
+ */
+export interface AuthorityRequest {
+  /**
+   * 请求类型-GET,POST,PUT,DELETE
+   */
+  requestType?: string;
+  /**
+   * 接口路径
+   */
+  urlPath?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse«boolean»\\".
+ */
+export interface BaseResponseBoolean {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: boolean;
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckFunctionAuthUsingPOSTAuthorityRequestReq\\".
+ */
+export interface ICheckFunctionAuthUsingPOSTAuthorityRequestReq {
+  /**
+   * 请求类型-GET,POST,PUT,DELETE
+   */
+  requestType?: string;
+  /**
+   * 接口路径
+   */
+  urlPath?: string;
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+  "check.ts": "import sdk from '@api/sdk';
+
+import isMock from './mock-util';
+const controllerName = 'check';
+
+/**
+ *
+ * 验证验证码 验证页面传过来的验证码是否与session保存的验证码相等
+ *
+ */
+async function checkCaptchaUsingGET(
+  enterValue: ICheckCaptchaUsingGETEnterValueReq,
+  uuid: ICheckCaptchaUsingGETUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('check', 'checkCaptchaUsingGET')) {
+      return Promise.resolve(require('./mock/check.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.get(
+    '/check/captcha'.replace('{enterValue}', enterValue + ''),
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 验证验证码 验证页面传过来的验证码是否与session保存的验证码相等
+ *
+ */
+async function checkCaptchaUsingHEAD(
+  enterValue: ICheckCaptchaUsingHEADEnterValueReq,
+  uuid: ICheckCaptchaUsingHEADUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('check', 'checkCaptchaUsingHEAD')) {
+      return Promise.resolve(require('./mock/check.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.head(
+    '/check/captcha'.replace('{enterValue}', enterValue + ''),
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 验证验证码 验证页面传过来的验证码是否与session保存的验证码相等
+ *
+ */
+async function checkCaptchaUsingPOST(
+  enterValue: ICheckCaptchaUsingPOSTEnterValueReq,
+  uuid: ICheckCaptchaUsingPOSTUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('check', 'checkCaptchaUsingPOST')) {
+      return Promise.resolve(require('./mock/check.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.post(
+    '/check/captcha'.replace('{enterValue}', enterValue + ''),
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 验证验证码 验证页面传过来的验证码是否与session保存的验证码相等
+ *
+ */
+async function checkCaptchaUsingPUT(
+  enterValue: ICheckCaptchaUsingPUTEnterValueReq,
+  uuid: ICheckCaptchaUsingPUTUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('check', 'checkCaptchaUsingPUT')) {
+      return Promise.resolve(require('./mock/check.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.put(
+    '/check/captcha'.replace('{enterValue}', enterValue + ''),
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 验证验证码 验证页面传过来的验证码是否与session保存的验证码相等
+ *
+ */
+async function checkCaptchaUsingDELETE(
+  enterValue: ICheckCaptchaUsingDELETEEnterValueReq,
+  uuid: ICheckCaptchaUsingDELETEUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('check', 'checkCaptchaUsingDELETE')) {
+      return Promise.resolve(require('./mock/check.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.deleteF(
+    '/check/captcha'.replace('{enterValue}', enterValue + ''),
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 验证验证码 验证页面传过来的验证码是否与session保存的验证码相等
+ *
+ */
+async function checkCaptchaUsingOPTIONS(
+  enterValue: ICheckCaptchaUsingOPTIONSEnterValueReq,
+  uuid: ICheckCaptchaUsingOPTIONSUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('check', 'checkCaptchaUsingOPTIONS')) {
+      return Promise.resolve(require('./mock/check.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.options(
+    '/check/captcha'.replace('{enterValue}', enterValue + ''),
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+/**
+ *
+ * 验证验证码 验证页面传过来的验证码是否与session保存的验证码相等
+ *
+ */
+async function checkCaptchaUsingPATCH(
+  enterValue: ICheckCaptchaUsingPATCHEnterValueReq,
+  uuid: ICheckCaptchaUsingPATCHUuidReq,
+): Promise<unknown> {
+  if (__DEV__) {
+    if (isMock('check', 'checkCaptchaUsingPATCH')) {
+      return Promise.resolve(require('./mock/check.json').unknown || {});
+    }
+  }
+
+  let result = await sdk.patch(
+    '/check/captcha'.replace('{enterValue}', enterValue + ''),
+
+    {
+      uuid,
+    },
+  );
+  return result.data;
+}
+
+export default {
+  checkCaptchaUsingGET,
+
+  checkCaptchaUsingHEAD,
+
+  checkCaptchaUsingPOST,
+
+  checkCaptchaUsingPUT,
+
+  checkCaptchaUsingDELETE,
+
+  checkCaptchaUsingOPTIONS,
+
+  checkCaptchaUsingPATCH,
+};
+
+/**
+ * 验证码
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingGETEnterValueReq\\".
+ */
+export type ICheckCaptchaUsingGETEnterValueReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingGETUuidReq\\".
+ */
+export type ICheckCaptchaUsingGETUuidReq = string;
+/**
+ * 验证码
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingHEADEnterValueReq\\".
+ */
+export type ICheckCaptchaUsingHEADEnterValueReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingHEADUuidReq\\".
+ */
+export type ICheckCaptchaUsingHEADUuidReq = string;
+/**
+ * 验证码
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingPOSTEnterValueReq\\".
+ */
+export type ICheckCaptchaUsingPOSTEnterValueReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingPOSTUuidReq\\".
+ */
+export type ICheckCaptchaUsingPOSTUuidReq = string;
+/**
+ * 验证码
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingPUTEnterValueReq\\".
+ */
+export type ICheckCaptchaUsingPUTEnterValueReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingPUTUuidReq\\".
+ */
+export type ICheckCaptchaUsingPUTUuidReq = string;
+/**
+ * 验证码
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingDELETEEnterValueReq\\".
+ */
+export type ICheckCaptchaUsingDELETEEnterValueReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingDELETEUuidReq\\".
+ */
+export type ICheckCaptchaUsingDELETEUuidReq = string;
+/**
+ * 验证码
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingOPTIONSEnterValueReq\\".
+ */
+export type ICheckCaptchaUsingOPTIONSEnterValueReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingOPTIONSUuidReq\\".
+ */
+export type ICheckCaptchaUsingOPTIONSUuidReq = string;
+/**
+ * 验证码
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingPATCHEnterValueReq\\".
+ */
+export type ICheckCaptchaUsingPATCHEnterValueReq = string;
+/**
+ * uuid
+ *
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"ICheckCaptchaUsingPATCHUuidReq\\".
+ */
+export type ICheckCaptchaUsingPATCHUuidReq = string;
+
+export interface IgnoreType {
+  [k: string]: any;
+}
+/**
+ * This interface was referenced by \`IgnoreType\`'s JSON-Schema
+ * via the \`definition\` \\"BaseResponse\\".
+ */
+export interface BaseResponse {
+  /**
+   * 结果码
+   */
+  code: string;
+  /**
+   * 内容
+   */
+  context?: {
+    [k: string]: any;
+  };
+  /**
+   * 消息内容
+   */
+  message?: string;
+  [k: string]: any;
+}
+
+//create by moon https://github.com/creasy2010/moon
+",
+}
+`;
