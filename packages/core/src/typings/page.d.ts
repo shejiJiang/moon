@@ -99,6 +99,8 @@ export interface IActionItem {
   name: string;
   param: any;
   content?: string;
+  style?: string;
+  imports?: string;
   comment?: string;
 }
 

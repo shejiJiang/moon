@@ -1,9 +1,11 @@
+<% var renderMethod = pageInfo.mainComp&&pageInfo.mainComp.methods.filter(item=>item.name =="render")[0]; %>
 import * as React from 'react';
 import { connect } from 'react-redux';
 import './index.less';
 import * as T from './types';
 import actions from './actions';
 import {store2Props} from "./selectors";
+<%-(renderMethod||{}).imports%>
 
  <% pageInfo.subComps.forEach(subComp=>{ %>
 import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fileName%>"; %>
@@ -31,13 +33,15 @@ export default class <%=className%> extends React.Component<Partial<T.IProps>, a
       <% }) %>
     } =  this.props;
 
-<%-(pageInfo.mainComp&&pageInfo.mainComp.methods.filter(item=>item.name =="render")[0]||{}).content%>
-
+    <% if ((renderMethod||{}).content) { %>
+    <%-(renderMethod||{}).content %>
+    <% }  else {%>
     return (
-      <div className="<%=instanceName%>">
-        <div/>
-      </div>
+    <div className="<%=instanceName%>">
+      <div/>
+    </div>
     );
+    <% } %>
   }
 }
 

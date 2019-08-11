@@ -5,6 +5,7 @@ import './<%=subComp.fileName%>.less';
 import actions from '../actions/index';
 import { connect } from 'react-redux';
 import {store2Props} from "../selectors";
+<%-(subComp.methods.filter(item=>item.name =="render")[0]||{}).imports%>
 
 
 type I<%=Util.toUCamelize(subComp.fileName)%>Props = T.IProps & T.I<%=Util.toUCamelize(subComp.fileName)%>Props;

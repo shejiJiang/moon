@@ -8,6 +8,8 @@
  **/
 export interface IMoonConfig{
   type:TargetType;
+  ui?: boolean;
+  moduleId?: string;
   swaggerApi: string;
   api: {
     swaggerUrl: string;

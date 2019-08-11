@@ -1,4 +1,7 @@
 @import "~style/theme.less";
-
+<% if ((subComp.methods.filter(item=>item.name =="render")[0]||{}).style) { %>
+    <%- (subComp.methods.filter(item=>item.name =="render")[0]||{}).style %>
+<% }  else {%>
 .<%=Util.toLCamelize(subComp.fileName)%> {
 }
+<% } %>

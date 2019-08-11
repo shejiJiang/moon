@@ -16,6 +16,9 @@ import {join} from 'path';
 import {IPageDefined} from 'moon-core/declarations/typings/page';
 import * as fse from 'fs-extra';
 import {IMoonConfig} from 'moon-core/declarations/typings/config';
+import imgcook from 'taro-imgcook';
+import {ICompData, IParseResult} from 'taro-imgcook/src/typings';
+
 ipcRenderer.on('asynchronous-reply', (event, arg) => {
   console.log(arg); // prints "pong"
 });
@@ -102,6 +105,33 @@ window.moon = {
   generate: async (projectPath: string, pageInfo: IPageDefined) => {
     //@ts-ignore
     await window.moon.savePageInfo(projectPath, pageInfo);
+
+    if (defaulltMoonConfig.ui) {
+      // 填充主页面
+      const uiRes: IParseResult = await imgcook({
+        moduleId: defaulltMoonConfig.moduleId,
+        pagePath: pageInfo.pagePath
+      });
+      pageInfo.mainComp.methods = [{
+        name: 'render',
+        param: '',
+        content: uiRes.mainComp.vdom,
+        style: uiRes.mainComp.style,
+        imports: uiRes.mainComp.imports
+      }];
+
+      // 填充组件页面
+      pageInfo.subComps.forEach((subComp) => {
+        const method = subComp.methods.filter(item => item.name == "render")[0];
+        // TODO 考虑xx-xx
+        const uiComp = uiRes.subComps.find((item: ICompData) => item.componentName === subComp.fileName);
+        if (method && uiComp) {
+          method.content = uiComp.vdom;
+          method.style = uiComp.style;
+          method.imports = uiComp.imports;
+        }
+      });
+    }
 
     if (defaulltMoonConfig.type === 'taro-redux') {
       genTaroPage({pageInfo, projectPath});

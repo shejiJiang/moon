@@ -27,7 +27,8 @@
     "@types/klaw": "^3.0.0",
     "jest": "^24.7.1",
     "prettier": "1.16.4",
-    "tslint": "^5.10.0"
+    "tslint": "^5.10.0",
+    "taro-imgcook": "^0.0.0-alpha.1"
   },
   "dependencies": {
     "@types/request": "^2.48.1",

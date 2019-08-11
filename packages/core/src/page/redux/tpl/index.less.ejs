@@ -1,5 +1,8 @@
 @import "~style/theme.less";
-
+<% if ((pageInfo.mainComp&&pageInfo.mainComp.methods.filter(item=>item.name =="render")[0]||{}).style) { %>
+    <%- (pageInfo.mainComp&&pageInfo.mainComp.methods.filter(item=>item.name =="render")[0]||{}).style %>
+<% }  else {%>
 .<%=instanceName%> {
 }
+<% } %>
 
