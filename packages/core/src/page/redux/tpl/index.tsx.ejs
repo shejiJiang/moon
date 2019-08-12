@@ -5,6 +5,8 @@ import * as T from './types';
 import actions from './actions';
 import {store2Props} from "./selectors";
 
+<%-pageInfo.mainComp.imports%>
+
  <% pageInfo.subComps.forEach(subComp=>{ %>
 import <%=Util.toUCamelize(subComp.fileName)%> from "./components/<%=subComp.fileName%>"; %>
  <% }) %>
