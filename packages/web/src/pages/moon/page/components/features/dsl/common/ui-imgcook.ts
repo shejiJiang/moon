@@ -64,11 +64,11 @@ export async function apply(context: IProps & {data: IData}) {
   // 填充主组件
   const methodIndex = pageInfo.mainComp.methods.findIndex(m => m.name === 'render');
   if (methodIndex == -1) {
-    let mainMethods = pageInfo.mainComp.methods.push({
+    pageInfo.mainComp.methods.push({
       name: 'render',
       content: uiRes.mainComp.vdom
     });
-    action.commonChange(`main.pageInfo.mainComp.methods`, mainMethods);
+    action.commonChange(`main.pageInfo.mainComp.methods`, pageInfo.mainComp.methods);
   } else {
     action.commonChange(`main.pageInfo.mainComp.methods.${methodIndex}.content`, uiRes.mainComp.vdom);
   }
