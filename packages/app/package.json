@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@types/request": "^2.48.1",
+    "@types/urllib": "^2.33.0",
     "ejs": "^2.6.1",
     "electron": "^5.0.2",
     "fs-extra": "^8.1.0",
@@ -40,7 +41,8 @@
     "klaw": "^3.0.0",
     "moon-core": "^0.0.7-alpha.39",
     "moon-wanmi": "^0.0.7-alpha.39",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "urllib": "^2.34.0"
   },
   "gitHead": "9c201ea30833f5b90050e5d2eb887ef7a8977109"
 }

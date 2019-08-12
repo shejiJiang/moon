@@ -8,6 +8,8 @@
  **/
 
 import {ipcRenderer} from 'electron';
+import * as urllib from  'urllib';
+import * as fsExtra from  'fs-extra';
 console.log(ipcRenderer.sendSync('synchronous-message', 'ping'));
 import {genPage} from 'moon-wanmi/lib/page/pc';
 import {genTaroPage} from 'moon-wanmi/lib/page/taro';
@@ -72,6 +74,10 @@ try {
 
 //@ts-ignore
 window.moon = {
+  api:{
+    urllib,
+    fsExtra
+  },
   context: {
     apiIndex,
     pageDb: pageDb,
