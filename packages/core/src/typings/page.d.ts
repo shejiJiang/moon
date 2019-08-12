@@ -35,6 +35,7 @@ export interface IPageDefined {
   pagePath: string;
   //通过filepath计算出来
   pageKey?: string;
+  imports:string;
   lifeCycles: {
     init: {
       param: string;
@@ -104,6 +105,7 @@ export interface IActionItem {
 
 export interface ISubComp {
   fileName: string;
+  imports:string;
   methods: IActionItem[];
 }
 
