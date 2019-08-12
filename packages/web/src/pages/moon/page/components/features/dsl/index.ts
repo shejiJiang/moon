@@ -12,6 +12,7 @@ import * as FAction from './common/f-action';
 import * as FBreadcrumb from './other/f-breadcrumb';
 import * as FPagingQuery from './common/f-paging-query';
 import * as FAddEdit from './common/f-add-edit';
+import * as UImgcook from './common/ui-imgcook';
 import * as USearchList from './h5/u-search-list';
 import * as UAntdTable from './h5/u-antd-table';
 import * as UAntdTabs from './h5/u-antd-tabs';
@@ -28,6 +29,7 @@ const allFeature =[
   FAddEdit,
   USearchList,
   UAntdTable,
+  UImgcook,
   TaroUList,
   TaroUForm,
   TaroUScrollView,
